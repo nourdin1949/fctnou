@@ -1,0 +1,30 @@
+<h2>Alumnos en la empresa</h2>
+<br>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#listaAlumos">Listado de Alumno</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#buscaAlumno">Busca Alumno</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#validaTareas">Valida Tarea</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="listaAlumos" class="container tab-pane active"><br>
+        <!-- Listado de alumnos cuyo tutor escolar es el usuario registrado -->
+       <app-listar-alumnos-esco></app-listar-alumnos-esco>
+    </div>
+    <div id="buscaAlumno" class="container tab-pane fade"><br>
+        <!-- Buscar alumno cuyo tutor escolar es el usuario registrado -->
+        <app-buscar-alumno-eco></app-buscar-alumno-eco>
+    </div>
+    <div id="validaTareas" class="container tab-pane fade"><br>
+       <!-- Valida tarea de alumnos cuyo tutor escolar es el usuario registrado -->
+        <app-validar-tarea></app-validar-tarea>
+    </div>
+</div>

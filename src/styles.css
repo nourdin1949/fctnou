@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-color{
+background-color: #314F57;
+}
+.bg-outline-color{
+    border: 1px solid #314F57;
+    background-color: white;
+    color: black;
+}
+.bg-outline-color:hover{
+    color: white;
+    background-color: black;
+}
+
+a{
+    color:#495057
+}
+a:hover{
+    color:black
+}
+.title{
+    border-radius: 5px;
+}

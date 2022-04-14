@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-3"></div>
+    <form [formGroup]="forminsertarCurso" (ngSubmit)="insertarEmpresa(forminsertarCurso)" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Insertar Curso</h3>
+        </div>
+        <div class="form-group">
+            <label for="empresa" class="form-label">Nombre Empresa</label>
+            <input type="text" formControlName="empresa" placeholder="Nombre Empresa" class="form-control" id="empresa">
+        </div>
+        <div class="form-group">
+            <label for="provincia" class="form-label">Provincia</label>
+            <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
+        </div>
+        <div class="form-group">
+            <label for="localidad" class="form-label">Localidad</label>
+            <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
+        </div>
+        <div class="form-group">
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" formControlName="calle" placeholder="Calle" class="form-control" id="calle">
+        </div>
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <div class="form-group ">
+                    <label for="cp" class="form-label">Código Postal</label>
+                    <input type="text" formControlName="cp" placeholder="Código Postal" class="form-control" id="cp">
+                </div>
+            </div>
+            <div class="col-lg-6 form-group   col-sm-12  col-md-12">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" formControlName="telefono" placeholder="Teléfono" class="form-control" id="telefono">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="representante" class="form-label">Nombre Representante</label>
+            <input type="text" formControlName="representante" placeholder="Nombre Representante" class="form-control"
+                id="representante">
+        </div>
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <div class="form-group">
+                    <label for="dnirepresentante" class="form-label">DNI Representante</label>
+                    <input type="text" formControlName="dnirepresentante" placeholder="DNI Representante"
+                        class="form-control" id="dnirepresentante">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12  col-md-12">
+                <div class="form-group">
+                    <label for="cif" class="form-label">CIF</label>
+                    <input type="text" formControlName="cif" placeholder="CIF" class="form-control" id="cif">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="w-100 btn bg-outline-color">Insertar</button>
+    </form>
+
+</div>

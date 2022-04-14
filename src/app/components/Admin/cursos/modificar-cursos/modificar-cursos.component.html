@@ -1,0 +1,37 @@
+
+<h2>Modificar Curso</h2>
+
+ 
+        <table class="table table-striped">
+            <thead class="table bg-color text-light">
+                <tr>
+                    <th>Code Ciclo</th>
+                    <th>Familia Profesional</th>
+                    <th>Ciclo Formativo</th>
+                    <th>Curso Académico</th>
+                    <th>Nª horas</th>
+                    <th>DNI Tutor</th>
+                </tr>
+            </thead>
+            <tbody >    
+                <tr   id="{{item.code}}" *ngFor="let item of cursos let i =index">
+                    <td >{{item.code}}</td>
+                    <td>{{item.familia}}</td>
+                    <td>{{item.ciclo}}</td>
+                    <td>{{item.cursoAcademico}}</td>
+                    <td>{{item.horas}}</td>
+                    <td>{{item.dniTutor}}</td>
+                    <br *ngIf="comprobarLista(item)">
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                </tr>
+            </tbody>
+        </table>

@@ -1,0 +1,94 @@
+/* 
+//Breakpoints
+$breakpoint-movil: 576px;
+$breakpoint-tablet: 762px;
+$breakpoint-ordenador: 994px;
+$breakpoint-ordenadorl: 1200px;
+//--------------------------------------
+//-------------------------------------- */
+aside {
+    padding-top: 1rem;
+    padding-right: 1rem;
+    height: 100vh;
+    
+}
+.user {
+    margin: 0.4rem;
+    
+}
+img {
+    display: block;
+    margin: auto;
+    height: 90px;
+}
+h4,
+p {
+    text-align: center;
+}
+.enlaces button {
+    margin: 0.4rem;
+    text-align: left;
+    font-family: Jost_500;
+    padding: .45em 1em;
+    font-weight: 500;
+    letter-spacing: .2px;
+    font-size: 17px;
+    transition: all 0.2s linear;
+}
+.enlaces button> i {
+    font-size: 18px;
+    width: 1.20rem;
+}
+.enlaces button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 34px 0 rgba(54, 8, 23, 0.32);
+}
+
+.text-activo {
+    color: white !important;
+}
+
+@media (max-width: 576px) {
+    #opciones,
+    #buscador {
+        margin-top: 0.40rem;
+    }
+    aside .enlaces button.btn-aside {
+                padding: 1rem;
+                text-align: center;
+            }
+            aside .enlaces button.btn-aside span {
+                display: none;
+            }
+        
+    
+    
+}
+
+@media (max-width:994px){
+    aside {
+        display: flex;
+        align-items: flex-end;
+        justify-content: stretch;
+        padding-top: 0;
+        height: auto;
+    }
+    div.user img  {
+            height: 45px;
+    }
+    div.user p,
+    h4 {
+        display: none;
+    }
+    
+    div.enlaces {
+        flex-grow: 1;
+        }
+    div.enlaces  button.btn-aside {
+        text-align: center;
+        
+    }
+    div.enlaces button.btn-aside span {
+        display: none;
+    }
+}

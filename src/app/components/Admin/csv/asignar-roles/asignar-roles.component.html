@@ -1,0 +1,37 @@
+
+
+<div class="row">
+    <div class="col-lg-3"></div>
+
+    <form [formGroup]="formRoles" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Asignar roles</h3>
+        </div>
+        <!-- Enviar un email con usuario y contraseña al correo del almuno seleccionado  se generara un select con todos los  DNI-->
+        <div class="form-group">
+            <label for="rol" class="form-label"> Selecciona</label>
+            <select class="form-control" formControlName="rol">
+                <option selected>Seleciona Rol</option>
+                <option value="1">Responsable</option>
+                <option value="2">Tutor</option>
+                <option value="3">Alumno</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dni" class="form-label"> Selecciona</label>
+            <select class="form-control" formControlName="dni">
+                <option selected>Seleciona DNI</option>
+                <option value="1">234234F</option>
+                <option value="2">3245235D</option>
+                <option value="3">234234G</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pwd" class="form-label">Contraseña</label>
+            <input type="text" formControlName="pwd" placeholder="contraseña" class="form-control" id="pwd">
+        </div>
+        <button type="submit" class="btn bg-outline-color">Añadir</button>
+
+
+    </form>
+</div>

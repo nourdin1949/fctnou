@@ -1,0 +1,107 @@
+<br>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#listaCentros">Listado de Centros</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#insertaCentro">Insertar Centro</a>
+    </li>
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content w-100">
+    <div id="listaCentros" class="w-100 tab-pane active"><br>
+        <h3>Listado de Alumnos</h3>
+        <table class="table table-striped w-100">
+            <thead class="table bg-color  text-center text-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Provincia</th>
+                    <th>Localidad</th>
+                    <th>Calle</th>
+                    <th>Director/a</th>
+                    <th>CIF</th>
+                    <th >Email</th>
+                    <th [colSpan]="2">Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>IES AUGUSTOBRIGA </td>
+                    <td>Caceres</td>
+                    <td>Navalmoral de la Mata</td>
+                    <td>Calle Juan Ramirez</td>
+                    <td>Marta</td>
+                    <td>CIF_3245</td>
+                    <td >iesaugustobriga@gmail.com</td>
+                    <td>    
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/centros/modificarCentro/3" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li  class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger   ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>IES AUGUSTOBRIGA </td>
+                    <td>Caceres</td>
+                    <td>Navalmoral de la Mata</td>
+                    <td>Calle Juan Ramirez</td>
+                    <td>Marta</td>
+                    <td>CIF_3245</td>
+                    <td >iesaugustobriga@gmail.com</td>
+                    <td>    
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/centros/modificarCentro/3" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li  class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger   ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>IES AUGUSTOBRIGA </td>
+                    <td>Caceres</td>
+                    <td>Navalmoral de la Mata</td>
+                    <td>Calle Juan Ramirez</td>
+                    <td>Marta</td>
+                    <td>CIF_3245</td>
+                    <td >iesaugustobriga@gmail.com</td>
+                    <td>    
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/centros/modificarCentro/3" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li  class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger   ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="insertaCentro" class="w-100 tab-pane"><br>
+        <app-insertar-centro></app-insertar-centro>
+    </div>
+</div>

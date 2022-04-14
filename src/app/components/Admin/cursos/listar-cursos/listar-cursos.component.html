@@ -1,0 +1,160 @@
+<h2>Cursos</h2>
+<br>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#listacursos">Listado de Cursos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#insertarCursos">Insertar Curso</a>
+    </li>
+
+    <li class="nav-item" *ngFor="let item of cursos">
+        <a class="nav-link" data-toggle="tab" href="#curso{{item}}">Curso {{item}}</a>
+    </li>
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="listacursos" class="container tab-pane active"><br>
+        <h3>Listado de Cursos</h3>
+        <table class="table table-striped">
+            <thead class="table bg-color text-center text-light">
+                <tr>
+                    <th>Code Ciclo</th>
+                    <th>Familia Profesional</th>
+                    <th>Ciclo Formativo</th>
+                    <th>Curso Académico</th>
+                    <th>Nª horas</th>
+                    <th>DNI Tutor</th>
+                    <th [colSpan]="2">Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <!-- <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/cursos/modificarCurso/3" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td> -->
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <!-- <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/cursos/modificarCurso/3" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td> -->
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <!-- <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/cursos/modificarCurso/3" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td> -->
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="curso{{item}}" class="container tab-pane fade" *ngFor="let item of alumnosCurso; let i =index"><br>
+        <h3>Alumnos matriculados DAM {{item}}</h3>
+        <h3></h3>
+        <table class="table table-striped">
+            <thead class="table bg-color text-center  text-light">
+                <tr>
+                    <th>Alumno</th>
+                    <th>Tutor </th>
+                    <th>Tutor Empresa</th>
+                    <th>Empresa</th>
+                    <th>Nº Horas</th>
+                    <th [colSpan]="2">Acciones</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Camacho Gutierrez</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Camacho Gutierrez</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Camacho Gutierrez</td>
+                    <td>july@example.com</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <!-- <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/cursos/modificarCurso/{{item}}" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td> -->
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Tab para insertar cursos -->
+    <div id="insertarCursos"  class="container tab-pane fade"><br>
+        <app-insertar-curso></app-insertar-curso>
+    </div>
+</div>
