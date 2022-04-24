@@ -2,26 +2,32 @@
     <div class="col-4">
         <div class="form-group">
             <label for="alumno" class="form-label">Seleciona Alumno</label>
-            <select name="alumnoSeleccionado" class="form-control" id="">
+            <select name="alumnoSeleccionado" [(ngModel)]="alumnoAbuscar" class="form-control" id="">
                 <option value="1">Alumno 1</option>
                 <option value="2">Alumno 2</option>
                 <option value="3">Alumno 3</option>
             </select>
         </div>
-       
     </div>
     <div class="col-4">
         <div class="form-group">
             <label for="desde" class="form-label">Desde</label>
-            <input type="date" placeholder="Nombre Empresa" class="form-control" id="desde">
+            <input type="date" [(ngModel)]="fechaDesde" placeholder="Desde la fecha" class="form-control" id="desde">
         </div>
     </div>
     <div class="col-4">
         <div class="form-group">
             <label for="hasta" class="form-label">Hasta</label>
-            <input type="date" placeholder="Nombre Empresa" class="form-control" id="hasta">
+            <input type="date" [(ngModel)]="fechaHasta" placeholder="Hasta la fecha" class="form-control" id="hasta">
         </div>
     </div>
+    <div class="col-12">
+        <!-- Mostrará solo los resultados cuyas tareas han sido verificados por el responsable de empresa -->
+        <button (click)="mostrarTareasDelAlumno()" class="bg-outline-color form-control">Mostrar tareas</button>
+    </div>
+</div>
+<br>
+<div class="row">
     <table class="table table-striped">
         <thead class="table bg-color text-light">
             <tr>
@@ -31,32 +37,40 @@
                 <th>Tiempo </th>
                 <th>Dificultades en la realización </th>
                 <th>Observaciones </th>
-               <th>Tutor empresa </th>
-               <!--   <th>Tutor escolar </th>-->
+                <th>tutor empresa </th>
+                <!-- <th>Tutor escolar </th> -->
             </tr>
         </thead>
         <tbody id="tbody">
 
-            <tr>
-                <th>0</th>
-                <th><textarea class="form-control" name="descripcion0" id="descripcion0" cols="20" rows="2"></textarea>
+            <tr *ngFor="let item of tareas, let id=index">
+                <th>{{id+1}}</th>
+                <th><textarea disabled [value]="item.descripcion" class="form-control" name="descripcion0"
+                        id="descripcion0" cols="20" rows="2"></textarea></th>
+                <th><input disabled type="text" [value]="item.orientacion" class="form-control" name="orientacion0"
+                        id="orientacion0"></th>
+                <th><input disabled type="time" [value]="item.tiempo" class="form-control" name="tiempo0" id="tiempo0">
                 </th>
-                <th><input type="text" class="form-control" name="orientacion0" id="orientacion0"></th>
-                <th><input type="time" class="form-control" name="tiempo0" id="tiempo0"> </th>
-                <th><input type="radio" name="dificultad0" id="dificultad0"><img
-                        src="../../../../../assets/img/easy.png" alt="">
-                    <input type="radio" name="dificultad0" id="dificultad0"><img
-                        src="../../../../../assets/img/medium.png" alt="">
-                    <input type="radio" name="dificultad0" id="dificultad0"> <img
-                        src="../../../../../assets/img/hard.png" alt="">
+                <th class="text-center">
+                    <!-- <input disabled type="radio" name="dificultad0" id="dificultad0"> -->
+                    <img src="../../../../../assets/img/easy.png" *ngIf="item.dificultad=='facil'" alt="">
+                    <!-- <input disabled type="radio" name="dificultad0" id="dificultad0"> -->
+                    <img src="../../../../../assets/img/medium.png" *ngIf="item.dificultad=='medio'" alt="">
+                    <!-- <input disabled type="radio"  name="dificultad0" id="dificultad0">  -->
+                    <img src="../../../../../assets/img/hard.png" *ngIf="item.dificultad=='dificil'" alt="">
                 </th>
-                <th><input type="text" class="form-control" name="observaciones0" id="observaciones0"> </th>
-                <th>
-                <div class="form-check form-switch">
-                    <input disabled type="checkbox" class="form-check-input" name="tutor-empresa" id="">
-                </div>
-            </th>
-              <!--   <th> <input type="checkbox" name="tutor-escolar" id=""></th>-->
+                <th><input disabled type="text" [value]="item.observaciones" class="form-control" name="observaciones0"
+                        id="observaciones0"> </th>
+                 <th>
+                    <div class="form-check form-switch">
+                        <input disabled type="checkbox" *ngIf="!item.tutorempresa"  class="form-check-input" name="tutor-empresa" id="">
+                        
+                        <input disabled type="checkbox" *ngIf="item.tutorempresa" checked class="form-check-input" name="tutor-empresa" id="">
+                    </div>
+                </th>
+               <!-- <th> <input type="checkbox" disabled checked name="tutor-escolar" id="">
+                    <input type="checkbox" *ngIf="!item.tutorempresa" name="tutor-escolar" id="">
+                </th>-->
             </tr>
         </tbody>
 

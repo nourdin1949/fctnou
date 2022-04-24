@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buscar-alumno.component.css']
 })
 export class BuscarAlumnoComponent implements OnInit {
-
+  cadena:string =""
   constructor() { }
 
   ngOnInit(): void {
+  }
+  buscarAlumnos(){
+    window.alert("Buscar Alumos que contiene"+this.cadena)
   }
 
 }
