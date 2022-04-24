@@ -52,16 +52,16 @@
 
       <!-- Botones si el perfil es de un alumno -->
       <button id="anexoVmes" *ngIf="perfil=='alumno'" name="anexoVmes" routerLinkActive="bg-color text-activo"
-        routerLink="alumno/anexoV/calendario" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
+        routerLink="alumno/calendario" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
         <i class="fa fa-users"></i>
         <span class="ml-3">Anexo V Mes</span>
       </button>
       <button id="rellenarAnexoV" *ngIf="perfil=='alumno'" name="rellenarAnexoV" routerLinkActive="bg-color text-activo"
-        routerLink="alumno/anexoV/insertar" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
+        routerLink="alumno/insertar/{{date}}" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
         <i class="fa fa-users"></i>
         <span class="ml-3">Rellenar Anexo V</span>
       </button>
-
+      
       <!-- Botones si el perfil es de un tutor escolar (profesor) -->
       <button id="alumnoEsco" *ngIf="perfil=='profesor'" name="alumnoEsco" routerLinkActive="bg-color text-activo"
         routerLink="tutorescolar/lista" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
