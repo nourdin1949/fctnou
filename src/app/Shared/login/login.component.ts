@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { PdfMakeWrapper, Txt } from 'pdfmake-wrapper';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,8 @@ import { SharedService } from '../shared.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  
   public arrayInicio= [{ usuario: "admin", pwd: "admin", perfil: "admin" },
   { usuario: "alumno", pwd: "alumno", perfil: "alumno" },
   { usuario: "profesor", pwd: "profesor", perfil: "profesor" },
