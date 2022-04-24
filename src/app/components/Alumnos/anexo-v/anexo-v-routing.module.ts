@@ -8,7 +8,7 @@ const routes: Routes = [
 
   { path: 'calendario', component: CalendarioAnexoVComponent },
   { path: '', redirectTo: "calendario" , pathMatch:'full'},
-  { path: 'insertar/:fecha', component: InsertarAnexoVComponent },
+  { path: 'insertar/:fecha', component: InsertarAnexoVComponent , pathMatch:'full'},
   { path: 'insertar', component: InsertarAnexoVComponent , pathMatch:'full'},
   { path: 'modificar/:fecha', component: ModificarAnexoVComponent },
 ];
