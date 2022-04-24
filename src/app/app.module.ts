@@ -3,9 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationGuard } from './auth/authentication.guard';
 import { ComponentsModule } from './components/components.module';
-
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+PdfMakeWrapper.setFonts(pdfFonts)
 @NgModule({
   declarations: [
     AppComponent
@@ -13,7 +16,8 @@ import { ComponentsModule } from './components/components.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthenticationGuard],
   bootstrap: [AppComponent]
