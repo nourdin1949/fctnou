@@ -1,50 +1,64 @@
-<h2>Rellenar Anexo V</h2>
 <br>
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link active " data-toggle="tab" href="#insertaAnexoV">Rellenar Anexo V</a>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#listarPorFecha">Listar por fecha</a>
+    </li>
 </ul>
-
 
 <!-- Tab panes -->
 <div class="tab-content">
-    <div id="listaEmpresa" class="container tab-pane active"><br>
-<table class="table table-striped">
-    <thead class="table bg-color text-light">
-        <tr>
-            <th></th>
-            <th>Descipcion de la actividad </th>
-            <th>Orientacion para su desarrollo </th>
-            <th>Tiempo </th>
-            <th>Dificultades en la realización </th>
-            <th>Observaciones </th>
-            <!-- <th>tutor empresa </th>
-            <th>Tutor escolar </th> -->
-        </tr>
-    </thead>
-    <tbody id="tbody">
+    <div id="insertaAnexoV" class="container tab-pane active"><br>
+        <div class="pdfdata table-responsive">
 
-        <tr>
-            <th>0</th>
-            <th><textarea  class="form-control" name="descripcion0" id="descripcion0" cols="20" rows="2"></textarea></th>
-            <th><input type="text"  class="form-control" name="orientacion0" id="orientacion0"></th>
-            <th><input type="time"  class="form-control" name="tiempo0" id="tiempo0"> </th>
-            <th><input type="radio" name="dificultad0" id="dificultad0"><img src="../../../../../assets/img/easy.png" alt="">
-                <input type="radio" name="dificultad0" id="dificultad0"><img src="../../../../../assets/img/medium.png" alt="">
-                <input type="radio"  name="dificultad0" id="dificultad0"> <img src="../../../../../assets/img/hard.png" alt="">
-            </th>
-            <th><input type="text"  class="form-control" name="observaciones0" id="observaciones0"> </th>
-            <!-- <th>
+            <table class=" table table-striped">
+                <thead class="thead bg-color text-light">
+                    <tr>
+                        <th></th>
+                        <th>Descipcion de la actividad </th>
+                        <th>Orientacion para su desarrollo </th>
+                        <th>Tiempo </th>
+                        <th>Dificultades en la realización </th>
+                        <th>Observaciones </th>
+                        <!-- <th>tutor empresa </th>
+            <th>Tutor escolar </th> -->
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                    <tr>
+                        <th>0</th>
+                        <th><textarea class="form-control" name="descripcion0" id="descripcion0" cols="20"
+                                rows="2"></textarea></th>
+                        <th><input type="text" class="form-control" name="orientacion0" id="orientacion0"></th>
+                        <th><input type="time" class="form-control" name="tiempo0" id="tiempo0"> </th>
+                        <th><input type="radio" name="dificultad0" id="dificultad0"> <img
+                                src="../../../../../assets/img/easy.png" alt="">
+                            <input type="radio" name="dificultad0" id="dificultad0"><img
+                                src="../../../../../assets/img/medium.png" alt="">
+                            <input type="radio" name="dificultad0" id="dificultad0"> <img
+                                src="../../../../../assets/img/hard.png" alt="">
+                        </th>
+                        <th><input type="text" class="form-control" name="observaciones0" id="observaciones0"> </th>
+                        <!-- <th>
                 <div class="form-check form-switch">
                     <input disabled type="checkbox" class="form-check-input" name="tutor-empresa" id="">
                 </div>
             </th>
             <th> <input disabled type="checkbox" name="tutor-escolar" id=""></th> -->
-        </tr>
-    </tbody>
-    <button (click)="crearfila()" class="btn bg-outline-color" id="btn">mas</button>
-</table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button (click)="crearfila()" class="btn bg-outline-color" id="btn">Añadir Filas</button><button
+            (click)="guardarTareas()" class="btn bg-color text-light ml-4" id="btn">Guardar Tareas</button>
+ 
+    </div>
+    <div id="listarPorFecha" class="container tab-pane fade"><br>
+
+        <app-buscar-por-fecha></app-buscar-por-fecha>
+    </div>
 </div>
