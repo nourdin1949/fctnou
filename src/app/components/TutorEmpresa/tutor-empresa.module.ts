@@ -7,6 +7,7 @@ import { ValidarComponent } from './alumnos-empresa/validar/validar.component';
 import { BuscarAlumnoComponent } from './alumnos-empresa/buscar-alumno/buscar-alumno.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ChatEmpComponent } from './chat-emp/chat-emp.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,7 @@ import { ChatEmpComponent } from './chat-emp/chat-emp.component';
   ],
   imports: [
     CommonModule, 
-    AppRoutingModule
+    AppRoutingModule, FormsModule
   ]
 })
 export class TutorEmpresaModule { }
