@@ -1,0 +1,83 @@
+<h3>Buscar tareas en un periodo </h3>
+<div class="row">
+    <div class="col-4">
+        <label for="inicio">Fecha Inicio</label>
+        <input type="date" [(ngModel)]="inicio" class="form-control">
+    </div>
+    <div class="col-4">
+        <label for="fin">Fecha Fin</label>
+        <input type="date" [(ngModel)]="fin" class="form-control">
+    </div>
+    <div class="col-4">
+        <label for="fin">Buscar por fecha</label><br>
+        <button (click)="buscarTareas()" class=" btn text-light bg-color">Buscar</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12  table-responsive" id="pdfdata">
+        <div id="parteSuperior">
+            <div class="text-center"><strong>FORMACIÓN EN CENTROS DE TRABAJO</strong><br>
+                <small>“HOJA DEL/DE LA ALUMNO/A”</small>
+            </div>
+            <br>
+            <p>Entre las fechas {{inicio}} / {{fin}}</p>
+            <p>CENTRO EDUCATIVO:______________________________________________ EMPRESA
+                COLABORADORA_________________________________________</p>
+            <p>PROFESOR/A-TUTOR/A D/Dña. _________________________________________ TUTOR/A DE LA EMPRESA
+                D/Dña.______________________________</p>
+            <p>ALUMNO/A D/Dña.
+                _______________________________________________________________________________________________________________________
+            </p>
+
+        </div><br>
+        <table class="table table-striped">
+
+            <thead class="table bg-color text-light">
+                <tr>
+                    <th></th>
+                    <th>Descipcion de la actividad </th>
+                    <th>Orientacion para su desarrollo </th>
+                    <th>Tiempo </th>
+                    <th>Dificultades en la realización </th>
+                    <th>Observaciones </th>
+                    <!-- <th>tutor empresa </th>
+            <th>Tutor escolar </th> -->
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+                <tr *ngFor="let item of tareas , let id =index">
+                    <th>{{id}}</th>
+                    <th><textarea class="form-control" name="descripcion0" id="descripcion0" cols="20" rows="2"
+                            [value]="item.descripcion"></textarea></th>
+                    <th><input type="text" [value]="item.orientacion" class="form-control" name="orientacion0"
+                            id="orientacion0"></th>
+                    <th><input type="time" [value]="item.tiempo" class="form-control" name="tiempo0" id="tiempo0"> </th>
+                    <th class="text-center">
+                        <!--<input type="radio" name="dificultad0" *ngIf="item.dificultad=='facil'" checked id="dificultad0">-->
+                        <img src="../../../../../assets/img/easy.png" *ngIf="item.dificultad=='facil'"alt="">
+                        <!-- <input type="radio" name="dificultad0" *ngIf="item.dificultad=='medio'" checked id="dificultad0"> -->
+                        <img src="../../../../../assets/img/medium.png" *ngIf="item.dificultad=='medio'"alt="">
+                        <!-- <input type="radio" name="dificultad0" *ngIf="item.dificultad=='dificil'" checked id="dificultad0"> -->
+                        <img src="../../../../../assets/img/hard.png"*ngIf="item.dificultad=='dificil'" alt="">
+                    </th>
+                    <th><input type="text" class="form-control" [value]="item.observaciones" name="observaciones0"
+                            id="observaciones0"> </th>
+                    <!-- <th>
+                <div class="form-check form-switch">
+                    <input disabled type="checkbox" class="form-check-input" name="tutor-empresa" id="">
+                </div>
+            </th>
+            <th> <input disabled type="checkbox" name="tutor-escolar" id=""></th> -->
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
+    <div class="col-12">
+        <button class="btn bg-outline-color" (click)="downloadPDF()">Descargar Anexo V</button>
+
+    </div>
+</div>
