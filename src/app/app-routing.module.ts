@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationAdminGuard } from './auth/authentication-admin.guard';
+import { AuthenticationAlumnoGuard } from './auth/authentication-alumno.guard';
+import { AuthenticationProfesorGuard } from './auth/authentication-profesor.guard';
+import { AuthenticationResponsableGuard } from './auth/authentication-responsable.guard';
+import { AuthenticationGuard } from './auth/authentication.guard'
 import { AdminComponent } from './components/Admin/admin.component';
 import { ProfesorComponent } from './components/Admin/profesor/profesor.component';
 import { ResponsableComponent } from './components/Admin/responsable/responsable.component';
@@ -21,7 +26,7 @@ const routes: Routes = [
   {
     path: '', component: ComponentsComponent, children: [
 
-      { path: 'perfil', component: PerfilComponent, pathMatch: 'full' },
+      { path: 'perfil', component: PerfilComponent, pathMatch: 'full' , canActivate:[AuthenticationGuard]},
       {
         path: 'admin', component: AdminComponent, children: [
           { path: '', loadChildren: () => import("./components/Admin/alumnos/alumnos.module").then(m => m.AlumnosModule) },
@@ -29,17 +34,17 @@ const routes: Routes = [
           { path: 'cursos', loadChildren: () => import("./components/Admin/cursos/cursos.module").then(m => m.CursosModule) },
           { path: 'empresas', loadChildren: () => import("./components/Admin/empresas/empresas.module").then(m => m.EmpresasModule) },
           { path: 'centros', loadChildren: () => import("./components/Admin/centros/centros.module").then(m => m.CentrosModule) },
-          { path: 'listaResponsables', component: ResponsableComponent, pathMatch: 'full' },
-          { path: 'listaProfesores', component: ProfesorComponent, pathMatch: 'full' },
+          { path: 'responsables', component: ResponsableComponent, pathMatch: 'full' },
+          { path: 'profesores', component: ProfesorComponent, pathMatch: 'full' },
           { path: 'listaAlumnos', component: AlumnosComponent, pathMatch: 'full' },
           { path: 'csv', loadChildren: () => import("./components/Admin/csv/csv.module").then(m => m.CsvModule) },
-        ]
+        ], canActivate:[AuthenticationGuard,AuthenticationAdminGuard]
       },
       {
         path: 'alumno', component: AlumnosComponent, children: [
           { path: '', loadChildren: () => import("./components/Alumnos/anexo-v/anexo-v.module").then(m => m.AnexoVModule) },
-          { path: 'anexoV', loadChildren: () => import("./components/Alumnos/anexo-v/anexo-v.module").then(m => m.AnexoVModule) },
-        ]
+         
+        ], canActivate:[AuthenticationGuard,AuthenticationAlumnoGuard]
       },
       {
         path: 'tutorescolar', component: TutorEscolarComponent, children: [
@@ -47,7 +52,7 @@ const routes: Routes = [
           { path: 'chat', component: ChatEscoComponent },
           { path: "", redirectTo: 'lista', pathMatch: 'full' }
 
-        ]
+        ], canActivate:[AuthenticationGuard,AuthenticationProfesorGuard]
       },
       {
         path: 'tutorempresa', component: TutorEmpresaComponent, children: [
@@ -57,7 +62,7 @@ const routes: Routes = [
           { path: 'chat', component: ChatEmpComponent },
           { path: "", redirectTo: 'lista', pathMatch: 'full' }
 
-        ]
+        ], canActivate:[AuthenticationGuard,AuthenticationResponsableGuard]
       },
     ]
   },
