@@ -13,18 +13,18 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-    <div id="listaAlumnos" class="container tab-pane active"><br>
+    <div  id="listaAlumnos" class="container tab-pane active"><br>
         <h3>Listado de Alumnos</h3>
-        <table class="table table-striped">
+        <table class="pdf table table-striped">
             <thead class="table bg-color text-center text-light">
                 <tr>
-                    <th>Alumno</th>
+                    <th >Alumno</th>
                     <th>Tutor Escolar</th>
                     <th>Responsable</th>
                     <th>Empresa</th>
                     <th>Curso</th>
 
-                    <th [colSpan]="2">Acciones</th>
+                    <th class="quitar" [colSpan]="2">Acciones</th>
 
                 </tr>
             </thead>
@@ -34,19 +34,19 @@
                     <td>Luis Martinez</td>
                     <td>Aaron Tiemblo</td>
                     <td>
-                        <select name="empresa" class="form-control" id="empresa">
+                        <select name="empresa" class="as" class="form-control" id="empresa">
                             <option value="{{empresa}}" *ngFor="let empresa of empresas">{{empresa}}</option>
                         </select>
                     </td>
                     <td>2DAW</td>
-                    <td>
+                    <td class="quitar">
                         <ul class="nav nav-item">
                             <li routerLink="/admin/alumnos/modificarAlumo/3" class="nav-item">
                                 <a class="nav-link  btn bg-outline-color  ">Editar</a>
                             </li>
                         </ul>
                     </td>
-                    <td>
+                    <td class="quitar">
                         <ul class="nav nav-item">
                             <li class="nav-item">
                                 <a class="nav-link  btn btn-outline-danger  ">Delete</a>
@@ -64,14 +64,14 @@
                         </select>
                     </td>
                     <td>2DAW</td>
-                    <td>
+                    <td class="quitar">
                         <ul class="nav nav-item">
                             <li routerLink="/admin/alumnos/modificarAlumo/3" class="nav-item">
                                 <a class="nav-link  btn bg-outline-color  ">Editar</a>
                             </li>
                         </ul>
                     </td>
-                    <td>
+                    <td class="quitar">
                         <ul class="nav nav-item">
                             <li class="nav-item">
                                 <a class="nav-link  btn btn-outline-danger  ">Delete</a>
@@ -89,14 +89,14 @@
                         </select>
                     </td>
                     <td>1ASIR</td>
-                    <td>
+                    <td class="quitar">
                         <ul class="nav nav-item">
                             <li routerLink="/admin/alumnos/modificarAlumo/3" class="nav-item">
                                 <a class="nav-link  btn bg-outline-color  ">Editar</a>
                             </li>
                         </ul>
                     </td>
-                    <td>
+                    <td class="quitar">
                         <ul class="nav nav-item">
                             <li class="nav-item">
                                 <a class="nav-link  btn btn-outline-danger  ">Delete</a>
@@ -106,6 +106,11 @@
                 </tr>
             </tbody>
         </table>
+        <ul class="quitar nav nav-item">
+            <li class="nav-item">
+                <a class="nav-link  btn btn-outline-primary  " (click)="downloadPDF()">Generar PDF</a>
+            </li>
+        </ul>
     </div>
     <div id="insertaAlumno" class="container tab-pane fade"><br>
         <app-insertar-alumnos></app-insertar-alumnos>
