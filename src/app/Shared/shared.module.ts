@@ -8,8 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './perfil/perfil.component';
 
 
-
-
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -20,10 +18,10 @@ import { PerfilComponent } from './perfil/perfil.component';
   imports: [
     CommonModule,
     AppRoutingModule,
-  ReactiveFormsModule,
-  FormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
-  exports:[
+  exports: [
     SidebarComponent
   ]
 })
