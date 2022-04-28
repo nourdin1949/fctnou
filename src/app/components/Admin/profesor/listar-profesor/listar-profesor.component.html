@@ -1,0 +1,58 @@
+<h2>Profesores</h2>
+<br>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#listaProfesor">Listado de Profesor</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#insertaProfesor">Insertar Profesor</a>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="listaProfesor" class="container tab-pane active"><br>
+        <h3>Listado de Profesores</h3>
+        <table class="table text-center table-striped">
+            <thead class="table bg-color text-light">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Centro</th>
+                   
+                    <th [colSpan]="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Juan Rodriguez</td>
+                    <td>35434533E</td>
+                    <td>IES AUGUSTOBRIGA</td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/profesores/modificarProfesor/1" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Tab insertar profesor individual -->
+    <div id="insertaProfesor" class="container tab-pane fade"><br>
+<app-insertar-profesor></app-insertar-profesor>
+    </div>
+
+</div>
