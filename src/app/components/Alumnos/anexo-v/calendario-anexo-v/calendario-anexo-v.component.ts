@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlug from '@fullcalendar/interaction'
 import esLocale from '@fullcalendar/core/locales/es'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-calendario-anexo-v',
   templateUrl: './calendario-anexo-v.component.html',
@@ -29,11 +30,11 @@ export class CalendarioAnexoVComponent implements OnInit {
   ]
   public events!: any[]
   public options!: any
-  constructor() {
+  constructor(private router:Router) {
 
   }
   ngOnInit(): void {
-
+    let variable = this.router;
     this.options = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlug],
       defaultDate: new Date(),
@@ -43,7 +44,11 @@ export class CalendarioAnexoVComponent implements OnInit {
         center: 'title',
         right: 'dayGridMonth,dayGridWeek,timeGridDay'
       },
-      editable: false
+      editable: false,
+      dateClick: function(info) {
+        let router= variable
+        router.navigateByUrl(`alumno/insertar/${info.dateStr}`)
+      }
     }
     this.events=[]
     this.tareas.forEach((e)=>{
@@ -67,7 +72,6 @@ export class CalendarioAnexoVComponent implements OnInit {
         start:moment(fecha).format("YYYY-MM-DD"),
         description: "Mi primera tarea",
         color:color,
-        url:"alumno/insertar/"+fecha,
       },)
       
     })

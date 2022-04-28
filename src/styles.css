@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 .bg-color{
 background-color: #314F57;
+color: white;
 }
 .bg-outline-color{
     border: 1px solid #314F57;
@@ -21,5 +22,8 @@ a:hover{
 .title{
     border-radius: 5px;
 }
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

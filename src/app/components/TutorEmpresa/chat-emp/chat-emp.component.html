@@ -7,25 +7,20 @@
     </li>
 
 </ul>
-
 <!-- Tab panes -->
 <div class="tab-content">
     <div id="chat" class="container tab-pane active"><br>
-            
-            
         <div class="row h-100">
-            <div class="col-3">
-              
-            </div>
+            <div class="col-3"></div>
             <div class="col-6" style="height:100vh">
-                <select name="tutorescolar" class="form-control" id="">
-                    <option value="1">Tutor escolar 1</option>
-                    <option value="2">Tutor escolar 2</option>
-                    <option value="3">Tutor escolar 3</option>
+                <!-- El select solo contrendrá tutores de los alumnos que tutoriza el tutor empresa -->
+                <select name="tutorescolar" [(ngModel)]="receptor" (change)="cargarMensajes()" class="form-control" id="">
+                    <option value="">Selecciona Profesor</option>
+                    <option value="profesor1">Profesor 1</option>
+                    <option value="profesor2">Profesor 2</option>
+                    <option value="profesor3">Profesor 3</option>
                 </select>
-                <div class="row h-50" style="background-color: darkseagreen;" >
-                    
-
+                <!-- <div class="row h-50" style="background-color: darkseagreen;">
                 </div>
                 <div class="row w-100">
                     <div class="col-9">
@@ -34,8 +29,31 @@
                     <div class="col-3 ">
                         <button class="btn bg-outline-color">Enviar</button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+</div>
+
+<div class="card text-center cardContainer" *ngIf="mostrarChat">
+    <div class="card-header">
+        Chat
+        <div class="closeIcon" (click)="mostrarChat=false">X</div>
+    </div>
+    <div class="card-body">
+        <div id="contenedorDeMensajes" class="contenedorDeMensajes h-100">
+            <p *ngFor="let mensaje of mensajes" class="msj p-2" [ngClass]="('tutor'==mensaje.emisor) ? 'enviado' :'recibido'">
+                {{mensaje.texto}}
+            </p>
+        </div>
+    </div>
+    <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+
+        <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true} ">
+        <div class="input-group-append" (click)="enviarMensaje()">
+            <span class="input-group-text" id="basic-addon2">
+                <i class="faEnviar fa fa-paper-plane " aria-hidden="true"></i>
+            </span>
+        </div>
+    </form>
 </div>

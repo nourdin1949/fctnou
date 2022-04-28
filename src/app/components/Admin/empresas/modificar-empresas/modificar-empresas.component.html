@@ -3,9 +3,10 @@
 <h2>Modificar Empresa</h2>
 
  
-        <table class="table table-striped">
+        <table  class="table table-striped">
             <thead class="table bg-color text-light">
                 <tr>
+                
                     <th>Empresa</th>
                     <th>Representate </th>
                     <th>CIF</th>
@@ -15,6 +16,7 @@
             </thead>
             <tbody >    
                 <tr   id="{{item.id}}" *ngFor="let item of empresas let i =index">
+               
                     <td >{{item.nombre}}</td>
                     <td>{{item.representante}}</td>
                     <td>{{item.cif}}</td>
@@ -22,15 +24,8 @@
             
                     <br *ngIf="comprobarLista(item)">
                 </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
             </tbody>
         </table>
+
+          
+          

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-modificar-empresas',
   templateUrl: './modificar-empresas.component.html',
   styleUrls: ['./modificar-empresas.component.css']
 })
 export class ModificarEmpresasComponent {
+
   public id = "";
   public empresas: any[] = [{
             id:"1",
@@ -42,7 +44,7 @@ export class ModificarEmpresasComponent {
      
       
     let empresa: object = {
-      id:"1",
+      id:"4",
       nombre: (<HTMLInputElement>document.getElementsByName('nombre')[0]).value,
       representante: (<HTMLInputElement>document.getElementsByName('representante')[0]).value,
       cif: (<HTMLInputElement>document.getElementsByName('cif')[0]).value,
@@ -58,7 +60,7 @@ export class ModificarEmpresasComponent {
   //Método que inserta inputs con valores para modificar
   comprobarLista(item: any) {
     // Si el id de la url es igual al id recibido en el metodo y contador a 0 return true
-    if (item.id == 2 && this.contador == 0) {
+    if (item.id == this.id && this.contador == 0) {
 
       // crear tds y añadirlas al dom del tr cuyo id es this.id
       let tr = document.createElement("tr");
@@ -102,7 +104,7 @@ export class ModificarEmpresasComponent {
       email.name = "email"
       
       // añadir filas despues de la fila cuyo valores vamos a modificar
-      document.getElementById("2")?.insertAdjacentElement("afterend", tr)
+      document.getElementById(this.id)?.insertAdjacentElement("afterend", tr)
       document.getElementById('FilaInputs')?.insertAdjacentElement("afterend", trBtn)
       tr.appendChild(td1)
       tr.appendChild(td2)

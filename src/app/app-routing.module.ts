@@ -34,8 +34,8 @@ const routes: Routes = [
           { path: 'cursos', loadChildren: () => import("./components/Admin/cursos/cursos.module").then(m => m.CursosModule) },
           { path: 'empresas', loadChildren: () => import("./components/Admin/empresas/empresas.module").then(m => m.EmpresasModule) },
           { path: 'centros', loadChildren: () => import("./components/Admin/centros/centros.module").then(m => m.CentrosModule) },
-          { path: 'responsables', component: ResponsableComponent, pathMatch: 'full' },
-          { path: 'profesores', component: ProfesorComponent, pathMatch: 'full' },
+          { path: 'responsables', loadChildren: () => import("./components/Admin/responsable/responsable.module").then(m => m.ResponsableModule) },
+          { path: 'profesores', loadChildren: () => import("./components/Admin/profesor/profesor.module").then(m => m.ProfesorModule) },
           { path: 'listaAlumnos', component: AlumnosComponent, pathMatch: 'full' },
           { path: 'csv', loadChildren: () => import("./components/Admin/csv/csv.module").then(m => m.CsvModule) },
         ], canActivate:[AuthenticationGuard,AuthenticationAdminGuard]
@@ -56,8 +56,6 @@ const routes: Routes = [
       },
       {
         path: 'tutorempresa', component: TutorEmpresaComponent, children: [
-
-         
           { path: 'lista', component: AlumnosEmpresaComponent },
           { path: 'chat', component: ChatEmpComponent },
           { path: "", redirectTo: 'lista', pathMatch: 'full' }

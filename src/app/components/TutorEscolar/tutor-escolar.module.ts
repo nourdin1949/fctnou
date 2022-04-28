@@ -7,7 +7,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ListarAlumnosEscoComponent } from './alumno-escolar/listar-alumnos-esco/listar-alumnos-esco.component';
 import { BuscarAlumnoEcoComponent } from './alumno-escolar/buscar-alumno-eco/buscar-alumno-eco.component';
 import { ValidarTareaComponent } from './alumno-escolar/validar-tarea/validar-tarea.component';
-import {MatTabsModule} from '@angular/material/tabs';
+
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AppRoutingModule,
-    MatTabsModule,
+
     FormsModule
   ]
 })
