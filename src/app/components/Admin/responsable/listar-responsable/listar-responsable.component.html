@@ -1,0 +1,81 @@
+<h2>Responsables</h2>
+<br>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#listaResponsbale">Listado de Responsables</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#insertarResponsable">Insertar Responsable</a>
+    </li>
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="listaResponsbale" class="container tab-pane active"><br>
+        <h3>Listado de Responsables</h3>
+        <table class="table text-center table-striped">
+            <thead class="table bg-color text-light">
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Nº Alumnos</th>
+                    <th>Email</th>
+                    <th [colSpan]="2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Javier</td>
+                    <td>54723457D</td>
+                    <td>4</td>
+                    <td>john@example.com</td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/responsables/modificarResponsable/1" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Javier</td>
+                    <td>54723457D</td>
+                    <td>6</td>
+                    <td>john@example.com</td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li routerLink="/admin/responsables/modificarResponsable/2" class="nav-item">
+                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            </li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="nav nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- Tab insertar responsable individual -->
+    <div id="insertarResponsable" class="container tab-pane fade"><br>
+     <app-insertar-responsable></app-insertar-responsable>
+    </div>
+
+</div>
