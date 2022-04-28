@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-04-2022 a las 13:21:59
+-- Tiempo de generación: 28-04-2022 a las 18:14:56
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -37,7 +37,7 @@ CREATE TABLE `alumno` (
   `cp` varchar(5) NOT NULL,
   `provincia` varchar(30) NOT NULL,
   `localidad` varchar(50) NOT NULL,
-  `matriculado` tinyint(1) NOT NULL,
+  `matriculado` tinyint(1) NOT NULL DEFAULT 1,
   `email` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -45,16 +45,9 @@ CREATE TABLE `alumno` (
 -- Volcado de datos para la tabla `alumno`
 --
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `alumno_curso`
---
-
-CREATE TABLE `alumno_curso` (
-  `dniAlumno` varchar(8) NOT NULL,
-  `idCurso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `alumno` (`id`, `dniAlumno`, `nombreAlumno`, `apellidoAlumno`, `curso`, `calle`, `cp`, `provincia`, `localidad`, `matriculado`, `email`) VALUES
+(1, '4552635D', 'Noureddie', 'El qaddoury', 1, 'callle obreros jeronimo ', '10310', 'caceres', 'talayuela', 1, ''),
+(2, '3667779V', 'Richi', 'Rachdi', 2, 'calle mnauel azam', '12134', 'madrid', 'marid', 1, '');
 
 -- --------------------------------------------------------
 
@@ -85,6 +78,27 @@ INSERT INTO `centros` (`codigo`, `nombreCentro`, `provincia`, `localidad`, `call
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `emisor` varchar(8) NOT NULL,
+  `mensaje` varchar(200) NOT NULL,
+  `receptor` varchar(8) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `chat`
+--
+
+INSERT INTO `chat` (`id`, `emisor`, `mensaje`, `receptor`, `fecha`) VALUES
+(1, 'aa', 'adddd', 'ffffa', '2022-04-28 15:32:50');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cursos`
 --
 
@@ -101,6 +115,10 @@ CREATE TABLE `cursos` (
 --
 -- Volcado de datos para la tabla `cursos`
 --
+
+INSERT INTO `cursos` (`id`, `code_ciclo`, `familiaProfesional`, `cicloFormativo`, `cursoAcademico`, `nHoras`, `dniTutor`) VALUES
+(1, 'DAW', 'informatica', 'Desarrolo de apliaciones web', '2021-2022', 400, '4758962D'),
+(2, 'DAM', 'Informa', 'Desarrollo de aplicaicones mulktiplataforma', '2021-2025', 500, '7894561D');
 
 -- --------------------------------------------------------
 
@@ -126,6 +144,9 @@ CREATE TABLE `empresas` (
 -- Volcado de datos para la tabla `empresas`
 --
 
+INSERT INTO `empresas` (`id`, `nombreEmpresa`, `provincia`, `localidad`, `calle`, `cp`, `cif`, `telefono`, `email`, `dniRepresentante`, `nombreRepresentante`) VALUES
+(1, 'NTT DATA', 'Salamanca', 'salamantica', 'calle jorge ramurez', '15425', 'F45872545', 658945685, 'nttdata@email.com', '5486958G', 'Aaron Tiemblo'),
+(2, 'VIEWNEXT', 'Caceres', 'Caceres', 'calle caceres', '13245', 'P523345', 546345234, 'EMAIL@GMAIL.COM', '6236589f', 'Maria Guiterrez');
 
 -- --------------------------------------------------------
 
@@ -141,11 +162,6 @@ CREATE TABLE `fct_alumno` (
   `dniTutor` varchar(8) NOT NULL,
   `codigoCentro` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `fct_alumno`
---
-
 
 -- --------------------------------------------------------
 
@@ -164,6 +180,10 @@ CREATE TABLE `responsable` (
 -- Volcado de datos para la tabla `responsable`
 --
 
+INSERT INTO `responsable` (`id`, `nombreResponsable`, `dniResponsable`, `idEmpresa`) VALUES
+(1, 'Antonio Garcia', '48578478', 1),
+(2, 'Miguel Angel ', '4857847V', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -175,11 +195,11 @@ CREATE TABLE `tareas` (
   `dniAlumno` varchar(8) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
   `orientacion` varchar(250) NOT NULL,
-  `tiempo` time NOT NULL,
+  `tiempo` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `dificultad` enum('Facil','Medio','Dificil','','') NOT NULL,
-  `validadoResponsable` tinyint(1) NOT NULL,
-  `validadoTutor` tinyint(1) NOT NULL
+  `validadoResponsable` tinyint(1) NOT NULL DEFAULT 0,
+  `validadoTutor` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -199,6 +219,10 @@ CREATE TABLE `tutorescolar` (
 -- Volcado de datos para la tabla `tutorescolar`
 --
 
+INSERT INTO `tutorescolar` (`id`, `nombreTutor`, `dniTutorEscolar`, `codigoCentro`) VALUES
+(1, 'Camacho', '4758962D', 'CODAUG'),
+(2, 'Luis', '7894561D', 'CODAUG');
+
 -- --------------------------------------------------------
 
 --
@@ -208,7 +232,7 @@ CREATE TABLE `tutorescolar` (
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `userDni` varchar(8) NOT NULL,
-  `password` varchar(250) NOT NULL,
+  `password` blob NOT NULL,
   `email` varchar(150) NOT NULL,
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -226,13 +250,6 @@ ALTER TABLE `alumno`
   ADD KEY `curso` (`curso`);
 
 --
--- Indices de la tabla `alumno_curso`
---
-ALTER TABLE `alumno_curso`
-  ADD KEY `idCurso_foreign_key` (`idCurso`),
-  ADD KEY `dniAlumno_foreign_key` (`dniAlumno`);
-
---
 -- Indices de la tabla `centros`
 --
 ALTER TABLE `centros`
@@ -241,16 +258,26 @@ ALTER TABLE `centros`
   ADD UNIQUE KEY `telefono_unique` (`telefono`) USING BTREE;
 
 --
+-- Indices de la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `code_ciclo` (`code_ciclo`),
+  ADD KEY `fct_dnitutor_ibfk` (`dniTutor`);
 
 --
 -- Indices de la tabla `empresas`
 --
 ALTER TABLE `empresas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `dniRepresentante` (`dniRepresentante`),
+  ADD UNIQUE KEY `nombreEmpresa` (`nombreEmpresa`);
 
 --
 -- Indices de la tabla `fct_alumno`
@@ -303,6 +330,12 @@ ALTER TABLE `alumno`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
@@ -318,7 +351,7 @@ ALTER TABLE `empresas`
 -- AUTO_INCREMENT de la tabla `fct_alumno`
 --
 ALTER TABLE `fct_alumno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `responsable`
@@ -349,11 +382,10 @@ ALTER TABLE `alumno`
   ADD CONSTRAINT `alumno_ibfk_1` FOREIGN KEY (`curso`) REFERENCES `cursos` (`id`);
 
 --
--- Filtros para la tabla `alumno_curso`
+-- Filtros para la tabla `cursos`
 --
-ALTER TABLE `alumno_curso`
-  ADD CONSTRAINT `dniAlumno_foreign_key` FOREIGN KEY (`dniAlumno`) REFERENCES `alumno` (`dniAlumno`),
-  ADD CONSTRAINT `idCurso_foreign_key` FOREIGN KEY (`idCurso`) REFERENCES `cursos` (`id`);
+ALTER TABLE `cursos`
+  ADD CONSTRAINT `fct_dnitutor_ibfk` FOREIGN KEY (`dniTutor`) REFERENCES `tutorescolar` (`dniTutorEscolar`);
 
 --
 -- Filtros para la tabla `fct_alumno`
