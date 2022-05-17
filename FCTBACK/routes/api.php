@@ -1,0 +1,96 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\API\EmailVerificationController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\EmpresasController;
+use App\Http\Controllers\API\NewPasswordController;
+use App\Http\Controllers\API\CentrosController;
+use App\Http\Controllers\API\CursosController;
+use App\Http\Controllers\API\TutoresController;
+use App\Http\Controllers\API\ResponsablesController;
+use App\Http\Controllers\API\AlumnosController;
+use App\Http\Controllers\API\FctAlumnosController;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:sanctum', 'verified')->get('/user', function (Request $request) {
+    return $request->user();
+});
+//Ruta de inicio de sesión
+Route::post('login', [AuthController::class, 'signin']);
+//Ruta para dar de alta a un usuario
+Route::post('register', [AuthController::class, 'signup']);
+//Ruta para cerrar sesión
+Route::get('logout', [AuthController::class, 'logout']);
+
+//Ruta para enviar link para verificar el correo 
+Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+//Ruta para verificar del correo
+Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
+//Ruta para enviar link de recuperación de contraseña
+Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword']);
+//Ruta para cambiar la contraseña 
+Route::post('reset-password', [NewPasswordController::class, 'reset']);
+
+################################### ADMIN  ###################################
+
+
+Route::middleware('auth:sanctum')->group(function(){
+    // EMPRESA
+    Route::controller(EmpresasController::class)->group(function () {
+        Route::post('insertarEmpresa', 'store');
+        Route::get('listarEmpresas', 'index');
+        Route::delete('eliminarEmpresa/{id}', 'destroy');
+    });
+    // CENTRO
+    Route::controller(CentrosController::class)->group(function () {
+        Route::post('insertarCentro', 'store');
+        Route::get('listarCentros',  'index');
+        Route::delete('eliminarCentro/{id}', 'destroy');
+    });
+    // TUTORES
+    Route::controller(TutoresController::class)->group(function () {
+        Route::post('insertarTutor', 'store');
+        Route::get('listarTutores', 'index');
+        Route::delete('eliminarTutor/{id}', 'destroy');
+    });
+    // CURSOS
+    Route::controller(CursosController::class)->group(function () {
+        Route::post('insertarCurso', 'store');
+        Route::get('listarCursos', 'index');
+        Route::delete('eliminarCursos/{id}', 'destroy');
+    });
+    // RESPONSABLES
+    Route::controller(ResponsablesController::class)->group(function () {
+        Route::post('insertarResponsable', 'store');
+        Route::get('listarResponsables', 'index');
+        Route::get('findResponsablesByEmpresaID/{id}', 'findResponsablesByEmpresaID');
+        Route::delete('eliminarResponsable{id}', 'destroy');
+    });
+    // ALUMNOS
+    Route::controller(AlumnosController::class)->group(function () {
+        Route::post('insertarAlumno', 'store');
+        Route::get('listarAlumnos', 'index');
+        Route::delete('eliminarAlumno{id}', 'destroy');
+    });
+    // ALUMNOS FCT ##ALUMNOS EN PRÁCTICA##
+    Route::controller(FctAlumnosController::class)->group(function () {
+        Route::post('insertarAlumnoFCT', 'store');
+        Route::get('listarAlumnosFCT', 'index');
+        Route::delete('eliminarAlumnoFCT{id}', 'destroy');
+    });
+});
+
+
