@@ -8,6 +8,8 @@ import { ModificarAlumnosComponent } from './modificar-alumnos/modificar-alumnos
 import { InsertarAlumnosComponent } from './insertar-alumnos/insertar-alumnos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { ListarAlumnosPracticaComponent } from './listar-alumnos-practica/listar-alumnos-practica.component';
+import { ModificarAlumnosPracticaComponent } from './modificar-alumnos-practica/modificar-alumnos-practica.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     AlumnosComponent,
     ListarAlumnosComponent,
     ModificarAlumnosComponent,
-    InsertarAlumnosComponent
+    InsertarAlumnosComponent,
+    ListarAlumnosPracticaComponent,
+    ModificarAlumnosPracticaComponent
   ],
   imports: [
     CommonModule,

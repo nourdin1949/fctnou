@@ -1,0 +1,122 @@
+<h3>Listado de Alumnos</h3>
+<table class="pdf text-center table table-striped">
+    <thead class="table bg-color text-center text-light">
+        <tr>
+            <th>Alumno</th>
+            <th>Tutor Escolar</th>
+            <th>Empresa</th>
+            <th>Responsable</th>
+            <th>Curso</th>
+
+            <th class="quitar" [colSpan]="2">Acciones</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let alumnofct of alumnosfct">
+            <td>{{alumnofct.nombreAlumno}} </td>
+            <td>{{alumnofct.nombreTutor}} </td>
+            <td>
+                <select name="empresa" class="form-control" id="empresa">
+                    <option value="{{empresa.id}}" [selected]="alumnofct.nombreEmpresa===empresa.nombreEmpresa"
+                        *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
+                </select>
+            </td>
+            <td>{{alumnofct.nombreResponsable}}
+
+            </td>
+            <td>{{alumnofct.codigoCiclo}}</td>
+            <td class="quitar">
+                <ul class="nav nav-item">
+                    <li class="nav-item" (click)="guardarid(alumnofct)">
+                        <a class="nav-link  btn bg-outline-color" data-toggle="modal"
+                            data-target="#modificar">Editar</a>
+                    </li>
+                </ul>
+            </td>
+            <td class="quitar">
+                <ul class="nav nav-item">
+                    <li class="nav-item" (click)="guardarid(alumnofct)">
+                        <a class="nav-link  btn btn-outline-danger" data-toggle="modal"
+                            data-target="#confirmarEliminar">Delete</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ul class="quitar nav nav-item">
+    <li class="nav-item">
+        <a class="nav-link  btn btn-outline-primary  " (click)="downloadPDF()">Generar PDF</a>
+    </li>
+</ul>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-center m-3">
+                <h5 class="modal-title " id="confirmarEliminarLabel ">ELIMINANDO ALUMNO </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <hr>
+            </div>
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¿ESTÁS SEGURO DE ANULAR LA PRÁCTICA?</h2>
+                </b>
+                <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+                <small class=" m-2 text-danger">Acción irreversible</small>
+                <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+            </div>
+            <div class="text-center">
+                <hr>
+                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"
+                    (click)="eliminarAlumnoFCT(alumnofct.id)">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Modificar -->
+<div class="modal fade" id="modificar" tabindex="-1" role="dialog" aria-labelledby="modificarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-center m-3">
+                <h5 class="modal-title " id="modificarLabel">CAMBIAR DE EMPRESA </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <hr>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <select name="empresa" class="form-control" id="empresa"
+                        (change)="updateSelectResponsable($event)">
+                        <option value="{{empresa.id}}" [selected]="alumnofct.empresa_id===empresa.id"
+                            *ngFor="let empresa of empresas">
+                            {{empresa.nombreEmpresa}}{{empresa.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="responsable" class="form-control" [disabled]="respdis" id="responsable">
+                        <option value="0">Seleciona Responsable</option>
+                        <option value="{{responsable.id}}" [selected]="alumnofct.responsable_id==responsable.id"
+                            *ngFor="let responsable of responsables">{{responsable.nombreResponsable}}
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="text-center">
+                <hr>
+                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="m-3 ml-5 btn bg-color" data-dismiss="modal"
+                    (click)="changeEmpresa(alumnofct.id)">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

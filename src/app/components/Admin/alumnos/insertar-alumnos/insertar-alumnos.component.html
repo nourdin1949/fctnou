@@ -1,30 +1,38 @@
-<p>insertar-alumnos works!</p>
-<div class="row">
-  Textos completos  <div class="col-3"></div>
+<div class="row mb-4">
+  <div class="col-3"></div>
   <form [formGroup]="forminsertarAlumno" (ngSubmit)="insertarAlumo(forminsertarAlumno)" class="w-75 col-6">
     <div class="form-group">
       <h3 class="title bg-color text-light p-2">Insertar Alumno</h3>
     </div>
-    <div class="form-group">
-      <label for="dni" class="form-label">DNI Alumno</label>
-      <input type="text" formControlName="dni" class="form-control" id="dni">
-    </div>
+   
     <div class="form-group">
       <label for="nombre" class="form-label">Nombre Alumno</label>
-      <input type="text" formControlName="nombre" class="form-control" id="nombre">
+      <input type="text" formControlName="nombre" placeholder="Nombre Apellidos" class="form-control" id="nombre">
     </div>
     <div class="form-group">
-      <label for="apellidos" class="form-label">Apellidos Alumno</label>
-      <input type="text" formControlName="apellidos" class="form-control" id="apellidos">
+      <label for="dni" class="form-label">DNI Alumno</label>
+      <input type="text" formControlName="dni" placeholder="12345678V" class="form-control" id="dni">
     </div>
     <div class="form-group">
-      <label for="provincia" class="form-label">Provincia</label>
-      <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
+  </div>
+  <div class="row">
+    <div class="col-lg-6  col-sm-12  col-md-12">
+      <div class="form-group">
+        <label for="provincia" class="form-label">Provincia</label>
+        <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="localidad" class="form-label">Localidad</label>
-      <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
+    <div class="col-lg-6   col-sm-12  col-md-12">
+      <div class="form-group">
+        <label for="localidad" class="form-label">Localidad</label>
+        <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
+      </div>
     </div>
+  </div>
+   
+   
     <div class="form-group">
       <label for="calle" class="form-label">Calle</label>
       <input type="text" formControlName="calle" placeholder="Calle" class="form-control" id="calle">
@@ -36,22 +44,17 @@
           <input type="text" formControlName="cp" placeholder="Código Postal" class="form-control" id="cp">
         </div>
       </div>
-      <div class="col-lg-6 form-group   col-sm-12  col-md-12">
-        <label for="telefono" class="form-label">Teléfono</label>
-        <input type="tel" formControlName="telefono" placeholder="Teléfono" class="form-control" id="telefono">
+      <div class="col-lg-6   col-sm-12  col-md-12">
+        <label for="curso" class="form-label">Curso</label>
+        <select class="form-control" formControlName="curso">
+          <option value="0">Seleciona Curso</option>
+          <option value="{{curso.id}}" *ngFor="let curso of cursos">{{curso.codigoCiclo}}</option>
+        </select>
       </div>
     </div>
+      <button type="submit" class=" w-100 btn bg-outline-color">Insertar</button>
 
-    <div class="form-group">
-      <label for="curso"  class="form-label">Curso Académico</label>
-      <select class="form-control" formControlName="curso">
-        <option selected>Seleciona Curso</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    </div>
-    <button type="submit" class="btn bg-outline-color">Insertar</button>
+    
   </form>
 
 </div>
