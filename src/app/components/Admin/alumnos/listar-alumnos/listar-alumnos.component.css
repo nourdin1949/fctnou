@@ -1,3 +1,6 @@
 .izquierda{
     align-items: flex-start;
 }
+td ul li a {
+    border-radius: 50%;
+}

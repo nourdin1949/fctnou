@@ -35,7 +35,7 @@
                     <td>
                         <ul class="nav nav-item">
                             <li routerLink="/admin/alumnos/modificarAlumno/{{alumno.id}}" class="nav-item">
-                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                                <a class="nav-link  btn bg-outline-color  "><i class="fa fa-pencil" ></i></a>
                             </li>
                         </ul>
                     </td>
@@ -43,7 +43,7 @@
                         <ul class="nav nav-item">
                             <li class="nav-item" (click)="guardarid(alumno.id)">
                                 <a class="nav-link  btn btn-outline-danger" data-toggle="modal"
-                                    data-target="#confirmarEliminar">Delete</a>
+                                    data-target="#confirmarEliminar"><i class="fa fa-trash" ></i></a>
                             </li>
                         </ul>
                     </td>

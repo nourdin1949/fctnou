@@ -26,18 +26,11 @@ export class ListarAlumnosPracticaComponent implements OnInit {
   public downloadPDF() {
     // Extraemos el
 
-    const DATA = <HTMLElement>document.getElementById('listaAlumnos');
-
-    DATA.getElementsByTagName("th")[DATA.getElementsByTagName("th").length - 1].style.display = "none"
-    for (let i = 0; i < DATA.getElementsByTagName("tbody")[0].getElementsByTagName("tr").length; i++) {
-      let c = DATA.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[i].getElementsByTagName("td").length - 1
-
-      DATA.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[i].getElementsByTagName("td")[c].style.display = "none"
-
-      let v = DATA.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[i].getElementsByTagName("td").length - 2
-      DATA.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[i].getElementsByTagName("td")[v].style.display = "none"
-
-    }
+  const DATA = <HTMLElement>document.getElementById('listaalumnosFCT');
+ // Todo elemento que tenga la clase quitar no se mostrara en el pdf
+for (let i = 0; i < (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('quitar')).length; i++) {
+  (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('quitar'))[i].style.display="none"
+}
 
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -94,7 +87,6 @@ export class ListarAlumnosPracticaComponent implements OnInit {
     this.alumnofct.id = idAlumno.id
     this.alumnofct.empresa_id = idAlumno.empresa_id
     this.alumnofct.responsable_id = idAlumno.responsable_id
-    window.alert(this.alumnofct.id + " e mprs " + this.alumnofct.empresa_id + " res " + this.alumnofct.responsable_id)
   }
   public updateSelectResponsable(event: any) {
     this.alumnofct.empresa_id= event.target.value

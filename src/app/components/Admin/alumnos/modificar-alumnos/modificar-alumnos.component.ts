@@ -23,7 +23,11 @@ export class ModificarAlumnosComponent implements OnInit {
     private alumnosService: AlumnosService,
     private ActivatedRoute: ActivatedRoute) {
 
-    this.ActivatedRoute.params.subscribe((params) => this.idAlumno = params['id'])
+    this.ActivatedRoute.params.subscribe((params) => {
+      this.idAlumno = params['id']
+      this.findAlumnoById();
+      this.listarCursos();
+    })
 
 
     this.formModificarAlumno = this.fb.group({
@@ -42,8 +46,6 @@ export class ModificarAlumnosComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.listarCursos();
-    this.findAlumnoById();
 
   }
 

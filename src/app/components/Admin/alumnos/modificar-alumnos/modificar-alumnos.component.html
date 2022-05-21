@@ -76,7 +76,7 @@
             <div class="col-lg-6   col-sm-12  col-md-12">
                 <label for="curso" class="form-label">Curso</label>
                 <select class="form-control" formControlName="curso">
-                    <option value="0" >Seleciona Curso</option>
+                    <!-- <option value="0" >Seleciona Curso</option> -->
                     <option value="{{curso.id}}" [selected]="alumno.curso== curso.id"
                      *ngFor="let curso of cursos">{{curso.codigoCiclo}}</option>
                 </select>
