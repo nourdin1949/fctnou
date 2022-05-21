@@ -1,31 +1,94 @@
-<p>modificar-empresas works!</p>
+<div class="row">
+    <div class="col-3"></div>
+    <form [formGroup]="formModificarEmpresa" (ngSubmit)="modificarEmpresa(formModificarEmpresa)" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Insertar Empresa</h3>
+        </div>
+        <div class="form-group">
+            <label for="empresa" class="form-label">Nombre Empresa</label>
+            <input type="text" [value]="empresa.nombreEmpresa" formControlName="empresa" placeholder="Nombre Empresa"
+                class="form-control" id="empresa">
+        </div>
+        <div class="form-group">
+            <label for="provincia" class="form-label">Provincia</label>
+            <input type="text" [value]="empresa.provincia" formControlName="provincia" placeholder="Provincia"
+                class="form-control" id="provincia">
+        </div>
+        <div class="form-group">
+            <label for="localidad" class="form-label">Localidad</label>
+            <input type="text" [value]="empresa.localidad" formControlName="localidad" placeholder="Localidad"
+                class="form-control" id="localidad">
+        </div>
+        <div class="form-group">
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" [value]="empresa.calle" formControlName="calle" placeholder="Calle" class="form-control"
+                id="calle">
+        </div>
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <div class="form-group ">
+                    <label for="cp" class="form-label">Código Postal</label>
+                    <input type="text" [value]="empresa.cp" formControlName="cp" placeholder="Código Postal"
+                        class="form-control" id="cp">
+                </div>
+            </div>
+            <div class="col-lg-6 form-group   col-sm-12  col-md-12">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" [value]="empresa.telefono" formControlName="telefono" placeholder="Teléfono"
+                    class="form-control" id="telefono">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" [value]="empresa.email" formControlName="email" placeholder="Email" class="form-control"
+                id="email">
+        </div>
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <div class="form-group">
+                    <label for="representante" class="form-label">Nombre Representante</label>
+                    <input type="text" [value]="empresa.nombreRepresentante" formControlName="representante"
+                        placeholder="Nombre Representante" class="form-control" id="representante">
+                </div>
+            </div>
+            <div class="col-lg-6 form-group   col-sm-12  col-md-12">
+                <div class="form-group">
+                    <label for="dnirepresentante" class="form-label">DNI Representante</label>
+                    <input type="text" [value]="empresa.dniRepresentante" formControlName="dnirepresentante"
+                        placeholder="DNI Representante" class="form-control" id="dnirepresentante">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8  col-sm-12 mb-3  col-md-12">
+                <button type="submit" class="  w-100 btn bg-outline-color"><i class="fa fa-save"></i></button>
+            </div>
+            <div class="col-lg-3  col-sm-12  col-md-12">
+                <button type="button" clicked class=" w-100 ml-1 btn bg-color text-light"
+                    routerLink="/admin/empresas/listar"><i class="fa fa-arrow-circle-left"></i></button>
+            </div>
+        </div>
+    </form>
 
-<h2>Modificar Empresa</h2>
+</div>
 
- 
-        <table  class="table table-striped">
-            <thead class="table bg-color text-light">
-                <tr>
-                
-                    <th>Empresa</th>
-                    <th>Representate </th>
-                    <th>CIF</th>
-                    <th>Email</th>
-                   
-                </tr>
-            </thead>
-            <tbody >    
-                <tr   id="{{item.id}}" *ngFor="let item of empresas let i =index">
-               
-                    <td >{{item.nombre}}</td>
-                    <td>{{item.representante}}</td>
-                    <td>{{item.cif}}</td>
-                    <td>{{item.email}}</td>
-            
-                    <br *ngIf="comprobarLista(item)">
-                </tr>
-            </tbody>
-        </table>
+<button type="button" id="modificado" data-toggle="modal" data-target="#modificarEmpresa"></button>
 
-          
-          
+<!-- Modal MODIFICAR EMPRESA-->
+<div class="modal fade" id="modificarEmpresa" tabindex="-1" role="dialog" aria-labelledby="modificarEmpresaLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¡EMPRESA MODIFICADA CON ÉXITO!</h2>
+                </b>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

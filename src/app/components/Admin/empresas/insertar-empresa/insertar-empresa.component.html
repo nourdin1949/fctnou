@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-3"></div>
-    <form [formGroup]="forminsertarCurso" (ngSubmit)="insertarEmpresa(forminsertarCurso)" class="w-75 col-6">
+    <form [formGroup]="forminsertarEmpresa" (ngSubmit)="insertarEmpresa(forminsertarEmpresa)" class="w-75 col-6">
         <div class="form-group">
-            <h3 class="title bg-color text-light p-2">Insertar Curso</h3>
+            <h3 class="title bg-color text-light p-2">Insertar Empresa</h3>
         </div>
         <div class="form-group">
             <label for="empresa" class="form-label">Nombre Empresa</label>
@@ -59,4 +59,27 @@
         <button type="submit" class="w-100 btn bg-outline-color">Insertar</button>
     </form>
 
+</div>
+
+  
+<button type="button" id="insertado" data-toggle="modal"
+data-target="#modificarEmpresa"></button>
+
+<!-- Modal insertar EMPRESA-->
+<div class="modal fade" id="modificarEmpresa" tabindex="-1" role="dialog" aria-labelledby="modificarEmpresaLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+        <div class="modal-body text-center">
+            <b>
+                <h2 class="text-center">¡EMPRESA INSERTADO CON ÉXITO!</h2>
+            </b>
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+ 
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+            <br>
+        </div>
+    </div>
+</div>
 </div>
