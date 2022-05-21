@@ -10,13 +10,19 @@
             <label for="nombre" class="form-label">Nombre Centro</label>
             <input type="text" formControlName="nombre" placeholder="Nombre Centro" class="form-control" id="centro">
         </div>
-        <div class="form-group">
-            <label for="provincia" class="form-label">Provincia</label>
-            <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
-        </div>
-        <div class="form-group">
-            <label for="localidad" class="form-label">Localidad</label>
-            <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <div class="form-group">
+                    <label for="provincia" class="form-label">Provincia</label>
+                    <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12  col-md-12">
+                <div class="form-group">
+                    <label for="localidad" class="form-label">Localidad</label>
+                    <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="calle" class="form-label">Calle</label>
@@ -43,9 +49,9 @@
         <div class="row">
             <div class="col-lg-6  col-sm-12  col-md-12">
                 <div class="form-group">
-                    <label for="director" class="form-label">Nombre Director/a</label>
-                    <input type="text" formControlName="director" placeholder="Nombre Director/a" class="form-control"
-                        id="director">
+                    <label for="code" class="form-label">Código Centro</label>
+                    <input type="text" formControlName="code" placeholder="Código Centro" class="form-control"
+                        id="code">
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12  col-md-12">
@@ -55,10 +61,38 @@
                 </div>
             </div>
         </div>
-       
-       
+        <div class="form-group">
+            <label for="director" class="form-label">Nombre Director/a</label>
+            <input type="text" formControlName="director" placeholder="Nombre Director/a" class="form-control"
+                id="director">
+        </div>
         
         <button type="submit" class="w-100 btn bg-outline-color">Insertar</button>
     </form>
 
+</div>
+
+
+
+  
+<button type="button" id="insertado" data-toggle="modal"
+data-target="#modificarCentro"></button>
+
+<!-- Modal INSERTAR CENTRO-->
+<div class="modal fade" id="modificarCentro" tabindex="-1" role="dialog" aria-labelledby="modificarCentroLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+        <div class="modal-body text-center">
+            <b>
+                <h2 class="text-center">¡CENTRO INSERTADO CON ÉXITO!</h2>
+            </b>
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+ 
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+            <br>
+        </div>
+    </div>
+</div>
 </div>

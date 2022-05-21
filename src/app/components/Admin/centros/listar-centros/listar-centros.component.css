@@ -12,3 +12,6 @@
 @media (max-width:994px) {
     
 }
+td ul li a {
+    border-radius: 50%;
+}
