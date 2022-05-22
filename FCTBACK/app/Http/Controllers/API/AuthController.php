@@ -5,10 +5,12 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Controllers\API\MailController as APIMailController;
+use App\Http\Controllers\API\EmailVerificationController as EmailVerifController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Models\User;
-use App\Http\Controllers\Controller\MailController;
+use Psy\TabCompletion\Matcher\FunctionsMatcher;
 
 class AuthController extends BaseController
 {
@@ -16,17 +18,33 @@ class AuthController extends BaseController
     {
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $authUser = Auth::user();
-            $success['token'] =  $authUser->createToken('MyAuthApp')->plainTextToken;
-            $success['token'];
-            $success['username'] =  $authUser->username;
+            if ($authUser->activo == "1") {
 
-            return $this->sendResponse($success, 'User signed in');
+                $success['token'] =  $authUser->createToken('MyAuthApp')->plainTextToken;
+                $success['token'];
+                $success['username'] =  $authUser->username;
+
+                EmailVerifController::sendVerificationEmail($request);
+                return $this->sendResponse($success, 'User signed in');
+            }
+            if ($authUser->activo == "0") {
+                return $this->sendError('Cuenta desactivada', ['desactivada' => 'Cuenta desactivada ']);
+            }
         } else {
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);
         }
     }
     public function signup(Request $request)
     {
+        $users = DB::select("select * from users ");
+        if ($users == []) {
+            $request->request->add(array('username' => "admin1"));
+            $request->request->add(array('password' => "12345678"));
+            $request->request->add(array('confirm_password' => "12345678"));
+            $request->request->add(array('email' => "nelqaddoury01@gmail.com"));
+            $request->request->add(array('perfil' => "admin"));
+            $request->request->add(array('activo' => "1"));
+        }
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'email' => 'required|email',
@@ -46,12 +64,28 @@ class AuthController extends BaseController
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyAuthApp')->plainTextToken;
         $success['username'] =  $user->username;
-
-        return APIMailController::sendEmailRegister($user, $password);
+        $request->request->add(array('token' => $success['token']));
+        APIMailController::sendEmailRegister($user, $password);
+        $this->signin($request);
     }
     public function logout()
     {
-        Auth::logout();
+        return Auth::logout();
         return "Cerrando sesion";
+    }
+
+    public function getUsers()
+    {
+        return User::all();
+    }
+
+    public function getUser($email)
+    {
+        return DB::select("select * from users where email = ?", [$email]);
+    }
+
+    public function userBypasswordAndUsername(Request $request)
+    {  return password_hash($request->password, PASSWORD_DEFAULT);
+        return DB::select("select * from users where (password = ? and username=?)", [password_hash($request->password, PASSWORD_DEFAULT), $request->username]);
     }
 }

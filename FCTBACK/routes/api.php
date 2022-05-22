@@ -25,13 +25,16 @@ use App\Http\Controllers\API\FctAlumnosController;
 |
 */
 
-Route::middleware('auth:sanctum', 'verified')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Ruta de inicio de sesión
 Route::post('login', [AuthController::class, 'signin']);
 //Ruta para dar de alta a un usuario
 Route::post('register', [AuthController::class, 'signup']);
+
+//Ruta que dará de alta a un usuario con rol admin  por defecto
+Route::get('', [AuthController::class, 'signup']);
 //Ruta para cerrar sesión
 Route::get('logout', [AuthController::class, 'logout']);
 
@@ -43,6 +46,7 @@ Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'ver
 Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword']);
 //Ruta para cambiar la contraseña 
 Route::post('reset-password', [NewPasswordController::class, 'reset']);
+Route::get('users', [AuthController::class, 'getUsers']);
 
 ################################### ADMIN  ###################################
 
@@ -52,43 +56,57 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::controller(EmpresasController::class)->group(function () {
         Route::post('insertarEmpresa', 'store');
         Route::get('listarEmpresas', 'index');
+        Route::get('findEmpresaByid/{id}', 'show');
+        Route::get('listarAlumnosEmpresa/{id}', 'listarAlumnosEmpresa');
+        Route::put('updateEmpresaById/{id}', 'update');
         Route::delete('eliminarEmpresa/{id}', 'destroy');
     });
     // CENTRO
     Route::controller(CentrosController::class)->group(function () {
         Route::post('insertarCentro', 'store');
         Route::get('listarCentros',  'index');
+        Route::get('findCentroByid/{id}', 'show');
+        Route::put('updateCentroById/{id}', 'update');
         Route::delete('eliminarCentro/{id}', 'destroy');
     });
     // TUTORES
     Route::controller(TutoresController::class)->group(function () {
         Route::post('insertarTutor', 'store');
         Route::get('listarTutores', 'index');
+        Route::get('findTutorByid/{id}', 'show');
+        Route::put('updateTutorById/{id}', 'update');
         Route::delete('eliminarTutor/{id}', 'destroy');
     });
     // CURSOS
     Route::controller(CursosController::class)->group(function () {
         Route::post('insertarCurso', 'store');
         Route::get('listarCursos', 'index');
-        Route::delete('eliminarCursos/{id}', 'destroy');
+        Route::get('findCursoById/{id}', 'show');
+        Route::put('updateCursoById/{id}', 'update');
+        Route::delete('eliminarCurso/{id}', 'destroy');
     });
     // RESPONSABLES
     Route::controller(ResponsablesController::class)->group(function () {
         Route::post('insertarResponsable', 'store');
         Route::get('listarResponsables', 'index');
+        Route::get('findResponsableByid/{id}', 'show');
         Route::get('findResponsablesByEmpresaID/{id}', 'findResponsablesByEmpresaID');
-        Route::delete('eliminarResponsable{id}', 'destroy');
+        Route::put('updateResponsableById/{id}', 'update');
+        Route::delete('eliminarResponsable/{id}', 'destroy');
     });
     // ALUMNOS
     Route::controller(AlumnosController::class)->group(function () {
         Route::post('insertarAlumno', 'store');
         Route::get('listarAlumnos', 'index');
-        Route::delete('eliminarAlumno{id}', 'destroy');
+        Route::get('findAlumnoByid/{id}', 'show');
+        Route::put('updateAlumnoByid/{id}', 'update');
+        Route::delete('eliminarAlumno/{id}', 'destroy');
     });
     // ALUMNOS FCT ##ALUMNOS EN PRÁCTICA##
     Route::controller(FctAlumnosController::class)->group(function () {
         Route::post('insertarAlumnoFCT', 'store');
-        Route::get('listarAlumnosFCT', 'index');
+        Route::get('listarAlumnosFCT', 'listarfct');
+        Route::put('modificarAlumnosFCT/{id}', 'update');
         Route::delete('eliminarAlumnoFCT{id}', 'destroy');
     });
 });

@@ -53,7 +53,7 @@ class ResponsablesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Responsables::findOrFail($id);
     }
 
     /**
@@ -76,7 +76,16 @@ class ResponsablesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $responsable = Responsables::find($id);
+        $responsable->nombreResponsable = $request->input('nombreResponsable');
+        $responsable->dniResponsable = $request->input('dniResponsable');
+        $responsable->email = $request->input('email');
+        $responsable->empresa_id = $request->input('empresa_id');
+        DB::update('update fct_alumnos set empresa_id = ? where responsable_id =?',[$responsable->empresa_id, $id]);
+        
+        $responsable->save();
+
+        
     }
 
     /**
@@ -92,4 +101,9 @@ class ResponsablesController extends Controller
     public function findResponsablesByEmpresaID($id){
         return  DB::select('SELECT * FROM responsables WHERE empresa_id = ?', [$id]);
     } 
+
+    public function modificarEmpresaPractica($idResponsable, $idEmpresa){
+        return "hola". $idEmpresa;   
+    
+    }
 }

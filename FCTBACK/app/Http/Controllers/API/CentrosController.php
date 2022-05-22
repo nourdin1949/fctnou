@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Centros;
+use Illuminate\Support\Facades\DB;
 
 class CentrosController extends Controller
 {
@@ -58,7 +59,7 @@ class CentrosController extends Controller
      */
     public function show($id)
     {
-        //
+        return DB::select("select * from centros where codigo=?", [$id])[0];
     }
 
     /**
@@ -81,7 +82,26 @@ class CentrosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $centros = DB::select("select * from centros where codigo=?", [$id])[0];
+        $centros->nombreCentro = $request->input('nombreCentro');
+        $centros->provincia = $request->input('provincia');
+        $centros->localidad = $request->input('localidad');
+        $centros->calle = $request->input('calle');
+        $centros->cp = $request->input('cp');
+        $centros->cif = $request->input('cif');
+        $centros->telefono = $request->input('telefono');
+        $centros->email = $request->input('email');
+        $centros->nombreDirector = $request->input('nombreDirector');
+        return DB::update(
+            "update centros set nombreCentro=?, provincia=?,localidad=?,
+             calle=?, cp=?, cif=?, telefono=?, email=?, nombreDirector=? where codigo=?",
+            [
+                $centros->nombreCentro, $centros->provincia, $centros->localidad, $centros->calle,
+                $centros->cp, $centros->cif, $centros->telefono, $centros->email, $centros->nombreDirector,
+                $centros->codigo
+            ]
+        );
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\FctAlumnos;
 class FctAlumnosController extends Controller
 {
@@ -51,7 +52,7 @@ class FctAlumnosController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -74,7 +75,10 @@ class FctAlumnosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $alumnofct = FctAlumnos::find($id);
+        $alumnofct->responsable_id = $request->input('responsable_id');
+        $alumnofct->empresa_id = $request->input('empresa_id');
+        return $alumnofct->save();    
     }
 
     /**
@@ -87,4 +91,14 @@ class FctAlumnosController extends Controller
     {
         return FctAlumnos::destroy($id);
     }
+    public function listarfct(){
+        return DB::select("select  fct.id, al.nombreAlumno, al.id as alumno_id, em.nombreEmpresa, em.id as empresa_id,
+        resp.nombreResponsable,resp.id as responsable_id ,tutor.nombreTutor, c.codigoCiclo from fct_alumnos as fct inner join alumnos as al on al.id= fct.alumno_id 
+        inner join cursos as c on c.id=al.curso_id inner join empresas as em on em.id= fct.empresa_id 
+        inner join responsables as resp on resp.id= fct.responsable_id 
+        inner join 
+            tutores as tutor  on  tutor.id = fct.tutor_id;");
+    }
+
+
 }

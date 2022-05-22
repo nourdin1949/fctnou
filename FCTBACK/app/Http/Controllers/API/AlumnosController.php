@@ -56,7 +56,7 @@ class AlumnosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Alumnos::findOrFail($id);
     }
 
     /**
@@ -79,7 +79,17 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $alumno = Alumnos::find($id);
+        $alumno->nombreAlumno = $request->input('nombreAlumno');
+        $alumno->dniAlumno = $request->input('dniAlumno');
+        $alumno->curso_id = $request->input('curso_id');
+        $alumno->provincia = $request->input('provincia');
+        $alumno->localidad = $request->input('localidad');
+        $alumno->calle = $request->input('calle');
+        $alumno->cp = $request->input('cp');
+        $alumno->email = $request->input('email');
+        $alumno->matriculado = $request->input('matriculado');
+        return $alumno->save();    
     }
 
     /**

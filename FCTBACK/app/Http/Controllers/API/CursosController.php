@@ -53,7 +53,7 @@ class CursosController extends Controller
      */
     public function show($id)
     {
-        //
+        return Cursos::findOrFail($id);
     }
 
     /**
@@ -76,7 +76,14 @@ class CursosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $curso = Cursos::find($id);
+        $curso->codigoCiclo = $request->input('codigoCiclo');
+        $curso->familiaProfesional = $request->input('familiaProfesional');
+        $curso->cicloFormativo = $request->input('cicloFormativo');
+        $curso->cursoAcademico = $request->input('cursoAcademico');
+        $curso->nHoras = $request->input('nHoras');
+        $curso->tutor_id = $request->input('tutor_id');
+        return $curso->save();
     }
 
     /**

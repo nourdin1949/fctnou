@@ -54,7 +54,7 @@ class TutoresController extends Controller
      */
     public function show($id)
     {
-        //
+        return Tutores::findOrFail($id);
     }
 
     /**
@@ -77,7 +77,12 @@ class TutoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tutores = Tutores::find($id);
+        $tutores->codigoCentro = $request->input('codigoCentro');
+        $tutores->nombreTutor = $request->input('nombreTutor');
+        $tutores->dniTutor = $request->input('dniTutor');
+        $tutores->email = $request->input('email');
+        return $tutores->save();
     }
 
     /**
