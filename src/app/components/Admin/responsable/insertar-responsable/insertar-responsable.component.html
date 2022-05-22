@@ -1,5 +1,5 @@
 
-<div class="row">
+<div class=" w-100 row">
     <div class="col-3"></div>
     <form [formGroup]="forminsertarResponsable" (ngSubmit)="insertarResponsable(forminsertarResponsable)" class="w-75 col-6">
         <div class="form-group">
@@ -7,19 +7,46 @@
         </div>
         <div class="form-group">
             <label for="empresa" class="form-label">Nombre Empresa</label>
-            <select name="empresa" class="form-control" id="empresa">
-                <option value="{{empresa}}" *ngFor="let empresa of empresas">{{empresa}}</option>
+            <select name="empresa" formControlName="empresa" class="form-control" id="empresa">
+                <option value="0">Seleciona Empresa</option>
+                <option value="{{empresa.id}}" *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">Nombre Responsable</label>
             <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" id="nombre">
         </div>
         <div class="form-group">
-            <label for="dni" class="form-label">DNI</label>
+            <label for="dni" class="form-label">DNI Responsable</label>
             <input type="text" formControlName="dni" placeholder="Dni del Responsable" class="form-control" id="dni">
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
         </div>
         <button type="submit" class="w-100 btn bg-outline-color">Insertar</button>
     </form>
 
+</div>
+
+<button type="button" id="insertado" data-toggle="modal"
+data-target="#insertarResponsable"></button>
+
+<!-- Modal insertar Responsable-->
+<div class="modal fade" id="insertarResponsable" tabindex="-1" role="dialog" aria-labelledby="insertarResponsableLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+        <div class="modal-body text-center">
+            <b>
+                <h2 class="text-center">¡RESPONSABLE INSERTADO CON ÉXITO!</h2>
+            </b>
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+ 
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+            <br>
+        </div>
+    </div>
+</div>
 </div>

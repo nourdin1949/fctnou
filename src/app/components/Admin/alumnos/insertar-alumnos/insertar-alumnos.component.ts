@@ -10,11 +10,11 @@ import { AlumnosService } from '../alumnos.service';
   styleUrls: ['./insertar-alumnos.component.css']
 })
 export class InsertarAlumnosComponent implements OnInit {
-  public alumnos:Alumno[]=[]
-  public cursos:Curso[] =[]
+  public alumnos: Alumno[] = []
+  public cursos: Curso[] = []
   public forminsertarAlumno: FormGroup;
 
-  constructor(private fb: FormBuilder, private cursoServoce:CursosService, private alumnosService:AlumnosService) {
+  constructor(private fb: FormBuilder, private cursoServoce: CursosService, private alumnosService: AlumnosService) {
     this.forminsertarAlumno = this.fb.group({
       nombre: ['', Validators.required],
       dni: ['', Validators.required],
@@ -23,7 +23,7 @@ export class InsertarAlumnosComponent implements OnInit {
       calle: ['', Validators.required],
       cp: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
       curso: ['0', Validators.required],
-      email: ['', Validators.compose([Validators.required,Validators.email])],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
 
     })
   }
@@ -34,8 +34,8 @@ export class InsertarAlumnosComponent implements OnInit {
 
   insertarAlumo(form: FormGroup) {
     const alumno: Alumno = {
-      "id":0,
-      "nombreAlumno":form.value.nombre,
+      "id": 0,
+      "nombreAlumno": form.value.nombre,
       "dniAlumno": form.value.dni,
       "curso_id": form.value.curso,
       "provincia": form.value.provincia,
@@ -43,15 +43,22 @@ export class InsertarAlumnosComponent implements OnInit {
       "calle": form.value.calle,
       "cp": form.value.cp,
       "email": form.value.email,
-      "matriculado":1,
+      "matriculado": 1,
     }
     console.log(alumno)
-    if(this.forminsertarAlumno.valid){
-      this.alumnosService.insertarAlumnos(alumno).subscribe((res)=>console.log(res))
+    if (this.forminsertarAlumno.valid) {
+      this.alumnosService.insertarAlumnos(alumno)
+        .subscribe((res) => {
+          (<HTMLButtonElement>document.getElementById("insertado")).click()
+          setTimeout(() => {
+            (<HTMLElement>document.getElementById('insertarAlumno')).classList.remove('modal-open');
+            (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+          }, 300);
+        })
     }
   }
-  listarCursos(){
-    this.cursoServoce.listarCursos().subscribe((response)=>this.cursos=response)
+  listarCursos() {
+    this.cursoServoce.listarCursos().subscribe((response) => this.cursos = response)
   }
 
 }

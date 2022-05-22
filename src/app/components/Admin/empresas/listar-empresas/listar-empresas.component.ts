@@ -10,10 +10,12 @@ import { EmpresasService } from '../empresas.service';
 })
 export class ListarEmpresasComponent implements OnInit {
 
+  public mostrar:boolean=true
   public empresas:Empresa[]=[]
+ 
   public idEmpresa:number=0
   public alumnosfct: FCTAlumno[] = []
-  public alumnosEmpresas:number[]=[1,2,3,4,5,6]
+  public alumnosEmpresas:any[]=[]
   constructor(
     private empresaService:EmpresasService,
     private alumnoservice:AlumnosService) { }

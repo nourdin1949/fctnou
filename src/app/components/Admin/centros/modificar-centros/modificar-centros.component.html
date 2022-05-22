@@ -4,7 +4,7 @@
     <div class="col-3"></div>
     <form [formGroup]="formModificarCentro" (ngSubmit)="modificarCentro(formModificarCentro)" class="w-75 col-6">
         <div class="form-group">
-            <h3 class="title bg-color text-light p-2">Insertar Centro</h3>
+            <h3 class="title bg-color text-light p-2">Modificar Centro</h3>
         </div>
         <div class="form-group">
             <label for="nombre" class="form-label">Nombre Centro</label>
@@ -41,17 +41,11 @@
                 <input type="tel" formControlName="telefono" placeholder="Teléfono" class="form-control" id="telefono">
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email"  formControlName="email" placeholder="Email" class="form-control" id="email">
-        </div>
         <div class="row">
             <div class="col-lg-6  col-sm-12  col-md-12">
                 <div class="form-group">
-                    <label for="code" class="form-label">Código Centro</label>
-                    <input type="text" formControlName="code" placeholder="Código Centro" class="form-control"
-                        id="code">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email"  formControlName="email" placeholder="Email" class="form-control" id="email">
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12  col-md-12">

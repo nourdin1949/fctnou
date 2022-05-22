@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Profesor } from 'src/app/Shared/interfaces/Interface';
+import { ProfesorService } from '../profesor.service';
 
 @Component({
   selector: 'app-listar-profesor',
@@ -6,10 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-profesor.component.css']
 })
 export class ListarProfesorComponent implements OnInit {
-
-  constructor() { }
+  public profesores:Profesor[]=[]
+  public idProfesor: number =0;
+  constructor(private profesorService:ProfesorService) { }
 
   ngOnInit(): void {
+    this.listarProfesores();
+  }
+  listarProfesores(){
+    this.profesorService.listarProfesor().subscribe((response)=>{
+      
+      this.profesores= response;
+    })
   }
 
+  guardarid(id:number){
+    this.idProfesor = id;
+  }
+
+  eliminarProfesor(){
+    this.profesorService.eliminarProfesor(this.idProfesor)
+      .subscribe((response)=>{
+        this.listarProfesores()
+      });
+  }
 }

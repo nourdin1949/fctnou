@@ -48,6 +48,10 @@ export class InsertarCentroComponent implements OnInit {
     if (form.valid) {
       this.centroSerice.insertarCentro(centro).subscribe((response)=>{
         (<HTMLButtonElement>document.getElementById("insertado")).click()
+        setTimeout(() => {
+          (<HTMLElement>document.getElementById('insertarCentro')).classList.remove('modal-open');
+          (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+         }, 300);
       });
     }
   }

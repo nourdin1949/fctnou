@@ -8,7 +8,7 @@ import { InsertarProfesorComponent } from './insertar-profesor/insertar-profesor
 import { ModificarProfesorComponent } from './modificar-profesor/modificar-profesor.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
+import {MatTabsModule} from '@angular/material/tabs'; 
 @NgModule({
   declarations: [
     ProfesorComponent,
@@ -18,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ProfesorRoutingModule, ReactiveFormsModule
+    ProfesorRoutingModule, 
+    ReactiveFormsModule,
+    MatTabsModule
   ]
 })
 export class ProfesorModule { }

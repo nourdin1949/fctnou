@@ -1,37 +1,59 @@
+<div class="row w-100">
+    <div class="col-3"></div>
+    <form [formGroup]="formModificarCurso" (ngSubmit)="modificarCurso(formModificarCurso)" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Insertar Curso</h3>
+        </div>
+        <div class="form-group">
+            <label for="code" class="form-label">Code Ciclo</label>
+            <input type="text" formControlName="code" class="form-control" id="codeCiclo" aria-describedby="code">
+        </div>
+        <div class="form-group">
+            <label for="familia" class="form-label">Familia Profesional</label>
+            <input type="text" formControlName="familia" class="form-control" id="familia" aria-describedby="familia">
+        </div>
+        <div class="form-group">
+            <label for="ciclo" class="form-label">Ciclo Formativo</label>
+            <input type="text" formControlName="ciclo" class="form-control" id="ciclo" aria-describedby="ciclo">
+        </div>
+        <div class="form-group">
+            <label for="curso" class="form-label">Curso Académico</label>
+            <input type="text" formControlName="curso" class="form-control" id="curso">
+        </div>
+        <div class="form-group">
+            <label for="horas" class="form-label">Nº Horas</label>
+            <input type="text" formControlName="horas" class="form-control" id="horas" aria-describedby="horas">
+        </div>
 
-<h2>Modificar Curso</h2>
+        <div class="form-group">
+            <label for="curso" class="form-label">Tutor</label>
+            <select class="form-control" formControlName="tutor">
+                <option value="0">Seleciona Tutor</option>
+                <option value="{{profesor.id}}" *ngFor="let profesor of profesores">{{profesor.nombreTutor}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn w-100 bg-color text-light ">Insertar</button>
+    </form>
+</div>
 
- 
-        <table class="table table-striped">
-            <thead class="table bg-color text-light">
-                <tr>
-                    <th>Code Ciclo</th>
-                    <th>Familia Profesional</th>
-                    <th>Ciclo Formativo</th>
-                    <th>Curso Académico</th>
-                    <th>Nª horas</th>
-                    <th>DNI Tutor</th>
-                </tr>
-            </thead>
-            <tbody >    
-                <tr   id="{{item.code}}" *ngFor="let item of cursos let i =index">
-                    <td >{{item.code}}</td>
-                    <td>{{item.familia}}</td>
-                    <td>{{item.ciclo}}</td>
-                    <td>{{item.cursoAcademico}}</td>
-                    <td>{{item.horas}}</td>
-                    <td>{{item.dniTutor}}</td>
-                    <br *ngIf="comprobarLista(item)">
-                </tr>
-                <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                </tr>
-                <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                </tr>
-            </tbody>
-        </table>
+
+<button type="button" id="modificado" data-toggle="modal" data-target="#modificarCurso"></button>
+
+<!-- Modal MODIFICAR EMPRESA-->
+<div class="modal fade" id="modificarCurso" tabindex="-1" role="dialog" aria-labelledby="modificarCursoLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¡CURSO MODIFICADO CON ÉXITO!</h2>
+                </b>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

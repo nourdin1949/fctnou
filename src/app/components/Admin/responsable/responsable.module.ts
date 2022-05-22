@@ -7,7 +7,7 @@ import { ListarResponsableComponent } from './listar-responsable/listar-responsa
 import { ModificarResponsableComponent } from './modificar-responsable/modificar-responsable.component';
 import { InsertarResponsableComponent } from './insertar-responsable/insertar-responsable.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ResponsableRoutingModule, FormsModule, ReactiveFormsModule
+    ResponsableRoutingModule, 
+    FormsModule, 
+    ReactiveFormsModule,
+    MatTabsModule
   ]
 })
 export class ResponsableModule { }

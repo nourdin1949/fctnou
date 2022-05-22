@@ -1,23 +1,12 @@
 <h2>Empresas</h2>
-<br>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link active " data-toggle="tab" href="#listaEmpresa">Listado de Empresas</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#insertaEmpresa">Insertar Empresa</a>
-    </li>
-    <li class="nav-item" *ngFor="let item of empresas">
-        <a class="nav-link" data-toggle="tab" href="#empresa{{item.id}}">{{item.nombreEmpresa}}</a>
-    </li>
 
-</ul>
 
-<!-- Tab panes -->
-<div class="tab-content">
-    <div id="listaEmpresa" #referenciaComponent class="container tab-pane active"><br>
-        <h3>Listado de Empresas</h3>
+<mat-tab-group>
+    <mat-tab label="Listado de Empresas">
+        <br>
+        <div>
+            <p> <i (click)="listarEmpresas()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        </div>
         <table class="table text-center table-striped">
             <thead class="table bg-color text-light">
                 <tr>
@@ -26,8 +15,7 @@
                     <th>Representante</th>
                     <th>CIF</th>
                     <th>Email</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,15 +25,14 @@
                     <td>{{empresa.nombreRepresentante}} Rodriguez</td>
                     <td>{{empresa.cif}}</td>
                     <td>{{empresa.email}}</td>
-                    <td>
+                    <td class="d-flex justify-content-center">
                         <ul class=" nav nav-item">
                             <li routerLink="/admin/empresas/modificarEmpresa/{{empresa.id}}">
                                 <a class="nav-link  btn bg-outline-color"> <i class="fa fa-pencil"></i></a>
                             </li>
                         </ul>
-                    </td>
-                    <td>
-                        <ul class=" nav nav-item">
+
+                        <ul class="mr-3 nav nav-item">
                             <li>
                                 <a class="nav-link ml-3 btn btn-outline-danger " data-toggle="modal"
                                     data-target="#eliminarEmpresa" (click)="guardarid(empresa.id)"> <i
@@ -57,38 +44,45 @@
 
             </tbody>
         </table>
-    </div>
-    <div id="empresa{{item.id}}" class="container tab-pane fade" *ngFor="let item of empresas; let i =index"><br>
-        <h3>Listado de Alumnos en Práctica</h3>
-        <table class="table justify-content-center text-center  table-striped">
-            <thead class="table bg-color  text-light">
-                <tr>
-                    <th>#</th>
-                    <th>Alumno</th>
-                    <th>Tutor Escolar</th>
-                    <th>Responsable</th>
-                    <th>Empresa</th>
-                    <th>Curso</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let alumnofct of alumnosfct; let id=index">
-                    <td *ngIf="item.id==alumnofct.empresa_id">{{id+1}}</td>
-                    <td *ngIf="item.id==alumnofct.empresa_id">{{alumnofct.nombreAlumno}} </td>
-                    <td *ngIf="item.id==alumnofct.empresa_id">{{alumnofct.nombreTutor}}</td>
-                    <td *ngIf="item.id==alumnofct.empresa_id">{{alumnofct.nombreResponsable}}</td>
-                    <td *ngIf="item.id==alumnofct.empresa_id">{{alumnofct.nombreEmpresa}}</td>
-                    <td *ngIf="item.id==alumnofct.empresa_id">{{alumnofct.codigoCiclo}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- Tab insertar empresa individual -->
-    <div id="insertaEmpresa" class="container tab-pane fade"><br>
+    </mat-tab>
+    <mat-tab label="Insertar Empresa">
+        <br>
         <app-insertar-empresa></app-insertar-empresa>
-    </div>
-
-</div>
+        <br>
+    </mat-tab>
+    <mat-tab *ngFor="let empresa of empresas; let i =index" label="{{empresa.nombreEmpresa}}">
+        <br>
+        <h3>Listado de Alumnos en Práctica</h3>
+     
+       
+            <table  class="table justify-content-center text-center  table-striped">
+                <thead class="table bg-color  text-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Alumno</th>
+                        <th>Tutor Escolar</th>
+                        <th>Responsable</th>
+                        <th>Empresa</th>
+                        <th>Curso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let alumnofct of alumnosfct; let id=index">
+                        <td *ngIf="empresa.id==alumnofct.empresa_id">{{id+1}}</td>
+                        <td *ngIf="empresa.id==alumnofct.empresa_id">{{alumnofct.nombreAlumno}} </td>
+                        <td *ngIf="empresa.id==alumnofct.empresa_id">{{alumnofct.nombreTutor}}</td>
+                        <td *ngIf="empresa.id==alumnofct.empresa_id">{{alumnofct.nombreResponsable}}</td>
+                        <td *ngIf="empresa.id==alumnofct.empresa_id">{{alumnofct.nombreEmpresa}}</td>
+                        <td *ngIf="empresa.id==alumnofct.empresa_id">{{alumnofct.codigoCiclo}}</td>
+                        <!-- <td *ngIf="empresa.id!=alumnofct.empresa_id && id==0 " colspan="7" class="alert alert-danger text-center">
+                            No hay alumnos haciendo prácticas en {{empresa.nombreEmpresa}}
+                        </td> -->
+                    </tr>
+                </tbody>
+            </table>
+ 
+    </mat-tab>
+</mat-tab-group>
 
 
 <!-- Modal Eliminar -->

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Empresa, Responsable } from 'src/app/Shared/interfaces/Interface';
+import { EmpresasService } from '../../empresas/empresas.service';
+import { ResponsableService } from '../responsable.service';
 
 @Component({
   selector: 'app-insertar-responsable',
@@ -7,20 +10,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./insertar-responsable.component.css']
 })
 export class InsertarResponsableComponent implements OnInit {
-  public empresas: string[] = ["NTTDATA", "EVERIS", "VIEWNEXT", "FCTR"]
+  public empresas: Empresa[] = []
   public forminsertarResponsable: FormGroup;
-  constructor(private fb: FormBuilder) {
-    
+  constructor(private fb: FormBuilder, private responsableService: ResponsableService, private empresaService: EmpresasService) {
 
     this.forminsertarResponsable = this.fb.group({
       nombre: ['', Validators.required],
       dni: ['', Validators.required],
-      empresa: ['', Validators.required],
+      empresa: ['0', Validators.required],
+      email: ['', [Validators.compose([Validators.required, Validators.email])]]
     })
   }
   ngOnInit(): void {
+    this.listarEmpresas()
   }
-  insertarResponsable(form:FormGroup){
-    console.log("insertando empresa...")
+  insertarResponsable(form: FormGroup) {
+    const responsable: Responsable = {
+      "id":0,
+      "nombreResponsable":form.value.nombre, 
+      "dniResponsable": form.value.dni, 
+      "email": form.value.email, 
+      "empresa_id": form.value.empresa
+    }
+    console.log(responsable)
+    this.responsableService.insertarResponsables(responsable)
+    .subscribe((response)=>{
+        (<HTMLButtonElement>document.getElementById("insertado")).click()
+        setTimeout(() => {
+          (<HTMLElement>document.getElementById('insertarResponsable')).classList.remove('modal-open');
+          (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+         }, 300);
+
+      })
+  }
+
+  listarEmpresas(){
+    this.empresaService.listarEmpresas().subscribe((response)=>{
+      this.empresas= response;
+    })
   }
 }

@@ -1,25 +1,52 @@
 
-<div class="row">
+<div class="row w-100">
     <div class="col-3"></div>
     <form [formGroup]="forminsertarProfesor" (ngSubmit)="insertarProfesor(forminsertarProfesor)" class="w-75 col-6">
-        <div class="form-group">
+        
             <h3 class="title bg-color text-light p-2">Insertar Profesor</h3>
-        </div>
         <div class="form-group">
             <label for="centro" class="form-label">Nombre Centro</label>
-            <select name="centro" formControlName="centro" class="form-control" id="empresa">
-                <option value="{{centro}}" *ngFor="let centro of centros">{{centro}}</option>
+            <select name="centro" formControlName="centro" class="form-control" id="centro">
+                <option value="0">Seleciona Centro</option>
+                <option  value="{{centro.codigo}}" *ngFor="let centro of centros">{{centro.nombreCentro}}</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">Nombre Profesor</label>
             <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" id="nombre">
         </div>
         <div class="form-group">
-            <label for="dni" class="form-label">DNI</label>
+            <label for="dni" class="form-label">DNI Profesor</label>
             <input type="text" formControlName="dni" placeholder="Dni del Profesor" class="form-control" id="dni">
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
         </div>
         <button type="submit" class="w-100 btn bg-outline-color">Insertar</button>
     </form>
+    <div class="col-3"></div>
+</div>
 
+  
+<button type="button" id="insertado" data-toggle="modal"
+data-target="#insertarTutor"></button>
+
+<!-- Modal INSERTAR Tutor-->
+<div class="modal fade" id="insertarTutor" tabindex="-1" role="dialog" aria-labelledby="insertarTutorLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+        <div class="modal-body text-center">
+            <b>
+                <h2 class="text-center">¡TUTOR INSERTADO CON ÉXITO!</h2>
+            </b>
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+ 
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+            <br>
+        </div>
+    </div>
+</div>
 </div>

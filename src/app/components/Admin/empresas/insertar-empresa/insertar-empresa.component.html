@@ -1,4 +1,4 @@
-<div class="row">
+<div class="w-100 row">
     <div class="col-3"></div>
     <form [formGroup]="forminsertarEmpresa" (ngSubmit)="insertarEmpresa(forminsertarEmpresa)" class="w-75 col-6">
         <div class="form-group">
@@ -61,25 +61,23 @@
 
 </div>
 
-  
-<button type="button" id="insertado" data-toggle="modal"
-data-target="#modificarEmpresa"></button>
+<button type="button" id="insertado" data-toggle="modal" data-target="#insertarEmpresa"></button>
 
 <!-- Modal insertar EMPRESA-->
-<div class="modal fade" id="modificarEmpresa" tabindex="-1" role="dialog" aria-labelledby="modificarEmpresaLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        
-        <div class="modal-body text-center">
-            <b>
-                <h2 class="text-center">¡EMPRESA INSERTADO CON ÉXITO!</h2>
-            </b>
-            <i class="fa fa-check text-success" aria-hidden="true"></i>
- 
-            <i class="fa fa-check text-success" aria-hidden="true"></i>
-            <br>
+<div class="modal fade" id="insertarEmpresa" tabindex="-1" role="dialog" aria-labelledby="insertarEmpresaLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¡EMPRESA INSERTADO CON ÉXITO!</h2>
+                </b>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
         </div>
     </div>
-</div>
 </div>

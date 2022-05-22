@@ -6,6 +6,7 @@ import { ModificarCentrosComponent } from './modificar-centros/modificar-centros
 import { ListarCentrosComponent } from './listar-centros/listar-centros.component';
 import { InsertarCentroComponent } from './insertar-centro/insertar-centro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CentrosRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ]
 })
 export class CentrosModule { }

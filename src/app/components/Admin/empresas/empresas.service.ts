@@ -40,6 +40,11 @@ export class EmpresasService {
     return this.http.delete<Empresa[]>(`${this.url}/eliminarEmpresa/${id}`, this.getHeaders())
   }
 
+  public listarAlumnosEmpresa(id){
+    
+    return this.http.get<any[]>(`${this.url}/listarAlumnosEmpresa/${id}`, this.getHeaders())
+  }
+
   public findEmpresaByid(id:number){
   
     return this.http.get<Empresa[]>(`${this.url}/findEmpresaByid/${id}`, this.getHeaders())

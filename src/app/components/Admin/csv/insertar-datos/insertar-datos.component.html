@@ -1,35 +1,37 @@
-<div class="row">
+<div class="row w-100">
 <div class="col-lg-3"></div>
 
-<form [formGroup]="formcsv" class="w-75 col-6">
+<form [formGroup]="formcsv" (ngSubmit)="insertarDatos()" class="w-75 col-6">
     <div class="form-group">
         <h3 class="title bg-color text-light p-2">Insertar Campos desde CSV</h3>
     </div>
     <div class="form-group">
         <label for="centros" class="form-label">Añadir CSV de Centros</label>
-        <input type="file" formControlName="centros" class="form-control" id="centros">
+        <input type="file" formControlName="centros" (change)="filechangedCentros($event)" accept=".csv" class="form-control" id="centros">
     </div>
     <div class="form-group">
         <label for="empresas" class="form-label">Añadir CSV de Empresas</label>
-        <input type="file" formControlName="empresas" class="form-control" id="empresas">
+        <input type="file" formControlName="empresas" (change)="filechangedEmpresas($event)" accept=".csv" class="form-control" id="empresas">
     </div>
     <div class="form-group">
         <label for="cursos" class="form-label">Añadir CSV de Cursos</label>
-        <input type="file" formControlName="cursos" class="form-control" id="cursos">
-    </div>
-    <div class="form-group">
-        <label for="alumnos" class="form-label">Añadir CSV de Alumnos</label>
-        <input type="file" formControlName="alumnos" class="form-control" id="alumnos">
-    </div>
-    <div class="form-group">
-        <label for="resp" class="form-label">Añadir CSV de Responsables</label>
-        <input type="file" formControlName="resp" class="form-control" id="resp">
+        <input type="file" formControlName="cursos" (change)="filechangedCursos($event)" accept=".csv" class="form-control" id="cursos">
     </div>
     <div class="form-group">
         <label for="tutores" class="form-label">Añadir CSV de Tutores</label>
-        <input type="file" formControlName="tutores" class="form-control" id="tutores">
+        <input type="file" formControlName="tutores" (change)="filechangedTutores($event)" accept=".csv" class="form-control" id="tutores">
     </div>
-    <button type="submit" class="btn bg-outline-color">Añadir</button>
+    <div class="form-group">
+        <label for="resp" class="form-label">Añadir CSV de Responsables</label>
+        <input type="file"   formControlName="resp" (change)="filechangedResponsables($event)" id="eve" #ref  accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="form-control" id="resp">
+    </div>
+    <div class="form-group">
+        <label for="alumnos" class="form-label">Añadir CSV de Alumnos</label>
+        <input type="file" formControlName="alumnos" (change)="filechangedAlumnos($event)" accept=".csv" class="form-control" id="alumnos">
+    </div>
+    
+    
+    <button type="submit" class=" w-100 btn bg-outline-color" >Asignar</button>
    
 
 </form>

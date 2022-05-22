@@ -1,81 +1,88 @@
 <h2>Responsables</h2>
-<br>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link active " data-toggle="tab" href="#listaResponsbale">Listado de Responsables</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#insertarResponsable">Insertar Responsable</a>
-    </li>
 
-</ul>
 
-<!-- Tab panes -->
-<div class="tab-content">
-    <div id="listaResponsbale" class="container tab-pane active"><br>
-        <h3>Listado de Responsables</h3>
+<mat-tab-group>
+
+    <mat-tab label="Listado de Responsables">
+        <br>
+        <div>
+            <p> <i (click)="listarResponsbles()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        </div>
         <table class="table text-center table-striped">
             <thead class="table bg-color text-light">
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
                     <th>DNI</th>
-                    <th>Nº Alumnos</th>
+                    <th>Empresa ID</th>
                     <th>Email</th>
-                    <th [colSpan]="2">Acciones</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Javier</td>
-                    <td>54723457D</td>
-                    <td>4</td>
-                    <td>john@example.com</td>
-                    <td>
+                <tr *ngFor="let responsable of responsables">
+                    <td>{{responsable.id}}</td>
+                    <td>{{responsable.nombreResponsable}}</td>
+                    <td>{{responsable.dniResponsable}}</td>
+                    <td>{{responsable.empresa_id}}</td>
+                    <td>{{responsable.email}}</td>
+                    <td class="d-flex justify-content-center">
                         <ul class="nav nav-item">
-                            <li routerLink="/admin/responsables/modificarResponsable/1" class="nav-item">
-                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
+                            <li routerLink="/admin/responsables/modificarResponsable/{{responsable.id}}">
+                                <a class="nav-link  btn bg-outline-color  "><i class="fa fa-pencil"></i></a>
                             </li>
                         </ul>
-                    </td>
-                    <td>
-                        <ul class="nav nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Javier</td>
-                    <td>54723457D</td>
-                    <td>6</td>
-                    <td>john@example.com</td>
-                    <td>
-                        <ul class="nav nav-item">
-                            <li routerLink="/admin/responsables/modificarResponsable/2" class="nav-item">
-                                <a class="nav-link  btn bg-outline-color  ">Editar</a>
-                            </li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul class="nav nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link  btn btn-outline-danger  ">Delete</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
+                        <ul class="ml-3 nav nav-item">
+                            <li>
+                                <a class="nav-link  btn btn-outline-danger  " data-toggle="modal"
+                                    data-target="#eliminarEmpresa" (click)="guardarid(responsable.id)">
+                                    <i class="fa fa-trash"></i></a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             </tbody>
         </table>
-    </div>
-    <!-- Tab insertar responsable individual -->
-    <div id="insertarResponsable" class="container tab-pane fade"><br>
-     <app-insertar-responsable></app-insertar-responsable>
-    </div>
+    </mat-tab>
 
+    <mat-tab label="Insertar Responsable">
+        <br>
+        <app-insertar-responsable></app-insertar-responsable>
+        <br>
+    </mat-tab>
+
+</mat-tab-group>
+
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="eliminarEmpresa" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-center m-3">
+                <h5 class="modal-title " id="confirmarEliminarLabel ">ELIMINANDO EMPRESA </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <hr>
+            </div>
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¿ESTÁS SEGURO DE ELIMINAR LA EMPRESA?</h2>
+                </b>
+                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"
+                    style="--fa-animation-duration: 0.5s;"></i>
+                <small class=" m-2 text-danger">Acción irreversible</small>
+                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"
+                    style="--fa-animation-duration: 0.5s;"></i>
+            </div>
+            <div class="text-center">
+                <hr>
+                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"
+                    (click)="eliminarResponsable()">Aceptar</button>
+            </div>
+        </div>
+    </div>
 </div>

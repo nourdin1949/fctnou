@@ -9,6 +9,7 @@ import { InsertarAlumnosComponent } from './insertar-alumnos/insertar-alumnos.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarAlumnosPracticaComponent } from './listar-alumnos-practica/listar-alumnos-practica.component';
 import { ModificarAlumnosPracticaComponent } from './modificar-alumnos-practica/modificar-alumnos-practica.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ModificarAlumnosPracticaComponent } from './modificar-alumnos-practica/
   imports: [
     CommonModule,
     AlumnosRoutingModule,
-    
+    MatTabsModule,
     FormsModule,
     ReactiveFormsModule
   ]

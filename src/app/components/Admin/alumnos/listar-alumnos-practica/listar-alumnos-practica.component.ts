@@ -26,11 +26,11 @@ export class ListarAlumnosPracticaComponent implements OnInit {
   public downloadPDF() {
     // Extraemos el
 
-  const DATA = <HTMLElement>document.getElementById('listaalumnosFCT');
- // Todo elemento que tenga la clase quitar no se mostrara en el pdf
-for (let i = 0; i < (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('quitar')).length; i++) {
-  (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('quitar'))[i].style.display="none"
-}
+    const DATA = <HTMLElement>document.getElementById('listaalumnosFCT');
+    // Todo elemento que tenga la clase quitar no se mostrara en el pdf
+    for (let i = 0; i < (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('quitar')).length; i++) {
+      (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('quitar'))[i].style.display = "none"
+    }
 
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -83,23 +83,27 @@ for (let i = 0; i < (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassN
     // })
   }
   public guardarid(idAlumno: FCTAlumno) {
-    console.log(idAlumno, "jhjjj")
     this.alumnofct.id = idAlumno.id
     this.alumnofct.empresa_id = idAlumno.empresa_id
-    this.alumnofct.responsable_id = idAlumno.responsable_id
+    this.alumnofct.responsable_id = idAlumno.responsable_id;
+
+    setTimeout(() => {
+      (<HTMLElement>document.getElementById('modificar')).classList.remove('modal-open');
+      (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+    }, 300);
   }
   public updateSelectResponsable(event: any) {
-    this.alumnofct.empresa_id= event.target.value
+    this.alumnofct.empresa_id = event.target.value
     this.responsableservice.findResponsablesByEmpresaID(this.alumnofct.empresa_id).subscribe((response) => {
       this.responsables = response
       this.respdis = false
     })
   }
   public changeEmpresa(idAlumnoFCT: number) {
-    let idresponsable =Number( (<HTMLSelectElement>document.getElementById("responsable")).value)
+    let idresponsable = Number((<HTMLSelectElement>document.getElementById("responsable")).value)
     let idempresa = Number((<HTMLSelectElement>document.getElementById("empresa")).value)
     const alumnofctobject = { "responsable_id": idresponsable, "empresa_id": this.alumnofct.empresa_id }
     console.log(alumnofctobject)
-    this.alumnoservice.changeAlumnoDeEmpresa(alumnofctobject, idAlumnoFCT).subscribe((response)=>this.listarAlumnosFct());
+    this.alumnoservice.changeAlumnoDeEmpresa(alumnofctobject, idAlumnoFCT).subscribe((response) => this.listarAlumnosFct());
   }
 }

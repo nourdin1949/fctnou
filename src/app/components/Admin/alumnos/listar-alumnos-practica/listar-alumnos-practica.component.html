@@ -8,10 +8,7 @@
                 <th>Empresa</th>
                 <th>Responsable</th>
                 <th>Curso</th>
-
-                <th class="quitar">Editar</th>
-                <th class="quitar">Eliminar</th>
-
+                <th class="quitar">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -28,17 +25,15 @@
 
                 </td>
                 <td>{{alumnofct.codigoCiclo}}</td>
-                <td class="quitar">
+                <td class="d-flex justify-content-center quitar">
                     <ul class="nav nav-item">
-                        <li class="nav-item" (click)="guardarid(alumnofct)">
-                            <a class="nav-link  btn bg-outline-color" data-toggle="modal" data-target="#modificar"><i
+                        <li  (click)="guardarid(alumnofct)">
+                            <a class="nav-link  btn bg-outline-color" id="modbtn" data-toggle="modal" data-target="#modificar"><i
                                     class="fa fa-pencil"></i></a>
                         </li>
                     </ul>
-                </td>
-                <td class="quitar">
-                    <ul class="nav nav-item">
-                        <li class="nav-item" (click)="guardarid(alumnofct)">
+                    <ul class=" ml-3 nav nav-item">
+                        <li  (click)="guardarid(alumnofct)">
                             <a class="nav-link  btn btn-outline-danger" data-toggle="modal"
                                 data-target="#confirmarEliminar"><i class="fa fa-trash"></i></a>
                         </li>

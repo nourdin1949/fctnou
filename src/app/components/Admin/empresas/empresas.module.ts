@@ -7,6 +7,7 @@ import { ModificarEmpresasComponent } from './modificar-empresas/modificar-empre
 import { ListarEmpresasComponent } from './listar-empresas/listar-empresas.component';
 import { InsertarEmpresaComponent } from './insertar-empresa/insertar-empresa.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     EmpresasRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTabsModule
   ],exports:[
     ModificarEmpresasComponent,
     ListarEmpresasComponent

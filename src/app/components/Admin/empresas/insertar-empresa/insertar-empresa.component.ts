@@ -50,6 +50,10 @@ export class InsertarEmpresaComponent implements OnInit {
       this.empresaService.insertarEmpresas(empresa).subscribe((response) => {
         console.log(response);
         (<HTMLButtonElement>document.getElementById("insertado")).click()
+        setTimeout(() => {
+          (<HTMLElement>document.getElementById('insertarEmpresa')).classList.remove('modal-open');
+          (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+         }, 300);
         this.empresaService.listarEmpresas()
       })
     }

@@ -30,12 +30,11 @@ export class ModificarCentrosComponent implements OnInit {
         provincia: ['', Validators.required],
         localidad: ['', Validators.required],
         calle: ['', Validators.required],
-        cp: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
-        telefono: ['', [Validators.required, Validators.maxLength(9)]],
+        cp: ['', Validators.compose([Validators.required, Validators.maxLength(5), Validators.minLength(5)])],
+        telefono: ['',Validators.required],
         email: ['', [Validators.required]],
         cif: ['', Validators.required],
         director: ['', [Validators.required]],
-        code:['', Validators.required]
       })
 
   }
@@ -58,7 +57,7 @@ export class ModificarCentrosComponent implements OnInit {
       "nombreDirector": form.value.director
     }
     console.log(centro)
-    if(this.formModificarCentro.invalid ){
+    if(this.formModificarCentro.valid ){
       console.log(centro)
       this.centroService.updateCentroById(this.codigoCentro,centro)
       .subscribe((response) => {
@@ -81,7 +80,6 @@ export class ModificarCentrosComponent implements OnInit {
           "email": this.centro.email,
           "cif": this.centro.cif,
           "director": this.centro.nombreDirector,
-          "code":this.centro.codigo
         }
         this.formModificarCentro.setValue(centro)
       })

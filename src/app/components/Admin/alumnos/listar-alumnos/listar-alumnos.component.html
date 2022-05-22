@@ -1,27 +1,22 @@
 <h2>Alumnos</h2>
-<!-- Nav tabs -->
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#listaAlumnosfct">Listado de Alumnos en FCT</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" (click)="listarAlumnos()" data-toggle="tab" href="#listaAlumnos">Listado de Alumnos</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#insertaAlumno">Insetar Alumno</a>
-    </li>
-</ul>
 
-<!-- Tab panes -->
-<div class="tab-content">
-    <div id="listaAlumnos" class="container tab-pane fade"><br>
-        <h3>Listado de Alumnos</h3>
+<mat-tab-group>
+    <mat-tab label="Listado de Alumnos en FCT">
+        <br>
+        <app-listar-alumnos-practica></app-listar-alumnos-practica>
+    </mat-tab>
+    <mat-tab label="Listado de Alumnos">
+        <br>
+        <div>
+            <p> <i (click)="listarAlumnos()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        </div>
         <table class="pdf text-center table table-striped">
             <thead class="table bg-color text-center text-light">
                 <tr>
                     <th>Alumno</th>
                     <th>DNI</th>
                     <th>Curso ID</th>
+                    <th>Provincia</th>
                     <th>email</th>
                     <th [colSpan]="2">Acciones</th>
                 </tr>
@@ -31,16 +26,16 @@
                     <td>{{alumno.nombreAlumno}} </td>
                     <td>{{alumno.dniAlumno}} </td>
                     <td>{{alumno.curso_id}}</td>
+                    <td>{{alumno.provincia}}</td>
                     <td>{{alumno.email}}</td>
-                    <td>
+                    <td class="d-flex justify-content-center">
                         <ul class="nav nav-item">
                             <li routerLink="/admin/alumnos/modificarAlumno/{{alumno.id}}" class="nav-item">
                                 <a class="nav-link  btn bg-outline-color  "><i class="fa fa-pencil" ></i></a>
                             </li>
                         </ul>
-                    </td>
-                    <td class="quitar">
-                        <ul class="nav nav-item">
+                  
+                        <ul class=" ml-3 nav nav-item">
                             <li class="nav-item" (click)="guardarid(alumno.id)">
                                 <a class="nav-link  btn btn-outline-danger" data-toggle="modal"
                                     data-target="#confirmarEliminar"><i class="fa fa-trash" ></i></a>
@@ -50,16 +45,12 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div id="insertaAlumno" class="container tab-pane fade"><br>
+    </mat-tab>
+    <mat-tab label="Insertar Alumno">
+        <br>
         <app-insertar-alumnos></app-insertar-alumnos>
-    </div>
-    <div id="listaAlumnosfct" class="container tab-pane active"><br>
-        <app-listar-alumnos-practica></app-listar-alumnos-practica>
-    </div>
-</div>
-
-
+    </mat-tab>
+</mat-tab-group>
 
 <!-- Modal -->
 <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"

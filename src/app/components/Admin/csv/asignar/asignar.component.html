@@ -1,59 +1,52 @@
 
-<div class="row">
+<div class="row w-100">
     <div class="col-lg-3"></div>
     
-    <form [formGroup]="formAsignar" class="w-75 col-6">
+    <form [formGroup]="formAsignar" class="w-75 col-6" (ngSubmit)="asignarPractica()">
         <div class="form-group">
             <h3 class="title bg-color text-light p-2">Asignar alumno práctica</h3>
         </div>
         <div class="form-group">
             <label for="alumno"  class="form-label"> Alumno</label>
             <select class="form-control" formControlName="alumno">
-              <option selected>Seleciona Alumno</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="0">Seleciona Alumno</option>
+              <option value="{{alumno.id}}" *ngFor="let alumno of alumnos">{{alumno.nombreAlumno}}</option>
             </select>
           </div>
           <div class="form-group">
             <label for="empresa"  class="form-label">Empresa</label>
-            <select class="form-control" formControlName="empresa">
-              <option selected>Seleciona Empresa</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select class="form-control" (ngModelChange)="cargarSelectResponsables($event)" formControlName="empresa">
+              <option value="0">Seleciona Empresa</option>
+              <option value="{{empresa.id}}" *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
             </select>
           </div>
           <!-- Solo mostrará los responsables pertenecientes a la empresa seleccionada -->
           <div class="form-group">
-            <label for="responsable"  class="form-label">Responsable</label>
-            <select class="form-control" formControlName="responsable">
-              <option selected>Seleciona Responsable</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <label for="responsable"   class="form-label">Responsable</label>
+            <select class="form-control" [disabled]="true" formControlName="responsable">
+              <option value="0">Seleciona Responsable</option>
+              <option value="{{responsable.id}}" *ngFor="let responsable of responsables">{{responsable.nombreResponsable}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="centro"  class="form-label">Centro </label>
-            <select class="form-control" formControlName="centro">
-              <option selected>Seleciona Centro</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="curso"  class="form-label">Curso </label>
-            <select class="form-control" formControlName="curso">
+            <label for="centro" class="form-label">Centro </label>
+            <select class="form-control"  (change)="cargarSelectTutores($event)" formControlName="centro">
               <option value="0">Seleciona Curso</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option value="{{centro.codigo}}" *ngFor="let centro of centros">{{centro.nombreCentro}}</option>
             </select>
           </div>
+          <!-- Solo mostrará los tutores pertenecientes al centro seleccionado -->
+          <div class="form-group">
+            <label for="tutor"   class="form-label">Tutor </label>
+            <select class="form-control"  formControlName="tutor">
+              <option value="0">Seleciona Tutor</option>
+              <option value="{{tutor.id}}" *ngFor="let tutor of tutores">{{tutor.nombreTutor}}</option>
+            </select>
+          </div>
+         
        
-        <button type="submit" class="btn bg-outline-color">Añadir</button>
+          <button type="submit" class=" w-100 btn bg-outline-color" >Añadir</button>
+
        
     
     </form>

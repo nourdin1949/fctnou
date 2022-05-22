@@ -7,6 +7,7 @@ import { AsignarComponent } from './asignar/asignar.component';
 import { CsvComponent } from './csv.component';
 import { AsignarRolesComponent } from './asignar-roles/asignar-roles.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CsvRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ]
 })
 export class CsvModule { }

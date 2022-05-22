@@ -7,6 +7,7 @@ import { CursosComponent } from './cursos.component';
 import { ModificarCursosComponent } from './modificar-cursos/modificar-cursos.component';
 import { InsertarCursoComponent } from './insertar-curso/insertar-curso.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CursosRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ],
   exports:[
     CursosComponent,

@@ -1,17 +1,10 @@
-
-
-    table{
-      
-       font-size: 0.7rem;
-    }
-    a{
-        font-size: 0.7rem;
-    }
-
-
-@media (max-width:994px) {
-    
-}
 td ul li a {
     border-radius: 50%;
+}
+p:last-child {
+    display: flex;
+    justify-content: end;
+    margin-right: 2rem;
+    cursor: pointer;
+    size: 25rem;
 }
