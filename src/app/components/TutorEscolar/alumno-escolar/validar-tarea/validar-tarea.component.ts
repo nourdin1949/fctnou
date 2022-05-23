@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AlumnosService } from 'src/app/components/Admin/alumnos/alumnos.service';
+import { AnexoVService } from 'src/app/components/Alumnos/anexo-v/anexo-v.service';
+import { Tarea } from 'src/app/Shared/interfaces/Interface';
+import { TutorEscolarService } from '../../tutor-escolar.service';
 
 @Component({
   selector: 'app-validar-tarea',
@@ -6,42 +10,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./validar-tarea.component.css']
 })
 export class ValidarTareaComponent implements OnInit {
-public tareas:any[]=[]
-public alumnoAbuscar:string=""
-public fechaDesde:Date=new Date()
-public fechaHasta:Date=new Date()
-  constructor() { }
+public tareas:Tarea[]=[]
+public alumnos:any[]=[]
+public alumnoAbuscar:number
+public fechaDesde:Date
+public fechaHasta:Date
+public disabled=true
+  constructor(
+    private tutorEscolarService:TutorEscolarService,
+    private anexovService:AnexoVService) { 
+
+  }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.alumnos= this.tutorEscolarService.alumnos
+      console.log("ess")
+    },700);
   }
   mostrarTareasDelAlumno(){
-    window.alert("Mostrar Tareas del alumno "+ this.fechaDesde)
-     this.tareas=[{
-      id:"1",
-      descripcion:"Formacion NOVA",
-      orientacion:"Documentacoion en everFuture",
-      tiempo: "07:45",
-      dificultad:"facil",
-      observaciones:"el Everfuture va lento",
-      tutorescolar:true
-    },
-    {
-      id:"2",
-      descripcion:"Formacion NOVA",
-      orientacion:"Documentacoion en everFuture",
-      tiempo: "06:40",
-      dificultad:"dificil",
-      observaciones:"el Everfuture va lento",
-      tutorescolar:true
-    },{
-      id:"3",
-      descripcion:"Formacion NOVA",
-      orientacion:"Documentacoion en everFuture",
-      tiempo: "08:00",
-      dificultad:"medio",
-      observaciones:"el Everfuture va lento",
-      tutorescolar:false
-    }]
+    const objeto={
+      "primeraFecha":this.fechaDesde,
+      "segundaFecha":this.fechaHasta,
+    }
+  console.log(objeto)
+    this.anexovService.listarTareasEntreFechas(objeto,this.alumnoAbuscar)
+      .subscribe((response)=>{
+        this.tareas=response.filter(tarea=>tarea.validadoResponsable==1 && tarea.validadoTutor==0)
+        console.log(response)
+      }) 
+  }
+
+  editar(){
     
   }
 }

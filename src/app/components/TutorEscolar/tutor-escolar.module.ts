@@ -7,8 +7,11 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ListarAlumnosEscoComponent } from './alumno-escolar/listar-alumnos-esco/listar-alumnos-esco.component';
 import { BuscarAlumnoEcoComponent } from './alumno-escolar/buscar-alumno-eco/buscar-alumno-eco.component';
 import { ValidarTareaComponent } from './alumno-escolar/validar-tarea/validar-tarea.component';
-
+import {  MatFormFieldModule } from '@angular/material/form-field'
+import { MatSelectModule } from '@angular/material/select'
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     TutorEscolarComponent,
@@ -21,8 +24,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AppRoutingModule,
-
-    FormsModule
+    MatFormFieldModule,
+    MatSelectModule,
+    FormsModule,
+    MatInputModule,
+    MatTabsModule
   ]
 })
 export class TutorEscolarModule { }

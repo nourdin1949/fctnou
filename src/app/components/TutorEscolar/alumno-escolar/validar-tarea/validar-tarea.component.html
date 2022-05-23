@@ -1,37 +1,49 @@
-<div class="row">
+<div class="row w-100 ">
     <div class="col-4">
-        <div class="form-group">
-            <label for="alumno" class="form-label">Seleciona Alumno</label>
-            <select name="alumnoSeleccionado" [(ngModel)]="alumnoAbuscar" class="form-control" id="">
-                <option value="1">Alumno 1</option>
-                <option value="2">Alumno 2</option>
-                <option value="3">Alumno 3</option>
-            </select>
-        </div>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Alumno</mat-label>
+            <mat-select required  [(ngModel)]="alumnoAbuscar">
+                <mat-option [value]="alumno.id"   
+                    *ngFor="let alumno of alumnos">
+                    {{alumno.nombreAlumno}}
+                </mat-option>
+            </mat-select>
+            <mat-error>Es requerido</mat-error>
+        </mat-form-field>
     </div>
     <div class="col-4">
-        <div class="form-group">
-            <label for="desde" class="form-label">Desde</label>
-            <input type="date" [(ngModel)]="fechaDesde" placeholder="Desde la fecha" class="form-control" id="desde">
-        </div>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Fecha Inicio</mat-label>
+            <input matInput 
+                type="date" 
+                required 
+                name="inicio" 
+                [(ngModel)]="fechaDesde">
+            <mat-error >Es requerido</mat-error>
+        </mat-form-field>
     </div>
     <div class="col-4">
-        <div class="form-group">
-            <label for="hasta" class="form-label">Hasta</label>
-            <input type="date" [(ngModel)]="fechaHasta" placeholder="Hasta la fecha" class="form-control" id="hasta">
-        </div>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Fecha Fin</mat-label>
+            <input matInput 
+                type="date" 
+                required 
+                name="fin" 
+                [(ngModel)]="fechaHasta">
+            <mat-error >Es requerido</mat-error>
+        </mat-form-field>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-2">
         <!-- Mostrará solo los resultados cuyas tareas han sido verificados por el responsable de empresa -->
-        <button (click)="mostrarTareasDelAlumno()" class="bg-outline-color form-control">Mostrar tareas</button>
+        <button (click)="mostrarTareasDelAlumno()" class="btn-dark  form-control">Mostrar tareas</button>
     </div>
 </div>
 <br>
-<div class="row">
-    <table class="table table-striped">
+<div class="row w-100">
+    <table class="table text-center table-striped">
         <thead class="table bg-color text-light">
             <tr>
-                <th></th>
+                
                 <th>Descipcion de la actividad </th>
                 <th>Orientacion para su desarrollo </th>
                 <th>Tiempo </th>
@@ -44,7 +56,6 @@
         <tbody id="tbody">
 
             <tr *ngFor="let item of tareas, let id=index">
-                <th>{{id+1}}</th>
                 <th><textarea disabled [value]="item.descripcion" class="form-control" name="descripcion0"
                         id="descripcion0" cols="20" rows="2"></textarea></th>
                 <th><input disabled type="text" [value]="item.orientacion" class="form-control" name="orientacion0"
@@ -52,22 +63,14 @@
                 <th><input disabled type="time" [value]="item.tiempo" class="form-control" name="tiempo0" id="tiempo0">
                 </th>
                 <th class="text-center">
-                    <!-- <input disabled type="radio" name="dificultad0" id="dificultad0"> -->
                     <img src="../../../../../assets/img/easy.png" *ngIf="item.dificultad=='facil'" alt="">
-                    <!-- <input disabled type="radio" name="dificultad0" id="dificultad0"> -->
                     <img src="../../../../../assets/img/medium.png" *ngIf="item.dificultad=='medio'" alt="">
-                    <!-- <input disabled type="radio"  name="dificultad0" id="dificultad0">  -->
                     <img src="../../../../../assets/img/hard.png" *ngIf="item.dificultad=='dificil'" alt="">
                 </th>
                 <th><input disabled type="text" [value]="item.observaciones" class="form-control" name="observaciones0"
                         id="observaciones0"> </th>
-                <!-- <th>
-                    <div class="form-check form-switch">
-                        <input disabled type="checkbox" class="form-check-input" name="tutor-empresa" id="">
-                    </div>
-                </th>-->
-                <th> <input type="checkbox" disabled *ngIf="item.tutorescolar" checked name="tutor-escolar" id="">
-                    <input type="checkbox" *ngIf="!item.tutorescolar" name="tutor-escolar" id="">
+                <th> 
+                    <input type="checkbox" name="tutor-escolar" id="">
                 </th>
             </tr>
         </tbody>

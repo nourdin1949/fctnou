@@ -1,17 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-chat-esco',
   templateUrl: './chat-esco.component.html',
   styleUrls: ['./chat-esco.component.css']
 })
 export class ChatEscoComponent implements OnInit {
-  // chat : any[]=[{
-  //   envia
-  // }]
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
   mensajes: any[] = []
   nuevoMensaje: string = ""
-  receptor:string =""
+  receptor:string ="1"
   mostrarChat:boolean=false
   constructor() { }
 

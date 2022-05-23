@@ -15,12 +15,21 @@
             <div class="col-3"></div>
             <div class="col-6" style="height:100vh">
                 <!-- El select solo contrendrá responsbales sean tutores de los alumnos del profesor registrado -->
-                <select name="tutorescolar" [(ngModel)]="receptor" (change)="cargarMensajes()" class="form-control" id="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Selecciona Responsable</mat-label>
+                    <mat-select [(ngModel)]="receptor" (closed)="cargarMensajes()">
+                      <mat-option *ngFor="let food of foods,let id = index" [value]="id+1">
+                        Responsable {{id+1}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <!-- El select solo contrendrá responsbales sean tutores de los alumnos del profesor registrado -->
+                <!-- <select name="tutorescolar"  (change)="cargarMensajes()" class="form-control" id="">
                     <option value="">Selecciona Responsable</option>
                     <option value="1">Responsable 1</option>
                     <option value="2">Responsable 2</option>
                     <option value="3">Responsable 3</option>
-                </select>
+                </select> -->
                 <!-- <div class="row h-50" style="background-color: darkseagreen;">
                 </div>
                 <div class="row w-100">

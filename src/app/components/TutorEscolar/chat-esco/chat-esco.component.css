@@ -44,7 +44,7 @@
 .contenedorDeMensajes{
     overflow: scroll;
     padding: 0.3rem;
-    
+ 
 }
 
 .contenedorDeMensajes::-webkit-scrollbar{

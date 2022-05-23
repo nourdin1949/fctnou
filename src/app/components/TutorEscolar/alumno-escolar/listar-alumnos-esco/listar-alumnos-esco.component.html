@@ -8,17 +8,18 @@
                     <th>Ciclo Formativo</th>
                     <th>Horas de Práctica</th>
                     <th>Horas Realizadas</th>
-                    <th>DNI Tutor</th>
+                    <th>Nº Tareas</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Doe</td>
-                    <td>DAW</td>
-                    <td>400</td>
-                    <td>124</td>
-                    <td>54623432F</td>
+                <tr *ngFor="let alumno of alumnos;let index =index">
+                    <td>{{index+1}}</td>
+                    <td>{{alumno.nombreAlumno}}</td>
+                    <td>{{alumno.cicloFormativo}}</td>
+                    <td >{{alumno.nHoras }}</td>
+                    <td *ngIf="alumno.horasRealizadas==null">00:00:00</td>
+                    <td *ngIf="alumno.horasRealizadas!=null">{{alumno.horasRealizadas}}</td>
+                    <td>{{alumno.ntareas}}</td>
                 </tr>
                
             </tbody>
