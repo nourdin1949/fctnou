@@ -5,32 +5,19 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlug from '@fullcalendar/interaction'
 import esLocale from '@fullcalendar/core/locales/es'
 import { Router } from '@angular/router';
+import { AnexoVService } from '../anexo-v.service';
+import { Tarea } from 'src/app/Shared/interfaces/Interface';
 @Component({
   selector: 'app-calendario-anexo-v',
   templateUrl: './calendario-anexo-v.component.html',
   styleUrls: ['./calendario-anexo-v.component.css']
 })
 export class CalendarioAnexoVComponent implements OnInit {
-  public tareas:any[]=[
-    {
-      fecha:"2022-04-01",
-      titulo:"Tarea 1",
-      estado:"tutor"
-    },
-    {
-      fecha:"2022-04-12",
-      titulo:"Tarea 2",
-      estado:"tutorempresa"
-    },
-    {
-      fecha:"2022-04-28",
-      titulo:"Tarea 3",
-      estado:""
-    }
-  ]
+  public tareas:Tarea[]=[]
   public events!: any[]
   public options!: any
-  constructor(private router:Router) {
+  public idAlumno = sessionStorage.getItem('id')
+  constructor(private router:Router, private anexoVService:AnexoVService) {
 
   }
   ngOnInit(): void {
@@ -44,38 +31,59 @@ export class CalendarioAnexoVComponent implements OnInit {
         center: 'title',
         right: 'dayGridMonth,dayGridWeek,timeGridDay'
       },
-      editable: false,
+      editable: true,
       dateClick: function(info) {
         let router= variable
         router.navigateByUrl(`alumno/insertar/${info.dateStr}`)
-      }
+
+      },
     }
+   setTimeout(() => {
+    this.listarAlumnos()
+   }, 600);
+    
+  }
+  public listarAlumnos(){
+    this.anexoVService.listarAlumnos().subscribe((response)=>{
+      this.tareas= response;
+      console.log("dentro", this.tareas)
+      this.cargarCalendario()
+    })
+  }
+
+  public cargarCalendario(){
+    
     this.events=[]
     this.tareas.forEach((e)=>{
-      let titulo=e.titulo
+      let titulo=e.descripcion.slice(0,20)
       let fecha=e.fecha
       let color = ""
-      switch(e.estado){
-        case "tutor":
+      let estado = e.validadoResponsable+String(e.validadoTutor)
+      console.log("estado", estado)
+      switch(estado){
+        case "01":
           color="orange";
           break;
-        case "tutorempresa":
+        case "11":
           color="green";
           break;
-        case "":
+        case "00":
           color="red"
           break;
+        case "10":
+        color="orange";
+        break;
       }
-
+     
       this.events.push({
         title: titulo,
+        url:`http://localhost:1949/alumno/modificar/${fecha}/${e.id}`,
         start:moment(fecha).format("YYYY-MM-DD"),
-        description: "Mi primera tarea",
+        description: e.descripcion,
         color:color,
-      },)
+        icon:'fa-save'
+      })
       
     })
-   
-    
   }
 }

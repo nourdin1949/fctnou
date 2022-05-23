@@ -1,3 +1,19 @@
 img{
-    width: 40px;
+    width: 30px;
 }
+table{
+    min-width: 100;
+}
+
+@media (max-width:900px) {
+    img{
+        width: 20px;
+    }
+    input[type=radio]{
+        width: 15%;
+    }
+    table{
+        font-size: 0.8rem;
+    }
+}
+

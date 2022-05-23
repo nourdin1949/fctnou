@@ -8,6 +8,10 @@ import { ModificarAnexoVComponent } from './modificar-anexo-v/modificar-anexo-v.
 import { BuscarPorFechaComponent } from './buscar-por-fecha/buscar-por-fecha.component';
 import { FormsModule } from '@angular/forms';
 import {FullCalendarModule} from 'primeng/fullcalendar'
+import { MatTabsModule } from '@angular/material/tabs';
+import {  MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import {FullCalendarModule} from 'primeng/fullcalendar'
     CommonModule,
     AnexoVRoutingModule, 
     FormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     InsertarAnexoVComponent

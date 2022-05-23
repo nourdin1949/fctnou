@@ -1,1 +1,153 @@
-<p>modificar-anexo-v works!</p>
+<br>
+
+<mat-tab-group>
+    <mat-tab label="Modificar Tarea ">
+        <br>
+        <div id="insertaAnexoV" class="container tab-pane active"><br>
+            <div class="pdfdata table-responsive">
+                <table class=" table table-striped">
+                    <thead class="thead bg-color text-light">
+                        <tr>
+                            <th>Descipcion de la actividad </th>
+                            <th>Orientacion para su desarrollo </th>
+                            <th>Tiempo </th>
+                            <th>Dificultades en la realización </th>
+                            <th>Observaciones </th>    
+                            <th class="">V.T </th>    
+                            <th class="">V.R </th>    
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr class="" *ngFor="let tarea of tareas;let id=index">
+                            <th>
+                                <textarea class="form-control" 
+                                    [value]="tarea.descripcion" 
+                                    name="descripcion{{id}}"
+                                    id="descripcion{{id}}" 
+                                    cols="2{{id}}" rows="2">
+                                </textarea>
+                            </th>
+                            <th>
+                                <input type="text" 
+                                    class="form-control" 
+                                    name="orientacion{{id}}"
+                                    value="{{tarea.orientacion}}" 
+                                    id="orientacion{{id}}">
+                            </th>
+                            <th>
+                                <input type="time" 
+                                    class="form-control" 
+                                    name="tiempo{{id}}"
+                                    value="{{tarea.tiempo |slice:0:5}}" 
+                                    id="tiempo{{id}}"> 
+                            </th>
+                            <th>
+                                <input type="radio" 
+                                    name="dificultad{{id}}" 
+                                    value="facil" 
+                                    id="dificultad{{id}}"
+                                    [checked]="tarea.dificultad=='facil'">
+                                <img src="../../../../../assets/img/easy.png" alt="easy.png">
+    
+                                <input type="radio" 
+                                    name="dificultad{{id}}" 
+                                    value="medio" 
+                                    id="dificultad{{id}}"
+                                    [checked]="tarea.dificultad=='medio'">
+                                <img src="../../../../../assets/img/medium.png" alt="medium.png">
+    
+                                <input type="radio" 
+                                    name="dificultad{{id}}" 
+                                    value="dificil" 
+                                    id="dificultad{{id}}"
+                                    [checked]="tarea.dificultad=='dificil'"> 
+                                <img src="../../../../../assets/img/hard.png" alt="hard.png">
+                            </th>
+                            <th><input type="text" 
+                                    class="form-control" 
+                                    name="observaciones{{id}}"
+                                    [value]="tarea.observaciones" 
+                                    id="observaciones{{id}}"> </th>
+                            <th>
+                                <div class="form-check form-switch">
+                                    <input disabled type="checkbox" 
+                                        class="form-check-input" 
+                                        [checked]="tarea.validadoTutor==1"
+                                        name="tutor-ecolar">
+                                </div>
+                            </th>
+                            <th> 
+                                <div class="form-check form-switch">
+                                    <input disabled type="checkbox" 
+                                        class="form-check-input" 
+                                        [checked]="tarea.validadoResponsable==1"
+                                        name="tutor-empresa">
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+         
+            <button (click)="modificarTareas()" class="btn bg-outline-color " id="btn"><i class="fa fa-save  "></i> </button>
+            <button data-toggle="modal"
+            data-target="#confirmarEliminar" class="btn ml-3 btn-outline-danger" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+    
+        </div>
+
+    </mat-tab>
+</mat-tab-group>
+
+
+
+
+<button type="button" id="modificado" data-toggle="modal" data-target="#modificarTarea"></button>
+
+<!-- Modal Eliminar-->
+<div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="text-center m-3">
+                <h5 class="modal-title " id="confirmarEliminarLabel ">ELIMINANDO TAREA </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <hr>
+            </div>
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¿ESTÁS SEGURO DE ELIMINAR LA TAREA?</h2>
+                </b>
+                <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+                <small class=" m-2 text-danger">Acción irreversible</small>
+                <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+            </div>
+            <div class="text-center">
+                <hr>
+                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"
+                    (click)="eliminarTarea()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal MODIFICAR TAREA-->
+<div class="modal fade" id="modificarTarea" tabindex="-1" role="dialog" aria-labelledby="modificarTareaLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body text-center">
+        <b>
+          <h2 class="text-center">¡TAREA MODIFICADA CON ÉXITO!</h2>
+        </b>
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

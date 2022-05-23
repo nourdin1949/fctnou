@@ -1,36 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { AnexoVService } from '../anexo-v.service';
+import { Tarea } from 'src/app/Shared/interfaces/Interface';
 @Component({
   selector: 'app-buscar-por-fecha',
   templateUrl: './buscar-por-fecha.component.html',
   styleUrls: ['./buscar-por-fecha.component.css']
 })
 export class BuscarPorFechaComponent implements OnInit {
+  public datos :any=[]
+  public inicio:string=""
+  public fin:string=""
+  public tareas:Tarea[]=[]
+  constructor(private anexovService:AnexoVService) { 
 
-  public inicio:any
-  public fin:any
-  public tareas:any[]=[{
-    descripcion:"Formacion NOVA",
-    orientacion:"Documentacoion en everFuture",
-    tiempo: "07:45",
-    dificultad:"facil",
-    observaciones:"el Everfuture va lento"
-  },
-  {
-    descripcion:"Formacion NOVA",
-    orientacion:"Documentacoion en everFuture",
-    tiempo: "06:40",
-    dificultad:"dificil",
-    observaciones:"el Everfuture va lento"
-  },{
-    descripcion:"Formacion NOVA",
-    orientacion:"Documentacoion en everFuture",
-    tiempo: "08:00",
-    dificultad:"medio",
-    observaciones:"el Everfuture va lento"
-  }]
-  constructor() { 
   }
   downloadPDF() {
     // Extraemos el
@@ -43,7 +27,7 @@ export class BuscarPorFechaComponent implements OnInit {
       background: 'white',
       scale: 3
     };
-    (<HTMLElement>document.getElementById("parteSuperior")).style.display=""
+    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("hide"))[0].classList.remove("hide")
     html2canvas(DATA, options).then((canvas) => {
 
       const img = canvas.toDataURL('image/PNG');
@@ -57,14 +41,28 @@ export class BuscarPorFechaComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`hojaalumno.pdf`);
+      docResult.save(`nombreAlumno_de_${this.inicio}_a_${this.fin}.pdf`);
     });
   }
   ngOnInit(): void {
-    (<HTMLElement>document.getElementById("parteSuperior")).style.display="none"
+   setTimeout(() => {
+    this.semanal()
+   }, 600);
   }
   
   buscarTareas(){
-    window.alert("Buscar tareas entre "+this.inicio+" y "+ this.fin)
+    window.alert("Buscar tareas entre "+this.inicio+" y "+ this.fin);
+    const objetoFechas ={
+      "primeraFecha":this.inicio,
+      "segundaFecha":this.fin,
+    }
+    let idAlumno= sessionStorage.getItem('id');
+    this.anexovService.listarTareasEntreFechas(objetoFechas, idAlumno).subscribe((res)=>this.tareas=res)
+  }
+  public semanal(){
+    this.anexovService.fichasemanal().subscribe((res)=>{
+      this.datos= res
+      console.log(res)
+    })
   }
 }

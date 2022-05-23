@@ -1,0 +1,12 @@
+img{
+    width: 30px;
+}
+
+@media (max-width:900px) {
+    img{
+        width: 20px;
+    }
+    input[type=radio]{
+        width: 15%;
+    }
+}
