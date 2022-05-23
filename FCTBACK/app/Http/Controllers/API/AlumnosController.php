@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Alumnos;
+use Illuminate\Support\Facades\DB;
+
+
 class AlumnosController extends Controller
 {
     /**
@@ -101,5 +104,9 @@ class AlumnosController extends Controller
     public function destroy($id)
     {
         return Alumnos::destroy($id);
+    }
+
+    public function getIdUser(Request $request){
+        return DB::select("select id from alumnos where dniAlumno =?",[$request->dni]);
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\API\TutoresController;
 use App\Http\Controllers\API\ResponsablesController;
 use App\Http\Controllers\API\AlumnosController;
 use App\Http\Controllers\API\FctAlumnosController;
+use App\Http\Controllers\API\TareasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +73,10 @@ Route::middleware('auth:sanctum')->group(function(){
     // TUTORES
     Route::controller(TutoresController::class)->group(function () {
         Route::post('insertarTutor', 'store');
+        Route::post('getIdByDniUserTutor', 'getIdUser');
         Route::get('listarTutores', 'index');
         Route::get('findTutorByid/{id}', 'show');
+        Route::get('alumosTutor/{id}', 'alumnoTutor');
         Route::put('updateTutorById/{id}', 'update');
         Route::delete('eliminarTutor/{id}', 'destroy');
     });
@@ -97,6 +100,7 @@ Route::middleware('auth:sanctum')->group(function(){
     // ALUMNOS
     Route::controller(AlumnosController::class)->group(function () {
         Route::post('insertarAlumno', 'store');
+        Route::post('getIdByDniUser', 'getIdUser');
         Route::get('listarAlumnos', 'index');
         Route::get('findAlumnoByid/{id}', 'show');
         Route::put('updateAlumnoByid/{id}', 'update');
@@ -106,8 +110,20 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::controller(FctAlumnosController::class)->group(function () {
         Route::post('insertarAlumnoFCT', 'store');
         Route::get('listarAlumnosFCT', 'listarfct');
-        Route::put('modificarAlumnosFCT/{id}', 'update');
-        Route::delete('eliminarAlumnoFCT{id}', 'destroy');
+        Route::put('modificarAlumnoFCT/{id}', 'update');
+        Route::delete('eliminarAlumnoFCT/{id}', 'destroy');
+    });
+    // TAREAS
+    Route::controller(TareasController::class)->group(function () {
+        Route::post('insertarTareas', 'store');
+        Route::get('listarTareasPorIDAlumno/{id}', 'show');
+        Route::post('listarTareasEntreFechas/{id}', 'listarTareasEntreFechas');
+        Route::post('buscarTareas', 'buscarTareas');
+        Route::get('listarTareasPorFecha/{fecha}', 'listarTareasPorFecha');
+        Route::get('listarTareasPorID/{id}', 'listarTareasPorID');
+        Route::get('fichasemanal/{id}', 'fichasemanal');
+        Route::put('modificarTareaAlumno/{id}', 'update');
+        Route::delete('eliminarTareaAlumno/{id}', 'destroy');
     });
 });
 
