@@ -8,6 +8,8 @@ import { SharedModule } from '../Shared/shared.module';
 import { TutorEmpresaModule } from './TutorEmpresa/tutor-empresa.module';
 import { TutorEscolarModule } from './TutorEscolar/tutor-escolar.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { AppRoutingModule } from '../app-routing.module';
     AlumnosModule,
     SharedModule,
     TutorEmpresaModule,
-    TutorEscolarModule
+    TutorEscolarModule,
+    MatTabsModule,
+    MatFormFieldModule,
   ],exports:[
     ComponentsComponent
   ]
