@@ -15,7 +15,7 @@
           </div>
           <div class="form-group">
             <label for="empresa"  class="form-label">Empresa</label>
-            <select class="form-control" (ngModelChange)="cargarSelectResponsables($event)" formControlName="empresa">
+            <select class="form-control" (change)="cargarSelectResponsables($event.target)" formControlName="empresa">
               <option value="0">Seleciona Empresa</option>
               <option value="{{empresa.id}}" *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
             </select>
@@ -46,8 +46,26 @@
          
        
           <button type="submit" class=" w-100 btn bg-outline-color" >Añadir</button>
-
-       
-    
     </form>
     </div>
+
+    <button type="button" id="insertado" data-toggle="modal" data-target="#asignarEmpresa"></button>
+
+<!-- Modal INSERTAR ALUMNOFCT-->
+<div class="modal fade" id="asignarEmpresa" tabindex="-1" role="dialog" aria-labelledby="asignarEmpresaLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body text-center">
+        <b>
+          <h2 class="text-center">¡ALUMNO EN PRÁCTICA!  ¡¡ÉXITO!!</h2>
+        </b>
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

@@ -246,7 +246,8 @@ export class InsertarDatosComponent {
       console.log(alumnoObject)
     });
   }
-  public insertarCursosCSV(cursos:any[]) {
+  public insertarCursosCSV(cursos) {
+    window.alert(cursos.length)
     const cursoObject: Curso = {
       "id":0,
       "codigoCiclo":"", 
@@ -263,7 +264,9 @@ export class InsertarDatosComponent {
       cursoObject.cursoAcademico = element.cursoAcademico
       cursoObject.nHoras = element.nHoras
       cursoObject.tutor_id = element.tutor_id
-      this.cursoService.insertarCurso(cursoObject).subscribe()
+      this.cursoService.insertarCurso(cursoObject).subscribe((res)=>{
+        console.log(res)
+      })
       console.log(cursoObject)
     });
   }

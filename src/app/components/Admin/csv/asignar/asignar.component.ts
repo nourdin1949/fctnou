@@ -73,7 +73,7 @@ export class AsignarComponent implements OnInit {
     })
   }
   cargarSelectResponsables(id: any) {
-    this.responsables = this.responsables.filter(responsable => responsable.empresa_id == id)
+    this.responsables = this.responsables.filter(responsable => responsable.empresa_id == id.value)
   }
   cargarSelectTutores(id: any) {
     this.tutores = this.tutores.filter(tutor => tutor.codigoCentro == id.target.value)
@@ -91,7 +91,11 @@ export class AsignarComponent implements OnInit {
     console.log(fctalumno)
     if (this.formAsignar.valid) {
       this.csvServ.insetarfctalumno(fctalumno).subscribe((response) => {
-        console.log(1)
+        (<HTMLButtonElement>document.getElementById("insertado")).click()
+        setTimeout(() => {
+          (<HTMLElement>document.getElementById('asignarEmpresa')).classList.remove('modal-open');
+          (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+        }, 300);
       })
     }
   }

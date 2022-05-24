@@ -1,11 +1,70 @@
 <div class="row w-100">
-<div class="col-lg-3"></div>
+    <div class="col-lg-3"></div>
 
-<form [formGroup]="formcsv" (ngSubmit)="insertarDatos()" class="w-75 col-6">
-    <div class="form-group">
-        <h3 class="title bg-color text-light p-2">Insertar Campos desde CSV</h3>
-    </div>
-    <div class="form-group">
+    <form [formGroup]="formcsv" (ngSubmit)="insertarDatos()" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Insertar Campos desde CSV</h3>
+        </div>
+        <div class="form-group">
+
+            <mat-form-field class="w-100">
+                <ngx-mat-file-input  name="aaaa" placeholder="Ficheros de Centros">
+                </ngx-mat-file-input>
+                <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="aaaa" placeholder="Ficheros de Centros">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="aaaa" placeholder="Ficheros de Centros">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="aa" placeholder="Ficheros de Empresas">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="a" placeholder="Ficheros de Cursos">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="aa" placeholder="Ficheros de Tutores">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+        
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="a" placeholder="Ficheros de Responsables">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input  name="a" placeholder="Ficheros de Alumnos">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+        </div>
+        <!-- <div class="form-group">
         <label for="centros" class="form-label">Añadir CSV de Centros</label>
         <input type="file" formControlName="centros" (change)="filechangedCentros($event)" accept=".csv" class="form-control" id="centros">
     </div>
@@ -28,11 +87,11 @@
     <div class="form-group">
         <label for="alumnos" class="form-label">Añadir CSV de Alumnos</label>
         <input type="file" formControlName="alumnos" (change)="filechangedAlumnos($event)" accept=".csv" class="form-control" id="alumnos">
-    </div>
-    
-    
-    <button type="submit" class=" w-100 btn bg-outline-color" >Asignar</button>
-   
+    </div> -->
 
-</form>
+
+        <button type="submit" class=" w-100 btn bg-outline-color">Asignar</button>
+
+
+    </form>
 </div>
