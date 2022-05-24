@@ -20,6 +20,12 @@
 .faEnviar:active{
     transform: scale(0.9);
 }
+.faEnviar{
+    position: relative;
+}
+.chat{
+    width: 90%;
+}
 
 .enviado{
     display: block;

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Chat, Profesor } from 'src/app/Shared/interfaces/Interface';
+import { ProfesorService } from '../../Admin/profesor/profesor.service';
+import { TutorEmpresaService } from '../tutor-empresa.service';
 
 @Component({
   selector: 'app-chat-emp',
@@ -6,60 +9,68 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-emp.component.css']
 })
 export class ChatEmpComponent implements OnInit {
-
-  mensajes: any[] = []
-  nuevoMensaje: string = ""
-  receptor:string =""
-  mostrarChat:boolean=false
-  constructor() { }
+  public tutores: Profesor[] = []
+  mensajes: Chat[] = []
+  public auxmensajes:Chat[]=[]
+  public nuevoMensaje: string = ""
+  receptor: string = ""
+  mostrarChat: boolean = false
+  constructor(
+    private tutorempresaService: TutorEmpresaService,
+    private profesorsService: ProfesorService) { }
 
   ngOnInit(): void {
-    
+    this.listarTutores()
+    setInterval(()=>{
+      this.listarMensaje()
+    }, 1000)
   }
   cargarMensajes() {
-    this.mensajes=[{
-      emisor: "tutor",
-      texto: "Hola que tal",
-      receptor:"profesor"
-    },
-    {
-      emisor: "profesor1",
-      texto: "Hola, todo bien",
-      receptor:"tutor"
-    },
-    {
-      emisor: "tutor",
-      texto: "como te fue la tarde",
-      receptor:"profesor1"
-    },
-    {
-      emisor: "profesor1",
-      texto: "Con algunos problemas",
-      receptor:"tutor"
-    }]
-    this.mensajes= this.mensajes.filter(element=>element.receptor==this.receptor ||element.emisor==this.receptor )
-   if(this.receptor!=""){ this.mostrarChat=true} else {
-     this.mostrarChat=false
-   }
-   }
-  enviarMensaje() {
-    this.mensajes.push({
-      emisor: "profesor",
-      texto: this.nuevoMensaje,
-      receptor:this.receptor
+   
+    this.auxmensajes = this.mensajes.filter(element => 
+     ( element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
+     ( element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
+   )
+   console.log(this.auxmensajes)
+    if (this.receptor != "") { this.mostrarChat = true } else {
+      this.mostrarChat = false
+    }
+  }
+  listarMensaje() {
+    this.tutorempresaService.listarChat().subscribe((res) => {
+      this.mensajes = res;
+      this.cargarMensajes()
     })
-        console.log(this.nuevoMensaje)
+  }
+  listarTutores() {
+    this.profesorsService.listarProfesor().subscribe((response) => {
+      this.tutores = response;
+    })
+  }
+  enviarMensaje() {
+    const chatobject: Chat = {
+      "id": 0,
+      "emisor": sessionStorage.getItem("username")!,
+      "mensaje": this.nuevoMensaje,
+      "receptor": this.receptor,
+      "fecha": new Date()
+    }
+      console.log(chatobject)
     this.nuevoMensaje = ""
-setTimeout(() => {
-  this.scrollToTheLastElementByClassName()
-  
-}, 10);  }
+    this.tutorempresaService.insertarChat(chatobject).subscribe((rees)=>{
+      console.log(rees,"gggggggggg")
+      this.scrollToTheLastElementByClassName()
+      this.listarMensaje()
+    })
+    setTimeout(() => {
+    }, 10);
+  }
 
-  scrollToTheLastElementByClassName(){
+  scrollToTheLastElementByClassName() {
     let element = document.getElementsByClassName("msj");
-    let ultimo:any = element[(element.length-1)]
+    let ultimo: any = element[(element.length - 1)]
     let toppos = ultimo.offsetTop;
     //@ts-ignore
-    document.getElementById("contenedorDeMensajes")?.scrollTop=toppos;
+    document.getElementById("contenedorDeMensajes")?.scrollTop = toppos;
   }
 }
