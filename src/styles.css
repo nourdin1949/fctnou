@@ -22,8 +22,33 @@ a:hover{
 .title{
     border-radius: 5px;
 }
-/* html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+option{
+    border-radius: 70%;
+}
+option:hover{
+    background-color: cadetblue ;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+::-webkit-scrollbar {
+    display: none;
+}
+mat-label{
+    font-weight: bold;
+}
+
+input[type=radio]{
+    cursor: pointer;
+}
+
+
+#insertado{
+    display: none;
+}
+#modificado{
+    display: none;
+}
+#validado{
+    display: none;
+}
