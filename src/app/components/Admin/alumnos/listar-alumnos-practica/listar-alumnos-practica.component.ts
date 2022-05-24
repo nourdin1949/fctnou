@@ -77,10 +77,9 @@ export class ListarAlumnosPracticaComponent implements OnInit {
     })
   }
   public eliminarAlumnoFCT(idAlumno: number) {
-    window.alert(idAlumno)
-    // this.alumnoservice.eliminarAlumnoFCT(idAlumno).subscribe((response)=>{
-    //   this.listarAlumnosFct()
-    // })
+    this.alumnoservice.eliminarAlumnoFCT(idAlumno).subscribe((response)=>{
+      this.listarAlumnosFct()
+    })
   }
   public guardarid(idAlumno: FCTAlumno) {
     this.alumnofct.id = idAlumno.id

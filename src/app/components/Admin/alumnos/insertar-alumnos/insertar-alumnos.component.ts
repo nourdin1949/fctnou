@@ -13,7 +13,9 @@ export class InsertarAlumnosComponent implements OnInit {
   public alumnos: Alumno[] = []
   public cursos: Curso[] = []
   public forminsertarAlumno: FormGroup;
-
+get formulario (){
+  return this.forminsertarAlumno.controls;
+}
   constructor(private fb: FormBuilder, private cursoServoce: CursosService, private alumnosService: AlumnosService) {
     this.forminsertarAlumno = this.fb.group({
       nombre: ['', Validators.required],
@@ -21,11 +23,12 @@ export class InsertarAlumnosComponent implements OnInit {
       provincia: ['', Validators.required],
       localidad: ['', Validators.required],
       calle: ['', Validators.required],
-      cp: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
-      curso: ['0', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+      cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")]],
+      curso: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
 
     })
+    console.log(this.forminsertarAlumno.get('cp')?.errors?.['required'])
   }
 
   ngOnInit(): void {
@@ -46,7 +49,7 @@ export class InsertarAlumnosComponent implements OnInit {
       "matriculado": 1,
     }
     console.log(alumno)
-    if (this.forminsertarAlumno.valid) {
+    if (!this.forminsertarAlumno.errors) {
       this.alumnosService.insertarAlumnos(alumno)
         .subscribe((res) => {
           (<HTMLButtonElement>document.getElementById("insertado")).click()

@@ -84,18 +84,41 @@
         </div>
         <div class="row">
             <div class="col-lg-8  col-sm-12  col-md-12">
-               
-                <button type="submit" class="  w-100 btn bg-outline-color">Guardar</button>
-            
+                <button type="submit" class="w-100 btn bg-outline-color">
+                    <i class="fa fa-save"></i>
+                </button>
             </div>
             <div class="col-lg-3  col-sm-12  col-md-12">
-                <button type="submit" class=" w-100 ml-1 btn bg-color text-light" routerLink="/admin/alumnos/listar">Volver</button>
+                <button type="submit" 
+                    class=" w-100 ml-1 btn bg-color text-light" 
+                    routerLink="/admin/alumnos/listar">
+                    <i class="fa fa-arrow-circle-left"></i>
+                </button>
             </div>
 
         </div>
-      
-        
-
     </form>
+</div>
 
+
+<button type="button" id="modificado" data-toggle="modal"
+data-target="#modificarAlumno"></button>
+
+<!-- Modal MODIFICAR ALUMNO-->
+<div class="modal fade" id="modificarAlumno" tabindex="-1" role="dialog" aria-labelledby="modificarAlumnoLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+        <div class="modal-body text-center">
+            <b>
+                <h2 class="text-center">¡ALUMNO MODIFICADO CON ÉXITO!</h2>
+            </b>
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+ 
+            <i class="fa fa-check text-success" aria-hidden="true"></i>
+            <br>
+        </div>
+    </div>
+</div>
 </div>

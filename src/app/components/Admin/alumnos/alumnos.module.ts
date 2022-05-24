@@ -8,9 +8,11 @@ import { ModificarAlumnosComponent } from './modificar-alumnos/modificar-alumnos
 import { InsertarAlumnosComponent } from './insertar-alumnos/insertar-alumnos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListarAlumnosPracticaComponent } from './listar-alumnos-practica/listar-alumnos-practica.component';
-import { ModificarAlumnosPracticaComponent } from './modificar-alumnos-practica/modificar-alumnos-practica.component';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import {MatInputModule} from '@angular/material/input'; 
+import {MatTableModule} from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import {  MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,17 @@ import { MatTabsModule } from '@angular/material/tabs';
     ModificarAlumnosComponent,
     InsertarAlumnosComponent,
     ListarAlumnosPracticaComponent,
-    ModificarAlumnosPracticaComponent
   ],
   imports: [
     CommonModule,
     AlumnosRoutingModule,
     MatTabsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class AlumnosModule { }

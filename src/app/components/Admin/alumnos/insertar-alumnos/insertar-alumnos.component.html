@@ -1,80 +1,102 @@
-<div class="row h-100 mb-4">
+<div class="row w-100 mb-4">
   <div class="col-3"></div>
+
   <form [formGroup]="forminsertarAlumno" (ngSubmit)="insertarAlumo(forminsertarAlumno)" class="w-75 col-6">
     <div class="form-group">
       <h3 class="title bg-color text-light p-2">Insertar Alumno</h3>
     </div>
-   
-    <div class="form-group">
-      <label for="nombre" class="form-label">Nombre Alumno</label>
-      <input type="text" formControlName="nombre" placeholder="Nombre Apellidos" class="form-control" id="nombre">
-    </div>
-    <div class="form-group">
-      <label for="dni" class="form-label">DNI Alumno</label>
-      <input type="text" formControlName="dni" placeholder="12345678V" class="form-control" id="dni">
-    </div>
-    <div class="form-group">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
-  </div>
-  <div class="row">
-    <div class="col-lg-6  col-sm-12  col-md-12">
-      <div class="form-group">
-        <label for="provincia" class="form-label">Provincia</label>
-        <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
-      </div>
-    </div>
-    <div class="col-lg-6   col-sm-12  col-md-12">
-      <div class="form-group">
-        <label for="localidad" class="form-label">Localidad</label>
-        <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
-      </div>
-    </div>
-  </div>
-   
-   
-    <div class="form-group">
-      <label for="calle" class="form-label">Calle</label>
-      <input type="text" formControlName="calle" placeholder="Calle" class="form-control" id="calle">
-    </div>
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>Nombre Alumno</mat-label>
+      <input matInput formControlName="nombre" placeholder="Nombre Apellidos" class="w-100">
+      <mat-error *ngIf="this.forminsertarAlumno.controls['nombre'].hasError('required')">Campo Nombre es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>DNI Alumno</mat-label>
+      <input matInput formControlName="dni" placeholder="DNI Apellido" class="w-100">
+      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('required')">Campo DNI es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Correo electrónico" class="w-100">
+      <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('required')">Campo Email es requerido </mat-error>
+      <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('pattern')">Email no es válido
+      </mat-error>
+    </mat-form-field>
     <div class="row">
-      <div class="col-lg-6  col-sm-12  col-md-12">
-        <div class="form-group ">
-          <label for="cp" class="form-label">Código Postal</label>
-          <input type="text" formControlName="cp" placeholder="Código Postal" class="form-control" id="cp">
-        </div>
+      <div class="col-lg-6 col-sm-12 col-md-12">
+        <mat-form-field class=" w-100" appearance="fill">
+          <mat-label>Provincia</mat-label>
+          <input matInput formControlName="provincia" placeholder="Calle" class="w-100">
+          <mat-error *ngIf="this.forminsertarAlumno.controls['provincia'].hasError('required')">Provincia es requerido
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="col-lg-6   col-sm-12  col-md-12">
-        <label for="curso" class="form-label">Curso</label>
-        <select class="form-control" formControlName="curso">
-          <option value="0">Seleciona Curso</option>
-          <option value="{{curso.id}}" *ngFor="let curso of cursos">{{curso.codigoCiclo}}</option>
-        </select>
+
+        <mat-form-field class=" w-100" appearance="fill">
+          <mat-label>Localidad</mat-label>
+          <input matInput formControlName="localidad" placeholder="Calle" class="w-100">
+          <mat-error *ngIf="this.forminsertarAlumno.controls['localidad'].hasError('required')">Localidad es requerido
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
-      <button type="submit" class=" w-100 btn bg-outline-color">Insertar</button>
+
+      <mat-form-field class=" w-100" appearance="fill">
+        <mat-label>Calle</mat-label>
+        <input matInput formControlName="calle" placeholder="Calle" class="w-100">
+        <mat-error *ngIf="this.forminsertarAlumno.controls['calle'].hasError('required')">Calle es requerido</mat-error>
+      </mat-form-field>
+ 
+    <div class="row">
+      <div class="col-lg-6  col-sm-12  col-md-12">
+        <mat-form-field class=" w-100" appearance="fill">
+          <mat-label>Código Postal</mat-label>
+          <input matInput formControlName="cp" placeholder="Código Postal" class="w-100">
+          <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('required')">CP es requerido</mat-error>
+          <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('pattern')">Solo números de 5 digitos</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6   col-sm-12  col-md-12">
+        
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Curso</mat-label>
+           
+          <mat-select  formControlName="curso">
+            <mat-option [value]="curso.id"  *ngFor="let curso of cursos">
+              {{curso.codigoCiclo}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="this.forminsertarAlumno.controls['curso']?.errors?.['required']">Selecciona</mat-error>
+
+        </mat-form-field>
+      </div>
+    </div>
+    <button type="submit" class="mt-2 w-100 btn bg-outline-color">Insertar</button>
   </form>
 </div>
 
-  
-<button type="button" id="insertado" data-toggle="modal"
-data-target="#insertarAlumno"></button>
 
-<!-- Modal INSERTAR CENTRO-->
+<button type="button" id="insertado" data-toggle="modal" data-target="#insertarAlumno"></button>
+
+<!-- Modal INSERTAR ALUMNO-->
 <div class="modal fade" id="insertarAlumno" tabindex="-1" role="dialog" aria-labelledby="insertarAlumnoLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-        
-        <div class="modal-body text-center">
-            <b>
-                <h2 class="text-center">¡ALUMNO INSERTADO CON ÉXITO!</h2>
-            </b>
-            <i class="fa fa-check text-success" aria-hidden="true"></i>
- 
-            <i class="fa fa-check text-success" aria-hidden="true"></i>
-            <br>
-        </div>
+
+      <div class="modal-body text-center">
+        <b>
+          <h2 class="text-center">¡ALUMNO INSERTADO CON ÉXITO!</h2>
+        </b>
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+        <br>
+      </div>
     </div>
-</div>
+  </div>
 </div>

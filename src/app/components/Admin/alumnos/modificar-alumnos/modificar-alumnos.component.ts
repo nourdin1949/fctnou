@@ -64,7 +64,10 @@ export class ModificarAlumnosComponent implements OnInit {
     }
     console.log(alumno)
     if (this.formModificarAlumno.valid) {
-      this.alumnosService.updateAlumnoById(alumno).subscribe((res) => console.log(res))
+      this.alumnosService.updateAlumnoById(alumno)
+        .subscribe(() => {
+          (<HTMLButtonElement>document.getElementById("modificado")).click()
+        })
     }
   }
   public listarCursos() {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AlumnosService } from '../alumnos.service';
-import { EmpresasService } from '../../empresas/empresas.service';
 import { Alumno, Empresa } from 'src/app/Shared/interfaces/Interface';
 @Component({
   selector: 'app-listar-alumnos',
@@ -13,7 +12,7 @@ export class ListarAlumnosComponent implements OnInit {
   public alumnos:Alumno[]=[]
   public alumnosfct:Alumno[]=[]
   public id:number=0
-  constructor(private alumnoservice:AlumnosService, private empresasevice:EmpresasService) {
+  constructor(private alumnoservice:AlumnosService) {
  
   }
   
@@ -26,9 +25,9 @@ export class ListarAlumnosComponent implements OnInit {
     })
   }
   public eliminarAlumno(idAlumno:number){
-    // this.alumnoservice.eliminarAlumno(idAlumno).subscribe((response)=>{
-    //   this.listarAlumnos()
-    // })
+    this.alumnoservice.eliminarAlumno(idAlumno).subscribe((response)=>{
+      this.listarAlumnos()
+    })
   }
   public guardarid(idAlumno:number){
     this.id=idAlumno
