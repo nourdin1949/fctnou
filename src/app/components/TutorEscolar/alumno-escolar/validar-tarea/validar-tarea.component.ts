@@ -10,38 +10,44 @@ import { TutorEscolarService } from '../../tutor-escolar.service';
   styleUrls: ['./validar-tarea.component.css']
 })
 export class ValidarTareaComponent implements OnInit {
-public tareas:Tarea[]=[]
-public alumnos:any[]=[]
-public alumnoAbuscar:number
-public fechaDesde:Date
-public fechaHasta:Date
-public disabled=true
+  public tareas: Tarea[] = []
+  public alumnos: any[] = []
+  public alumnoAbuscar: number
+  public fechaDesde: Date
+  public fechaHasta: Date
+  public disabled = true
+  public ids: any = []
   constructor(
-    private tutorEscolarService:TutorEscolarService,
-    private anexovService:AnexoVService) { 
+    private tutorEscolarService: TutorEscolarService,
+    private anexovService: AnexoVService) {
 
   }
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.alumnos= this.tutorEscolarService.alumnos
-      console.log("ess")
-    },700);
+      this.alumnos = this.tutorEscolarService.alumnos
+    }, 1000);
   }
-  mostrarTareasDelAlumno(){
-    const objeto={
-      "primeraFecha":this.fechaDesde,
-      "segundaFecha":this.fechaHasta,
+  mostrarTareasDelAlumno() {
+    const objeto = {
+      "primeraFecha": this.fechaDesde,
+      "segundaFecha": this.fechaHasta,
     }
-  console.log(objeto)
-    this.anexovService.listarTareasEntreFechas(objeto,this.alumnoAbuscar)
-      .subscribe((response)=>{
-        this.tareas=response.filter(tarea=>tarea.validadoResponsable==1 && tarea.validadoTutor==0)
-        console.log(response)
-      }) 
+    this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
+      .subscribe((response) => {
+        this.tareas = response.filter(tarea => tarea.validadoResponsable == 1 && tarea.validadoTutor == 0)
+      })
+  }
+  guardarid(event) {
+  
+    this.ids.push(event.source.value)
+  }
+  validarTarea() {
+    this.ids.forEach(element => {
+      this.tutorEscolarService.validarTareaTutor(element).subscribe(() => {
+        console.log("aaaa", element)
+      })
+    });
   }
 
-  editar(){
-    
-  }
 }

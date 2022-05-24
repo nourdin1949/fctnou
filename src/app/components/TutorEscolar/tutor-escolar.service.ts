@@ -26,14 +26,16 @@ export class TutorEscolarService {
     return headers
   }
 
-  public listarAlumnosDelTutor() {
-    let idAlumno = sessionStorage.getItem('id');
+  public listarAlumnosDelTutor():any[] {
+    let idTutor = sessionStorage.getItem('id');
     console.log("buscando tareas por id")
-    this.http.get<any[]>(`${this.url}/alumosTutor/${2}`, this.getHeaders()).subscribe((res) => {
+    this.http.get<any[]>(`${this.url}/alumosTutor/${idTutor}`, this.getHeaders()).subscribe((res) => {
       this.alumnos = res
-      console.log(this.alumnos)
+      return this.alumnos
     })
+    return this.alumnos
   }
-
-
+  public validarTareaTutor(idTarea:number){
+    return this.http.put<any[]>(`${this.url}/validaTareaTutor/${idTarea}`,"", this.getHeaders())
+  }
 }

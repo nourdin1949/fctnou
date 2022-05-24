@@ -40,40 +40,99 @@
 </div>
 <br>
 <div class="row w-100">
-    <table class="table text-center table-striped">
-        <thead class="table bg-color text-light">
-            <tr>
-                
-                <th>Descipcion de la actividad </th>
-                <th>Orientacion para su desarrollo </th>
-                <th>Tiempo </th>
-                <th>Dificultades en la realización </th>
-                <th>Observaciones </th>
-                <!-- <th>tutor empresa </th>-->
-                <th>Tutor escolar </th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
+    <div *ngIf="tareas.length>0" class="container">
+        <b>Habilitar CheckBox Pulsa </b><i (click)="disabled=false" class="fa fa-pencil" aria-hidden="true"></i>
+        <table *ngIf="tareas.length>0" class="table text-center table-striped">
+            <thead class="table bg-color text-light">
+                <tr>
+                    <th>Descipcion de la actividad </th>
+                    <th>Orientacion para su desarrollo </th>
+                    <th>Tiempo </th>
+                    <th>Dificultades en la realización </th>
+                    <th>Observaciones </th>
+                    <th>Tutor escolar </th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr *ngFor="let tarea of tareas, let id=index">
+                    <th>
+                        <textarea class="form-control" 
+                            name="descripcion{{id}}"
+                            [disabled]="true"
+                            id="descripcion{{id}}" 
+                            [value]="tarea.descripcion"
+                            cols="2{{id}}" rows="2"></textarea>
+                    </th>
+                        <input type="hidden" 
+                            class="form-control" 
+                            name="tareaCon{{tarea.id}}"
+                            [disabled]="true"
+                            [value]="tarea.id"
+                            id="idTarea{{id}}">
+                    <th>
+                        <input type="text" 
+                            class="form-control" 
+                            name="orientacion{{id}}"
+                            [disabled]="true"
+                            [value]="tarea.orientacion"
+                            id="orientacion{{id}}">
+                    </th>
+                    <th>
+                        <input type="time" 
+                            class="form-control" 
+                            name="tiempo{{id}}"
+                            [disabled]="true"
+                            [value]="tarea.tiempo"
+                            id="tiempo{{id}}"> 
+                    </th>
+                    <th>
+                        <input type="radio" 
+                            name="dificultad{{id}}" 
+                            value="facil" 
+                            [disabled]="true"
+                            [checked]="tarea.dificultad=='facil'"
+                            id="dificultad{{id}}">
+                        <img class="img-fluid rounded-circle" src="../../../../../assets/img/easy.png" alt="easy.png">
 
-            <tr *ngFor="let item of tareas, let id=index">
-                <th><textarea disabled [value]="item.descripcion" class="form-control" name="descripcion0"
-                        id="descripcion0" cols="20" rows="2"></textarea></th>
-                <th><input disabled type="text" [value]="item.orientacion" class="form-control" name="orientacion0"
-                        id="orientacion0"></th>
-                <th><input disabled type="time" [value]="item.tiempo" class="form-control" name="tiempo0" id="tiempo0">
-                </th>
-                <th class="text-center">
-                    <img src="../../../../../assets/img/easy.png" *ngIf="item.dificultad=='facil'" alt="">
-                    <img src="../../../../../assets/img/medium.png" *ngIf="item.dificultad=='medio'" alt="">
-                    <img src="../../../../../assets/img/hard.png" *ngIf="item.dificultad=='dificil'" alt="">
-                </th>
-                <th><input disabled type="text" [value]="item.observaciones" class="form-control" name="observaciones0"
-                        id="observaciones0"> </th>
-                <th> 
-                    <input type="checkbox" name="tutor-escolar" id="">
-                </th>
-            </tr>
-        </tbody>
+                        <input type="radio" 
+                            name="dificultad{{id}}" 
+                            value="medio" 
+                            [disabled]="true"
+                            [checked]="tarea.dificultad=='medio'"
+                            id="dificultad{{id}}">
+                        <img src="../../../../../assets/img/medium.png" alt="medium.png">
 
-    </table>
+                        <input type="radio" 
+                            name="dificultad{{id}}" 
+                            value="dificil" 
+                            [disabled]="true"
+                            [checked]="tarea.dificultad=='dificil'"
+                            id="dificultad{{id}}">
+                        <img src="../../../../../assets/img/hard.png" alt="hard.png">
+                    </th>
+                    <th><input type="text" 
+                            class="form-control" 
+                            name="observaciones{{id}}"
+                            [disabled]="true"
+                            [value]="tarea.observaciones"
+                            id="observaciones{{id}}"> 
+                    </th>
+                    <th>
+                        <mat-checkbox [disabled]="disabled"
+                        id="tutor{{id}}"
+                        value="{{tarea.id}}"
+                        (change)="guardarid($event)"
+                        [checked]="tarea.validadoTutor==1" >
+                        </mat-checkbox>
+                    </th>
+                </tr> 
+            </tbody>
+
+        </table>
+        <button (click)="validarTarea()" 
+    
+            class="btn bg-outline-color" >
+            <i class="fa fa-save  "></i> 
+        </button>
+    </div>
 </div>
