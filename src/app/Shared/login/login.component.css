@@ -11,6 +11,7 @@ body {
     background: #ecf0f3
 }
 
+
 .wrapper {
     max-width: 350px;
     min-height: 500px;
@@ -18,9 +19,11 @@ body {
     padding: 40px 30px 30px 30px;
     background-color: #ecf0f3;
     border-radius: 15px;
-    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
 }
-
+.wrapper::-webkit-scrollbar{
+    overflow: hidden
+}
 .logo {
     width: 80px;
     margin: auto
