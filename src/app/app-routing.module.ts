@@ -16,13 +16,17 @@ import { TutorEmpresaComponent } from './components/TutorEmpresa/tutor-empresa.c
 import { AlumnoEscolarComponent } from './components/TutorEscolar/alumno-escolar/alumno-escolar.component';
 import { ChatEscoComponent } from './components/TutorEscolar/chat-esco/chat-esco.component';
 import { TutorEscolarComponent } from './components/TutorEscolar/tutor-escolar.component';
+import { ForgotPasswordComponent } from './Shared/forgot-password/forgot-password.component';
 import { LoginComponent } from './Shared/login/login.component';
 import { PageNotFoundedComponent } from './Shared/page-not-founded/page-not-founded.component';
 import { PerfilComponent } from './Shared/perfil/perfil.component';
+import { ResetPasswordComponent } from './Shared/reset-password/reset-password.component';
+import { VerificarEmailComponent } from './Shared/verificar-email/verificar-email.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
   {
     path: '', component: ComponentsComponent, children: [
 
@@ -64,6 +68,9 @@ const routes: Routes = [
       },
     ]
   },
+  { path: 'reset-password/:token', component: ResetPasswordComponent, pathMatch:'full' },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'email-verificacion', component: VerificarEmailComponent },
   { path: '**', redirectTo: "error" },
 
   { path: "error", component: PageNotFoundedComponent }

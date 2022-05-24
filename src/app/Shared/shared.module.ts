@@ -6,20 +6,26 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilComponent } from './perfil/perfil.component';
-
+import { HttpClientModule } from "@angular/common/http";
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerificarEmailComponent } from './verificar-email/verificar-email.component'
 
 @NgModule({
   declarations: [
     SidebarComponent,
     PageNotFoundedComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    VerificarEmailComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule, HttpClientModule
   ],
   exports: [
     SidebarComponent

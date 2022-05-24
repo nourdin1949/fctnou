@@ -8,6 +8,8 @@ import { ComponentsModule } from './components/components.module';
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
 PdfMakeWrapper.setFonts(pdfFonts)
 @NgModule({
   declarations: [
@@ -18,6 +20,9 @@ PdfMakeWrapper.setFonts(pdfFonts)
     AppRoutingModule,
     ComponentsModule,
     BrowserAnimationsModule,
+    MatTabsModule, 
+   MatFormFieldModule,
+  
   ],
   providers: [AuthenticationGuard],
   bootstrap: [AppComponent]
