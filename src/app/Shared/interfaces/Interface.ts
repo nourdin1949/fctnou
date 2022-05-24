@@ -110,3 +110,25 @@ export interface FCTAlumnoLista {
     tutor_id:       number;
     codigoCentro:   number;
 }
+
+export interface Tarea {
+    id:                  number;
+    alumno_id:           string;
+    descripcion:         string;
+    orientacion:         string;
+    tiempo:              string;
+    fecha:               Date;
+    dificultad:          string;
+    observaciones:       string;
+    validadoResponsable: number;
+    validadoTutor:       number;
+}
+
+
+export interface Chat {
+    id:         number;
+    emisor:     string;
+    mensaje:    string;
+    receptor:   string;
+    fecha:      Date;
+}
