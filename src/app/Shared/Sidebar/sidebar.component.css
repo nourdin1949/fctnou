@@ -9,7 +9,8 @@ $breakpoint-ordenadorl: 1200px;
 aside {
     padding-top: 1rem;
     padding-right: 1rem;
-    height: 120%;
+    height: 100%;
+    min-height: 100vh;
     
 }
 .user {
@@ -54,6 +55,10 @@ p {
     #buscador {
         margin-top: 0.40rem;
     }
+    aside{
+        height: 15vh;
+        min-height: 0vh;
+    }
     aside .enlaces button.btn-aside {
                 padding: 1rem;
                 text-align: center;
@@ -73,6 +78,10 @@ p {
         justify-content: stretch;
         padding-top: 0;
         height: auto;
+  
+            height: 15vh;
+            min-height: 0vh;
+
     }
     div.user img  {
             height: 45px;
