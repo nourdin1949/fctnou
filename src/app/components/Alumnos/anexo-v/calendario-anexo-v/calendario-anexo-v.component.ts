@@ -59,6 +59,8 @@ export class CalendarioAnexoVComponent implements OnInit {
       let fecha=e.fecha
       let color = ""
       let estado = e.validadoResponsable+String(e.validadoTutor)
+      let url =`http://localhost:1949/alumno/modificar/${fecha}/${e.id}`
+      
       console.log("estado", estado)
       switch(estado){
         case "01":
@@ -74,10 +76,12 @@ export class CalendarioAnexoVComponent implements OnInit {
         color="orange";
         break;
       }
-     
+      if(color=="green"){
+        url=""
+      }
       this.events.push({
         title: titulo,
-        url:`http://localhost:1949/alumno/modificar/${fecha}/${e.id}`,
+        url:url,
         start:moment(fecha).format("YYYY-MM-DD"),
         description: e.descripcion,
         color:color,

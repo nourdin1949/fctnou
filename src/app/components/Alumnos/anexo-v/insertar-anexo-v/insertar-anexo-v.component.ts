@@ -11,6 +11,7 @@ import { AnexoVService } from '../anexo-v.service';
 export class InsertarAnexoVComponent implements OnInit {
   public fecha: string=""
   public tareas:Tarea[]=[]
+  public html
   constructor(
     private anecovService:AnexoVService, 
     private activatedRoute:ActivatedRoute) {
@@ -21,7 +22,7 @@ export class InsertarAnexoVComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  public contadorFilas = 1;
+  public contadorFilas = 0;
   crearfila() {
 
     document.getElementById("tbody")?.insertAdjacentHTML(`beforeend`, 
@@ -55,7 +56,11 @@ export class InsertarAnexoVComponent implements OnInit {
       };
       this.anecovService.insertarAnexoV(objeto).subscribe((res)=>{
         if(i==this.contadorFilas-1){
+          this.html="";
+          
           (<HTMLButtonElement>document.getElementById("insertado")).click()
+          this.contadorFilas=0;
+          this.crearfila()
         }
         
       })

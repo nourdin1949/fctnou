@@ -13,6 +13,7 @@ export class BuscarPorFechaComponent implements OnInit {
   public inicio:string=""
   public fin:string=""
   public tareas:Tarea[]=[]
+  public buscar:boolean=false
   constructor(private anexovService:AnexoVService) { 
 
   }
@@ -51,13 +52,16 @@ export class BuscarPorFechaComponent implements OnInit {
   }
   
   buscarTareas(){
-    window.alert("Buscar tareas entre "+this.inicio+" y "+ this.fin);
+    this.buscar=true
     const objetoFechas ={
       "primeraFecha":this.inicio,
       "segundaFecha":this.fin,
     }
     let idAlumno= sessionStorage.getItem('id');
-    this.anexovService.listarTareasEntreFechas(objetoFechas, idAlumno).subscribe((res)=>this.tareas=res)
+    this.anexovService.listarTareasEntreFechas(objetoFechas, idAlumno)
+      .subscribe((res)=>{this.tareas=res
+        this.buscar=false
+      })
   }
   public semanal(){
     this.anexovService.fichasemanal().subscribe((res)=>{

@@ -12,6 +12,8 @@ export class ModificarAnexoVComponent implements OnInit {
   public id: number=0
   public fecha: string=""
   public tareas:Tarea[]=[]
+  public eliminado:boolean=false
+  public cargaCompleta:boolean=false
   constructor(
     private anecovService:AnexoVService, 
     private activatedRoute:ActivatedRoute,
@@ -29,6 +31,7 @@ export class ModificarAnexoVComponent implements OnInit {
   cargarTabla(){
     this.anecovService.listarTareasPorID(this.id).subscribe((res)=>{
       this.tareas=res
+      this.cargaCompleta=true
       console.log(this.tareas)
     })
   }
@@ -56,7 +59,10 @@ export class ModificarAnexoVComponent implements OnInit {
   public eliminarTarea(){
     this.anecovService.eliminarTarea(this.id)
       .subscribe(()=>{
-        this.route.navigateByUrl('alumno/calendario')
+        this.tareas=[]
+        this.eliminado=true
+        this.cargaCompleta=false
+        // this.route.navigateByUrl('alumno/calendario')
     })
   }
 }

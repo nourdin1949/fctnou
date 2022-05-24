@@ -3,9 +3,14 @@
 <mat-tab-group>
     <mat-tab label="Modificar Tarea ">
         <br>
-        <div id="insertaAnexoV" class="container tab-pane active"><br>
-            <div class="pdfdata table-responsive">
-                <table class=" table table-striped">
+        <div id="insertaAnexoV" class="container "><br>
+            <div class=" table-responsive">
+                <div class="alert alert-warning " *ngIf="tareas.length==0 && cargaCompleta " >
+                    <b>
+                        <h2 class="text-center">¡NO SE PUEDE MODIFICAR LA TAREA!</h2>
+                    </b>
+                </div>
+                <table  *ngIf="tareas.length>0  "class=" justify-content-center table table-striped">
                     <thead class="thead bg-color text-light">
                         <tr>
                             <th>Descipcion de la actividad </th>
@@ -18,10 +23,17 @@
                         </tr>
                     </thead>
                     <tbody id="tbody">
+                        <tr  *ngIf="tareas.length==0 && eliminado==false  " >
+                            <td   colspan="7">
+                                <span class="spinner-border "></span>
+                            </td>
+                        </tr>
+                        
                         <tr class="" *ngFor="let tarea of tareas;let id=index">
                             <th>
                                 <textarea class="form-control" 
                                     [value]="tarea.descripcion" 
+                                    [disabled]="cargaCompleta"
                                     name="descripcion{{id}}"
                                     id="descripcion{{id}}" 
                                     cols="2{{id}}" rows="2">
@@ -30,6 +42,7 @@
                             <th>
                                 <input type="text" 
                                     class="form-control" 
+                                    [disabled]="cargaCompleta"
                                     name="orientacion{{id}}"
                                     value="{{tarea.orientacion}}" 
                                     id="orientacion{{id}}">
@@ -38,6 +51,7 @@
                                 <input type="time" 
                                     class="form-control" 
                                     name="tiempo{{id}}"
+                                    [disabled]="cargaCompleta"
                                     value="{{tarea.tiempo |slice:0:5}}" 
                                     id="tiempo{{id}}"> 
                             </th>
@@ -45,6 +59,7 @@
                                 <input type="radio" 
                                     name="dificultad{{id}}" 
                                     value="facil" 
+                                    [disabled]="cargaCompleta"
                                     id="dificultad{{id}}"
                                     [checked]="tarea.dificultad=='facil'">
                                 <img src="../../../../../assets/img/easy.png" alt="easy.png">
@@ -69,35 +84,53 @@
                                     [value]="tarea.observaciones" 
                                     id="observaciones{{id}}"> </th>
                             <th>
-                                <div class="form-check form-switch">
+                                <div class="custom-control custom-switch">
                                     <input disabled type="checkbox" 
-                                        class="form-check-input" 
+                                        class="custom-control-input"
                                         [checked]="tarea.validadoTutor==1"
-                                        name="tutor-ecolar">
+                                        name="tutor-ecolar"
+                                        id="tutor">
+                                        <label class="custom-control-label" 
+                                            for="tutor">
+                                        </label>
                                 </div>
                             </th>
                             <th> 
-                                <div class="form-check form-switch">
+                                <div class="custom-control custom-switch">
                                     <input disabled type="checkbox" 
-                                        class="form-check-input" 
+                                        class="custom-control-input"
                                         [checked]="tarea.validadoResponsable==1"
-                                        name="tutor-empresa">
+                                        name="tutor-empresa"
+                                        id="responsable">
+                                        <label class="custom-control-label" for="responsable"></label>
                                 </div>
                             </th>
+                        
                         </tr>
                     </tbody>
                 </table>
             </div>
-         
-            <button (click)="modificarTareas()" class="btn bg-outline-color " id="btn"><i class="fa fa-save  "></i> </button>
-            <button data-toggle="modal"
-            data-target="#confirmarEliminar" class="btn ml-3 btn-outline-danger" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-    
+            <button (click)="modificarTareas()" 
+                *ngIf="tareas.length>0"
+                class="btn bg-outline-color" >
+                <i class="fa fa-save  "></i> 
+            </button>
+            <button  data-toggle="modal"
+                data-target="#confirmarEliminar" 
+                *ngIf="tareas.length>0" 
+                class="btn ml-3 btn-outline-danger">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
         </div>
-
     </mat-tab>
 </mat-tab-group>
-
+<br>
+<div *ngIf="eliminado" class="alert alert-success  alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <b>
+        <h2 class="text-center">¡TAREA ELIMINADA CON ÉXITO!</h2>
+    </b>
+  </div>
 
 
 

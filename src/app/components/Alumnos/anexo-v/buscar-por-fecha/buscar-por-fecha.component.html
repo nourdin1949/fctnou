@@ -50,7 +50,12 @@
                     <th>V.T</th>
                 </tr>
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbody" >
+                <tr *ngIf="tareas.length==0 && buscar" >
+                    <td  [colSpan]="7">
+                        <span class="spinner-border "></span>
+                    </td>
+                </tr>
                 <tr *ngFor="let tarea of tareas , let id =index">
                     <th>
                         <textarea class="form-control" 
@@ -89,20 +94,25 @@
                             id="observaciones0"> 
                     </th>
                     <th>
-                        <div class="form-check form-switch">
-                            <input disabled 
-                                type="checkbox" 
-                                class="form-check-input" 
-                                name="tutor-empresa"
-                                [checked]="tarea.validadoResponsable==1">
+                        <div class="custom-control custom-switch">
+                            <input disabled type="checkbox" 
+                                class="custom-control-input"
+                                [checked]="tarea.validadoTutor==1"
+                                name="tutor-ecolar"
+                                id="tutor">
+                                <label class="custom-control-label" 
+                                    for="tutor">
+                                </label>
                         </div>
                     </th>
-                    <th>
-                        <div class="form-check form-switch">
-                            <input disabled 
-                                type="checkbox" 
-                                name="tutor-escolar"
-                                [checked]="tarea.validadoTutor">
+                    <th> 
+                        <div class="custom-control custom-switch">
+                            <input disabled type="checkbox" 
+                                class="custom-control-input"
+                                [checked]="tarea.validadoResponsable==1"
+                                name="tutor-empresa"
+                                id="responsable">
+                                <label class="custom-control-label" for="responsable"></label>
                         </div>
                     </th>
                 </tr>

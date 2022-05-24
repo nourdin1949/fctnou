@@ -15,8 +15,8 @@
                         <th>Observaciones </th>     
                     </tr>
                 </thead>
-                <tbody id="tbody">
-                    <tr>
+                <tbody [innerHTML]="html" id="tbody">
+                    <!-- <tr>
                         <th>
                             <textarea class="form-control" 
                                 name="descripcion0"
@@ -59,7 +59,7 @@
                                 name="observaciones0"
                                 id="observaciones0"> 
                         </th>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
                 <button (click)="crearfila()" 
