@@ -117,7 +117,7 @@ class TareasController extends Controller
 
     public function listarTareasPorID($id)
     {
-        return DB::select("select * from tareas where  id = ?", [$id]);
+        return DB::select("select * from tareas where  id = ? and (validadoTutor!=1)", [$id]);
     }
 
     public function fichasemanal($id){
@@ -129,12 +129,4 @@ class TareasController extends Controller
             inner join centros on centros.codigo= tutor.codigoCentro  where al.id=? ", [$id])[0];
     }
 
-    public function buscarTareas(Request $request){
-        $fecha1 = $request->fecha1;
-        $fecha2 = $request->fecha2;
-        $id= $request->id;
-
-        return DB::select("select * from tareas where alumno_id=? and fecha");
-    }
- 
 }

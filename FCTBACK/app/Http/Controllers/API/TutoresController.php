@@ -87,7 +87,7 @@ class TutoresController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource FROM storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -98,16 +98,30 @@ class TutoresController extends Controller
     }
 
     public function getIdUser(Request $request){
-        return DB::select("select id from tutores where dniTutor=?",[$request->dni])[0];
-
+        return DB::select("SELECT id FROM tutores WHERE dniTutor=?",[$request->dni])[0];
+        
     }
-
+    
     public function alumnoTutor($id){
-        return DB::select("SELECT a.nombreAlumno,c.cicloFormativo,a.id, c.nHoras , 
-        (select count(alumno_id)from tareas where alumno_id=a.id) as ntareas , 
-        (SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo))) as total from tareas where tareas.alumno_id=a.id) as horasRealizadas
-        FROM tutores as t inner join cursos c on c.tutor_id=t.id inner JOIN alumnos a on a.curso_id= c.id
-            where t.id=?;",[$id]);
+        return DB::select("SELECT a.nombreAlumno, c.cicloFormativo,a.id, c.nHoras , 
+                            (SELECT count(alumno_id) 
+                                FROM tareas 
+                                WHERE alumno_id=a.id) as ntareas , 
+                            (SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo))) as total 
+                                FROM tareas 
+                                WHERE tareas.alumno_id=a.id) as horasRealizadas
+                            FROM tutores as t inner join cursos c on c.tutor_id=t.id 
+                                inner JOIN alumnos a on a.curso_id= c.id
+                            WHERE t.id=?;",[$id]);
+    }
+    
+    public function validaTareaTutor($id){
+        
+        return DB::update("UPDATE tareas SET validadoTutor=1 WHERE id=? ",[$id]);
+    }
+    public static  function listarTutores(){
+        
+        return DB::select("select * from tutores ");
     }
 
     

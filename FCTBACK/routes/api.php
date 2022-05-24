@@ -12,6 +12,7 @@ use App\Http\Controllers\API\CursosController;
 use App\Http\Controllers\API\TutoresController;
 use App\Http\Controllers\API\ResponsablesController;
 use App\Http\Controllers\API\AlumnosController;
+use App\Http\Controllers\API\ChatController;
 use App\Http\Controllers\API\FctAlumnosController;
 use App\Http\Controllers\API\TareasController;
 
@@ -77,6 +78,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::get('listarTutores', 'index');
         Route::get('findTutorByid/{id}', 'show');
         Route::get('alumosTutor/{id}', 'alumnoTutor');
+        Route::put('validaTareaTutor/{id}', 'validaTareaTutor');
         Route::put('updateTutorById/{id}', 'update');
         Route::delete('eliminarTutor/{id}', 'destroy');
     });
@@ -91,9 +93,12 @@ Route::middleware('auth:sanctum')->group(function(){
     // RESPONSABLES
     Route::controller(ResponsablesController::class)->group(function () {
         Route::post('insertarResponsable', 'store');
+        Route::post('getIdByDniUserResposable', 'getIdResposable');
         Route::get('listarResponsables', 'index');
         Route::get('findResponsableByid/{id}', 'show');
         Route::get('findResponsablesByEmpresaID/{id}', 'findResponsablesByEmpresaID');
+        Route::get('alumosResponsable/{id}', 'alumosResponsable');
+        Route::put('validaTareaResponsable/{id}', 'validaTareaResponsable');
         Route::put('updateResponsableById/{id}', 'update');
         Route::delete('eliminarResponsable/{id}', 'destroy');
     });
@@ -118,12 +123,17 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('insertarTareas', 'store');
         Route::get('listarTareasPorIDAlumno/{id}', 'show');
         Route::post('listarTareasEntreFechas/{id}', 'listarTareasEntreFechas');
-        Route::post('buscarTareas', 'buscarTareas');
         Route::get('listarTareasPorFecha/{fecha}', 'listarTareasPorFecha');
         Route::get('listarTareasPorID/{id}', 'listarTareasPorID');
         Route::get('fichasemanal/{id}', 'fichasemanal');
         Route::put('modificarTareaAlumno/{id}', 'update');
         Route::delete('eliminarTareaAlumno/{id}', 'destroy');
+    });
+    // TAREAS
+    Route::controller(ChatController::class)->group(function () {
+        Route::post('insertarChat', 'store');
+        Route::get('listarChat', 'index');
+        
     });
 });
 
