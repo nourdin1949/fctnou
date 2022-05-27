@@ -52,3 +52,9 @@ input[type=radio]{
 #validado{
     display: none;
 }
+#registrado{
+    display: none;
+}
+.hide {
+    display: none;
+  }
