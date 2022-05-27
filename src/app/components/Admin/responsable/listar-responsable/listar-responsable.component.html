@@ -5,10 +5,18 @@
 
     <mat-tab label="Listado de Responsables">
         <br>
-        <div>
-            <p> <i (click)="listarResponsbles()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        <div *ngIf="responsables.length>0 else alert">
+            <mat-label class="mr-1">Recargar Tabla</mat-label>
+            <mat-icon (click)="listarResponsbles()"  >refresh</mat-icon>
         </div>
-        <table class="table text-center table-striped">
+        <ng-template #alert>
+            <div class="alert alert-warning " *ngIf="responsables.length==0 && cargaCompleta" >
+                <b>
+                    <h2 class="text-center">¡INSERTE RESPONSABLES!</h2>
+                </b>
+            </div>
+        </ng-template>
+        <table *ngIf="responsables.length>0" class="table text-center table-striped">
             <thead class="table bg-color text-light">
                 <tr>
                     <th>#</th>

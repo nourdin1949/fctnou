@@ -11,7 +11,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -24,13 +27,15 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
   imports: [
     CommonModule,
     CsvRoutingModule,
-    ReactiveFormsModule,
+    MatTabsModule,
     FormsModule,
-    MatTabsModule, 
-    MatFormFieldModule,
-    MatInputModule, 
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatIconModule,
-    NgxMatFileInputModule
+    MaterialFileInputModule
   ]
 })
 export class CsvModule { }

@@ -10,6 +10,8 @@ import { ProfesorService } from '../profesor.service';
 export class ListarProfesorComponent implements OnInit {
   public profesores:Profesor[]=[]
   public idProfesor: number =0;
+  public cargaCompleta:boolean=false
+
   constructor(private profesorService:ProfesorService) { }
 
   ngOnInit(): void {
@@ -17,8 +19,8 @@ export class ListarProfesorComponent implements OnInit {
   }
   listarProfesores(){
     this.profesorService.listarProfesor().subscribe((response)=>{
-      
       this.profesores= response;
+      this.cargaCompleta=true
     })
   }
 

@@ -12,7 +12,7 @@ export class ListarEmpresasComponent implements OnInit {
 
   public mostrar:boolean=true
   public empresas:Empresa[]=[]
- 
+  public cargaCompleta:boolean=false
   public idEmpresa:number=0
   public alumnosfct: FCTAlumno[] = []
   public alumnosEmpresas:any[]=[]
@@ -27,6 +27,7 @@ export class ListarEmpresasComponent implements OnInit {
   listarEmpresas(){
     this.empresaService.listarEmpresas().subscribe((response)=>{
       this.empresas= response;
+      this.cargaCompleta=true
     })
   }
   guardarid(idEmpresa:number){

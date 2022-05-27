@@ -8,6 +8,12 @@ import { ModificarCursosComponent } from './modificar-cursos/modificar-cursos.co
 import { InsertarCursoComponent } from './insertar-curso/insertar-curso.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 @NgModule({
@@ -20,9 +26,14 @@ import { MatTabsModule } from '@angular/material/tabs';
   imports: [
     CommonModule,
     CursosRoutingModule,
-    ReactiveFormsModule,
+    MatTabsModule,
     FormsModule,
-    MatTabsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
   ],
   exports:[
     CursosComponent,

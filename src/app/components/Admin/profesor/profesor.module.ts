@@ -6,9 +6,14 @@ import { ProfesorComponent } from './profesor.component';
 import { ListarProfesorComponent } from './listar-profesor/listar-profesor.component';
 import { InsertarProfesorComponent } from './insertar-profesor/insertar-profesor.component';
 import { ModificarProfesorComponent } from './modificar-profesor/modificar-profesor.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {MatTabsModule} from '@angular/material/tabs'; 
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     ProfesorComponent,
@@ -19,8 +24,14 @@ import {MatTabsModule} from '@angular/material/tabs';
   imports: [
     CommonModule,
     ProfesorRoutingModule, 
+    MatTabsModule,
+    FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
   ]
 })
 export class ProfesorModule { }

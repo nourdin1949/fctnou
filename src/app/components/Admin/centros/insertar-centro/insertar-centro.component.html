@@ -1,98 +1,173 @@
-
-
 <div class="row w-100 mb-5">
     <div class="col-3"></div>
-    <form [formGroup]="forminsertarCentro" (ngSubmit)="insertarCentro(forminsertarCentro)" class="w-75 col-6">
+
+    <form [formGroup]="forminsertarCentro" (ngSubmit)="insertarCentro(forminsertarCentro)"
+        class="w-75 offset-md-3 col-6">
         <div class="form-group">
             <h3 class="title bg-color text-light p-2">Insertar Centro</h3>
         </div>
-        <div class="form-group">
-            <label for="nombre" class="form-label">Nombre Centro</label>
-            <input type="text" formControlName="nombre" placeholder="Nombre Centro" class="form-control" id="centro">
-        </div>
+        <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Nombre Centro</mat-label>
+            <input matInput 
+                formControlName="nombre" 
+                placeholder="Nombre Centro" 
+                class="w-100">
+            <mat-error *ngIf="this.forminsertarCentro.controls['nombre'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarCentro.controls['nombre'].hasError('pattern')">
+                Minimo 3 letras
+            </mat-error>
+        </mat-form-field>
         <div class="row">
             <div class="col-lg-6  col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="provincia" class="form-label">Provincia</label>
-                    <input type="text" formControlName="provincia" placeholder="Provincia" class="form-control" id="provincia">
-                </div>
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Provincia</mat-label>
+                    <input matInput 
+                        formControlName="provincia" 
+                        placeholder="Provincia" 
+                        class="w-100">
+                    <mat-error *ngIf="this.forminsertarCentro.controls['provincia'].hasError('required')">
+                        Campo requerido</mat-error>
+                    <mat-error *ngIf="this.forminsertarCentro.controls['provincia'].hasError('pattern')">
+                        Mínimo 3 letras
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="col-lg-6 col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="localidad" class="form-label">Localidad</label>
-                    <input type="text" formControlName="localidad" placeholder="Localidad" class="form-control" id="localidad">
-                </div>
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Localidad</mat-label>
+                    <input matInput 
+                        formControlName="localidad" 
+                        placeholder="Localidad" 
+                        class="w-100">
+                    <mat-error *ngIf="this.forminsertarCentro.controls['localidad'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarCentro.controls['localidad'].hasError('pattern')">
+                        Minimo 3 letras
+                    </mat-error>
+                </mat-form-field>
             </div>
         </div>
-        <div class="form-group">
-            <label for="calle" class="form-label">Calle</label>
-            <input type="text" formControlName="calle" placeholder="Calle" class="form-control" id="calle">
-        </div>
-
+        <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Calle</mat-label>
+            <input matInput formControlName="calle" placeholder="Calle Nº " class="w-100">
+            <mat-error *ngIf="this.forminsertarCentro.controls['calle'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarCentro.controls['calle'].hasError('pattern')">
+                Minimo 3 letras
+            </mat-error>
+        </mat-form-field>
         <div class="row">
             <div class="col-lg-6  col-sm-12  col-md-12">
-                <div class="form-group ">
-                    <label for="cp" class="form-label">Código Postal</label>
-                    <input type="text" formControlName="cp" placeholder="Código Postal" class="form-control" id="cp">
-                </div>
-            </div>
-            <div class="col-lg-6 form-group   col-sm-12  col-md-12">
-                <label for="telefono" class="form-label">Teléfono</label>
-                <input type="tel" formControlName="telefono" placeholder="Teléfono" class="form-control" id="telefono">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email"  formControlName="email" placeholder="Email" class="form-control" id="email">
-        </div>
-        <div class="row">
-            <div class="col-lg-6  col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="code" class="form-label">Código Centro</label>
-                    <input type="text" formControlName="code" placeholder="Código Centro" class="form-control"
-                        id="code">
-                </div>
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Código Postal</mat-label>
+                    <input matInput 
+                        formControlName="cp" 
+                        placeholder="12345" 
+                        class="w-100">
+                    <mat-error *ngIf="this.forminsertarCentro.controls['cp'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarCentro.controls['cp'].hasError('pattern')">
+                        Mínimo 5 dígitos
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="col-lg-6 col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="cif" class="form-label">CIF</label>
-                    <input type="text"  formControlName="cif" placeholder="CIF" class="form-control" id="cif">
-                </div>
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput 
+                        formControlName="telefono" 
+                        placeholder="123456789" 
+                        class="w-100">
+                    <mat-error *ngIf="this.forminsertarCentro.controls['telefono'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarCentro.controls['telefono'].hasError('pattern')">
+                        Necesarios 9 dígitos
+                    </mat-error>
+                </mat-form-field>
             </div>
         </div>
-        <div class="form-group">
-            <label for="director" class="form-label">Nombre Director/a</label>
-            <input type="text" formControlName="director" placeholder="Nombre Director/a" class="form-control"
-                id="director">
+        <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput 
+                formControlName="email" 
+                placeholder="nombre@dominio.com" 
+                class="w-100">
+            <mat-error *ngIf="this.forminsertarCentro.controls['email'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarCentro.controls['email'].hasError('pattern')">
+                Email no es válido
+            </mat-error>
+        </mat-form-field>
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Código Centro</mat-label>
+                    <input matInput 
+                        formControlName="code" 
+                        placeholder="12345678" 
+                        class="w-100">
+                    <mat-error *ngIf="this.forminsertarCentro.controls['code'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarCentro.controls['code'].hasError('pattern')">
+                        Mínimo 8 dígitos
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6 col-sm-12  col-md-12">
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>CIF</mat-label>
+                    <input matInput 
+                        formControlName="cif" 
+                        placeholder="12345678C" 
+                        class="w-100">
+                    <mat-error *ngIf="this.forminsertarCentro.controls['cif'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
         </div>
-        
-        <button type="submit" class="w-100 btn bg-outline-color">Insertar</button>
+        <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Nombre Director/a</mat-label>
+            <input matInput 
+                formControlName="director" 
+                placeholder="Nombre Apellido" 
+                class="w-100">
+            <mat-error *ngIf="this.forminsertarCentro.controls['director'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarCentro.controls['director'].hasError('pattern')">
+                Minimo 3 letras
+            </mat-error>
+        </mat-form-field>
+        <button type="submit" class="w-100 mt-2 btn bg-outline-color">Insertar</button>
     </form>
-
 </div>
 
-
-
-  
-<button type="button" id="insertado" data-toggle="modal"
-data-target="#insertarCentro"></button>
+<button type="button" id="insertado" data-toggle="modal" data-target="#insertarCentro"></button>
 
 <!-- Modal INSERTAR CENTRO-->
 <div class="modal fade" id="insertarCentro" tabindex="-1" role="dialog" aria-labelledby="insertarCentroLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        
-        <div class="modal-body text-center">
-            <b>
-                <h2 class="text-center">¡CENTRO INSERTADO CON ÉXITO!</h2>
-            </b>
-            <i class="fa fa-check text-success" aria-hidden="true"></i>
- 
-            <i class="fa fa-check text-success" aria-hidden="true"></i>
-            <br>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¡CENTRO INSERTADO CON ÉXITO!</h2>
+                </b>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
         </div>
     </div>
-</div>
 </div>

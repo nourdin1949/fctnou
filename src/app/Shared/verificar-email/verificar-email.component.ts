@@ -20,7 +20,7 @@ export class VerificarEmailComponent implements OnInit {
       this.users = response;
       this.users = this.users.filter((user) => user.email == email)
       if (this.users[0].email_verified_at==null) {
-        
+        this.sharedservice.sendEmailVerification(email).subscribe((res)=>console.log(res))
       } 
     });
   }

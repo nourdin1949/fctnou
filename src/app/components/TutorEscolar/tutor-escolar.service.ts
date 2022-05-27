@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Tarea } from 'src/app/Shared/interfaces/Interface';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TutorEscolarService {
   public alumnos: any[] = []
-  private url = "http://localhost:8000/api";
+  private url=environment.url;
 
   constructor(private http: HttpClient) {
     setTimeout(() => {

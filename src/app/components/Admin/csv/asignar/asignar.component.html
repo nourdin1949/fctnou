@@ -1,55 +1,75 @@
+<div class="row  w-100">
+    <div class="col-3"></div>
 
-<div class="row w-100">
-    <div class="col-lg-3"></div>
-    
-    <form [formGroup]="formAsignar" class="w-75 col-6" (ngSubmit)="asignarPractica()">
-        <div class="form-group">
-            <h3 class="title bg-color text-light p-2">Asignar alumno práctica</h3>
-        </div>
-        <div class="form-group">
-            <label for="alumno"  class="form-label"> Alumno</label>
-            <select class="form-control" formControlName="alumno">
-              <option value="0">Seleciona Alumno</option>
-              <option value="{{alumno.id}}" *ngFor="let alumno of alumnos">{{alumno.nombreAlumno}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="empresa"  class="form-label">Empresa</label>
-            <select class="form-control" (change)="cargarSelectResponsables($event.target)" formControlName="empresa">
-              <option value="0">Seleciona Empresa</option>
-              <option value="{{empresa.id}}" *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
-            </select>
-          </div>
-          <!-- Solo mostrará los responsables pertenecientes a la empresa seleccionada -->
-          <div class="form-group">
-            <label for="responsable"   class="form-label">Responsable</label>
-            <select class="form-control" [disabled]="true" formControlName="responsable">
-              <option value="0">Seleciona Responsable</option>
-              <option value="{{responsable.id}}" *ngFor="let responsable of responsables">{{responsable.nombreResponsable}}</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="centro" class="form-label">Centro </label>
-            <select class="form-control"  (change)="cargarSelectTutores($event)" formControlName="centro">
-              <option value="0">Seleciona Curso</option>
-              <option value="{{centro.codigo}}" *ngFor="let centro of centros">{{centro.nombreCentro}}</option>
-            </select>
-          </div>
-          <!-- Solo mostrará los tutores pertenecientes al centro seleccionado -->
-          <div class="form-group">
-            <label for="tutor"   class="form-label">Tutor </label>
-            <select class="form-control"  formControlName="tutor">
-              <option value="0">Seleciona Tutor</option>
-              <option value="{{tutor.id}}" *ngFor="let tutor of tutores">{{tutor.nombreTutor}}</option>
-            </select>
-          </div>
-         
-       
-          <button type="submit" class=" w-100 btn bg-outline-color" >Añadir</button>
-    </form>
+  <form [formGroup]="formAsignar" class="w-75  col-6" (ngSubmit)="asignarPractica()">
+    <div class="form-group">
+      <h3 class="title bg-color text-center text-light p-2">Asignar alumno práctica</h3>
     </div>
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="alumno">
+        <mat-option value="{{alumno.id}}" *ngFor="let alumno of alumnos">
+          {{alumno.nombreAlumno}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.formAsignar.controls['alumno']?.errors?.['required']">
+        Campo requerido
+      </mat-error>
+    </mat-form-field>
 
-    <button type="button" id="insertado" data-toggle="modal" data-target="#asignarEmpresa"></button>
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Empresa</mat-label>
+      <mat-select (selectionChange)="cargarSelectResponsables($event.source)" formControlName="empresa">
+        <mat-option value="{{empresa.id}}" *ngFor="let empresa of empresas">
+          {{empresa.nombreEmpresa}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.formAsignar.controls['empresa']?.errors?.['required']">
+        Campo requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Responsable</mat-label>
+      <mat-select formControlName="responsable">
+        <mat-option value="{{responsable.id}}" *ngFor="let responsable of responsablesTemp">
+          {{responsable.nombreResponsable}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.formAsignar.controls['responsable']?.errors?.['required']">
+        Campo requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Centro</mat-label>
+      <mat-select  (selectionChange)="cargarSelectTutores($event)" formControlName="centro">
+        <mat-option value="{{centro.codigo}}" *ngFor="let centro of centros">
+          {{centro.nombreCentro}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.formAsignar.controls['centro']?.errors?.['required']">
+        Campo requerido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Tutor</mat-label>
+      <mat-select  formControlName="tutor">
+        <mat-option value="{{tutor.id}}" *ngFor="let tutor of tutoresTmp">
+          {{tutor.nombreTutor}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.formAsignar.controls['tutor']?.errors?.['required']">
+        Campo requerido
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" class=" w-100 mt-2 btn bg-outline-color">Añadir</button>
+  </form>
+</div>
+
+<button type="button" id="insertado" data-toggle="modal" data-target="#asignarEmpresa"></button>
 
 <!-- Modal INSERTAR ALUMNOFCT-->
 <div class="modal fade" id="asignarEmpresa" tabindex="-1" role="dialog" aria-labelledby="asignarEmpresaLabel"
@@ -59,7 +79,7 @@
 
       <div class="modal-body text-center">
         <b>
-          <h2 class="text-center">¡ALUMNO EN PRÁCTICA!  ¡¡ÉXITO!!</h2>
+          <h2 class="text-center">¡ALUMNO EN PRÁCTICA! ¡¡ÉXITO!!</h2>
         </b>
         <i class="fa fa-check text-success" aria-hidden="true"></i>
 

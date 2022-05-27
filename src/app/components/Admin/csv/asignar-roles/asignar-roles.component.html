@@ -1,46 +1,97 @@
 
 
 <div class="row w-100">
-    <div class="col-lg-3"></div>
+    <div class="col-3"></div>
 
-    <form [formGroup]="formRoles" class="w-75 col-6">
+    <form [formGroup]="formRoles" class="w-75  col-6">
         <div class="form-group">
             <h3 class="title bg-color text-light p-2">Asignar roles</h3>
         </div>
-        <!-- Enviar un email con usuario y contraseña al correo del almuno seleccionado  se generara un select con todos los  DNI-->
-        <div class="form-group">
-            <label for="rol" class="form-label"> Selecciona</label>
-            <select class="form-control" (change)="recargarselectuser()" [(ngModel)]="perfil" formControlName="rol">
-                <option value="1">Seleciona Tipo de Perfil</option>
-                <option value="responsable">Responsable</option>
-                <option value="profesor">Tutor</option>
-                <option value="alumno">Alumno</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="dni" class="form-label"> Selecciona</label>
-            <select class="form-control" (change)="guardarEmail($event)" formControlName="dni">
-                <option value="1" >Seleciona Usuario</option>
-                <option value="{{persona.dni}}" *ngFor="let persona of auxTodosDatos">{{persona.nombre}}</option>
-            </select>
-        </div>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Rol Usuario</mat-label>
+            <mat-select (selectionChange)="recargarselectuser()" 
+                [(ngModel)]="perfil" 
+                formControlName="rol">
+              <mat-option value="responsable" >
+                  Responsable
+              </mat-option>
+              <mat-option value="profesor" >
+                  Tutor
+              </mat-option>
+              <mat-option value="alumno" >
+                  Alumno
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.formRoles.controls['rol']?.errors?.['required']">
+              Campo requerido
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Usuario</mat-label>
+            <mat-select (selectionChange)="guardarEmail($event)" 
+                formControlName="dni">
+              <mat-option value="{{persona.dni}}" 
+                *ngFor="let persona of auxTodosDatos" >
+                    {{persona.nombre}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.formRoles.controls['dni']?.errors?.['required']">
+              Campo requerido
+            </mat-error>
+        </mat-form-field>
         
         <div class="row">
             <div class="col-lg-6  col-sm-12  col-md-12">
-              <div class="form-group">
-                <label for="pwd" class="form-label">Contraseña</label>
-                <input type="text" formControlName="pwd" placeholder="contraseña" class="form-control" id="pwd">
-            </div>
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput 
+                      formControlName="pwd" 
+                      placeholder="Contraseña" 
+                      class="w-100">
+                    <mat-error *ngIf="this.formRoles.controls['pwd'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.formRoles.controls['pwd'].hasError('pattern')">
+                        Upper/LowerCase, Number and min 8 Chars 
+                    </mat-error>
+                </mat-form-field>
             </div>
             <div class="col-lg-6   col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="text" value="{{email}}" [disabled]="perfil!='admin'" placeholder="correo electrónico" class="form-control" id="pwd">
-                </div>
+                <mat-form-field class="w-100"  appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput  required
+                      placeholder="Contraseña" 
+                      [value]="email"
+                      [disabled]="true"
+                      class="w-100">
+                    <mat-error *ngIf="email==''">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
             </div>
           </div>
         <button type="submit" class=" w-100 btn bg-outline-color"  (click)="registerUser()">Asignar</button>
 
     </form>
+</div>
+
+
+<button type="button" id="registrado" data-toggle="modal" data-target="#registaruser"></button>
+
+<!-- Modal REGISTRAR USER-->
+<div class="modal fade" id="registaruser" tabindex="-1" role="dialog" aria-labelledby="registaruserLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <b>
+                    <h2 class="text-center">¡USUARIO REGISTRADO CON ÉXITO!</h2>
+                </b>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
+        </div>
+    </div>
 </div>

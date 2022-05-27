@@ -55,8 +55,8 @@
       <!-- Botones si el perfil es de un alumno -->
       <button id="anexoVmes" *ngIf="user.perfil=='alumno'" name="anexoVmes" routerLinkActive="bg-color text-activo"
         routerLink="alumno/calendario" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
-        <i class="fa fa-users"></i>
-        <span class="ml-3">Anexo V Mes</span>
+        <mat-icon >calendar_today</mat-icon>
+        <span class="ml-1">Anexo V Mes</span>
       </button>
       <button id="rellenarAnexoV" *ngIf="user.perfil=='alumno'" name="rellenarAnexoV" routerLinkActive="bg-color text-activo"
         routerLink="alumno/insertar/{{date}}" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">

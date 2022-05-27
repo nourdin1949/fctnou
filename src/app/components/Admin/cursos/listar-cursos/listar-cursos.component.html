@@ -4,10 +4,18 @@
 <mat-tab-group>
     <mat-tab label="Listado de Cursos">
         <br>
-        <div>
-            <p> <i (click)="listarCursos()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        <div *ngIf="cursos.length>0  else alert">
+            <mat-label class="mr-1">Recargar Tabla</mat-label>
+            <mat-icon (click)="listarCursos()"  >refresh</mat-icon>
         </div>
-        <table class="table text-center table-striped">
+        <ng-template #alert>
+            <div class="alert alert-warning " *ngIf="cursos.length==0 && cargaCompleta " >
+                <b>
+                    <h2 class="text-center">¡INSERTE CURSOS!</h2>
+                </b>
+            </div>
+        </ng-template>
+        <table *ngIf="cursos.length>0" class="table text-center table-striped">
             <thead class="table bg-color  text-light">
                 <tr>
                     <th>Code Ciclo</th>
@@ -17,7 +25,6 @@
                     <th>Nª horas</th>
                     <th>Tutor ID</th>
                     <th [colSpan]="2">Acciones</th>
-
                 </tr>
             </thead>
             <tbody>

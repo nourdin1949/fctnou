@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Alumno, Centro, Curso, Empresa, Profesor, Responsable } from 'src/app/Shared/interfaces/Interface';
+
 import { ProfesorService } from '../../profesor/profesor.service';
 import { ResponsableService } from '../../responsable/responsable.service';
 import * as XLSX from 'xlsx'
@@ -16,19 +16,33 @@ import { CentrosService } from '../../centros/centros.service';
 export class InsertarDatosComponent {
 
   public formcsv: FormGroup
-  responsable: any[] = []
-  tutores: any[] = []
-  centros: any[] = []
-  empresas: any[] = []
-  cursos: any[] = []
-  alumnos: any[] = []
-  arrayBuffer: any = []
-  fileResponsable: File
-  fileTutores: File
-  fileCentros: File
-  fileEmpresas: File
-  fileAlumnos: File
-  fileCursos: File
+  public responsable: any[] = []
+  public tutores: any[] = []
+  public centros: any[] = []
+  public empresas: any[] = []
+  public cursos: any[] = []
+  public alumnos: any[] = []
+  public arrayBuffer: any = []
+  public fileResponsable: File
+  public fileTutores: File
+  public fileCentros: File
+  public fileEmpresas: File
+  public fileAlumnos: File
+  public fileCursos: File
+  public empresaCorrecto: number = 0
+  public responsableCorrecto: number = 0
+  public tutoresCorrecto: number = 0
+  public alumnosCorrecto: number = 0
+  public centrosCorrecto: number = 0
+  public cursosCorrecto: number = 0
+  public empresaFallo: number = 0
+  public responsableFallo: number = 0
+  public tutoresFallo: number = 0
+  public alumnosFallo: number = 0
+  public centrosFallo: number = 0
+  public cursosFallo: number = 0
+  public inputsWithValue: number = 0
+  public ficherosleidos: number = 0
   public constructor(
     private fb: FormBuilder,
     private responsableService: ResponsableService,
@@ -48,7 +62,14 @@ export class InsertarDatosComponent {
     })
   }
 
-  public insertarDatos() {
+  public insertarDatos(event) {
+    this.restablecerContadores()
+    // Contar los inputs type file que no están vaciones
+    for (let i = 0; i < event.target.length - 1; i++) {
+      if (event.target[i].value != "") this.inputsWithValue++
+      console.log(this.inputsWithValue)
+    }
+    console.log(this.inputsWithValue, "innnnn")
     if (this.fileEmpresas != undefined) {
       this.uploadDocument(this.fileEmpresas)
     }
@@ -70,29 +91,33 @@ export class InsertarDatosComponent {
   }
   public filechangedResponsables(event: any) {
     this.fileResponsable = event.target.files[0]
-    console.log(this.fileResponsable.name)
   }
+
   public filechangedTutores(event: any) {
     this.fileTutores = event.target.files[0]
   }
+
   public filechangedAlumnos(event: any) {
     this.fileAlumnos = event.target.files[0]
   }
+
   public filechangedCentros(event: any) {
     this.fileCentros = event.target.files[0]
   }
+
   public filechangedEmpresas(event: any) {
     this.fileEmpresas = event.target.files[0]
-    console.log(this.fileEmpresas)
   }
+
   public filechangedCursos(event: any) {
     this.fileCursos = event.target.files[0]
   }
+
   public uploadDocument(file) {
     let filename = file.name.substring(0, file.name.length - 4);
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file);
-
+    console.log(fileReader)
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result
       const data = new Uint8Array(this.arrayBuffer);
@@ -107,169 +132,216 @@ export class InsertarDatosComponent {
       console.log(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
       var arraylist = XLSX.utils.sheet_to_json(worksheet, { raw: true });
 
-      if (filename == "responsables") {
-        this.insertarResponsablesCSV(arraylist)
-      } else if (filename == "tutores") {
-        this.insertarTutoresCSV(arraylist)
-      } else if (filename == "centros") {
-        this.insertarCentrosCSV(arraylist)
-      } else if (filename == "empresas") {
-        this.insertarEmpresasCSV(arraylist)
-      } else if (filename == "alumnos") {
-        this.insertarAlumnosCSV(arraylist)
-      } else if (filename == "cursos") {
-        this.insertarCursosCSV(arraylist)
+      switch (filename) {
+        case 'empresas':
+          this.insertarEmpresasCSV(arraylist);
+          break;
+        case 'centros':
+          this.insertarCentrosCSV(arraylist);
+          break;
+        case 'cursos':
+          this.insertarCursosCSV(arraylist);
+          break;
+        case 'tutores':
+          this.insertarTutoresCSV(arraylist);
+          break;
+        case 'responsables':
+          this.insertarResponsablesCSV(arraylist);
+          break;
+        case 'alumnos':
+          this.insertarAlumnosCSV(arraylist);
+          break;
       }
     }
   }
+
   public insertarResponsablesCSV(responsable) {
-    const responsableObject: Responsable = {
-      "id": 0,
-      "nombreResponsable": "",
-      "dniResponsable": "",
-      "email": "",
-      "empresa_id": 0
-    }
 
     responsable.forEach(element => {
-      responsableObject[0] = element[0]
-      responsableObject.dniResponsable = element[1]
-      responsableObject.email = element[2]
-      responsableObject.empresa_id = element[3]
-      this.responsableService.insertarResponsables(responsableObject).subscribe()
-      console.log(responsableObject)
+
+      this.responsableService.insertarResponsables(element)
+        .subscribe(
+          () => {
+            this.responsableCorrecto++
+            console.log("correcto res")
+          },
+          (res) => {
+            this.responsableFallo++
+            console.log("fallo res", res)
+          })
     });
+
+   let respint= setInterval(() => {
+      console.log("resp:" + responsable.length, "c" + this.responsableCorrecto, "f" + this.responsableFallo)
+
+      if (responsable.length == (this.responsableCorrecto + this.responsableFallo) || responsable.length == 0) {
+        this.ficherosleidos++
+       
+        this.mostrarModal()
+        clearInterval(respint)
+      }
+    }, 3000);
   }
   public insertarTutoresCSV(tutores) {
-    const tutoresobject: Profesor = {
-      "id": 0,
-      "nombreTutor": "",
-      "dniTutor": "",
-      "email": "",
-      "codigoCentro": 0
-    }
+
     tutores.forEach(element => {
-      tutoresobject.nombreTutor = element.nombreTutor
-      tutoresobject.dniTutor = element.dniTutor
-      tutoresobject.email = element.email
-      tutoresobject.codigoCentro = element.codigoCentro
-      this.profesorService.insertarProfesor(tutoresobject).subscribe()
-
-      console.log(tutoresobject)
+      
+      this.profesorService.insertarProfesor(element)
+        .subscribe(
+          () => {
+            this.tutoresCorrecto++
+            console.log("correcto tutor")
+          },
+          (res) => {
+            this.tutoresFallo++
+            console.log("fallo tutor", res)
+          })
     });
+    let tutoresinter =setInterval(() => {
+      console.log("tuto:" + tutores.length, "c" + this.tutoresCorrecto, "f" + this.tutoresFallo)
+
+      if (tutores.length == (this.tutoresFallo + this.tutoresCorrecto) || tutores.length == 0) {
+        this.ficherosleidos++
+       
+        this.mostrarModal()
+        clearInterval(tutoresinter)
+      }
+    }, 1000);
   }
 
-  public insertarCentrosCSV(responsable) {
-    const centroObject: Centro = {
-      "codigo":0,
-      "nombreCentro":"",
-      "provincia": "",
-      "localidad": "",
-      "calle": "",
-      "cp": "",
-      "cif": "",
-      "telefono":0,
-      "email":"",
-      "nombreDirector":""
-    }
-
-    responsable.forEach(element => {
-      centroObject.codigo=element.codigo
-      centroObject.nombreCentro = element.nombreCentro
-      centroObject.provincia = element.provincia
-      centroObject.localidad = element.localidad
-      centroObject.calle = element.calle
-      centroObject.cp = element.cp
-      centroObject.cif = element.cif
-      centroObject.telefono = element.telefono
-      centroObject.email = element.email
-      centroObject.nombreDirector = element.nombreDirector
-      this.centroService.insertarCentro(centroObject).subscribe()
-      console.log(centroObject)
+  public insertarCentrosCSV(centros) {
+    centros.forEach(element => {
+      this.centroService.insertarCentro(element)
+        .subscribe(
+          () => {
+            this.centrosCorrecto++
+            console.log("correcto centr")
+          },
+          (res) => {
+            this.centrosFallo++
+          
+            console.log(this.centrosFallo,"fallo centorr", res)
+          })
+      
     });
+    let centrointer = setInterval(() => {
+      console.log("centro:" + centros.length, "c" + this.centrosCorrecto, "f" + this.centrosFallo)
+
+      if (centros.length == (this.centrosFallo + this.centrosCorrecto) || centros.length == 0) {
+        this.ficherosleidos++
+       
+        this.mostrarModal()
+        clearInterval(centrointer)
+      }
+    }, 1000);
   }
+
   public insertarEmpresasCSV(empresa) {
-    const empresaObject: Empresa = {
-      "id": 0,
-      "nombreEmpresa": "",
-      "provincia": "",
-      "localidad": "",
-      "calle": "",
-      "cp": "",
-      "cif": "",
-      "telefono": "",
-      "email":"",
-      "nombreRepresentante": "",
-      "dniRepresentante":""
-    }
-    empresa.forEach(element => {
-      empresaObject.nombreEmpresa = element.nombreEmpresa
-      empresaObject.provincia = element.provincia
-      empresaObject.localidad = element.localidad
-      empresaObject.calle = element.calle
-      empresaObject.cp = element.cp
-      empresaObject.cif = element.cif
-      empresaObject.telefono = element.telefono
-      empresaObject.email = element.email
-      empresaObject.nombreRepresentante = element.nombreRepresentante
-      empresaObject.dniRepresentante = element.dniRepresentante
-      this.empresaService.insertarEmpresas(empresaObject).subscribe()
-      console.log(empresaObject)
-    });
-  }
-  public insertarAlumnosCSV(alumnos) {
-    console.log(alumnos)
-    const alumnoObject: Alumno = {
-      "id":0,
-      "nombreAlumno":"",
-      "dniAlumno": "",
-      "curso_id": 0,
-      "provincia": "",
-      "localidad": "",
-      "calle": "",
-      "cp": 0,
-      "email":"",
-      "matriculado":1,
-    }
 
-    alumnos.forEach(element => {
-      alumnoObject.nombreAlumno = element.nombreAlumno
-      console.log(element.nombreAlumno)
-      alumnoObject.dniAlumno = element.dniAlumno
-      alumnoObject.curso_id= element.curso_id
-      alumnoObject.provincia = element.provincia
-      alumnoObject.localidad = element.localidad
-      alumnoObject.calle = element.calle
-      alumnoObject.cp = element.cp
-      alumnoObject.email = element.email
-      this.alumnoService.insertarAlumnos(alumnoObject).subscribe()
-      console.log(alumnoObject)
+    empresa.forEach(element => {
+
+      this.empresaService.insertarEmpresas(element)
+        .subscribe(
+          () => {
+            this.empresaCorrecto++
+          },
+          (RES) => {
+            console.log(RES)
+            this.empresaFallo++
+          })
     });
+   let empresainter= setInterval(() => {
+      console.log("emp:" + empresa.length, "c" + this.empresaCorrecto, "f" + this.empresaFallo)
+
+      if (empresa.length == (this.empresaFallo + this.empresaCorrecto) || empresa.length == 0) {
+        this.ficherosleidos++
+       
+        this.mostrarModal()
+        clearInterval(empresainter)
+      }
+    }, 1000);
+  }
+
+  public insertarAlumnosCSV(alumnos) {
+    alumnos.forEach(element => {
+      this.alumnoService.insertarAlumnos(element)
+        .subscribe(
+          () => {
+            this.alumnosCorrecto++
+          },
+          (res) => {
+            this.alumnosFallo++
+            console.log("alumno")
+          })
+    });
+     let alumnointerval = setInterval(() => {
+      console.log("alumn:" + alumnos.length, "c" + this.alumnosCorrecto, "f" + this.alumnosFallo)
+
+      if (alumnos.length == (this.alumnosCorrecto + this.alumnosFallo) || alumnos.length == 0) {
+        this.ficherosleidos++
+       
+        this.mostrarModal()
+        clearInterval(alumnointerval)
+      }
+    }, 1000);
   }
   public insertarCursosCSV(cursos) {
-    window.alert(cursos.length)
-    const cursoObject: Curso = {
-      "id":0,
-      "codigoCiclo":"", 
-      "familiaProfesional":"", 
-      "cicloFormativo":"", 
-      "cursoAcademico":"",
-      "nHoras":0,
-      "tutor_id":0
-    }
+
+
     cursos.forEach((element) => {
-      cursoObject.codigoCiclo = element.codigoCiclo
-      cursoObject.familiaProfesional = element.familiaProfesional
-      cursoObject.cicloFormativo = element.cicloFormativo
-      cursoObject.cursoAcademico = element.cursoAcademico
-      cursoObject.nHoras = element.nHoras
-      cursoObject.tutor_id = element.tutor_id
-      this.cursoService.insertarCurso(cursoObject).subscribe((res)=>{
-        console.log(res)
-      })
-      console.log(cursoObject)
+ 
+      this.cursoService.insertarCurso(element)
+        .subscribe(
+          () => {
+            this.cursosCorrecto++
+            // let total = this.cursosCorrecto + this.cursosFallo
+            // if (cursos.length == (total) || cursos.length == 0) {
+            //   this.ficherosleidos++
+            //  
+            //   this.mostrarModal()
+            // }
+          },
+          () => {
+            this.cursosFallo++
+          })
     });
+   let cursointe= setInterval(() => {
+      console.log("curs:" + cursos.length, "c" + this.cursosCorrecto, "f" + this.cursosFallo)
+      let total = this.cursosCorrecto + this.cursosFallo
+      if (cursos.length == (total) || cursos.length == 0) {
+        this.ficherosleidos++
+       
+        this.mostrarModal()
+        clearInterval(cursointe)
+      }
+    }, 1000);
   }
 
+  public mostrarModal() {
+    
+   
+    if (this.ficherosleidos == this.inputsWithValue) {
+      (<HTMLButtonElement>document.getElementById("insertado")).click();
+      (<HTMLElement>document.getElementById('insertarCSV')).classList.remove('modal-open');
+      (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+    }
+  }
+
+  public restablecerContadores() {
+    this.empresaCorrecto = 0
+    this.responsableCorrecto = 0
+    this.tutoresCorrecto = 0
+    this.alumnosCorrecto = 0
+    this.centrosCorrecto = 0
+    this.cursosCorrecto = 0
+    this.empresaFallo = 0
+    this.responsableFallo = 0
+    this.tutoresFallo = 0
+    this.alumnosFallo = 0
+    this.centrosFallo = 0
+    this.cursosFallo = 0
+    this.inputsWithValue = 0
+    this.ficherosleidos = 0
+  }
 
 }

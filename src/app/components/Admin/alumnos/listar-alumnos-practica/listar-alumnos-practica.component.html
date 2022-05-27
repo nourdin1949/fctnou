@@ -1,6 +1,14 @@
 <div id="listaalumnosFCT">
-    <h3>Listado de Alumnos</h3>
-    <table class="pdf text-center table table-striped">
+    <div class="hide ">
+            <img src="../../../../../assets/img/fctnou.png" width="8%" class="d-flex justify-content-end" alt="fctnou.png">
+            <strong class="d-flex justify-content-center" >LISTA DE ALUMNOS EN PRACTICA</strong><br>
+    </div><br>
+    <div class="alert alert-warning " *ngIf="alumnosfct.length==0 && cargaCompleta " >
+        <b>
+            <h2 class="text-center">¡ASIGNA PRÁCTICA A ALUMNOS!</h2>
+        </b>
+    </div>
+    <table *ngIf="alumnosfct.length>0" class="pdf text-center table table-striped">
         <thead class="table bg-color text-center text-light">
             <tr>
                 <th>Alumno</th>
@@ -16,23 +24,27 @@
                 <td>{{alumnofct.nombreAlumno}} </td>
                 <td>{{alumnofct.nombreTutor}} </td>
                 <td>
-                    <select name="empresa" class="form-control" id="empresa">
-                        <option value="{{empresa.id}}" [selected]="alumnofct.nombreEmpresa===empresa.nombreEmpresa"
-                            *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
-                    </select>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="quitar">Empresa</mat-label>
+                        <mat-select  [value]="alumnofct.nombreEmpresa">
+                          <mat-option value="{{empresa.nombreEmpresa}}" 
+                            *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </td>
                 <td>{{alumnofct.nombreResponsable}}
 
                 </td>
                 <td>{{alumnofct.codigoCiclo}}</td>
                 <td class="d-flex justify-content-center quitar">
-                    <ul class="nav nav-item">
+                    <ul class=" quitar nav nav-item">
                         <li  (click)="guardarid(alumnofct)">
                             <a class="nav-link  btn bg-outline-color" id="modbtn" data-toggle="modal" data-target="#modificar"><i
                                     class="fa fa-pencil"></i></a>
                         </li>
                     </ul>
-                    <ul class=" ml-3 nav nav-item">
+                    <ul class=" quitar ml-3 nav nav-item">
                         <li  (click)="guardarid(alumnofct)">
                             <a class="nav-link  btn btn-outline-danger" data-toggle="modal"
                                 data-target="#confirmarEliminar"><i class="fa fa-trash"></i></a>
@@ -43,11 +55,13 @@
 
         </tbody>
     </table>
-    <ul class="quitar nav nav-item">
+    
+    <ul *ngIf="alumnosfct.length>0" class="quitar >v nav-item">
         <li class="nav-item">
-            <a class="nav-link quitar btn btn-outline-primary  " (click)="downloadPDF()">Generar PDF</a>
+            <a class=" quitar btn bg-outline-color  " (click)="downloadPDF()"><mat-icon>picture_as_pdf</mat-icon></a>
         </li>
     </ul>
+    
 </div>
 <!-- Modal Eliminar -->
 <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"
@@ -73,7 +87,7 @@
                 <hr>
                 <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"
-                    (click)="eliminarAlumnoFCT(alumnofct.id)">Aceptar</button>
+                    (click)="eliminarAlumnoFCT(alumnofct.id)">Eliminar</button>
             </div>
         </div>
     </div>
@@ -92,19 +106,28 @@
             </div>
             <div class="modal-body text-center">
                 <div class="form-group">
-                    <select name="empresa" class="form-control" id="empresa" (change)="updateSelectResponsable($event)">
-                        <option value="{{empresa.id}}" [selected]="alumnofct.empresa_id===empresa.id"
-                            *ngFor="let empresa of empresas">
-                            {{empresa.nombreEmpresa}}{{empresa.id}}</option>
-                    </select>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Empresa</mat-label>
+                        <mat-select value="{{alumnofct.empresa_id}}" id="empresa" 
+                            (selectionChange)="updateSelectResponsable($event)"  >
+                          <mat-option value="{{empresa.id}}"
+                          *ngFor="let empresa of empresas">
+                          {{empresa.nombreEmpresa}}{{alumnofct.empresa_id}}{{empresa.id}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
                 <div class="form-group">
-                    <select name="responsable" class="form-control" [disabled]="respdis" id="responsable">
-                        <option value="0">Seleciona Responsable</option>
-                        <option value="{{responsable.id}}" [selected]="alumnofct.responsable_id==responsable.id"
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Responsable</mat-label>
+                        <mat-select  value="{{alumnofct.responsable_id}}"
+                            (selectionChange)="saveidResponsable($event)"
+                            [disabled]="respdis" id="responsable"  >
+                            <mat-option value="{{responsable.id}}" 
                             *ngFor="let responsable of responsables">{{responsable.nombreResponsable}}
-                        </option>
-                    </select>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
 
             </div>

@@ -10,6 +10,7 @@ import { CursosService } from '../cursos.service';
 export class ListarCursosComponent implements OnInit {
   public cursos:Curso[]=[]
   public idCurso:number=0
+  public cargaCompleta:boolean=false
   public constructor(private cursoServie:CursosService) { 
     this.listarCursos()
   }
@@ -20,6 +21,7 @@ export class ListarCursosComponent implements OnInit {
   public listarCursos(){
     this.cursoServie.listarCursos().subscribe((response)=>{
       this.cursos= response;
+      this.cargaCompleta=true
     })
   }
   public guardarid(idCurso:number){

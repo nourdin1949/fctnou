@@ -26,15 +26,15 @@ export class ModificarCentrosComponent implements OnInit {
    
 
       this.formModificarCentro = this.fb.group({
-        nombre: ['', Validators.required],
-        provincia: ['', Validators.required],
-        localidad: ['', Validators.required],
-        calle: ['', Validators.required],
-        cp: ['', Validators.compose([Validators.required, Validators.maxLength(5), Validators.minLength(5)])],
-        telefono: ['',Validators.required],
-        email: ['', [Validators.required]],
+        nombre: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+        provincia: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+        localidad: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+        calle: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+        cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")]],
+        telefono: ['', [Validators.required, Validators.pattern("[0-9]{9}")]],
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
         cif: ['', Validators.required],
-        director: ['', [Validators.required]],
+        director: ['', [Validators.required,Validators.pattern('[A-Z a-z]{3,}')]],
       })
 
   }

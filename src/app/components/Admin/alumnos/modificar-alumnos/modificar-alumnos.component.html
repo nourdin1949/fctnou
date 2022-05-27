@@ -1,86 +1,118 @@
-<h2>Modificar alumno {{alumno.nombreAlumno}}</h2>
-<div class="row mb-4">
-    <div class="col-3"></div>
-    <form [formGroup]="formModificarAlumno" (ngSubmit)="modificarAlumno(formModificarAlumno)" class="w-75 col-6">
-        <div class="form-group">
-            <h3 class="title bg-color text-center text-light p-2">Modificar Alumno</h3>
-        </div>
-        <div class="form-group">
-            <input type="hidden" formControlName="id"  class="form-control" id="id">
-        </div>
-        <div class="form-group">
-            <label for="nombre" class="form-label">Nombre Alumno</label>
-            <input type="text" value="{{alumno.nombreAlumno}}" formControlName="nombre" placeholder="Nombre Apellidos" class="form-control" id="nombre">
-        </div>
-        <div class="form-group">
-            <label for="dni" class="form-label">DNI Alumno</label>
-            <input type="text" value="{{alumno.dniAlumno}}" formControlName="dni" placeholder="12345678V" class="form-control" id="dni">
-        </div>
-        
-        <div class="row">
-            <div class="col-lg-6  col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" value="{{alumno.email}}" formControlName="email" placeholder="Email" class="form-control" id="email">
-                </div>
-            </div>
-            <div class="col-lg-6   col-sm-12  col-md-12">
-                <div class="row">
-                    <div class="col-lg-6  col-sm-12  col-md-12">
-                        <div class="form-group">
-                            <label for="matriculado" class="form-label">Matriculado</label>
-                            <input type="radio"  [checked]="alumno.matriculado==1"  value="1" formControlName="matriculado" class="form-control" name="matriculado" id="matriculado">
-                        </div>
-                    </div>
-                    <div class="col-lg-6   col-sm-12  col-md-12">
-                       
-                        <div class="form-group">
-                            <label for="matriculado" class="form-label">NO Matriculado</label>
-                            <input type="radio" [checked]="alumno.matriculado==0" value="0" formControlName="matriculado" class="form-control" name="matriculado" id="matriculado">
-                        </div>
-                    </div>
-                </div>
-             
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-6  col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="provincia" class="form-label">Provincia</label>
-                    <input type="text" value="{{alumno.provincia}}" formControlName="provincia" placeholder="Provincia" class="form-control"
-                        id="provincia">
-                </div>
-            </div>
-            <div class="col-lg-6   col-sm-12  col-md-12">
-                <div class="form-group">
-                    <label for="localidad" class="form-label">Localidad</label>
-                    <input type="text" value="{{alumno.localidad}}" formControlName="localidad" placeholder="Localidad" class="form-control"
-                        id="localidad">
-                </div>
-            </div>
-        </div>
+<div class="row mt-5 mb-4">
+  <div class="col-3"></div>
 
-
+    <form [formGroup]="formModificarAlumno" (ngSubmit)="modificarAlumno(formModificarAlumno)" class="w-75 offset-md-3 col-6">
         <div class="form-group">
-            <label for="calle" class="form-label">Calle</label>
-            <input type="text" value="{{alumno.calle}}" formControlName="calle" placeholder="Calle" class="form-control" id="calle">
+            <h3 class="title bg-color text-center text-light p-2">Modificar Alumno <b>{{alumno.nombreAlumno}}</b> </h3>
         </div>
+        <mat-form-field class=" w-100" appearance="fill">
+          <mat-label>Nombre Alumno</mat-label>
+          <input matInput 
+            formControlName="nombre" 
+            placeholder="Nombre Apellidos" 
+            class="w-100">
+          <mat-error *ngIf="this.formModificarAlumno.controls['nombre'].hasError('required')">
+            Campo <b>requerido</b>
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class=" w-100" appearance="fill">
+          <mat-label>DNI Alumno</mat-label>
+          <input matInput 
+            formControlName="dni" 
+            placeholder="12345678C" 
+            class="w-100">
+          <mat-error *ngIf="this.formModificarAlumno.controls['dni'].hasError('required')">
+            Campo <b>requerido</b>
+          </mat-error>
+          <mat-error *ngIf="this.formModificarAlumno.controls['dni'].hasError('pattern')">
+            Formato requerido  <b>12345678C</b>
+          </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class=" w-100" appearance="fill">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput 
+            formControlName="email" 
+            placeholder="nombre@dominio" 
+            class="w-100">
+          <mat-error *ngIf="this.formModificarAlumno.controls['email'].hasError('required')">
+            Campo <b>requerido</b>
+          </mat-error>
+          <mat-error *ngIf="this.formModificarAlumno.controls['email'].hasError('pattern')">
+            Email<b> no es válido</b>
+          </mat-error>
+        </mat-form-field>
         <div class="row">
-            <div class="col-lg-6  col-sm-12  col-md-12">
-                <div class="form-group ">
-                    <label for="cp" class="form-label">Código Postal</label>
-                    <input type="text" value="{{alumno.cp}}" formControlName="cp" placeholder="Código Postal" class="form-control" id="cp">
-                </div>
-            </div>
-            <div class="col-lg-6   col-sm-12  col-md-12">
-                <label for="curso" class="form-label">Curso</label>
-                <select class="form-control" formControlName="curso">
-                    <!-- <option value="0" >Seleciona Curso</option> -->
-                    <option value="{{curso.id}}" [selected]="alumno.curso== curso.id"
-                     *ngFor="let curso of cursos">{{curso.codigoCiclo}}</option>
-                </select>
-            </div>
+          <div class="col-lg-6 col-sm-12 col-md-12">
+            <mat-form-field class=" w-100" appearance="fill">
+              <mat-label>Provincia</mat-label>
+              <input matInput 
+                formControlName="provincia" 
+                placeholder="Provincia" 
+                class="w-100">
+              <mat-error *ngIf="this.formModificarAlumno.controls['provincia'].hasError('required')">
+                Campo <b>requerido</b>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6   col-sm-12  col-md-12">
+    
+            <mat-form-field class=" w-100" appearance="fill">
+              <mat-label>Localidad</mat-label>
+              <input matInput 
+                formControlName="localidad" 
+                placeholder="Localidad" 
+                class="w-100">
+              <mat-error *ngIf="this.formModificarAlumno.controls['localidad'].hasError('required')">
+                Campo <b>requerido</b>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+    
+          <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Calle</mat-label>
+            <input matInput 
+              formControlName="calle" 
+              placeholder="Calle" 
+              class="w-100">
+            <mat-error *ngIf="this.formModificarAlumno.controls['calle'].hasError('required')">
+              Campo <b>requerido</b>
+            </mat-error>
+          </mat-form-field>
+     
+        <div class="row">
+          <div class="col-lg-6  col-sm-12  col-md-12">
+            <mat-form-field class=" w-100" appearance="fill">
+              <mat-label>Código Postal</mat-label>
+              <input matInput 
+                formControlName="cp" 
+                placeholder="Código Postal" 
+                class="w-100">
+              <mat-error *ngIf="this.formModificarAlumno.controls['cp'].hasError('required')">
+                Campo <b>requerido</b>
+              </mat-error>
+              <mat-error *ngIf="this.formModificarAlumno.controls['cp'].hasError('pattern')">
+                Requiere de <b>5 digitos</b>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6   col-sm-12  col-md-12">
+            
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Curso</mat-label>
+              <mat-select  formControlName="curso">
+                <mat-option [value]="curso.id"  *ngFor="let curso of cursos">
+                  {{curso.codigoCiclo}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="this.formModificarAlumno.controls['curso']?.errors?.['required']">
+                Campo <b>requerido</b>
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
         <div class="row">
             <div class="col-lg-8  col-sm-12  col-md-12">
@@ -95,7 +127,6 @@
                     <i class="fa fa-arrow-circle-left"></i>
                 </button>
             </div>
-
         </div>
     </form>
 </div>

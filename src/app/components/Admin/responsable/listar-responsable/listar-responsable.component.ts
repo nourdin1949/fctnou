@@ -10,6 +10,8 @@ import { ResponsableService } from '../responsable.service';
 export class ListarResponsableComponent implements OnInit {
   public responsables: Responsable[] = []
   public idResponsable: number = 0
+  public cargaCompleta:boolean=false
+
   constructor(private responsbaleService: ResponsableService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,8 @@ export class ListarResponsableComponent implements OnInit {
   listarResponsbles() {
     this.responsbaleService.listarResponsables().subscribe((response) => {
       this.responsables = response;
+      this.cargaCompleta=true
+
     })
   }
 

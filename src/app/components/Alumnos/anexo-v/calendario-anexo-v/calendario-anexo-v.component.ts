@@ -59,7 +59,7 @@ export class CalendarioAnexoVComponent implements OnInit {
       let fecha=e.fecha
       let color = ""
       let estado = e.validadoResponsable+String(e.validadoTutor)
-      let url =`http://localhost:1949/alumno/modificar/${fecha}/${e.id}`
+      let url =`http://fctnou.es/alumno/modificar/${fecha}/${e.id}`
       
       console.log("estado", estado)
       switch(estado){

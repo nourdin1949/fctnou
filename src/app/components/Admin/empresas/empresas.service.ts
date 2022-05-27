@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Empresa } from 'src/app/Shared/interfaces/Interface';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpresasService {
 
-  private url = "http://localhost:8000/api"
-
+  private url=environment.url;
   constructor(private http: HttpClient) { }
 
   /**
@@ -26,6 +26,11 @@ export class EmpresasService {
   /* El método recibe un parametro de tipo Empresa */
   insertarEmpresas(empresa:Empresa): Observable<Empresa>{
     return this.http.post<Empresa>(`${this.url}/insertarEmpresa`, empresa, this.getHeaders())
+  }
+  // Método para insertar empresas
+  /* El método recibe un parametro de tipo Empresa */
+  insertarEmpresasCSV(empresa:Empresa): Observable<Empresa>{
+    return this.http.post<Empresa>(`${this.url}/insertarEmpresaCSV`, empresa, this.getHeaders())
   }
 
   /* Método para listar todas las empresas */

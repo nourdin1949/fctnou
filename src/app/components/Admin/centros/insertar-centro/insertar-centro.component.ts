@@ -15,16 +15,16 @@ export class InsertarCentroComponent implements OnInit {
   constructor(private fb: FormBuilder, private centroSerice: CentrosService) {
 
     this.forminsertarCentro = this.fb.group({
-      nombre: ['', Validators.required],
-      provincia: ['', Validators.required],
-      localidad: ['', Validators.required],
-      calle: ['', Validators.required],
-      cp: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
-      telefono: ['', [Validators.required, Validators.maxLength(9)]],
-      email: ['', [Validators.required]],
+      nombre: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      provincia: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      localidad: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      calle: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")]],
+      telefono: ['', [Validators.required, Validators.pattern("[0-9]{9}")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       cif: ['', Validators.required],
-      director: ['', [Validators.required]],
-      code:['', Validators.required]
+      director: ['', [Validators.required,Validators.pattern('[A-Z a-z]{3,}')]],
+      code: ['', [Validators.required, Validators.pattern('[0-9]{8}')]]
     })
   }
 
@@ -46,12 +46,13 @@ export class InsertarCentroComponent implements OnInit {
     }
 
     if (form.valid) {
-      this.centroSerice.insertarCentro(centro).subscribe((response)=>{
+      this.centroSerice.insertarCentro(centro).subscribe(() => {
+
         (<HTMLButtonElement>document.getElementById("insertado")).click()
         setTimeout(() => {
           (<HTMLElement>document.getElementById('insertarCentro')).classList.remove('modal-open');
           (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
-         }, 300);
+        }, 300);
       });
     }
   }

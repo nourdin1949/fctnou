@@ -19,7 +19,7 @@ get formulario (){
   constructor(private fb: FormBuilder, private cursoServoce: CursosService, private alumnosService: AlumnosService) {
     this.forminsertarAlumno = this.fb.group({
       nombre: ['', Validators.required],
-      dni: ['', Validators.required],
+      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")]],
       provincia: ['', Validators.required],
       localidad: ['', Validators.required],
       calle: ['', Validators.required],
@@ -28,7 +28,6 @@ get formulario (){
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
 
     })
-    console.log(this.forminsertarAlumno.get('cp')?.errors?.['required'])
   }
 
   ngOnInit(): void {
@@ -49,7 +48,7 @@ get formulario (){
       "matriculado": 1,
     }
     console.log(alumno)
-    if (!this.forminsertarAlumno.errors) {
+    if (this.forminsertarAlumno.valid) {
       this.alumnosService.insertarAlumnos(alumno)
         .subscribe((res) => {
           (<HTMLButtonElement>document.getElementById("insertado")).click()

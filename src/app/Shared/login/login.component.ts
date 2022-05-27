@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
   iniciarSesion(form: FormGroup) {
     const objeto = { "username": form.value.usuario, "password": form.value.pwd }
     this.shareServ.signedIn(objeto).subscribe((response) => {
-
+      console.log(response)
       localStorage.setItem("token", response.data.token)
+      localStorage.setItem("user", JSON.stringify(response.data.user))
       this.getuser();
 
     }, (error) => {
       console.log(error.error.message);
       if (error.error.message == "Unauthorised.") {
-        window.alert("un")
         this.incorrecto = true
         this.cuentaDesactivada = false
       } else if (error.error.message == "Cuenta desactivada") {
@@ -51,6 +51,8 @@ export class LoginComponent implements OnInit {
   public getuser() {
     this.shareServ.getUser().subscribe((response) => {
       this.user = response
+      console.log(response,"aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+      sessionStorage.setItem('user', JSON.stringify(this.user))
       sessionStorage.setItem('username', this.user.username)
       if (this.user.perfil == "admin") {
         console.log("admin")

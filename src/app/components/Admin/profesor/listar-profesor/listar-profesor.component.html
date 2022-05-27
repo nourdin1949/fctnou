@@ -3,10 +3,18 @@
 <mat-tab-group>
     <mat-tab label="Listado de Tutores">
         <br>
-        <div>
-            <p> <i (click)="listarProfesores()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        <div *ngIf="profesores.length>0 else alert">
+            <mat-label class="mr-1">Recargar Tabla</mat-label>
+            <mat-icon (click)="listarProfesores()"  >refresh</mat-icon>
         </div>
-        <table class="table text-center table-striped">
+        <ng-template #alert>
+            <div class="alert alert-warning " *ngIf="profesores.length==0 && cargaCompleta " >
+                <b>
+                    <h2 class="text-center">¡INSERTE TUTORES!</h2>
+                </b>
+            </div>
+        </ng-template>
+        <table *ngIf="profesores.length>0" class="table text-center table-striped">
             <thead class="thead bg-color text-light">
                 <tr>
                     <th>#</th>

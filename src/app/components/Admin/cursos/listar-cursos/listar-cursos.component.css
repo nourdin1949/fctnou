@@ -1,6 +1,9 @@
 td ul li a {
     border-radius: 50%;
 }
+mat-icon{
+    cursor: pointer;
+}
 p:last-child {
     display: flex;
     justify-content: end;

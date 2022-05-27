@@ -1,38 +1,111 @@
 <div class="row w-100">
   <div class="col-3"></div>
-<form [formGroup]="forminsertarCurso" (ngSubmit)="insertarCurso(forminsertarCurso)" class="w-75 col-6">
-  <div class="form-group">
-    <h3 class="title bg-color text-light p-2">Insertar Curso</h3>
+  <form [formGroup]="forminsertarCurso" (ngSubmit)="insertarCurso(forminsertarCurso)" class="w-75 col-6">
+    <div class="form-group">
+      <h3 class="title bg-color text-light p-2">Insertar Curso</h3>
     </div>
-    <div class="form-group">
-      <label for="code" class="form-label">Code Ciclo</label>
-      <input type="text" formControlName="code" class="form-control" id="codeCiclo" aria-describedby="code">
-    </div>
-    <div class="form-group">
-        <label for="familia" class="form-label">Familia Profesional</label>
-        <input type="text" formControlName="familia" class="form-control" id="familia" aria-describedby="familia">
-      </div>
-    <div class="form-group">
-        <label for="ciclo" class="form-label">Ciclo Formativo</label>
-        <input type="text" formControlName="ciclo" class="form-control" id="ciclo" aria-describedby="ciclo">
-      </div>
-      <div class="form-group">
-        <label for="curso" class="form-label">Curso Académico</label>
-        <input type="text" formControlName="curso" class="form-control" id="curso">
-      </div>
-      <div class="form-group">
-        <label for="horas" class="form-label">Nº Horas</label>
-        <input type="text" formControlName="horas" class="form-control" id="horas" aria-describedby="horas">
-      </div>
-      
-    <div class="form-group">
-      <label for="curso" class="form-label">Tutor</label>
-        <select class="form-control"  formControlName="tutor" >
-          <option value="0">Seleciona Tutor</option>
-            <option value="{{profesor.id}}"*ngFor="let profesor of profesores" >{{profesor.nombreTutor}}</option>
-          </select>
-    </div>
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>Code Ciclo</mat-label>
+      <input matInput 
+        formControlName="code" 
+        placeholder="DAW" 
+        class="w-100">
+      <mat-error *ngIf="this.forminsertarCurso.controls['code'].hasError('required')">
+        Campo requerido
+      </mat-error>
+      <mat-error *ngIf="this.forminsertarCurso.controls['code'].hasError('pattern')">
+        Minimo 2  letras
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>Familia Profesional</mat-label>
+      <input matInput 
+        formControlName="familia" 
+        placeholder="Familia Profesional" 
+        class="w-100">
+      <mat-error *ngIf="this.forminsertarCurso.controls['familia'].hasError('required')">
+        Campo requerido</mat-error>
+      <mat-error *ngIf="this.forminsertarCurso.controls['familia'].hasError('pattern')">
+        Minimo 3 letras
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>Ciclo Formativo</mat-label>
+      <input matInput 
+        formControlName="ciclo" 
+        placeholder="Nombre Completo Ciclo" 
+        class="w-100">
+      <mat-error *ngIf="this.forminsertarCurso.controls['ciclo'].hasError('required')">
+        Campo requerido </mat-error>
+      <mat-error *ngIf="this.forminsertarCurso.controls['ciclo'].hasError('pattern')">
+        Minimo 3 letras
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Curso Academico</mat-label>
+      <input matInput 
+        formControlName="curso" 
+        placeholder="Familia" 
+        class="w-100">
+      <mat-error *ngIf="this.forminsertarCurso.controls['curso'].hasError('required')">
+        Campo requerido
+      </mat-error>
+      <mat-error *ngIf="this.forminsertarCurso.controls['curso'].hasError('pattern')">
+        Formato XXXX-XXXX
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class=" w-100" appearance="fill">
+      <mat-label>Número Horas</mat-label>
+      <input matInput type="number" 
+        formControlName="horas" 
+        placeholder="Familia" 
+        class="w-100">
+      <mat-error *ngIf="this.forminsertarCurso.controls['horas'].hasError('required')">
+        Campo requerido Solo digitos
+      </mat-error>
+      <mat-error *ngIf="this.forminsertarCurso.controls['horas'].hasError('pattern')">
+        Solo números  y hasta 8 digitos
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Tutor</mat-label>
+      <mat-select formControlName="tutor">
+        <mat-option [value]="profesor.id" *ngFor="let profesor of profesores">
+          {{profesor.nombreTutor}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="this.forminsertarCurso.controls['tutor']?.errors?.['required']">Campo requerido</mat-error>
+    </mat-form-field>
+
     <button type="submit" class="btn w-100 bg-color text-light ">Insertar</button>
   </form>
-    
+
+</div>
+
+
+<button type="button" id="insertado" data-toggle="modal" data-target="#insertarCurso"></button>
+
+<!-- Modal INSERTAR ALUMNO-->
+<div class="modal fade" id="insertarCurso" tabindex="-1" role="dialog" aria-labelledby="insertarCursoLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body text-center">
+        
+          <h2 class="text-center">¡CURSO INSERTADO CON ÉXITO!</h2>
+        
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+        <i class="fa fa-check text-success" aria-hidden="true"></i>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>

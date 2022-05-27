@@ -11,6 +11,7 @@ export class ListarAlumnosComponent implements OnInit {
   public empresas:Empresa[]=[]
   public alumnos:Alumno[]=[]
   public alumnosfct:Alumno[]=[]
+  public cargaCompleta:boolean=false
   public id:number=0
   constructor(private alumnoservice:AlumnosService) {
  
@@ -22,6 +23,7 @@ export class ListarAlumnosComponent implements OnInit {
   listarAlumnos(){
     this.alumnoservice.listarAlumnos().subscribe((response)=>{
       this.alumnos=response
+      this.cargaCompleta=true
     })
   }
   public eliminarAlumno(idAlumno:number){

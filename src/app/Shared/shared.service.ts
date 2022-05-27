@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { User } from './interfaces/Interface';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { User } from './interfaces/Interface';
 })
 export class SharedService {
   public perfil = ""
-  private url="http://localhost:8000/api";
+  private url=environment.url;
   constructor(private http: HttpClient) { }
 
   /**
@@ -81,5 +82,10 @@ export class SharedService {
   getIdUserResposable(username:string){
     
     return this.http.post<any>(`${this.url}/getIdByDniUserResposable`,{'dni':username}, this.getHeaders());
+  }
+  
+  sendEmailVerification(email){
+    
+    return this.http.post<any>(`${this.url}/email/verification-notification`,{'email':email, 'token':localStorage.getItem("token"), 'user':localStorage.getItem('user')}, this.getHeaders());
   }
 }

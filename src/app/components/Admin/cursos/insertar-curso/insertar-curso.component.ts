@@ -14,12 +14,12 @@ export class InsertarCursoComponent implements OnInit {
   public forminsertarCurso: FormGroup;
   constructor(private fb: FormBuilder, private cursoService:CursosService, private profesorService:ProfesorService) {
     this.forminsertarCurso = this.fb.group({
-      code:['', Validators.required],
-      familia:['', Validators.required],
-      ciclo:['', Validators.required],
-      curso:['', Validators.required],
-      horas:['', Validators.required],
-      tutor:['0', Validators.required]
+      code:['', [Validators.required, Validators.pattern('[A-Z a-z]{2,}')]],
+      familia:['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      ciclo:['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      curso:['',[ Validators.required, Validators.pattern('[0-9]{4}-[0-9]{4}')]],
+      horas:['', [Validators.required,Validators.pattern('[0-9]{1,8}')]],
+      tutor:['', Validators.required]
     })
   }
 
@@ -38,9 +38,16 @@ export class InsertarCursoComponent implements OnInit {
         "tutor_id":form.value.tutor
       }
       console.log(curso)
-      if(this.forminsertarCurso.valid ){
-          this.cursoService.insertarCurso(curso).subscribe((response)=>{
-            this.cursoService.listarCursos().subscribe()
+      console.log(this.forminsertarCurso.hasError, "errors")
+      console.log(this.forminsertarCurso.valid,"valid")
+      console.log(this.forminsertarCurso.invalid,"invalid")
+      if(this.forminsertarCurso.valid){
+          this.cursoService.insertarCurso(curso).subscribe(()=>{
+            (<HTMLButtonElement>document.getElementById("insertado")).click()
+            setTimeout(() => {
+              (<HTMLElement>document.getElementById('insertarCurso')).classList.remove('modal-open');
+              (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+            }, 300);
           })
       }
   }

@@ -29,12 +29,12 @@ export class ModificarCursosComponent implements OnInit{
    
 
       this.formModificarCurso = this.fb.group({
-        code:['', Validators.required],
-        familia:['', Validators.required],
-        ciclo:['', Validators.required],
-        curso:['', Validators.required],
-        horas:['', Validators.required],
-        tutor:['0', Validators.required]
+        code:['', [Validators.required, Validators.pattern('[A-Z a-z]{2,}')]],
+        familia:['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+        ciclo:['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+        curso:['',[ Validators.required, Validators.pattern('[0-9]{4}-[0-9]{4}')]],
+        horas:['', [Validators.required,Validators.pattern('[0-9]{1,8}')]],
+        tutor:['', Validators.required]
       })
 
   }

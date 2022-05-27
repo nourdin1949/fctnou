@@ -17,8 +17,10 @@ export class AsignarComponent implements OnInit {
   public alumnos: Alumno[] = [];
   public empresas: Empresa[] = [];
   public tutores: Profesor[] = [];
+  public tutoresTmp: Profesor[] = [];
   public centros: Centro[] = [];
   public responsables: Responsable[] = []
+  public responsablesTemp: Responsable[] = []
   public selectResponsable: boolean = false;
 
   public formAsignar: FormGroup;
@@ -30,11 +32,11 @@ export class AsignarComponent implements OnInit {
     private profesorService: ProfesorService,
     private respService: ResponsableService) {
     this.formAsignar = this.fb.group({
-      alumno: ['0', Validators.required],
-      empresa: ['0', Validators.required],
-      tutor: ['0', Validators.required],
-      responsable: ["0", Validators.required],
-      centro: ['0', Validators.required]
+      alumno: ['', Validators.required],
+      empresa: ['', Validators.required],
+      tutor: ['', Validators.required],
+      responsable: ["", Validators.required],
+      centro: ['', Validators.required]
 
     })
   }
@@ -55,11 +57,13 @@ export class AsignarComponent implements OnInit {
   listarEmpresas() {
     this.empresaService.listarEmpresas().subscribe((response) => {
       this.empresas = response;
+     
     })
   }
   listarCentros() {
     this.centrosService.listarCentros().subscribe((response) => {
       this.centros = response
+     
     })
   }
   listartutores() {
@@ -70,13 +74,14 @@ export class AsignarComponent implements OnInit {
   listarResponsables() {
     this.respService.listarResponsables().subscribe((response) => {
       this.responsables = response
+    
     })
   }
   cargarSelectResponsables(id: any) {
-    this.responsables = this.responsables.filter(responsable => responsable.empresa_id == id.value)
+    this.responsablesTemp = this.responsables.filter(responsable => responsable.empresa_id == id.value)
   }
   cargarSelectTutores(id: any) {
-    this.tutores = this.tutores.filter(tutor => tutor.codigoCentro == id.target.value)
+    this.tutoresTmp = this.tutores.filter(tutor => tutor.codigoCentro == id.source.value)
   }
   asignarPractica() {
     console.log(this.formAsignar.value)

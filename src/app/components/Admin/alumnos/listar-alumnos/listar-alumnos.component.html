@@ -7,10 +7,18 @@
     </mat-tab>
     <mat-tab label="Listado de Alumnos">
         <br>
-        <div>
-            <p> <i (click)="listarAlumnos()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        <div *ngIf="alumnos.length>0  else alert"  >
+            <mat-label class="mr-1">Recargar Tabla</mat-label>
+            <mat-icon (click)="listarAlumnos()"  >refresh</mat-icon> 
         </div>
-        <table class="pdf text-center table table-striped">
+        <ng-template #alert>
+            <div class="alert alert-warning " *ngIf="alumnos.length==0 && cargaCompleta " >
+                <b>
+                    <h2 class="text-center">¡INSERTE ALUMNOS!</h2>
+                </b>
+            </div>
+        </ng-template>
+        <table *ngIf="alumnos.length>0"  class="pdf text-center table table-striped">
             <thead class="table bg-color text-center text-light">
                 <tr>
                     <th>Alumno</th>

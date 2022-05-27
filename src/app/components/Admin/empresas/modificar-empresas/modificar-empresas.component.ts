@@ -35,11 +35,11 @@ export class ModificarEmpresasComponent implements  OnInit{
       provincia: ['', Validators.required],
       localidad: ['', Validators.required],
       calle: ['', Validators.required],
-      cp: ['', Validators.required],
-      telefono: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required,Validators.email])],
+      cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")]],
+      telefono: ['', [Validators.required, Validators.pattern("[A-Z]{0}[0-9]{9}")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       representante: ['', Validators.required],
-      dnirepresentante: ['', Validators.required],
+      dnirepresentante: ['',[ Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")]],
     })
 
   }

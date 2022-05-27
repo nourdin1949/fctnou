@@ -1,29 +1,63 @@
-<div class=" w-100 row">
-    <div class="col-3"></div>
+<div class=" w-100 mt-5 row">
     <form [formGroup]="formModificarResponsable" (ngSubmit)="modificarResponsable(formModificarResponsable)"
-        class="w-75 col-6">
+        class="w-75 offset-md-3 col-6">
         <div class="form-group">
-            <h3 class="title bg-color text-light p-2">Modificar Responsable</h3>
+            <h3 class="title bg-color text-center text-light p-2">Modificar Responsable</h3>
         </div>
-        <div class="form-group">
-            <label for="empresa" class="form-label">Nombre Empresa</label>
-            <select name="empresa" formControlName="empresa" class="form-control" id="empresa">
-                <option value="0">Seleciona Empresa</option>
-                <option value="{{empresa.id}}" *ngFor="let empresa of empresas">{{empresa.nombreEmpresa}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nombre" class="form-label">Nombre Responsable</label>
-            <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" id="nombre">
-        </div>
-        <div class="form-group">
-            <label for="dni" class="form-label">DNI Responsable</label>
-            <input type="text" formControlName="dni" placeholder="Dni del Responsable" class="form-control" id="dni">
-        </div>
-        <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
-        </div>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Nombre Empresa</mat-label>
+            <mat-select  formControlName="empresa">
+              <mat-option [value]="empresa.id"  *ngFor="let empresa of empresas">
+                {{empresa.nombreEmpresa}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.formModificarResponsable.controls['empresa']?.errors?.['required']">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['empresa']?.errors?.['pattern']">
+              Mínimo 3 letras
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Nombre Responsable</mat-label>
+            <input matInput 
+              formControlName="nombre" 
+              placeholder="Nombre Apellido" 
+              class="w-100">
+            <mat-error *ngIf="this.formModificarResponsable.controls['nombre'].hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['nombre'].hasError('pattern')">
+              Mínimo 3 letras 
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>DNI Responsable</mat-label>
+            <input matInput 
+              formControlName="dni" 
+              placeholder="12345678X" 
+              class="w-100">
+            <mat-error *ngIf="this.formModificarResponsable.controls['dni'].hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['dni'].hasError('pattern')">
+                Formato requerido  12345678C 
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput 
+                formControlName="email" 
+                placeholder="nombre@dominio.com" 
+                class="w-100">
+            <mat-error *ngIf="this.formModificarResponsable.controls['email'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['email'].hasError('pattern')">
+                Email no es válido
+            </mat-error>
+        </mat-form-field>
         <div class="row">
             <div class="col-lg-8  col-sm-12 mb-3  col-md-12">
                 <button type="submit" class="w-100 btn bg-outline-color"><i class="fa fa-save"></i></button>

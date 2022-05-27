@@ -11,16 +11,23 @@
             <input type="password" class="is_invalid" value="" formControlName="pwd" name="password" id="pwd"
                 placeholder="Password">
         </div>
-        <small id="incorrecto" *ngIf="formlogin.valid && incorrecto"
-            class="form-text alert pl-3  alert-danger text-muted">Usuario y contraseña incorrectos</small>
-        <small id="incorrecto" *ngIf="formlogin.valid && cuentaDesactivada"
+        <small id="incorrecto" 
+            *ngIf="incorrecto"
+            class="form-text alert pl-3  alert-danger text-muted">
+            Usuario y contraseña incorrectos
+        </small>
+        <small id="incorrecto" 
+            *ngIf="incorrecto"
+            class="form-text alert pl-3  alert-danger text-muted">
+            Usuario y contraseña incorrectos
+        </small>
+        <small id="incorrecto" *ngIf=" cuentaDesactivada"
             class="form-text alert pl-3 alert-danger text-muted">Cuenta desactivada</small>
-        <small id="incorrecto" *ngIf="formlogin.valid && emailVerificado"
-            class="form-text alert pl-3 alert-danger text-muted">Email no verificado</small>
-            
+        <small id="incorrecto" *ngIf=" emailVerificado"
+            class="form-text alert pl-3 alert-danger text-muted" routerLink="/email-verificacion">Email no verificado</small>
+            <a *ngIf="emailVerificado" routerLink="/email-verificacion">Enviar email verificacion</a>
         <button class="btn bg-color mt-3">Login</button>
     </form>
     <div class="text-center fs-6"> <a href="/forgot-password">Olvidó contraseña?</a>
-        <!--or <a href="#">Sign up</a> -->
     </div>
 </div>

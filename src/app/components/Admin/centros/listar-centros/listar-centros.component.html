@@ -3,10 +3,18 @@
 <mat-tab-group>
     <mat-tab label="Listado Centros">
         <br>
-        <div>
-            <p> <i (click)="listarCentros()" class="ml-2 fa fa-refresh"> Recargar lista</i></p>
+        <div *ngIf="centros.length>0 else alert">
+            <mat-label class="mr-1">Recargar Tabla</mat-label>
+            <mat-icon (click)="listarCentros()"  >refresh</mat-icon> 
         </div>
-        <table class="table text-center table-striped w-100">
+        <ng-template #alert>
+            <div class="alert alert-warning " *ngIf="centros.length==0 && cargaCompleta" >
+                <b>
+                    <h2 class="text-center">¡INSERTE CENTROS!</h2>
+                </b>
+            </div>
+        </ng-template>
+        <table *ngIf="centros.length>0" class="table text-center table-striped w-100">
             <thead class="table bg-color  text-center text-light">
                 <tr>
                     <th>#</th>
@@ -35,7 +43,7 @@
                         
                         <ul class="ml-3 nav nav-item">
                             <li>
-                                <a class="nav-link  btn btn-outline-danger   " (click)="guardarcodigo(centro.codigo)"
+                                <a class="nav-link  btn btn-outline-danger" (click)="guardarcodigo(centro.codigo)"
                                 data-toggle="modal" data-target="#eliminarCentro"><i class="fa fa-trash"></i></a>
                             </li>
                         </ul>
@@ -45,6 +53,7 @@
         </table>
     </mat-tab>
     <mat-tab label="Insertar Centro">
+        <br>
         <app-insertar-centro></app-insertar-centro>
     </mat-tab>
 
@@ -77,7 +86,7 @@
                 <hr>
                 <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"
-                    (click)="eliminarCentro()">Aceptar</button>
+                    (click)="eliminarCentro()">Eliminar</button>
             </div>
         </div>
     </div>

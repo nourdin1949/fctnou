@@ -11,6 +11,8 @@ import { CentrosService } from '../centros.service';
 export class ListarCentrosComponent implements OnInit {
   public centros: Centro[] = []
   public codigoCentro: number=0
+  public cargaCompleta:boolean=false
+
   constructor(private centroService: CentrosService) { }
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class ListarCentrosComponent implements OnInit {
   listarCentros() {
     this.centroService.listarCentros().subscribe((response) => {
       this.centros = response;
+      this.cargaCompleta=true
     })
   }
   guardarcodigo(codigo:number){
@@ -26,6 +29,8 @@ export class ListarCentrosComponent implements OnInit {
   }
 
   eliminarCentro(){
-    this.centroService.eliminarCentro(this.codigoCentro).subscribe()
+    this.centroService.eliminarCentro(this.codigoCentro).subscribe(()=>{
+      this.listarCentros()
+    })
   }
 }

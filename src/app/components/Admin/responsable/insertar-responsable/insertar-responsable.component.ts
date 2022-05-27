@@ -15,10 +15,10 @@ export class InsertarResponsableComponent implements OnInit {
   constructor(private fb: FormBuilder, private responsableService: ResponsableService, private empresaService: EmpresasService) {
 
     this.forminsertarResponsable = this.fb.group({
-      nombre: ['', Validators.required],
-      dni: ['', Validators.required],
-      empresa: ['0', Validators.required],
-      email: ['', [Validators.compose([Validators.required, Validators.email])]]
+      nombre: ['', [Validators.required,Validators.pattern("[A-Z a-z]{3,}")]],
+      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")]],
+      empresa: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     })
   }
   ngOnInit(): void {

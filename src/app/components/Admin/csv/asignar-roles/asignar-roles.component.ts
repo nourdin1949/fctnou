@@ -15,7 +15,7 @@ export class AsignarRolesComponent implements OnInit {
   public formRoles: FormGroup
   public todosDatos: any = []
   public auxTodosDatos: any = []
-  public perfil: string = "1"
+  public perfil: string = ""
   public email: string = ""
   public dnidisbled: boolean = true
   constructor(
@@ -25,9 +25,9 @@ export class AsignarRolesComponent implements OnInit {
     private responsableService: ResponsableService,
     private alumnoservice: AlumnosService) {
     this.formRoles = this.fb.group({
-      dni: ['1', Validators.required],
-      rol: ['1', Validators.required],
-      pwd: ['', Validators.required],
+      dni: ['', Validators.required],
+      rol: ['', Validators.required],
+      pwd: ['', [Validators.required, Validators.pattern("(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$")]],
 
     })
   }
@@ -49,8 +49,12 @@ export class AsignarRolesComponent implements OnInit {
         "confirm_password": this.formRoles.value.pwd, "activo": "1", "perfil": this.formRoles.value.rol
       }
       console.log(user)
-      this.csvServ.registerUser(user).subscribe((response) => {
-        console.log(response)
+      this.csvServ.registerUser(user).subscribe(() => {
+        (<HTMLButtonElement>document.getElementById("registrado")).click()
+        setTimeout(() => {
+          (<HTMLElement>document.getElementById('registaruser')).classList.remove('modal-open');
+          (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+        }, 300);
 
       })
     }
@@ -99,7 +103,7 @@ export class AsignarRolesComponent implements OnInit {
 
   public guardarEmail(event) {
     this.todosDatos.forEach(element => {
-      if (event.target.value == element.dni) {
+      if (event.source.value == element.dni) {
         this.email=element.email
       }
     });

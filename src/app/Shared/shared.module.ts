@@ -10,6 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component'
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { VerificarEmailComponent } from './verificar-email/verificar-email.compo
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule, HttpClientModule
+    FormsModule, 
+    HttpClientModule,
+    MatIconModule
   ],
   exports: [
     SidebarComponent

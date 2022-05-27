@@ -8,6 +8,11 @@ import { ListarEmpresasComponent } from './listar-empresas/listar-empresas.compo
 import { InsertarEmpresaComponent } from './insertar-empresa/insertar-empresa.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -21,9 +26,14 @@ import { MatTabsModule } from '@angular/material/tabs';
   imports: [
     CommonModule,
     EmpresasRoutingModule,
+    MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatInputModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule,
   ],exports:[
     ModificarEmpresasComponent,
     ListarEmpresasComponent
