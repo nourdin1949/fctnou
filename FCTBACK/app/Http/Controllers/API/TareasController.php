@@ -59,7 +59,7 @@ class TareasController extends Controller
      */
     public function show($id)
     {
-        return  DB::select("select * from tareas where alumno_id = ?", [$id]);
+        return  DB::select("select * FROM tareas where alumno_id = ?", [$id]);
     }
 
     /**
@@ -92,7 +92,7 @@ class TareasController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource FROM storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -104,29 +104,36 @@ class TareasController extends Controller
 
     public function listarTareasEntreFechas(Request $request, $id)
     {
-        return DB::select("select * from tareas where alumno_id =? and fecha between ? and ?", [
-            $id, 
-            $request->primeraFecha, 
-            $request->segundaFecha
-        ]);
+        return DB::select("SELECT * FROM tareas 
+                            WHERE alumno_id =? and fecha between ? and ?", 
+                            [
+                                $id, 
+                                $request->primeraFecha, 
+                                $request->segundaFecha
+                            ]);
     }
     public function listarTareasPorFecha($fecha)
     {
-        return DB::select("select * from tareas where  fecha = ?", [$fecha]);
+        return DB::select("SELECT * FROM tareas 
+                            WHERE  fecha = ?", [$fecha]);
     }
 
     public function listarTareasPorID($id)
     {
-        return DB::select("select * from tareas where  id = ? and (validadoTutor!=1)", [$id]);
+        return DB::select("SELECT * FROM tareas 
+                            WHERE  id = ? and (validadoTutor!=1)", [$id]);
     }
 
     public function fichasemanal($id){
-        return DB::select("select al.nombreAlumno, em.nombreEmpresa, resp.nombreResponsable, 
-            tutor.nombreTutor, centros.nombreCentro from fct_alumnos as fct inner join alumnos as al 
-            on al.id= fct.alumno_id inner join cursos as c on c.id=al.curso_id inner join 
-            empresas as em on em.id= fct.empresa_id inner join responsables as resp 
-            on resp.id= fct.responsable_id inner join tutores as tutor on tutor.id = fct.tutor_id
-            inner join centros on centros.codigo= tutor.codigoCentro  where al.id=? ", [$id])[0];
+        return DB::select("SELECT al.nombreAlumno, em.nombreEmpresa, resp.nombreResponsable, 
+                        tutor.nombreTutor, centros.nombreCentro 
+                            FROM fct_alumnos as fct INNER JOIN alumnos as al On al.id= fct.alumno_id 
+                                INNER JOIN cursos as c on c.id=al.curso_id 
+                                INNER JOIN empresas as em on em.id= fct.empresa_id 
+                                INNER JOIN responsables as resp on resp.id= fct.responsable_id 
+                                INNER JOIN tutores as tutor on tutor.id = fct.tutor_id
+                                INNER JOIN centros on centros.codigo= tutor.codigoCentro  
+                            WHERE al.id=? ", [$id])[0];
     }
 
 }

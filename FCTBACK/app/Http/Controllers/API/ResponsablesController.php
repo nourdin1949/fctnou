@@ -96,7 +96,10 @@ class ResponsablesController extends Controller
      */
     public function destroy($id)
     {
-        return Responsables::destroy($id);
+        
+        $dni =  (DB::select("SELECT dniResponsable FROM responsables where id =?",[$id])[0]->dniResponsable);
+        Responsables::destroy($id);
+        DB::update("UPDATE users SET activo=0 where username=?",[$dni]);
     }
     public function findResponsablesByEmpresaID($id){
         return  DB::select('SELECT * FROM responsables WHERE empresa_id = ?', [$id]);
@@ -105,16 +108,16 @@ class ResponsablesController extends Controller
     public function alumosResponsable($id){
         return DB::select("SELECT fct_alumnos.alumno_id as id, 
                                 (SELECT a.nombreAlumno
-                                    FROM tutores as t inner join cursos c on c.tutor_id=t.id 
-                                        inner JOIN alumnos a on a.curso_id= c.id
+                                    FROM tutores as t INNER JOIN cursos c on c.tutor_id=t.id 
+                                        INNER JOIN alumnos a on a.curso_id= c.id
                                     WHERE a.id = fct_alumnos.alumno_id) as nombreAlumno,
                                 (SELECT c.cicloFormativo 
-                                    FROM tutores as t inner join cursos c on c.tutor_id=t.id 
-                                        inner JOIN alumnos a on a.curso_id= c.id
+                                    FROM tutores as t INNER JOIN cursos c on c.tutor_id=t.id 
+                                        INNER JOIN alumnos a on a.curso_id= c.id
                                         WHERE a.id = fct_alumnos.alumno_id) as cicloFormativo ,
                                 (SELECT c.nHoras 
-                                    FROM tutores as t inner join cursos c on c.tutor_id=t.id 
-                                        inner JOIN alumnos a on a.curso_id= c.id
+                                    FROM tutores as t INNER JOIN cursos c on c.tutor_id=t.id 
+                                        INNER JOIN alumnos a on a.curso_id= c.id
                                     WHERE a.id = fct_alumnos.alumno_id) as nHoras,
                                 (SELECT count(tareas.alumno_id) 
                                     FROM tareas 
@@ -122,7 +125,7 @@ class ResponsablesController extends Controller
                                 (SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(tiempo)))
                                     FROM tareas 
                                     WHERE alumno_id=fct_alumnos.alumno_id) as horasRealizadas
-                            FROM fct_alumnos WHERE fct_alumnos.responsable_id=?;",[$id]);
+                            FROM fct_alumnos WHERE fct_alumnos.responsable_id=?", [$id]);
     }
 
     public function validaTareaResponsable($id){
@@ -133,5 +136,7 @@ class ResponsablesController extends Controller
         return DB::select("select id from responsables where dniResponsable =?",[$request->dni])[0];
     }
 
-  
+    public function getNombre($dni){
+        return DB::select("SELECT nombreResponsable from responsables where dniResponsable=?",[$dni])[0];
+    }
 }

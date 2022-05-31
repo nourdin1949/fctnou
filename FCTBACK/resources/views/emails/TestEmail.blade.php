@@ -12,7 +12,11 @@
     <p><strong>{{$details['username']}}</strong></p>
     <p><strong>{{$details['password']}}</strong></p>
     <br>
-
+<br>
     <h2>{{$details['salutation']}}</h2>
+
+    <a style="text-decoration:none;" href="http://fctnou.es">Visite nuestra web </a>
+    <img src="http://api.fctnou.es/photoroom.png">
+    
 </body>
 </html>

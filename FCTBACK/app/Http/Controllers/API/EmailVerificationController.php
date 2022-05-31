@@ -8,42 +8,31 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EmailVerificationController extends Controller
 {
 
     public function sendVerificationEmail(Request $request)
     {
- 
-        if ($request->user()->hasVerifiedEmail()) {
+        $id = json_decode($request->user)->id;
+         if (User::findOrFail($id)->email_verified_at!=null) {
             return [
-                'message' => 'Already Verified'
+                'message' => 'Email already verified'
             ];
         }
 
-        $request->user()->sendEmailVerificationNotification();
+        User::findOrFail($id)->sendEmailVerificationNotification();
 
         return ['status' => 'verification-link-sent'];
     }
 
-    public function sendVerificationEmailNotSession(Request $request)
-    {
-         $user = AuthController::getUser($request->email);
-        
-        if ($user[0]->email_verified_at!=null) {
-            return [
-                'message' => 'Already Verified'
-            ];
-        }
 
-        $request->user()->sendEmailVerificationNotification();
-
-        return ['status' => 'verification-link-sent'];
-    }
 
     public function verify(EmailVerificationRequest $request)
     {
-        return $request;
+        
         if ($request->user()->hasVerifiedEmail()) {
             return [
                 'message' => 'Email already verified'
@@ -57,5 +46,28 @@ class EmailVerificationController extends Controller
         return [
             'message'=>'Email has been verified'
         ];
+    }
+
+
+    public function verificar(Request $request){
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            $authUser = Auth::user();
+            if ($authUser->activo == "1") {
+                DB::update("UPDATE users set email_verified_at =CURRENT_TIMESTAMP where email=? AND username=?",[$request->email, $request->username]);
+                return [
+                    'message'=>'Email has been verified'
+                ];
+            }
+            if ($authUser->activo == "0") {
+                return [
+                    'message'=>'error'
+                ];
+            }
+        } else {
+            return [
+                'message'=>'error'
+            ];
+        }
+        
     }
 }

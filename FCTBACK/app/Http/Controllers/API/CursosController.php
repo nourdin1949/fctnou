@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cursos;
+use Illuminate\Support\Facades\DB;
 class CursosController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class CursosController extends Controller
      */
     public function index()
     {
-        return Cursos::all();
+        return DB::select("SELECT * FROM cursos where activo =1");
     }
 
     /**
@@ -94,6 +95,10 @@ class CursosController extends Controller
      */
     public function destroy($id)
     {
-        return Cursos::destroy($id);
+        return DB::update("UPDATE cursos SET activo=0 where id=?",[$id]);
+    }
+
+    public function alumnosMatriculados($id){
+        return DB::select("SELECT * FROM alumnos WHERE curso_id=? AND activo=1",[$id]);
     }
 }

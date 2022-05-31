@@ -20,14 +20,14 @@ class CreateCentrosTable extends Migration
             $table->string('localidad',50);
             $table->string('calle',100);
             $table->smallInteger('cp');
-            $table->string('cif',9);
-            $table->mediumInteger('telefono'); 
+            $table->string('cif',10)->unique();
+            $table->string('telefono'); 
             $table->string('email',250);
             $table->string('nombreDirector',60);
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

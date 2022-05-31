@@ -15,7 +15,7 @@ class CreateFctAlumnosTable extends Migration
     {
         Schema::create('fct_alumnos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('alumno_id');
+            $table->unsignedInteger('alumno_id')->unique();
             $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade')->onUpdate('cascade');

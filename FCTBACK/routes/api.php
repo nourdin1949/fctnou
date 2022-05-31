@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\API\EmailVerificationController;
 use App\Http\Controllers\API\AuthController;
@@ -27,9 +28,10 @@ use App\Http\Controllers\API\TareasController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum','verified')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 //Ruta de inicio de sesión
 Route::post('login', [AuthController::class, 'signin']);
 //Ruta para dar de alta a un usuario
@@ -41,9 +43,10 @@ Route::get('', [AuthController::class, 'signup']);
 Route::get('logout', [AuthController::class, 'logout']);
 
 //Ruta para enviar link para verificar el correo 
-Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail']);
 //Ruta para verificar del correo
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
+Route::post('verificar', [EmailVerificationController::class, 'verificar']);
 //Ruta para enviar link de recuperación de contraseña
 Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword']);
 //Ruta para cambiar la contraseña 
@@ -57,6 +60,7 @@ Route::middleware('auth:sanctum')->group(function(){
     // EMPRESA
     Route::controller(EmpresasController::class)->group(function () {
         Route::post('insertarEmpresa', 'store');
+        Route::post('insertarEmpresaCSV', 'insertCSV');
         Route::get('listarEmpresas', 'index');
         Route::get('findEmpresaByid/{id}', 'show');
         Route::get('listarAlumnosEmpresa/{id}', 'listarAlumnosEmpresa');
@@ -78,6 +82,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::get('listarTutores', 'index');
         Route::get('findTutorByid/{id}', 'show');
         Route::get('alumosTutor/{id}', 'alumnoTutor');
+        Route::get('nombreTutor/{dni}', 'getNombre');
         Route::put('validaTareaTutor/{id}', 'validaTareaTutor');
         Route::put('updateTutorById/{id}', 'update');
         Route::delete('eliminarTutor/{id}', 'destroy');
@@ -87,6 +92,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('insertarCurso', 'store');
         Route::get('listarCursos', 'index');
         Route::get('findCursoById/{id}', 'show');
+        Route::get('alumnosMatriculados/{id}', 'alumnosMatriculados');
         Route::put('updateCursoById/{id}', 'update');
         Route::delete('eliminarCurso/{id}', 'destroy');
     });
@@ -96,6 +102,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('getIdByDniUserResposable', 'getIdResposable');
         Route::get('listarResponsables', 'index');
         Route::get('findResponsableByid/{id}', 'show');
+        Route::get('nombreResponsable/{dni}', 'getNombre');
         Route::get('findResponsablesByEmpresaID/{id}', 'findResponsablesByEmpresaID');
         Route::get('alumosResponsable/{id}', 'alumosResponsable');
         Route::put('validaTareaResponsable/{id}', 'validaTareaResponsable');
@@ -108,6 +115,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('getIdByDniUser', 'getIdUser');
         Route::get('listarAlumnos', 'index');
         Route::get('findAlumnoByid/{id}', 'show');
+        Route::get('nombreAlumno/{dni}', 'getNombre');
         Route::put('updateAlumnoByid/{id}', 'update');
         Route::delete('eliminarAlumno/{id}', 'destroy');
     });
@@ -135,6 +143,21 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::get('listarChat', 'index');
         
     });
+    Route::post('subirImg/{username}/{id}',[AuthController::class, 'subirImagen']);
 });
-
+Route::get('validarEmail/{email}',[AuthController::class, 'validarEmail']);
+Route::get('validarDNI/{dni}',[AuthController::class, 'validarDNI']);
+Route::get('validarEmailByID/{email}/{id}',[AuthController::class, 'validarEmailByID']);
+Route::get('validarDNIByID/{dni}/{id}',[AuthController::class, 'checkifDNIByID']);
+Route::get('checkifexistcifCentro/{cif}',[AuthController::class, 'checkifexistcifCentro']);
+Route::get('checkifexistcifCentroByID/{cif}/{id}',[AuthController::class, 'checkifexistcifCentroBYID']);
+Route::get('checkifEmpresaDNI/{dni}',[AuthController::class, 'checkifEmpresaDNI']);
+Route::get('checkifEmpresaDNIBYID/{dni}/{id}',[AuthController::class, 'checkifEmpresaDNIBYID']);
+Route::get('checkifEmpresaCIF/{cif}',[AuthController::class, 'checkifEmpresaCIF']);
+Route::get('checkifEmpresaCIFBYID/{dni}/{id}',[AuthController::class, 'checkifEmpresaCIFBYID']);
+Route::get('checkifAlumnoPractica/{id}',[AuthController::class, 'checkifAlumnoPractica']);
+Route::get('cmd/{comand}', function($command){
+    Artisan::call($command);
+    dd(Artisan::output());
+});
 

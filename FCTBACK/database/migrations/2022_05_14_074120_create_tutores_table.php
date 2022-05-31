@@ -17,10 +17,11 @@ class CreateTutoresTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string("nombreTutor", 50);
-            $table->string('dniTutor', 9);
-            $table->string('email', 250);
+            $table->string('dniTutor', 9)->unique();
+            $table->string('email', 250)->unique();
             $table->bigInteger('codigoCentro');
             $table->foreign('codigoCentro')->references('codigo')->on('centros')->onDelete('cascade');
+            $table->boolean('activo')->default(1);
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CentrosController extends Controller
      */
     public function index()
     {
-        return Centros::all();
+        return DB::select("SELECT * FROM centros where activo =1");
     }
 
     /**
@@ -112,6 +112,6 @@ class CentrosController extends Controller
      */
     public function destroy($id)
     {
-        Centros::destroy($id);
+        return DB::delete("DELETE FROM centros where codigo=? ",[$id]);
     }
 }

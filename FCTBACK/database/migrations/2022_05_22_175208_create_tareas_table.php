@@ -23,8 +23,8 @@ class CreateTareasTable extends Migration
             $table->date('fecha');
             $table->enum("dificultad", array('facil','medio','dificil'));
             $table->string('observaciones');
-            $table->boolean('validadoResponsable');
-            $table->boolean('validadoTutor');
+            $table->boolean('validadoResponsable')->default(0);
+            $table->boolean('validadoTutor')->default(0);
             $table->timestamps();
         });
     }

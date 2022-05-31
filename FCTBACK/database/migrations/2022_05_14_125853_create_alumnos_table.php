@@ -16,15 +16,15 @@ class CreateAlumnosTable extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombreAlumno');
-            $table->string('dniAlumno',9);
+            $table->string('dniAlumno',9)->unique();
             $table->unsignedInteger('curso_id');
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade')->onUpdate('cascade');
             $table->string('provincia', 50);
             $table->string('localidad', 50);
             $table->string('calle', 100);
             $table->smallInteger('cp');
-            $table->string('email', 250);
-            $table->boolean('matriculado');
+            $table->string('email', 250)->unique();
+            $table->boolean('matriculado')->default(1);
             $table->timestamps();
         });
     }

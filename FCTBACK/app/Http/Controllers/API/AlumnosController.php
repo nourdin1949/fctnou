@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Alumnos;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 
 class AlumnosController extends Controller
@@ -17,7 +19,7 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        return Alumnos::all();
+        return DB::select("SELECT * FROM alumnos where matriculado =1");
     }
 
     /**
@@ -103,10 +105,18 @@ class AlumnosController extends Controller
      */
     public function destroy($id)
     {
-        return Alumnos::destroy($id);
+         DB::update("UPDATE alumnos SET matriculado=0 where id=?",[$id]);
+         $dni =  (DB::select("SELECT dniAlumno FROM alumnos where id =?",[$id])[0]->dniAlumno);
+         DB::update("UPDATE users SET activo=0 where username=?",[$dni]);
     }
 
     public function getIdUser(Request $request){
         return DB::select("select id from alumnos where dniAlumno =?",[$request->dni]);
     }
+    public function getNombre($dni){
+        return DB::select("SELECT nombreAlumno from alumnos where dniAlumno=?",[$dni])[0];
+    }
+    
+   
+
 }

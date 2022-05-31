@@ -17,7 +17,7 @@ class EmpresasController extends Controller
     public function index()
     {
         //
-        return Empresas::all();
+        return DB::select("SELECT * FROM empresas where activo =1");
     }
 
     /**
@@ -108,7 +108,7 @@ class EmpresasController extends Controller
      */
     public function destroy($id)
     {   
-        Empresas::destroy($id);
+        return DB::update("UPDATE empresas SET activo=0 where id=?",[$id]);
     }
 
     public function listarAlumnosEmpresa($id){
@@ -116,5 +116,47 @@ class EmpresasController extends Controller
             alumnos as al on al.id= fct.alumno_id inner join cursos as c on c.id=al.curso_id inner join
                 empresas as em on em.id= fct.empresa_id inner join responsables as resp on resp.id= fct.responsable_id
                      inner join tutores as tutor on tutor.id = fct.tutor_id where fct.empresa_id=? group by fct.empresa_id; ",[$id]);
+    }
+
+
+    public function insertCSV(Request $request){
+        for( $i=0; $i<10;$i++){
+            $obj =json_encode($request[$i]);
+            $empresas =json_decode($obj);
+            $empresa = new Empresas();
+            $empresa->nombreEmpresa = $empresas->nombreEmpresa;
+            $empresa->provincia = $empresas->provincia;
+            $empresa->localidad = $empresas->localidad;
+            $empresa->calle = $empresas->calle;
+            $empresa->cp = $empresas->cp;
+            $empresa->cif = $empresas->cif;
+            $empresa->telefono = $empresas->telefono;
+            $empresa->email = $empresas->email;
+            $empresa->dniRepresentante = $empresas->dniRepresentante;
+            $empresa->nombreRepresentante = $empresas->nombreRepresentante;
+             $empresa->save();
+        }
+
+        foreach($request as $empresas){
+            return count(json_decode($request));
+            
+            return  json_decode($obj)->email;
+        }
+        // foreach($request as $empresas){
+        //     return $empresas;
+        //     return $empresas[0]->input('nombreEmpresa');
+        //     $empresa = new Empresas();
+        //     $empresa->nombreEmpresa = $empresas[0]->input('nombreEmpresa');
+        //     $empresa->provincia = $empresas->input('provincia');
+        //     $empresa->localidad = $empresas->input('localidad');
+        //     $empresa->calle = $empresas->input('calle');
+        //     $empresa->cp = $empresas->input('cp');
+        //     $empresa->cif = $empresas->input('cif');
+        //     $empresa->telefono = $empresas->input('telefono');
+        //     $empresa->email = $empresas->input('email');
+        //     $empresa->dniRepresentante = $empresas->input('dniRepresentante');
+        //     $empresa->nombreRepresentante = $empresas->input('nombreRepresentante');
+
+        // return $empresa->save();
     }
 }
