@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="logo"> <img
+            src="../../../assets/img/icono.ico" alt="">
+    </div>
+    <div class="text-center mt-4 name"> FCTNOU </div>
+    <form  (ngSubmit)="sendverificarEmail()" class="p-3 mt-3">
+
+        <div class="form-field d-flex align-items-center">
+            <input type="email" name="email" id="email" placeholder="Email ">
+        </div>
+        <small *ngIf="noexiste" class="form-text alert alert-danger ">
+            Email no registrado
+        </small>
+        <small *ngIf="verificado" class="form-text alert alert-danger ">
+            Email verificado
+        </small>
+        <small *ngIf="enviadoEmail" class="form-text alert alert-success ">
+            !Email enviado¡
+        </small>
+        <button class="btn bg-color mt-3">Enviar Correo Confirmacion</button>
+    </form>
+    
+</div>
+
