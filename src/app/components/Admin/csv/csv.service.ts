@@ -30,6 +30,9 @@ export class CsvService {
   public findResponsablesByEmpresaID(idEmpresa:number): Observable<Responsable[]>{
     return this.http.get<Responsable[]>(`${this.url}/findResponsablesByEmpresaID/${idEmpresa}`,this.getHeaders())
   }
+  public checkifAlumnoPractica(idAlumno:number){
+    return this.http.get(`${this.url}/checkifAlumnoPractica/${idAlumno}`,this.getHeaders())
+  }
 
   public insetarfctalumno(fctalumno:FCTAlumnoLista){
     return  this.http.post(`${this.url}/insertarAlumnoFCT`, fctalumno,this.getHeaders())

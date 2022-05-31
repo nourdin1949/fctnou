@@ -1,0 +1,9 @@
+.derecha{
+    display:flex;
+   justify-content: end;
+   
+}
+
+.derecha:hover{
+    size: 2%;
+}

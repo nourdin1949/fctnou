@@ -53,7 +53,7 @@ input[type=radio]{
     display: none;
 }
 #registrado{
-    display: none;
+    display: NONE;
 }
 .hide {
     display: none;

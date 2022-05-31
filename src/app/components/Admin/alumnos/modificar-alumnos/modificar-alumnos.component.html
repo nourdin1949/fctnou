@@ -2,7 +2,7 @@
 <div class="row mt-5 mb-4">
   <div class="col-3"></div>
 
-    <form [formGroup]="formModificarAlumno" (ngSubmit)="modificarAlumno(formModificarAlumno)" class="w-75 offset-md-3 col-6">
+    <form [formGroup]="formModificarAlumno" (ngSubmit)="modificarAlumno(formModificarAlumno)" class="w-75  col-6">
         <div class="form-group">
             <h3 class="title bg-color text-center text-light p-2">Modificar Alumno <b>{{alumno.nombreAlumno}}</b> </h3>
         </div>
@@ -29,6 +29,12 @@
           <mat-error *ngIf="this.formModificarAlumno.controls['dni'].hasError('pattern')">
             Formato requerido  <b>12345678C</b>
           </mat-error>
+          <mat-error *ngIf="this.formModificarAlumno.controls['dni'].hasError('validDni')">
+            DNI {{formModificarAlumno.controls['dni'].value}} está en uso
+          </mat-error>
+          <mat-error *ngIf="this.formModificarAlumno.controls['dni'].hasError('dniletterValid')">
+            La letra del DNI no se corresponde
+          </mat-error>
         </mat-form-field>
     
         <mat-form-field class=" w-100" appearance="fill">
@@ -42,6 +48,9 @@
           </mat-error>
           <mat-error *ngIf="this.formModificarAlumno.controls['email'].hasError('pattern')">
             Email<b> no es válido</b>
+          </mat-error>
+          <mat-error *ngIf="this.formModificarAlumno.controls['email'].hasError('validEmail')">
+            Email {{formModificarAlumno.controls['email'].value}} está en uso
           </mat-error>
         </mat-form-field>
         <div class="row">

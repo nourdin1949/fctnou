@@ -1,10 +1,11 @@
-nombreEmpresa,provincia,localidad,calle,cp,cif,telefono,email,nombreRepresentante,dniRepresentante
-"Boyer, West and Wolf",Madrid,Madrid,88339 Mallory Pass,28045,901726725,1347941857,wmarcroft0@blogtalkradio.com,Mélodie,79349174V
-Mosciski-Grimes,Madrid,Madrid,0 Fairview Hill,28015,0036283339,635942849,cscrimshaw1@google.com,Lóng,98270647C
-"Smitham, Balistreri and Buckridge",Extremadura,Badajoz,2 Carey Center,06005,2932552295,767454963,eblackall2@bloglovin.com,Börje,71616485B
-"Vandervort, Block and Lockman",Madrid,Madrid,7552 Nova Avenue,28055,4397971633,491895015,mbadman3@friendfeed.com,Océane,31225848S
-Lowe-Sauer,Extremadura,Badajoz,42890 Arizona Junction,06010,1294007815,143500157,mlathan4@prnewswire.com,Renée,69937335N
-"Powlowski, Quitzon and Carroll",Madrid,Madrid,07 Birchwood Court,28045,5166530896,596751479,iyarwood5@home.pl,Océanne,93902510M
-Hansen-Thiel,Madrid,Madrid,3 Bowman Junction,28055,9294795411,3556948457,gsiaspinski6@tripod.com,Mélinda,51830140U
-Stanton Group,Madrid,Madrid,21558 Karstens Pass,28015,7270829179,422705016,bmckeachie7@twitter.com,Maéna,62849781A
-Stroman-Osinski,Madrid,Getafe,39968 Derek Avenue,28904,5109583692,288230812,fcruwys8@freewebs.com,Judicaël,87663332G
+id,nombreEmpresa,provincia,localidad,calle,cp,cif,telefono,email,nombreRepresentante,dniRepresentante
+1,"Boyer, West and Wolf",Madrid,Madrid,88339 Mallory Pass,28045,90126725,137941857,wmarcroft0@blogtalkradio.com,Mélodie,79349174V
+2,Mosciski-Grimes,Madrid,Madrid,0 Fairview Hill,28015,003628339,63594849,cscrimshaw1@google.com,Lóng,98270647C
+3,"Smitham, Balistreri and Buckridge",Extremadura,Badajoz,2 Carey Center,06005,293552295,76745463,eblackall2@bloglovin.com,Börje,71616485B
+4,"Vandervort, Block and Lockman",Madrid,Madrid,7552 Nova Avenue,28055,439791633,49189015,mbadman3@friendfeed.com,Océane,31225848S
+5,Lowe-Sauer,Extremadura,Badajoz,42890 Arizona Junction,06010,129400815,14350057,mlathan4@prnewswire.com,Renée,69937335N
+6,"Powlowski, Quitzon and Carroll",Madrid,Madrid,07 Birchwood Court,28045,516630896,59675479,iyarwood5@home.pl,Océanne,93902510M
+7,Hansen-Thiel,Madrid,Madrid,3 Bowman Junction,28055,929495411,355694857,gsiaspinski6@tripod.com,Mélinda,51830140U
+8,Stanton Group,Madrid,Madrid,21558 Karstens Pass,28015,727089179,42270016,bmckeachie7@twitter.com,Maéna,62849781A
+9,Stroman-Osinski,Madrid,Getafe,39968 Derek Avenue,28904,510983692,28823812,fcruwys8@freewebs.com,Judicaël,87663332G
+10,NTT DTA,Salamanca,Salamanca,calle salamca,10432,235777333,666655554,nttdata@gm.com,Rubio Jose,11111111F

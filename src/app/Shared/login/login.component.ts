@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
-import { PdfMakeWrapper, Txt } from 'pdfmake-wrapper';
 import { User } from '../interfaces/Interface';
-import { VerificarEmailComponent } from '../verificar-email/verificar-email.component';
+
 
 @Component({
   selector: 'app-login',
@@ -14,93 +13,105 @@ import { VerificarEmailComponent } from '../verificar-email/verificar-email.comp
 export class LoginComponent implements OnInit {
 
   public user!: User;
+  public passkeyup: boolean = false
+  public userkeyup: boolean = false
   public formlogin: FormGroup
   public incorrecto: boolean = false
   public cuentaDesactivada: boolean = false
   public emailVerificado: boolean = false
   constructor(private fb: FormBuilder, private router: Router, private shareServ: SharedService) {
     this.formlogin = this.fb.group({
-      usuario: ['23754851D', Validators.required],
-      pwd: ['12345678', Validators.required]
+      usuario: ['', Validators.required],
+      pwd: ['', Validators.required]
     })
   }
 
   ngOnInit(): void {
+    this.shareServ.altaAdmin()
   }
-  iniciarSesion(form: FormGroup) {
+  public iniciarSesion(form: FormGroup) {
+    this.restaurarValores()
     const objeto = { "username": form.value.usuario, "password": form.value.pwd }
-    this.shareServ.signedIn(objeto).subscribe((response) => {
-      console.log(response)
-      localStorage.setItem("token", response.data.token)
-      localStorage.setItem("user", JSON.stringify(response.data.user))
-      this.getuser();
-
-    }, (error) => {
-      console.log(error.error.message);
-      if (error.error.message == "Unauthorised.") {
-        this.incorrecto = true
-        this.cuentaDesactivada = false
-      } else if (error.error.message == "Cuenta desactivada") {
-        this.cuentaDesactivada = true
-        this.incorrecto = false
-        window.alert("desactivadfa")
-      }
-    })
+    if (this.formlogin.valid) {
+      this.shareServ.signedIn(objeto)
+        .subscribe(
+          (response) => {
+            console.log(response)
+            localStorage.setItem("token", response.data.token)
+            localStorage.setItem("user", JSON.stringify(response.data.user))
+            this.getuser();
+          },
+          (error) => {
+            if (error.error.message == "Unauthorised.") {
+              this.incorrecto = true
+            } else if (error.error.message == "Cuenta desactivada") {
+              this.cuentaDesactivada = true
+            }
+          })
+    }
   }
 
   public getuser() {
-    this.shareServ.getUser().subscribe((response) => {
-      this.user = response
-      console.log(response,"aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-      sessionStorage.setItem('user', JSON.stringify(this.user))
-      sessionStorage.setItem('username', this.user.username)
-      if (this.user.perfil == "admin") {
-        console.log("admin")
-        this.shareServ.perfil = "admin"
-        localStorage.setItem("Perfil", "admin")
+    this.shareServ.getUser().subscribe(
+      (response) => {
+        this.user = response
+        sessionStorage.setItem('user', JSON.stringify(this.user))
+        sessionStorage.setItem('username', this.user.username)
+        switch (this.user.perfil) {
+          case 'admin': this.metodoAdmin()
+            break;
+          case 'profesor': this.metodoProfesor()
+            break;
+          case 'responsable': this.metodoResponsable()
+            break;
+          case 'alumno': this.metodoAlumno()
+            break;
+        }
+      },
+      (error) => {
+        if (error.error.message == "Your email address is not verified.") {
+          this.emailVerificado = true
+        }
+      })
+  }
 
-        this.router.navigateByUrl("/admin")
-      }
-      if (this.user.perfil == "profesor") {
-        console.log("profesor")
-        this.shareServ.perfil = "profesor"
-        this.shareServ.getIdUserTutor(this.user.username)
-        .subscribe((res) => {
-          console.log(res), sessionStorage.setItem('id', res.id)
-          console.log(res), 
-          console.log("guardar id en sesion")
+  public restaurarValores() {
+    this.cuentaDesactivada = false;
+    this.userkeyup = false;
+    this.passkeyup = false;
+    this.incorrecto = false;
+    this.emailVerificado = false
+  }
+  public metodoAdmin() {
+    localStorage.setItem("Perfil", "admin")
+    this.router.navigateByUrl("/admin")
+  }
+  public metodoResponsable() {
+    this.shareServ.getIdUserResposable(this.user.username)
+      .subscribe(
+        (res) => {
+          sessionStorage.setItem('id', res.id)
         });
-        localStorage.setItem("Perfil", "profesor")
-        this.router.navigateByUrl("/tutorescolar")
-      }
-      if (this.user.perfil == "responsable") {
-        console.log("responsable")
-        this.shareServ.perfil = "responsable"
-        this.shareServ.getIdUserResposable(this.user.username)
-        .subscribe((res) => {
-          console.log(res), sessionStorage.setItem('id', res.id)
-          console.log("guardar id en sesion")
+    localStorage.setItem("Perfil", "responsable")
+    this.router.navigateByUrl("/tutorempresa")
+  }
+  public metodoAlumno() {
+    this.shareServ.getIdUserAlumno(this.user.username)
+      .subscribe(
+        (res) => {
+          sessionStorage.setItem('id', res[0].id)
         });
-        localStorage.setItem("Perfil", "responsable")
-        this.router.navigateByUrl("/tutorempresa")
-      }
-      if (this.user.perfil == "alumno") {
-        console.log("alumno")
-        this.shareServ.perfil = "alumno"
-        this.shareServ.getIdUserAlumno(this.user.username)
-          .subscribe((res) => {
-            console.log(res), sessionStorage.setItem('id', res[0].id)
-            console.log("guardar id en sesion")
-          });
-        localStorage.setItem("Perfil", "alumno")
-        this.router.navigateByUrl("/alumno")
-      }
-    }, (error) => {
-      if (error.error.message == "Your email address is not verified.") {
-        this.emailVerificado = true
-        window.alert("verifcaion")
-      }
-    })
+    localStorage.setItem("Perfil", "alumno")
+    this.router.navigateByUrl("/alumno")
+  }
+  public metodoProfesor() {
+    this.shareServ.getIdUserTutor(this.user.username)
+      .subscribe(
+        (res) => {
+          sessionStorage.setItem('id', res.id)
+        });
+    localStorage.setItem("Perfil", "profesor")
+    this.router.navigateByUrl("/tutorescolar")
   }
 }
 

@@ -28,7 +28,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     FormsModule,
     MatInputModule,
     MatTabsModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
   ]
 })
 export class TutorEscolarModule { }

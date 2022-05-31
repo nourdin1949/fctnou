@@ -70,20 +70,19 @@
             <thead class="table bg-color text-center  text-light">
                 <tr>
                     <th>Alumno</th>
-                    <th>Tutor </th>
+                    <th>DNI </th>
                     <th>Tutor Curso</th>
                     <th>Curso</th>
                     <th>Nº Horas</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{{curso.codigoCiclo}}</td>
-                    <td>Camacho Gutierrez</td>
-                    <td>Raul Martin</td>
-                    <td>Dooley</td>
-                    <td>400</td>
-                    
+                <tr *ngFor="let alumno of alumnos">
+                    <td *ngIf="alumno.curso_id==curso.id">{{alumno.nombreAlumno}}</td>
+                    <td *ngIf="alumno.curso_id==curso.id">{{alumno.dniAlumno}}</td>
+                    <td *ngIf="alumno.curso_id==curso.id">{{curso.tutor_id}}</td>
+                    <td *ngIf="alumno.curso_id==curso.id">{{curso.codigoCiclo}}</td>
+                    <td *ngIf="alumno.curso_id==curso.id">{{curso.nHoras}}</td>
                 </tr>
             </tbody>
         </table>

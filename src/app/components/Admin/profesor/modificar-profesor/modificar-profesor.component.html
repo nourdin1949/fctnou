@@ -1,30 +1,74 @@
-<div class="row">
+
+<div class="row mt-5 mb-4">
     <div class="col-3"></div>
     <form [formGroup]="formModificarTutor" (ngSubmit)="modificarProfesor(formModificarTutor)" class="w-75 col-6">
         <div class="form-group">
             <h3 class="title bg-color text-light p-2">Modificar Tutor</h3>
         </div>
-        <div class="form-group">
-            <label for="centro" class="form-label">Nombre Centro</label>
-            <select name="centro" formControlName="centro" class="form-control" id="centro">
-                <option value="0">Seleciona Centro</option>
-                <option value="{{centro.codigo}}" [selected]="tutor.codigoCentro==centro.codigo"
-                    *ngFor="let centro of centros">{{centro.nombreCentro}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nombre" class="form-label">Nombre Profesor</label>
-            <input type="text" formControlName="nombre" placeholder="Nombre" class="form-control" id="nombre">
-        </div>
-        <div class="form-group">
-            <label for="dni" class="form-label">DNI Profesor</label>
-            <input type="text" formControlName="dni" placeholder="Dni del Profesor" class="form-control" id="dni">
-        </div>
-        <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" formControlName="email" placeholder="Email" class="form-control" id="email">
-        </div>
-        <div class="row">
+        <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Centro</mat-label>
+            <mat-select  formControlName="centro">
+              <mat-option [value]="centro.codigo" *ngFor="let centro of centros">
+                  {{centro.nombreCentro}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.formModificarTutor.controls['centro']?.errors?.['required']">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarTutor.controls['centro']?.errors?.['pattern']">
+              Mínimo 3 letras
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Nombre Tutor</mat-label>
+              <input matInput 
+                formControlName="nombre" 
+                placeholder="Nombre Apellido" 
+                class="w-100">
+              <mat-error *ngIf="this.formModificarTutor.controls['nombre'].hasError('required')">
+                Campo requerido
+              </mat-error>
+              <mat-error *ngIf="this.formModificarTutor.controls['nombre'].hasError('pattern')">
+                Mínimo 3 letras 
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>DNI Tutor</mat-label>
+            <input matInput 
+              formControlName="dni" 
+              placeholder="12345678X" 
+              class="w-100">
+            <mat-error *ngIf="this.formModificarTutor.controls['dni'].hasError('required')">
+              Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarTutor.controls['dni'].hasError('pattern')">
+              Formato requerido  12345678C 
+            </mat-error>
+            <mat-error *ngIf="this.formModificarTutor.controls['dni'].hasError('validDni')">
+              DNI {{formModificarTutor.controls['dni'].value}} está  en uso
+            </mat-error>
+            <mat-error *ngIf="this.formModificarTutor.controls['dni'].hasError('dniletterValid')">
+              La letra del DNI no se corresponde
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class=" w-100" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput 
+                  formControlName="email" 
+                  placeholder="nombre@dominio.com" 
+                  class="w-100">
+              <mat-error *ngIf="this.formModificarTutor.controls['email'].hasError('required')">
+                  Campo requerido
+              </mat-error>
+              <mat-error *ngIf="this.formModificarTutor.controls['email'].hasError('pattern')">
+                  Email no es válido
+              </mat-error>
+              <mat-error *ngIf="this.formModificarTutor.controls['email'].hasError('validEmail')">
+                Email  {{formModificarTutor.controls['email'].value}} está  en uso
+            </mat-error>
+          </mat-form-field>
+        <div class="row  mt-2">
             <div class="col-lg-8  col-sm-12 mb-3  col-md-12">
                 <button type="submit" class="w-100 btn bg-outline-color"><i class="fa fa-save"></i></button>
             </div>

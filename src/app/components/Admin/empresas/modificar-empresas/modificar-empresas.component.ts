@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresa } from 'src/app/Shared/interfaces/Interface';
+import { customValidatorDNIEmpresaBYID, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
 import { EmpresasService } from '../empresas.service';
 import { ListarEmpresasComponent } from '../listar-empresas/listar-empresas.component';
 
@@ -39,7 +40,9 @@ export class ModificarEmpresasComponent implements  OnInit{
       telefono: ['', [Validators.required, Validators.pattern("[A-Z]{0}[0-9]{9}")]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       representante: ['', Validators.required],
-      dnirepresentante: ['',[ Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")]],
+      dnirepresentante: ['',[ Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
+      [customValidatorDNIEmpresaBYID.customValidDNIEmpresaBYID(empresaService, this.idEmpresa), 
+        customValidatorFormatDNI.customValidDNILETRA], 'blur'],
     })
 
   }

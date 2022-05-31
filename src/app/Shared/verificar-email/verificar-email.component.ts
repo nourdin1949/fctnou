@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../interfaces/Interface';
 import { SharedService } from '../shared.service';
 
@@ -9,19 +11,36 @@ import { SharedService } from '../shared.service';
 })
 export class VerificarEmailComponent implements OnInit {
   public users: User[]
-  public
-  constructor(private sharedservice: SharedService) { }
+  public formVerificacion:FormGroup
+  public incorrecto: boolean=false;
+  public verificado: boolean=false;
+  constructor(private sharedservice: SharedService, private fb: FormBuilder, private router: Router ) {
+    this.formVerificacion = this.fb.group({
+      usuario: ['', Validators.required],
+      pwd: ['Aa123456', Validators.required],
+      email: ['', Validators.required]
+    })
+  } 
 
   ngOnInit(): void {
   }
   verificarEmail() {
     let email = (<HTMLInputElement>document.getElementById("email")).value
-    this.sharedservice.listarUsers().subscribe((response) => {
-      this.users = response;
-      this.users = this.users.filter((user) => user.email == email)
-      if (this.users[0].email_verified_at==null) {
-        this.sharedservice.sendEmailVerification(email).subscribe((res)=>console.log(res))
-      } 
-    });
+    const obejto ={
+      "email":this.formVerificacion.value.email,
+      "username":this.formVerificacion.value.usuario,
+      "password":this.formVerificacion.value.pwd,
+    }
+    this.sharedservice.verificarEmail(obejto).subscribe(
+      ()=>{
+        this.verificado=true
+        this.router.navigateByUrl('')
+      },
+      (er)=>{
+        console.log(er)
+        this.incorrecto=true
+      }
+    )
+
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Alumno, Curso } from 'src/app/Shared/interfaces/Interface';
+import { SharedService } from 'src/app/Shared/shared.service';
+import { customValidatorEmailBYID, customValidatordDniBYID, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
 import { CursosService } from '../../cursos/cursos.service';
 import { AlumnosService } from '../alumnos.service';
 
@@ -21,7 +23,8 @@ export class ModificarAlumnosComponent implements OnInit {
     private fb: FormBuilder,
     private cursoServoce: CursosService,
     private alumnosService: AlumnosService,
-    private ActivatedRoute: ActivatedRoute) {
+    private ActivatedRoute: ActivatedRoute,
+    private sharedService: SharedService) {
 
     this.ActivatedRoute.params.subscribe((params) => {
       this.idAlumno = params['id']
@@ -29,18 +32,19 @@ export class ModificarAlumnosComponent implements OnInit {
       this.listarCursos();
     })
 
-
     this.formModificarAlumno = this.fb.group({
-      id: [0, Validators.required],
+      id:[this.idAlumno],
       nombre: ['', Validators.required],
-      dni: ['', Validators.required],
-      matriculado: [0, Validators.required],
+      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
+      [customValidatordDniBYID.customValidDni(sharedService, this.idAlumno),
+         customValidatorFormatDNI.customValidDNILETRA], 'blur' ],
       provincia: ['', Validators.required],
       localidad: ['', Validators.required],
       calle: ['', Validators.required],
-      cp: [0, [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
-      curso: [0, Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+      cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")]],
+      curso: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      [customValidatorEmailBYID.customValidEmail(sharedService, this.idAlumno)], 'blur' ]
 
     })
   }
@@ -60,7 +64,7 @@ export class ModificarAlumnosComponent implements OnInit {
       "calle": form.value.calle,
       "cp": form.value.cp,
       "email": form.value.email,
-      "matriculado": form.value.matriculado,
+      "matriculado": 1,
     }
     console.log(alumno)
     if (this.formModificarAlumno.valid) {
@@ -81,7 +85,7 @@ export class ModificarAlumnosComponent implements OnInit {
           "id": this.idAlumno,
           "nombre": this.alumno.nombreAlumno,
           "dni": this.alumno.dniAlumno,
-          "matriculado": this.alumno.matriculado,
+         
           "provincia": this.alumno.provincia,
           "localidad": this.alumno.localidad,
           "calle": this.alumno.calle,

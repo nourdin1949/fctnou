@@ -1,4 +1,12 @@
-<div class="row w-100">
+<div class="row mt-3 w-100">
+        <div class="row w-100 ">
+          <div class="col-12 derecha">
+            <mat-icon 
+            matTooltip="Espera el resultado de inserccion !Se mostrará un modal en la mitad de la pantalla¡" >
+            info
+        </mat-icon> 
+          </div>
+        </div>
     <div class="col-3"></div>
 
     <form [formGroup]="formcsv" (ngSubmit)="insertarDatos($event)" class="w-75  col-6">
@@ -10,8 +18,8 @@
             <ngx-mat-file-input formControlName="centros" (change)="filechangedCentros($event)" accept=".csv"
                 placeholder="Ficheros de Centros">
             </ngx-mat-file-input>
-            <mat-error>
-                Admite extensiones .csv
+            <mat-error *ngIf="formcsv.controls['centros'].hasError('filevalidator')">
+                Admite ficheros centros.csv
             </mat-error>
             <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
@@ -20,8 +28,8 @@
             <ngx-mat-file-input formControlName="empresas" (change)="filechangedEmpresas($event)" accept=".csv"
                 placeholder="Ficheros de Empresas">
             </ngx-mat-file-input>
-            <mat-error>
-                Admite extensiones .csv
+            <mat-error *ngIf="formcsv.controls['empresas'].hasError('filevalidator')">
+                Admite ficheros empresas.csv
             </mat-error>
             <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
@@ -30,8 +38,8 @@
             <ngx-mat-file-input formControlName="cursos" (change)="filechangedCursos($event)" accept=".csv"
                 placeholder="Ficheros de Cursos">
             </ngx-mat-file-input>
-            <mat-error>
-                Admite extensiones .csv
+            <mat-error *ngIf="formcsv.controls['cursos'].hasError('filevalidator')">
+                Admite ficheros cursos.csv
             </mat-error>
             <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
@@ -40,19 +48,18 @@
             <ngx-mat-file-input formControlName="tutores" (change)="filechangedTutores($event)" accept=".csv"
                 placeholder="Ficheros de Tutores">
             </ngx-mat-file-input>
-            <mat-error>
-                Admite extensiones .csv
+            <mat-error *ngIf="formcsv.controls['tutores'].hasError('filevalidatorT')">
+                Admite ficheros tutores.csv
             </mat-error>
             <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
-
 
         <mat-form-field class="w-100">
             <ngx-mat-file-input formControlName="resp" (change)="filechangedResponsables($event)" accept=".csv"
                 placeholder="Ficheros de Responsables">
             </ngx-mat-file-input>
-            <mat-error>
-                Admite extensiones .csv
+            <mat-error *ngIf="formcsv.controls['resp'].hasError('filevalidator')">
+                Admite ficheros responsables.csv
             </mat-error>
             <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
@@ -61,16 +68,17 @@
             <ngx-mat-file-input formControlName="alumnos" (change)="filechangedAlumnos($event)" accept=".csv"
                 placeholder="Ficheros de Alumnos">
             </ngx-mat-file-input>
-            <mat-error>
-                Admite extensiones .csv
+            <mat-error *ngIf="formcsv.controls['alumnos'].hasError('filevalidator')">
+                Admite ficheros alumnos.csv
             </mat-error>
             <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>
-        <button type="submit" class=" w-100 mt-2 btn bg-outline-color">Asignar</button>
+
+        <button type="submit" class=" w-100 mt-2 btn bg-outline-color" >Insertar</button>
     </form>
 </div>
 
-<button type="button" id="insertado"  data-toggle="modal" data-target="#insertarCSV">aaaaa</button>
+<button type="button" id="insertado" data-toggle="modal" data-target="#insertarCSV"></button>
 
 <!-- Modal INSERTAR CSVS-->
 <div class="modal fade" id="insertarCSV" tabindex="-1" role="dialog" aria-labelledby="insertarCSVLabel"
@@ -80,44 +88,44 @@
             <div class="modal-body text-center">
                 <h2 class="mt-3 text-center">¡EMPRESA!</h2>
                 <i class="fa fa-check text-success" aria-hidden="true"></i>
-                    Success: {{empresaCorrecto}}/{{empresaCorrecto+empresaFallo}}&nbsp;
+                Success: {{empresaCorrecto}}/{{empresaCorrecto+empresaFallo}}&nbsp;
                 <i class="fa fa-x text-danger" aria-hidden="true"></i>
-                    Error:{{empresaFallo}}/{{empresaCorrecto+empresaFallo}}
+                Error:{{empresaFallo}}/{{empresaCorrecto+empresaFallo}}
                 <br>
 
                 <h2 class="mt-3 text-center">¡CENTRO!</h2>
                 <i class="fa fa-check text-success" aria-hidden="true"></i>
-                    Success: {{centrosCorrecto}}/{{centrosCorrecto+centrosFallo}}&nbsp;
+                Success: {{centrosCorrecto}}/{{centrosCorrecto+centrosFallo}}&nbsp;
                 <i class="fa fa-x text-danger" aria-hidden="true"></i>
-                    Error:{{centrosFallo}}/{{centrosCorrecto+centrosFallo}}
+                Error:{{centrosFallo}}/{{centrosCorrecto+centrosFallo}}
                 <br>
 
                 <h2 class="mt-3 text-center">¡CURSO!</h2>
                 <i class="fa fa-check text-success" aria-hidden="true"></i>
-                    Success: {{cursosCorrecto}}/{{cursosFallo+cursosCorrecto}}&nbsp;
+                Success: {{cursosCorrecto}}/{{cursosFallo+cursosCorrecto}}&nbsp;
                 <i class="fa fa-x text-danger" aria-hidden="true"></i>
-                    Error:{{cursosFallo}}/{{cursosFallo+cursosCorrecto}}
+                Error:{{cursosFallo}}/{{cursosFallo+cursosCorrecto}}
                 <br>
 
                 <h2 class="mt-3 text-center">¡TUTOR!</h2>
                 <i class="fa fa-check text-success" aria-hidden="true"></i>
-                    Success: {{tutoresCorrecto}}/{{tutoresFallo+tutoresCorrecto}}&nbsp;
+                Success: {{tutoresCorrecto}}/{{tutoresFallo+tutoresCorrecto}}&nbsp;
                 <i class="fa fa-x text-danger" aria-hidden="true"></i>
-                    Error:{{tutoresFallo}}/{{tutoresFallo+tutoresCorrecto}}
+                Error:{{tutoresFallo}}/{{tutoresFallo+tutoresCorrecto}}
                 <br>
 
                 <h2 class="mt-3 text-center">¡REPONSABLE!</h2>
                 <i class="fa fa-check text-success" aria-hidden="true"></i>
-                    Success: {{responsableCorrecto}}/{{responsableFallo+responsableCorrecto}}&nbsp;
+                Success: {{responsableCorrecto}}/{{responsableFallo+responsableCorrecto}}&nbsp;
                 <i class="fa fa-x text-danger" aria-hidden="true"></i>
-                    Error:{{responsableFallo}}/{{responsableFallo+responsableCorrecto}}
+                Error:{{responsableFallo}}/{{responsableFallo+responsableCorrecto}}
                 <br>
 
                 <h2 class="mt-3 text-center">¡ALUMNO!</h2>
                 <i class="fa fa-check text-success" aria-hidden="true"></i>
-                    Success: {{alumnosCorrecto}}/{{alumnosFallo+alumnosCorrecto}}&nbsp;
+                Success: {{alumnosCorrecto}}/{{alumnosFallo+alumnosCorrecto}}&nbsp;
                 <i class="fa fa-x text-danger" aria-hidden="true"></i>
-                    Error:{{alumnosFallo}}/{{alumnosFallo+alumnosCorrecto}}
+                Error:{{alumnosFallo}}/{{alumnosFallo+alumnosCorrecto}}
                 <br>
             </div>
         </div>

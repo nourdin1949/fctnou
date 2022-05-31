@@ -10,6 +10,7 @@ import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 PdfMakeWrapper.setFonts(pdfFonts)
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ PdfMakeWrapper.setFonts(pdfFonts)
     ComponentsModule,
     BrowserAnimationsModule,
     MatTabsModule, 
-   MatFormFieldModule,
-  
+    MatFormFieldModule,
+    MatSnackBarModule
+    
   ],
   providers: [AuthenticationGuard],
   bootstrap: [AppComponent]

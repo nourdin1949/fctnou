@@ -43,6 +43,12 @@ export class CentrosService {
   
   updateCentroById(id:number, centro:Centro){
     return this.http.put<Centro>(`${this.url}/updateCentroById/${id}`,centro,this.getHeaders()) 
+  }
 
+  checkifexistcifCentroByID(cif:string, id:number){
+    return this.http.get<any>(`${this.url}/checkifexistcifCentroByID/${cif}/${id}`, this.getHeaders());
+  }
+  checkifexistcifCentro(cif:string){
+    return this.http.get<any>(`${this.url}/checkifexistcifCentro/${cif}`, this.getHeaders());
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { timeout } from 'rxjs';
 import { Chat, Responsable } from 'src/app/Shared/interfaces/Interface';
 import { ProfesorService } from '../../Admin/profesor/profesor.service';
 import { ResponsableService } from '../../Admin/responsable/responsable.service';
@@ -10,39 +11,41 @@ import { TutorEmpresaService } from '../../TutorEmpresa/tutor-empresa.service';
   templateUrl: './chat-esco.component.html',
   styleUrls: ['./chat-esco.component.css']
 })
-export class ChatEscoComponent implements OnInit {
+export class ChatEscoComponent implements OnInit, OnDestroy {
   public responsables: Responsable[] = []
   mensajes: Chat[] = []
-  public auxmensajes:Chat[]=[]
+  public auxmensajes: Chat[] = []
   nuevoMensaje: string = ""
   receptor: string = ""
   mostrarChat: boolean = false
+  public temporizador
   constructor(
     private tutorempresaService: TutorEmpresaService,
     private responsableService: ResponsableService) { }
 
   ngOnInit(): void {
     this.listarResponsables()
-    setInterval(()=>{
-      this.listarMensaje()
-    }, 1000)
+   
   }
   cargarMensajes() {
-   
-    this.auxmensajes = this.mensajes.filter(element => 
-     ( element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
-     ( element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
-   )
-   console.log(this.auxmensajes)
-    if (this.receptor != "") { this.mostrarChat = true } else {
-      this.mostrarChat = false
-    }
+
+    this.temporizador = setInterval(() => {
+      this.listarMensaje()
+    }, 2000)
+    
   }
   listarMensaje() {
     this.tutorempresaService.listarChat().subscribe((res) => {
       this.mensajes = res;
-      this.cargarMensajes()
     })
+    this.auxmensajes = this.mensajes.filter(element =>
+      (element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
+      (element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
+    )
+    console.log(this.auxmensajes)
+    if (this.receptor != "") { this.mostrarChat = true } else {
+      this.mostrarChat = false
+    }
   }
   public listarResponsables() {
     this.responsableService.listarResponsables().subscribe((response) => {
@@ -57,15 +60,13 @@ export class ChatEscoComponent implements OnInit {
       "receptor": this.receptor,
       "fecha": new Date()
     }
-      console.log(chatobject)
+    console.log(chatobject)
     this.nuevoMensaje = ""
-    this.tutorempresaService.insertarChat(chatobject).subscribe((rees)=>{
-      console.log(rees,"gggggggggg")
+    this.tutorempresaService.insertarChat(chatobject).subscribe((rees) => {
       this.scrollToTheLastElementByClassName()
       this.listarMensaje()
     })
-    setTimeout(() => {
-    }, 10);
+
   }
 
   scrollToTheLastElementByClassName() {
@@ -74,6 +75,9 @@ export class ChatEscoComponent implements OnInit {
     let toppos = ultimo.offsetTop;
     //@ts-ignore
     document.getElementById("contenedorDeMensajes")?.scrollTop = toppos;
+  }
+  ngOnDestroy(): void {
+      clearInterval(this.temporizador)
   }
 
 }

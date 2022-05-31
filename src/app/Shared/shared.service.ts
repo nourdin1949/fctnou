@@ -88,4 +88,40 @@ export class SharedService {
     
     return this.http.post<any>(`${this.url}/email/verification-notification`,{'email':email, 'token':localStorage.getItem("token"), 'user':localStorage.getItem('user')}, this.getHeaders());
   }
+  verificarEmail(objeto:object){
+    
+    return this.http.post<any>(`${this.url}/verificar`,objeto, this.getHeaders());
+  }
+  altaAdmin(){
+    return this.http.get(`${this.url}`).subscribe();
+  }
+  getNombreResponsable(dni:string){
+    return this.http.get<any>(`${this.url}/nombreResponsable/${dni}`, this.getHeaders());
+  }
+  getNombreProfesor(dni:string){
+    return this.http.get<any>(`${this.url}/nombreTutor/${dni}`, this.getHeaders());
+  }
+  getNombreAlumno(dni:string){
+    return this.http.get<any>(`${this.url}/nombreAlumno/${dni}`, this.getHeaders());
+  }
+  subirImagen(data){
+    let username = sessionStorage.getItem("username")
+    let user:any = sessionStorage.getItem("user")
+    let id =JSON.parse(user).id
+    return this.http.post<any>(`${this.url}/subirImg/${username}/${id}`, data, this.getHeaders());
+  }
+ 
+  validarEmail(email:string){
+    return this.http.get<any>(`${this.url}/validarEmail/${email}`, this.getHeaders());
+  }
+  validarDNI(dni:string){
+    return this.http.get<any>(`${this.url}/validarDNI/${dni}`, this.getHeaders());
+  }
+  validarEmailByID(email:string, id:number){
+    return this.http.get<any>(`${this.url}/validarEmailByID/${email}/${id}`, this.getHeaders());
+  }
+  validarDNIByID(dni:string, id:number){
+    return this.http.get<any>(`${this.url}/validarDNIByID/${dni}/${id}`, this.getHeaders());
+  }
+
 }

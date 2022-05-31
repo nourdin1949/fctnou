@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Responsable } from 'src/app/Shared/interfaces/Interface';
 import { ResponsableService } from '../responsable.service';
 
@@ -10,30 +11,43 @@ import { ResponsableService } from '../responsable.service';
 export class ListarResponsableComponent implements OnInit {
   public responsables: Responsable[] = []
   public idResponsable: number = 0
-  public cargaCompleta:boolean=false
+  public cargaCompleta: boolean = false
 
-  constructor(private responsbaleService: ResponsableService) { }
+  public constructor(
+    private responsbaleService: ResponsableService,
+    private _snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.listarResponsbles()
   }
 
-  listarResponsbles() {
-    this.responsbaleService.listarResponsables().subscribe((response) => {
-      this.responsables = response;
-      this.cargaCompleta=true
+  public listarResponsbles() {
+    this.responsbaleService.listarResponsables()
+      .subscribe(
+        (response) => {
+          this.responsables = response;
+          this.cargaCompleta = true
 
-    })
+        })
   }
 
-  guardarid(idResponsable: number) {
+  public guardarid(idResponsable: number) {
     this.idResponsable = idResponsable
   }
-  eliminarResponsable() {
-    this.responsbaleService.eliminarResponsable(this.idResponsable)
-      .subscribe((response)=>{
-          this.listarResponsbles()
-      })
-  }
 
+  public eliminarResponsable() {
+    this.responsbaleService.eliminarResponsable(this.idResponsable)
+      .subscribe(
+        () => {
+          this.openSnackBar()
+          this.listarResponsbles()
+        })
+  }
+  
+  public openSnackBar() {
+    this._snackBar.open("Eliminado con éxito", "Close",
+      {
+        duration: 3000
+      });
+  }
 }

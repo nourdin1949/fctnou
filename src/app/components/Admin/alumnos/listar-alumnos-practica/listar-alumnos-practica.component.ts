@@ -6,6 +6,7 @@ import { Empresa, FCTAlumno, FCTAlumnoLista, Responsable } from 'src/app/Shared/
 import { EmpresasService } from '../../empresas/empresas.service';
 import { AlumnosService } from '../alumnos.service';
 import { ResponsableService } from '../../responsable/responsable.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-listar-alumnos-practica',
   templateUrl: './listar-alumnos-practica.component.html',
@@ -17,13 +18,14 @@ export class ListarAlumnosPracticaComponent implements OnInit {
   public alumnosfct: FCTAlumno[] = []
   public respdis: boolean = true
   public alumnofct: any = {}
-  public selected="domain"
-  public cargaCompleta:boolean=false
+  public selected = "domain"
+  public cargaCompleta: boolean = false
 
   public constructor(
     private alumnoservice: AlumnosService,
     private empresasevice: EmpresasService,
-    private responsableservice: ResponsableService) {
+    private responsableservice: ResponsableService,
+    private _snackBar: MatSnackBar) {
 
   }
   public downloadPDF() {
@@ -77,14 +79,16 @@ export class ListarAlumnosPracticaComponent implements OnInit {
   public listarAlumnosFct() {
     this.alumnoservice.listarAlumnosFCT().subscribe((response) => {
       this.alumnosfct = response
-      this.cargaCompleta=true
-      
+      this.cargaCompleta = true
+
     })
   }
   public eliminarAlumnoFCT(idAlumno: number) {
-    this.alumnoservice.eliminarAlumnoFCT(idAlumno).subscribe((response)=>{
-      this.listarAlumnosFct()
-    })
+    this.alumnoservice.eliminarAlumnoFCT(idAlumno).subscribe(
+      () => {
+        this.openSnackBar()
+        this.listarAlumnosFct()
+      })
   }
   public guardarid(idAlumno: FCTAlumno) {
     this.alumnofct.id = idAlumno.id
@@ -97,22 +101,27 @@ export class ListarAlumnosPracticaComponent implements OnInit {
     }, 300);
   }
   public updateSelectResponsable(event: any) {
-    console.log(this.alumnofct.responsable_id,"CARGA")
+    console.log(this.alumnofct.responsable_id, "CARGA")
     this.alumnofct.empresa_id = event.value
     this.responsableservice.findResponsablesByEmpresaID(this.alumnofct.empresa_id).subscribe((response) => {
       this.responsables = response
       this.respdis = false
     })
   }
-  public saveidResponsable(event:any){
-    this.alumnofct.responsable_id=event.value
+  public saveidResponsable(event: any) {
+    this.alumnofct.responsable_id = event.value
   }
   public changeEmpresa(idAlumnoFCT: number) {
     console.log(this.alumnofct.responsable_id, "chane")
     let idresponsable = Number((<HTMLSelectElement>document.getElementById("responsable")).value)
     let idempresa = Number((<HTMLSelectElement>document.getElementById("empresa")).value)
     const alumnofctobject = { "responsable_id": this.alumnofct.responsable_id, "empresa_id": this.alumnofct.empresa_id }
-    console.log(alumnofctobject)
     this.alumnoservice.changeAlumnoDeEmpresa(alumnofctobject, idAlumnoFCT).subscribe((response) => this.listarAlumnosFct());
+  }
+  public openSnackBar() {
+    this._snackBar.open("Eliminado con éxito", "Close",
+      {
+        duration: 3000
+      });
   }
 }

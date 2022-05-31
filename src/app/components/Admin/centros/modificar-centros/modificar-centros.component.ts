@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Centro } from 'src/app/Shared/interfaces/Interface';
+import { SharedService } from 'src/app/Shared/shared.service';
+import { customValidatorCIFCentro, customValidatorCIFCentroBYID } from 'src/app/utils/otrasValidaciones';
 import { CentrosService } from '../centros.service';
 
 @Component({
@@ -24,7 +26,6 @@ export class ModificarCentrosComponent implements OnInit {
         this.findCentroById()
       })
    
-
       this.formModificarCentro = this.fb.group({
         nombre: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
         provincia: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
@@ -33,7 +34,8 @@ export class ModificarCentrosComponent implements OnInit {
         cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")]],
         telefono: ['', [Validators.required, Validators.pattern("[0-9]{9}")]],
         email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-        cif: ['', Validators.required],
+        cif: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(9)], 
+          customValidatorCIFCentroBYID.customValidCIFCentroBYID(this.centroService, this.codigoCentro), 'blur'],
         director: ['', [Validators.required,Validators.pattern('[A-Z a-z]{3,}')]],
       })
 
@@ -41,7 +43,6 @@ export class ModificarCentrosComponent implements OnInit {
   public ngOnInit(): void {
     
   }
- 
 
   modificarCentro(form: FormGroup) {
     const centro: Centro = {

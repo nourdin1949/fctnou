@@ -14,7 +14,6 @@
                 Campo <b>requerido</b>
             </mat-error>
           </mat-form-field>
-
         <mat-form-field class=" w-100" appearance="fill">
             <mat-label>Provincia</mat-label>
             <input matInput 
@@ -119,6 +118,13 @@
                         <mat-error *ngIf="this.forminsertarEmpresa.controls['dnirepresentante'].hasError('pattern')">
                             Formato requerido  <b>12345678C</b>
                         </mat-error>
+                        <mat-error *ngIf="this.forminsertarEmpresa.controls['dnirepresentante'].hasError('dniempresaValid')">
+                            DNI {{forminsertarEmpresa.controls['dnirepresentante'].value}} está en uso
+                        </mat-error>
+                        <mat-error *ngIf="this.forminsertarEmpresa.controls['dnirepresentante'].hasError('dniletterValid')">
+                            La letra del DNI no se corresponde
+                        </mat-error>
+                        
                     </mat-form-field>
             </div>
             <div class="col-lg-6 col-sm-12  col-md-12">
@@ -130,6 +136,15 @@
                         class="w-100">
                     <mat-error *ngIf="this.forminsertarEmpresa.controls['cif'].hasError('required')">
                         Campo <b>requerido</b>
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarEmpresa.controls['cif'].hasError('cifempresaValid')">
+                        CIF {{forminsertarEmpresa.controls['cif'].value}} está en uso
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarEmpresa.controls['cif'].hasError('minlength')">
+                        Mínimo 9 dígitos
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarEmpresa.controls['cif'].hasError('maxlength')">
+                        Máximo 10 dígitos
                     </mat-error>
                 </mat-form-field>
             </div>

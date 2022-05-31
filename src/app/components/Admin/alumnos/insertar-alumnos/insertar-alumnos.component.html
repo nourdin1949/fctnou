@@ -28,6 +28,12 @@
       <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('pattern')">
         Formato requerido  12345678C
       </mat-error>
+      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('validDni')">
+        DNI {{forminsertarAlumno.controls['dni'].value}} está en uso
+      </mat-error>
+      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('dniletterValid')">
+        La letra del DNI no se corresponde
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class=" w-100" appearance="fill">
@@ -41,6 +47,9 @@
       </mat-error>
       <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('pattern')">
         Email no es válido
+      </mat-error>
+      <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('validEmail')">
+        Email {{forminsertarAlumno.controls['email'].value}} está en uso
       </mat-error>
     </mat-form-field>
     <div class="row">

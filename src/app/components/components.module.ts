@@ -10,6 +10,7 @@ import { TutorEscolarModule } from './TutorEscolar/tutor-escolar.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -26,8 +27,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     TutorEscolarModule,
     MatTabsModule,
     MatFormFieldModule,
-  ],exports:[
-    ComponentsComponent
+    MatSnackBarModule
+  ],
+  exports:[
+    ComponentsComponent,
+    MatSnackBarModule
   ]
 })
 export class ComponentsModule { }

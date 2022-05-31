@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TutorEscolarService {
-  public alumnos: any[] = []
+  
   private url=environment.url;
 
   constructor(private http: HttpClient) {
-    setTimeout(() => {
-      this.listarAlumnosDelTutor()
-    }, 300);
+    
   }
   /**
      * name
@@ -26,14 +25,11 @@ export class TutorEscolarService {
     return headers
   }
 
-  public listarAlumnosDelTutor():any[] {
+  public listarAlumnosDelTutor():Observable<any[]> {
     let idTutor = sessionStorage.getItem('id');
-    console.log("buscando tareas por id")
-    this.http.get<any[]>(`${this.url}/alumosTutor/${idTutor}`, this.getHeaders()).subscribe((res) => {
-      this.alumnos = res
-      return this.alumnos
-    })
-    return this.alumnos
+    
+   return this.http.get<any[]>(`${this.url}/alumosTutor/${idTutor}`, this.getHeaders())
+    
   }
   public validarTareaTutor(idTarea:number){
     return this.http.put<any[]>(`${this.url}/validaTareaTutor/${idTarea}`,"", this.getHeaders())

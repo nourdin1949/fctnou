@@ -3,13 +3,24 @@
             src="../../../assets/img/icono.ico" alt="">
     </div>
     <div class="text-center mt-4 name"> FCTNOU </div>
-    <form  (ngSubmit)="verificarEmail()" class="p-3 mt-3">
+    <form [formGroup]="formVerificacion" (ngSubmit)="verificarEmail()" class="p-3 mt-3">
 
         <div class="form-field d-flex align-items-center">
-            <input type="email" name="email" id="email" placeholder="Email ">
+            <input type="text" formControlName="usuario" name="usuario" id="usuario" placeholder="Usuario">
         </div>
-        <small  id="incorrecto" class="form-text alert alert-danger text-muted">Inserte todos los campos</small>
-        <button class="btn bg-color mt-3">Enviar Correo Confirmacion</button>
+        <div class="form-field d-flex align-items-center">
+            <input type="password" formControlName="pwd" name="password" id="password" placeholder="Password ">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <input type="email" formControlName="email" name="email" id="email" placeholder="Email ">
+        </div>
+        <small *ngIf="verificado" class="form-text alert alert-success ">
+            !Email enviado¡
+        </small>
+        <small *ngIf="incorrecto" class="form-text alert alert-danger ">
+            !Datos incorrectos¡
+        </small>
+        <button class="btn bg-color mt-3">Verificar</button>
     </form>
     
 </div>

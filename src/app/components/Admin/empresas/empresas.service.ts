@@ -55,7 +55,23 @@ export class EmpresasService {
     return this.http.get<Empresa[]>(`${this.url}/findEmpresaByid/${id}`, this.getHeaders())
   }
   public updateEmpresaById(id:number,empresa:Empresa ){
-  
+    
     return this.http.put<Empresa[]>(`${this.url}/updateEmpresaById/${id}`,empresa, this.getHeaders())
+  }
+  public checkifEmpresaDNIBYID(dni:string, id:number){
+  
+    return this.http.get(`${this.url}/checkifEmpresaDNIBYID/${dni}/${id}`, this.getHeaders())
+  }
+  public checkifEmpresaDNI(dni:string){
+  
+    return this.http.get(`${this.url}/checkifEmpresaDNI/${dni}`, this.getHeaders())
+  }
+  public checkifEmpresaCIFBYID(cif:string, id:number){
+  
+    return this.http.get(`${this.url}/checkifEmpresaCIFBYID/${cif}/${id}`, this.getHeaders())
+  }
+  public checkifEmpresaCIF(cif:string){
+  
+    return this.http.get(`${this.url}/checkifEmpresaCIF/${cif}`, this.getHeaders())
   }
 }

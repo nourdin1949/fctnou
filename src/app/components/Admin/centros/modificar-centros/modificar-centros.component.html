@@ -3,7 +3,7 @@
 <div class="row mt-5">
     <div class="col-3"></div>
 
-    <form [formGroup]="formModificarCentro" (ngSubmit)="modificarCentro(formModificarCentro)" class="w-75 offset-md-3 col-6">
+    <form [formGroup]="formModificarCentro" (ngSubmit)="modificarCentro(formModificarCentro)" class="w-75 col-6">
         <div class="form-group">
             <h3 class="title bg-color text-center text-light p-2">Modificar Centro <b>{{centro.nombreCentro}}</b></h3>
         </div>
@@ -115,6 +115,15 @@
                         class="w-100">
                     <mat-error *ngIf="this.formModificarCentro.controls['cif'].hasError('required')">
                         Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.formModificarCentro.controls['cif'].hasError('cifvalidID')">
+                        CIF {{formModificarCentro.controls['cif'].value}} está en uso
+                    </mat-error>
+                    <mat-error *ngIf="this.formModificarCentro.controls['cif'].hasError('minlength')">
+                        Minimo 9 dígitos
+                    </mat-error>
+                    <mat-error *ngIf="this.formModificarCentro.controls['cif'].hasError('maxlength')">
+                        Máximo 10 dígitos
                     </mat-error>
                 </mat-form-field>
             </div>

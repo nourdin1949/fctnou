@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Alumno, Centro, Empresa, FCTAlumnoLista, Profesor, Responsable } from 'src/app/Shared/interfaces/Interface';
+import { customValidatorDNIRegistro } from 'src/app/utils/otrasValidaciones';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { CentrosService } from '../../centros/centros.service';
 import { EmpresasService } from '../../empresas/empresas.service';
@@ -32,7 +33,7 @@ export class AsignarComponent implements OnInit {
     private profesorService: ProfesorService,
     private respService: ResponsableService) {
     this.formAsignar = this.fb.group({
-      alumno: ['', Validators.required],
+      alumno: ['', Validators.required,[customValidatorDNIRegistro.customValidDNIRegistro(csvServ)]],
       empresa: ['', Validators.required],
       tutor: ['', Validators.required],
       responsable: ["", Validators.required],

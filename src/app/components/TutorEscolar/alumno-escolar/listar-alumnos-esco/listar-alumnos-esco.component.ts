@@ -16,14 +16,16 @@ export class ListarAlumnosEscoComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.alumnos= this.tutorEscolarService.alumnos
+    this.listarAlumnosDelTutor()
+  }
+  public listarAlumnosDelTutor(){
+    this.tutorEscolarService.listarAlumnosDelTutor().subscribe((res)=>{
+      this.alumnos= res
       if(this.alumnos.length>0){
         this.sinAlumnos=false
       }else{
         this.sinAlumnos=true
       }
-    },1000);
-
+    })
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Alumno, Curso } from 'src/app/Shared/interfaces/Interface';
+import { SharedService } from 'src/app/Shared/shared.service';
+import { customValidatordDni, customValidatordDniBYID, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
 import { CursosService } from '../../cursos/cursos.service';
 import { AlumnosService } from '../alumnos.service';
 
@@ -16,18 +18,22 @@ export class InsertarAlumnosComponent implements OnInit {
 get formulario (){
   return this.forminsertarAlumno.controls;
 }
-  constructor(private fb: FormBuilder, private cursoServoce: CursosService, private alumnosService: AlumnosService) {
-    this.forminsertarAlumno = this.fb.group({
-      nombre: ['', Validators.required],
-      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")]],
-      provincia: ['', Validators.required],
-      localidad: ['', Validators.required],
-      calle: ['', Validators.required],
-      cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")]],
-      curso: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-
-    })
+  constructor(private fb: FormBuilder, 
+    private cursoServoce: CursosService, 
+    private alumnosService: AlumnosService,
+    private sharedService:SharedService) {
+      this.forminsertarAlumno = this.fb.group({
+        nombre: ['', Validators.required],
+        dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
+        [customValidatordDni.customValidDni(sharedService),customValidatorFormatDNI.customValidDNILETRA], 'blur' ],
+        provincia: ['', Validators.required],
+        localidad: ['', Validators.required],
+        calle: ['', Validators.required],
+        cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")]],
+        curso: ['', Validators.required],
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+        [customValidatorEmail.customValidEmail(sharedService)], 'blur' ]
+      })
   }
 
   ngOnInit(): void {

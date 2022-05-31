@@ -11,6 +11,10 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerificarEmailComponent } from './verificar-email/verificar-email.component'
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { SendVerificarEmailComponent } from './send-verificar-email/send-verificar-email.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     PerfilComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    VerificarEmailComponent
+    VerificarEmailComponent,
+    SendVerificarEmailComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +33,10 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     FormsModule, 
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MaterialFileInputModule
   ],
   exports: [
     SidebarComponent

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlumnosService } from 'src/app/components/Admin/alumnos/alumnos.service';
 import { AnexoVService } from 'src/app/components/Alumnos/anexo-v/anexo-v.service';
 import { Tarea } from 'src/app/Shared/interfaces/Interface';
@@ -19,14 +20,23 @@ export class ValidarTareaComponent implements OnInit {
   public ids: any = []
   constructor(
     private tutorEscolarService: TutorEscolarService,
-    private anexovService: AnexoVService) {
+    private anexovService: AnexoVService,
+    private matSnackBar: MatSnackBar) {
 
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.alumnos = this.tutorEscolarService.alumnos
-    }, 1000);
+   this.listarAlumnosDelTutor()
+  }
+  showBasicSnack() {
+    let snackBarColor = this.matSnackBar.open(`No tiene tareas entre ${this.fechaDesde} y ${this.fechaHasta}`, "Close",
+    {
+      duration: 4000,
+      panelClass: ["snack-style"]
+    });
+    snackBarColor.onAction().subscribe(() => {
+      snackBarColor.dismiss();
+    });
   }
   mostrarTareasDelAlumno() {
     const objeto = {
@@ -36,6 +46,7 @@ export class ValidarTareaComponent implements OnInit {
     this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
       .subscribe((response) => {
         this.tareas = response.filter(tarea => tarea.validadoResponsable == 1 && tarea.validadoTutor == 0)
+        if(this.tareas.length==0) this.showBasicSnack()
       })
   }
   guardarid(event) {
@@ -45,9 +56,28 @@ export class ValidarTareaComponent implements OnInit {
   validarTarea() {
     this.ids.forEach(element => {
       this.tutorEscolarService.validarTareaTutor(element).subscribe(() => {
-        console.log("aaaa", element)
+        if(this.ids[this.ids.length-1]==element){
+          this.snackValidado()
+          this.ids=[]
+        }
       })
     });
   }
 
+  public snackValidado() {
+    let snackBarColor = this.matSnackBar.open(`Tareas validadas con éxito`, "Close",
+    {
+      duration: 4000,
+      panelClass: ["snack-style"]
+    });
+    snackBarColor.onAction().subscribe(() => {
+      snackBarColor.dismiss();
+    });
+  }
+  private listarAlumnosDelTutor(){
+    this.tutorEscolarService.listarAlumnosDelTutor().subscribe((res)=>{
+      this.alumnos= res
+      console.log(res)
+    })
+  }
 }

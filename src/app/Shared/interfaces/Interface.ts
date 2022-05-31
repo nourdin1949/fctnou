@@ -5,7 +5,7 @@ export interface User {
     perfil:            string;
     activo:            number;
     email_verified_at: string;
-
+    foto:              number;
 }
 export interface RegisterUser {
     username:         string;

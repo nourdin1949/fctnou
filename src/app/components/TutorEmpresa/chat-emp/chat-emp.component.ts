@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Chat, Profesor } from 'src/app/Shared/interfaces/Interface';
 import { ProfesorService } from '../../Admin/profesor/profesor.service';
 import { TutorEmpresaService } from '../tutor-empresa.service';
@@ -8,39 +8,42 @@ import { TutorEmpresaService } from '../tutor-empresa.service';
   templateUrl: './chat-emp.component.html',
   styleUrls: ['./chat-emp.component.css']
 })
-export class ChatEmpComponent implements OnInit {
+export class ChatEmpComponent implements OnInit, OnDestroy {
   public tutores: Profesor[] = []
   mensajes: Chat[] = []
   public auxmensajes:Chat[]=[]
   public nuevoMensaje: string = ""
   receptor: string = ""
   mostrarChat: boolean = false
+  public temporizador
   constructor(
     private tutorempresaService: TutorEmpresaService,
     private profesorsService: ProfesorService) { }
 
   ngOnInit(): void {
     this.listarTutores()
-    setInterval(()=>{
-      this.listarMensaje()
-    }, 1000)
+    
   }
   cargarMensajes() {
-   
-    this.auxmensajes = this.mensajes.filter(element => 
-     ( element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
-     ( element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
-   )
-   console.log(this.auxmensajes)
-    if (this.receptor != "") { this.mostrarChat = true } else {
-      this.mostrarChat = false
-    }
+   this.temporizador =setInterval(()=>{
+     this.listarMensaje()
+   }, 1000)
+    
   }
   listarMensaje() {
     this.tutorempresaService.listarChat().subscribe((res) => {
       this.mensajes = res;
-      this.cargarMensajes()
+      
     })
+    this.auxmensajes = this.mensajes.filter(element => 
+      ( element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
+      ( element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
+    )
+   
+    console.log(this.auxmensajes)
+     if (this.receptor != "") { this.mostrarChat = true } else {
+       this.mostrarChat = false
+     }
   }
   listarTutores() {
     this.profesorsService.listarProfesor().subscribe((response) => {
@@ -72,5 +75,8 @@ export class ChatEmpComponent implements OnInit {
     let toppos = ultimo.offsetTop;
     //@ts-ignore
     document.getElementById("contenedorDeMensajes")?.scrollTop = toppos;
+  }
+  ngOnDestroy(): void {
+      clearInterval(this.temporizador)
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { ProfesorService } from '../../profesor/profesor.service';
 import { ResponsableService } from '../../responsable/responsable.service';
@@ -23,11 +24,12 @@ export class AsignarRolesComponent implements OnInit {
     private csvServ: CsvService,
     private profesorService: ProfesorService,
     private responsableService: ResponsableService,
-    private alumnoservice: AlumnosService) {
+    private alumnoservice: AlumnosService, 
+    private _snackBar: MatSnackBar) {
     this.formRoles = this.fb.group({
       dni: ['', Validators.required],
       rol: ['', Validators.required],
-      pwd: ['', [Validators.required, Validators.pattern("(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$")]],
+      pwd: ['', [Validators.required, Validators.pattern("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$")]],
 
     })
   }
@@ -49,11 +51,14 @@ export class AsignarRolesComponent implements OnInit {
         "confirm_password": this.formRoles.value.pwd, "activo": "1", "perfil": this.formRoles.value.rol
       }
       console.log(user)
+      this.openSnackBar()
       this.csvServ.registerUser(user).subscribe(() => {
         (<HTMLButtonElement>document.getElementById("registrado")).click()
         setTimeout(() => {
+          
           (<HTMLElement>document.getElementById('registaruser')).classList.remove('modal-open');
           (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+          this._snackBar.dismiss()
         }, 300);
 
       })
@@ -107,6 +112,8 @@ export class AsignarRolesComponent implements OnInit {
         this.email=element.email
       }
     });
-
+  }
+  public openSnackBar() {
+    this._snackBar.open("Registrando...", "Close");
   }
 }

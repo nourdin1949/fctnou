@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AnexoVService } from 'src/app/components/Alumnos/anexo-v/anexo-v.service';
 import { TutorEscolarService } from 'src/app/components/TutorEscolar/tutor-escolar.service';
 import { Tarea } from 'src/app/Shared/interfaces/Interface';
@@ -19,16 +20,26 @@ export class ValidarComponent implements OnInit {
   public ids: any = []
   constructor(
     private tutorResponsableService: TutorEmpresaService,
-    private anexovService: AnexoVService) {
-
+    private anexovService: AnexoVService,
+    private matSnackBar: MatSnackBar) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
    setTimeout(() => {
     this.listarAlumnosDelResponsable()
    }, 1000);
   }
-  mostrarTareasDelAlumno() {
+  showBasicSnack() {
+    let snackBarColor = this.matSnackBar.open(`No tiene tareas entre ${this.fechaDesde} y ${this.fechaHasta}`, "Close",
+    {
+      duration: 4000,
+      panelClass: ["snack-style"]
+    });
+    snackBarColor.onAction().subscribe(() => {
+      snackBarColor.dismiss();
+    });
+  }
+  public mostrarTareasDelAlumno() {
     const objeto = {
       "primeraFecha": this.fechaDesde,
       "segundaFecha": this.fechaHasta,
@@ -36,28 +47,37 @@ export class ValidarComponent implements OnInit {
     this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
       .subscribe((response) => {
         this.tareas = response.filter(tarea => tarea.validadoResponsable == 0)
-        console.log(this.tareas)
+        if(this.tareas.length==0){
+          console.log("ddd")
+          this.showBasicSnack()
+        }
       })
 
   }
-  guardarid(event) {
+  public guardarid(event) {
     this.ids.push(event.source.value)
   }
-  validarTarea() {
+  public validarTarea() {
     this.ids.forEach(element => {
       this.tutorResponsableService.validarTareaResponsable(element).subscribe(() => {
         if(this.ids[this.ids.length-1]==element){
-          (<HTMLButtonElement>document.getElementById("validado")).click()
-          setTimeout(() => {
-            (<HTMLElement>document.getElementById('validarTarea')).classList.remove('modal-open');
-            (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
-          }, 300);
+          this.snackValidado()
+          this.ids=[]
         }
       })
     });
   }
-
-  listarAlumnosDelResponsable(){
+  snackValidado() {
+    let snackBarColor = this.matSnackBar.open(`Tareas validadas con éxito`, "Close",
+    {
+      duration: 4000,
+      panelClass: ["snack-style"]
+    });
+    snackBarColor.onAction().subscribe(() => {
+      snackBarColor.dismiss();
+    });
+  }
+  private listarAlumnosDelResponsable(){
     this.tutorResponsableService.listarAlumnosDelResponsable().subscribe((res)=>{
       this.alumnos= res
     })

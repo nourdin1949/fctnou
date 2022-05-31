@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Empresa, Responsable } from 'src/app/Shared/interfaces/Interface';
+import { SharedService } from 'src/app/Shared/shared.service';
+import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { ResponsableService } from '../responsable.service';
 
@@ -12,13 +14,20 @@ import { ResponsableService } from '../responsable.service';
 export class InsertarResponsableComponent implements OnInit {
   public empresas: Empresa[] = []
   public forminsertarResponsable: FormGroup;
-  constructor(private fb: FormBuilder, private responsableService: ResponsableService, private empresaService: EmpresasService) {
+  constructor(
+    private fb: FormBuilder, 
+    private responsableService: ResponsableService, 
+    private empresaService: EmpresasService,
+    private sharedService: SharedService) {
 
     this.forminsertarResponsable = this.fb.group({
       nombre: ['', [Validators.required,Validators.pattern("[A-Z a-z]{3,}")]],
-      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")]],
+      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
+      [customValidatordDni.customValidDni(sharedService,),
+        customValidatorFormatDNI.customValidDNILETRA], 'blur' ],
       empresa: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+      [customValidatorEmail.customValidEmail(sharedService)], 'blur' ],
     })
   }
   ngOnInit(): void {

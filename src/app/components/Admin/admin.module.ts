@@ -21,7 +21,8 @@ import { ProfesorModule } from './profesor/profesor.module';
     AppRoutingModule,
     CursosModule,
     EmpresasModule,
-    ResponsableModule, ProfesorModule
+    ResponsableModule, 
+    ProfesorModule
   ]
 })
 export class AdminModule { }

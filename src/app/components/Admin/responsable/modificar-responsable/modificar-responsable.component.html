@@ -6,56 +6,56 @@
         </div>
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Nombre Empresa</mat-label>
-            <mat-select  formControlName="empresa">
-              <mat-option [value]="empresa.id"  *ngFor="let empresa of empresas">
-                {{empresa.nombreEmpresa}}
-              </mat-option>
+            <mat-select formControlName="empresa">
+                <mat-option [value]="empresa.id" *ngFor="let empresa of empresas">
+                    {{empresa.nombreEmpresa}}
+                </mat-option>
             </mat-select>
             <mat-error *ngIf="this.formModificarResponsable.controls['empresa']?.errors?.['required']">
-              Campo requerido
+                Campo requerido
             </mat-error>
             <mat-error *ngIf="this.formModificarResponsable.controls['empresa']?.errors?.['pattern']">
-              Mínimo 3 letras
+                Mínimo 3 letras
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Nombre Responsable</mat-label>
-            <input matInput 
-              formControlName="nombre" 
-              placeholder="Nombre Apellido" 
-              class="w-100">
+            <input matInput formControlName="nombre" placeholder="Nombre Apellido" class="w-100">
             <mat-error *ngIf="this.formModificarResponsable.controls['nombre'].hasError('required')">
-              Campo requerido
+                Campo requerido
             </mat-error>
             <mat-error *ngIf="this.formModificarResponsable.controls['nombre'].hasError('pattern')">
-              Mínimo 3 letras 
+                Mínimo 3 letras
             </mat-error>
         </mat-form-field>
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>DNI Responsable</mat-label>
-            <input matInput 
-              formControlName="dni" 
-              placeholder="12345678X" 
-              class="w-100">
+            <input matInput formControlName="dni" placeholder="12345678X" class="w-100">
             <mat-error *ngIf="this.formModificarResponsable.controls['dni'].hasError('required')">
-              Campo requerido
+                Campo requerido
             </mat-error>
             <mat-error *ngIf="this.formModificarResponsable.controls['dni'].hasError('pattern')">
-                Formato requerido  12345678C 
+                Formato requerido 12345678C
             </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['dni'].hasError('validDni')">
+                DNI {{formModificarResponsable.controls['dni'].value}} está en uso
+            </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['dni'].hasError('dniletterValid')">
+                La letra del DNI no se corresponde
+              </mat-error>
         </mat-form-field>
         <mat-form-field class=" w-100" appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput 
-                formControlName="email" 
-                placeholder="nombre@dominio.com" 
-                class="w-100">
+            <input matInput formControlName="email" placeholder="nombre@dominio.com" class="w-100">
             <mat-error *ngIf="this.formModificarResponsable.controls['email'].hasError('required')">
                 Campo requerido
             </mat-error>
             <mat-error *ngIf="this.formModificarResponsable.controls['email'].hasError('pattern')">
                 Email no es válido
+            </mat-error>
+            <mat-error *ngIf="this.formModificarResponsable.controls['email'].hasError('validEmail')">
+                Email {{formModificarResponsable.controls['email'].value}} está en uso
             </mat-error>
         </mat-form-field>
         <div class="row">
@@ -74,8 +74,8 @@
 <button type="button" id="modificado" data-toggle="modal" data-target="#modificarResponsable"></button>
 
 <!-- Modal Modificar Responsable-->
-<div class="modal fade" id="modificarResponsable" tabindex="-1" role="dialog" aria-labelledby="modificarResponsableLabel"
-    aria-hidden="true">
+<div class="modal fade" id="modificarResponsable" tabindex="-1" role="dialog"
+    aria-labelledby="modificarResponsableLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">

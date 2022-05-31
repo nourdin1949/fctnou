@@ -3,31 +3,40 @@
     </div>
     <div class="text-center mt-4 name"> FCTNOU </div>
     <form [formGroup]="formlogin" (ngSubmit)="iniciarSesion(formlogin)" class="p-3 mt-3">
-        <div class="form-field d-flex align-items-center">
 
-            <input type="text" formControlName="usuario" name="usuario" id="usuario" placeholder="Usuario">
-        </div>
         <div class="form-field d-flex align-items-center">
-            <input type="password" class="is_invalid" value="" formControlName="pwd" name="password" id="pwd"
+            <input type="text" 
+                (focusout)="userkeyup=true" 
+                formControlName="usuario" 
+                name="usuario" id="usuario" 
+                placeholder="Usuario">
+        </div>
+        <small *ngIf="this.formlogin.controls['usuario'].hasError('required') && userkeyup"
+            class="form-text alert pl-3  mb-2 alert-danger ">
+            Campo requerido
+        </small>
+        <div class="form-field  d-flex align-items-center">
+            <input type="password" 
+                (focusout)="passkeyup=true"  
+                formControlName="pwd" 
+                name="password" id="pwd"
                 placeholder="Password">
         </div>
-        <small id="incorrecto" 
-            *ngIf="incorrecto"
-            class="form-text alert pl-3  alert-danger text-muted">
+        <small *ngIf="this.formlogin.controls['pwd'].hasError('required') && passkeyup"
+            class="form-text alert pl-3  alert-danger ">
+            Campo requerido
+        </small>
+        <small  *ngIf="incorrecto"
+            class="form-text alert pl-3  alert-danger ">
             Usuario y contraseña incorrectos
         </small>
-        <small id="incorrecto" 
-            *ngIf="incorrecto"
-            class="form-text alert pl-3  alert-danger text-muted">
-            Usuario y contraseña incorrectos
+
+        <small *ngIf=" emailVerificado"
+            class="form-text alert pl-3 alert-danger ">
+            Email no verificado  <a *ngIf="emailVerificado" routerLink="/send-email-verificacion">&nbsp; Enviar email</a>
         </small>
-        <small id="incorrecto" *ngIf=" cuentaDesactivada"
-            class="form-text alert pl-3 alert-danger text-muted">Cuenta desactivada</small>
-        <small id="incorrecto" *ngIf=" emailVerificado"
-            class="form-text alert pl-3 alert-danger text-muted" routerLink="/email-verificacion">Email no verificado</small>
-            <a *ngIf="emailVerificado" routerLink="/email-verificacion">Enviar email verificacion</a>
         <button class="btn bg-color mt-3">Login</button>
     </form>
-    <div class="text-center fs-6"> <a href="/forgot-password">Olvidó contraseña?</a>
+    <div class="text-center fs-6"> <a href="/forgot-password">Olvidó su contraseña?</a>
     </div>
 </div>

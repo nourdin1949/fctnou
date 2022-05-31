@@ -15,6 +15,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    MatTooltipModule
   ]
 })
 export class CsvModule { }

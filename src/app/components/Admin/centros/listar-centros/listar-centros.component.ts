@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Centro } from 'src/app/Shared/interfaces/Interface';
 import { CentrosService } from '../centros.service';
 
@@ -10,10 +11,10 @@ import { CentrosService } from '../centros.service';
 })
 export class ListarCentrosComponent implements OnInit {
   public centros: Centro[] = []
-  public codigoCentro: number=0
-  public cargaCompleta:boolean=false
+  public codigoCentro: number = 0
+  public cargaCompleta: boolean = false
 
-  constructor(private centroService: CentrosService) { }
+  constructor(private centroService: CentrosService, private _snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.listarCentros();
@@ -21,16 +22,25 @@ export class ListarCentrosComponent implements OnInit {
   listarCentros() {
     this.centroService.listarCentros().subscribe((response) => {
       this.centros = response;
-      this.cargaCompleta=true
+      this.cargaCompleta = true
     })
   }
-  guardarcodigo(codigo:number){
-    this.codigoCentro=codigo;
+  guardarcodigo(codigo: number) {
+    this.codigoCentro = codigo;
   }
 
-  eliminarCentro(){
-    this.centroService.eliminarCentro(this.codigoCentro).subscribe(()=>{
-      this.listarCentros()
-    })
+  public eliminarCentro() {
+    this.centroService.eliminarCentro(this.codigoCentro)
+      .subscribe(
+        () => {
+          this.openSnackBar()
+          this.listarCentros()
+        })
+  }
+  public openSnackBar() {
+    this._snackBar.open("Eliminado con éxito", "Close",
+      {
+        duration: 3000
+      });
   }
 }

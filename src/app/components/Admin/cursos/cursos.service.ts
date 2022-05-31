@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Curso } from 'src/app/Shared/interfaces/Interface';
+import { Alumno, Curso } from 'src/app/Shared/interfaces/Interface';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -39,8 +39,10 @@ export class CursosService {
   }
   
   findCursoById(id:number){
-    
     return this.http.get<Curso[]>(`${this.url}/findCursoById/${id}`, this.getHeaders())
+  }
+  alumnosMatriculados(id:number){
+    return this.http.get<Alumno[]>(`${this.url}/alumnosMatriculados/${id}`, this.getHeaders())
   }
 
   updateCursoById(id: number, curso: Curso) {
