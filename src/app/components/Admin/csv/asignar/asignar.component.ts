@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Alumno, Centro, Empresa, FCTAlumnoLista, Profesor, Responsable } from 'src/app/Shared/interfaces/Interface';
-import { customValidatorDNIRegistro } from 'src/app/utils/otrasValidaciones';
+import { Alumno, Centro, Empresa, FCTAlumnoLista, Profesor, Responsable } from 'src/app/utils/interfaces/Interface';
+import { customValidatorDNIRegistro } from 'src/app/utils/Validators/otrasValidaciones';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { CentrosService } from '../../centros/centros.service';
 import { EmpresasService } from '../../empresas/empresas.service';

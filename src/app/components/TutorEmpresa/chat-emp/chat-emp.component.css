@@ -10,6 +10,7 @@
     background-color: #314F57;
     color: white;
     font-weight: 700;
+    cursor: pointer
 }
 
 .card-body{
@@ -22,9 +23,12 @@
 }
 .faEnviar{
     position: relative;
+    cursor: pointer;
+    margin-left: 4px;
 }
 .chat{
-    width: 90%;
+    width: 87%;
+    
 }
 
 .enviado{
@@ -47,13 +51,16 @@
     text-align: left;
 }
 
-.contenedorDeMensajes{
-    overflow: scroll;
+#contenedorDeMensajes{
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 0.3rem;
-    
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  cursor: auto;
 }
 
-.contenedorDeMensajes::-webkit-scrollbar{
+#contenedorDeMensajes::-webkit-scrollbar{
     display: none;
 }
 .closeIcon{
@@ -61,4 +68,30 @@
     right: 0.5rem;
     top: 0rem;
     cursor: pointer;
+}
+
+.cornerRight{
+    width: 300px;
+    height: 65vh;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+
+
+@media (max-width:600px) {
+    .cardContainer{
+        height:50vh;
+    }
+    .card-footer{
+        height: 13vh;
+    }
+    .chat{
+        height: 10vh;
+    }
 }

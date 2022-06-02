@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Centro } from 'src/app/Shared/interfaces/Interface';
+import { Centro } from 'src/app/utils/interfaces/Interface';
 import { SharedService } from 'src/app/Shared/shared.service';
-import { customValidatorCIFCentro, customValidatorCIFCentroBYID } from 'src/app/utils/otrasValidaciones';
+import { customValidatorCIFCentro, customValidatorCIFCentroBYID } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../centros.service';
 
 @Component({

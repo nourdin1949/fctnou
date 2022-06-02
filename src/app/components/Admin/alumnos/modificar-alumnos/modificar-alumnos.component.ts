@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Alumno, Curso } from 'src/app/Shared/interfaces/Interface';
+import { Alumno, Curso } from 'src/app/utils/interfaces/Interface';
 import { SharedService } from 'src/app/Shared/shared.service';
-import { customValidatorEmailBYID, customValidatordDniBYID, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
+import { customValidatorEmailBYID, customValidatordDniBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CursosService } from '../../cursos/cursos.service';
 import { AlumnosService } from '../alumnos.service';
 
@@ -69,8 +69,8 @@ export class ModificarAlumnosComponent implements OnInit {
     console.log(alumno)
     if (this.formModificarAlumno.valid) {
       this.alumnosService.updateAlumnoById(alumno)
-        .subscribe(() => {
-          (<HTMLButtonElement>document.getElementById("modificado")).click()
+        .subscribe((e) => {
+                   (<HTMLButtonElement>document.getElementById("modificado")).click()
         })
     }
   }
@@ -85,7 +85,6 @@ export class ModificarAlumnosComponent implements OnInit {
           "id": this.idAlumno,
           "nombre": this.alumno.nombreAlumno,
           "dni": this.alumno.dniAlumno,
-         
           "provincia": this.alumno.provincia,
           "localidad": this.alumno.localidad,
           "calle": this.alumno.calle,

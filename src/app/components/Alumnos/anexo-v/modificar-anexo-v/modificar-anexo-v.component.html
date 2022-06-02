@@ -10,7 +10,7 @@
                         <h2 class="text-center">¡NO SE PUEDE MODIFICAR LA TAREA!</h2>
                     </b>
                 </div>
-                <table  *ngIf="tareas.length>0  "class=" justify-content-center table table-striped">
+                <table *ngIf="tareas.length>0"  class=" justify-content-center table table-striped">
                     <thead class="thead bg-color text-light">
                         <tr>
                             <th>Descipcion de la actividad </th>
@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody id="tbody">
-                        <tr  *ngIf="tareas.length==0 && eliminado==false  " >
+                        <tr  *ngIf="tareas.length==0 && eliminado==false && !cargaCompleta  " >
                             <td   colspan="7">
                                 <span class="spinner-border "></span>
                             </td>
@@ -33,7 +33,6 @@
                             <th>
                                 <textarea class="form-control" 
                                     [value]="tarea.descripcion" 
-                                    [disabled]="cargaCompleta"
                                     name="descripcion{{id}}"
                                     id="descripcion{{id}}" 
                                     cols="2{{id}}" rows="2">
@@ -42,7 +41,6 @@
                             <th>
                                 <input type="text" 
                                     class="form-control" 
-                                    [disabled]="cargaCompleta"
                                     name="orientacion{{id}}"
                                     value="{{tarea.orientacion}}" 
                                     id="orientacion{{id}}">
@@ -51,7 +49,6 @@
                                 <input type="time" 
                                     class="form-control" 
                                     name="tiempo{{id}}"
-                                    [disabled]="cargaCompleta"
                                     value="{{tarea.tiempo |slice:0:5}}" 
                                     id="tiempo{{id}}"> 
                             </th>
@@ -59,7 +56,6 @@
                                 <input type="radio" 
                                     name="dificultad{{id}}" 
                                     value="facil" 
-                                    [disabled]="cargaCompleta"
                                     id="dificultad{{id}}"
                                     [checked]="tarea.dificultad=='facil'">
                                 <img src="../../../../../assets/img/easy.png" alt="easy.png">

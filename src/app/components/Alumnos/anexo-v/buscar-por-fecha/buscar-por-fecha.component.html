@@ -1,17 +1,27 @@
 <h3><strong>Buscar tareas en un periodo </strong></h3>
-<div class="row w-100">
+<div class="row w-100" [formGroup]="formBuscaTarea">
     <div class="col-4">
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Fecha Inicio</mat-label>
-            <input matInput type="date" required name="inicio" [(ngModel)]="inicio" placeholder="Fecha Inicio">
-            <mat-error *ngIf="inicio==''">Es requerido</mat-error>
+            <input matInput type="date" 
+                max="{{fechaMaxima | date:'yyyy-MM-dd'}}" 
+                min="{{fechaMinimo | slice:0:10}}" 
+                formControlName="inicio" 
+                placeholder="Fecha Inicio">
+            <mat-error *ngIf="inicio?.errors?.['required']">Es requerido</mat-error>
         </mat-form-field>
     </div>
+    
     <div class="col-4">
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Fecha Fin</mat-label>
-            <input matInput type="date" required name="fin" [(ngModel)]="fin" placeholder="Fecha Fin">
-            <mat-error *ngIf="fin==''">Es requerido</mat-error>
+            <input matInput type="date" 
+                max="{{fechaMaxima | date:'yyyy-MM-dd'}}" 
+                min="{{fechaMinimo | slice:0:10}}"
+                formControlName="fin" 
+                placeholder="Fecha Fin">
+            <mat-error *ngIf="fin?.errors?.['required']">Es requerido</mat-error>
+            <mat-error *ngIf="fin?.errors?.['Mayor']" >La fecha {{fin.value}} es menor que {{inicio.value}}</mat-error>
         </mat-form-field>
     </div>
     <div class="col-4 pt-2">
@@ -56,12 +66,13 @@
                         <span class="spinner-border "></span>
                     </td>
                 </tr>
-                <tr *ngFor="let tarea of tareas , let id =index">
+                <tr *ngFor="let tarea of tareasTmp , let id =index">
                     <th>
                         <textarea class="form-control" 
                             name="descripcion0" 
                             id="descripcion0" 
                             cols="20" rows="2"
+                            disabled
                             [value]="tarea.descripcion"></textarea>
                     </th>
                     <th>
@@ -69,6 +80,7 @@
                             [value]="tarea.orientacion" 
                             class="form-control" 
                             name="orientacion0"
+                            disabled
                             id="orientacion0">
                     </th>
                     <th>
@@ -76,7 +88,8 @@
                             [value]="tarea.tiempo |slice:0:5" 
                             class="form-control" 
                             name="tiempo0"
-                            id="tiempo0"> 
+                            id="tiempo0"
+                            disabled> 
                     </th>
                     <th class="text-center">
                         <img src="../../../../../assets/img/easy.png" 
@@ -89,9 +102,10 @@
                     <th>
                         <input type="text" 
                             class="form-control" 
-                            [value]="tarea.dificultad" 
+                            [value]="tarea.observaciones" 
                             name="observaciones0"
-                            id="observaciones0"> 
+                            id="observaciones0"
+                            disabled> 
                     </th>
                     <th>
                         <div class="custom-control custom-switch">
@@ -117,13 +131,39 @@
                     </th>
                 </tr>
             </tbody>
-
-
         </table>
     </div>
-    <div class="col-12">
-        <button class="btn bg-outline-color" (click)="downloadPDF()">Descargar Anexo V <i
-                class="fa-solid fa-file-pdf"></i></button>
-
-    </div>
-</div>
+    <div *ngIf="tareas.length>0" class="container-fluid table-responsive d-flex justify-content-center">
+        <div class="row">
+            <mat-icon class="col-1  margin-0-auto mt-3" (click)="downloadPDF()">
+                picture_as_pdf
+            </mat-icon>
+            <div class="col-3 ">
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-select [(ngModel)]="pageSize" (selectionChange)="changeSize()">
+                        <mat-option [value]="sizes" *ngFor="let sizes of sizes">
+                            {{sizes}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row mt-3 margin-0-auto">
+                <div class="col-2" (click)="firstPage()">
+                    <i class="fa fa-step-backward" aria-hidden="true"></i>
+                </div>
+                <div class="col-2" [ngClass]="{ 'bbva-th2-pagination-disabled': (currentPage - 1) <= 0 }"
+                    (click)="prevPage()">
+                    <i class="fa fa-backward" aria-hidden="true"></i>
+                </div>
+                <div class="col-4">
+                    <p>{{ currentPage }} de {{ totalPages }}</p>
+                </div>
+                <div class="col-2" (click)="nextPage()">
+                    <i class="fa fa-forward" aria-hidden="true"></i>
+                </div>
+                <div class="col-2" (click)="lastPage()">
+                    <i class="fa fa-step-forward " aria-hidden="true"></i>
+                </div>
+            </div>
+    
+        </div>

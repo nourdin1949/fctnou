@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Empresa, Responsable } from 'src/app/Shared/interfaces/Interface';
+import { Empresa, Responsable } from 'src/app/utils/interfaces/Interface';
 import { SharedService } from 'src/app/Shared/shared.service';
-import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
+import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { ResponsableService } from '../responsable.service';
 

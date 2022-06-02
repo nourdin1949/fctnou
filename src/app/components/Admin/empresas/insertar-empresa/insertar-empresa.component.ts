@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Empresa } from 'src/app/Shared/interfaces/Interface';
-import { customValidatorCIFEmpresa, customValidatorDNIEmpresa, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
+import { Empresa } from 'src/app/utils/interfaces/Interface';
+import { customValidatorCIFEmpresa, customValidatorDNIEmpresa, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../empresas.service';
 import { ListarEmpresasComponent } from '../listar-empresas/listar-empresas.component';
 @Component({

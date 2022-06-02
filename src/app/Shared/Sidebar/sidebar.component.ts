@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import * as moment from "moment"
-import { User } from '../interfaces/Interface';
+import { User } from '../../utils/interfaces/Interface';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

@@ -2,8 +2,8 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Empresa } from 'src/app/Shared/interfaces/Interface';
-import { customValidatorDNIEmpresaBYID, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
+import { Empresa } from 'src/app/utils/interfaces/Interface';
+import { customValidatorDNIEmpresaBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../empresas.service';
 import { ListarEmpresasComponent } from '../listar-empresas/listar-empresas.component';
 

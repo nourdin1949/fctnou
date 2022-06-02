@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Alumno, Curso } from 'src/app/Shared/interfaces/Interface';
+import { Alumno, Curso } from 'src/app/utils/interfaces/Interface';
 import { SharedService } from 'src/app/Shared/shared.service';
-import { customValidatordDni, customValidatordDniBYID, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/otrasValidaciones';
+import { customValidatordDni, customValidatordDniBYID, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CursosService } from '../../cursos/cursos.service';
 import { AlumnosService } from '../alumnos.service';
 

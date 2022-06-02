@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'insertar/:fecha', component: InsertarAnexoVComponent , pathMatch:'full'},
   { path: 'insertar', component: InsertarAnexoVComponent , pathMatch:'full'},
   { path: 'modificar/:fecha/:id', component: ModificarAnexoVComponent },
+  { path: '**', redirectTo: "error" },
+
 ];
 
 @NgModule({

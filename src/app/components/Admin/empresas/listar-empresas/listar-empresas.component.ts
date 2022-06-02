@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Empresa, FCTAlumno } from 'src/app/Shared/interfaces/Interface';
+import { Empresa, FCTAlumno } from 'src/app/utils/interfaces/Interface';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { EmpresasService } from '../empresas.service';
 

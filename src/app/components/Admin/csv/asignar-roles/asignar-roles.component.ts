@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { customValidatorDNIRegistroAlta } from 'src/app/utils/Validators/otrasValidaciones';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { ProfesorService } from '../../profesor/profesor.service';
 import { ResponsableService } from '../../responsable/responsable.service';
@@ -27,7 +28,7 @@ export class AsignarRolesComponent implements OnInit {
     private alumnoservice: AlumnosService, 
     private _snackBar: MatSnackBar) {
     this.formRoles = this.fb.group({
-      dni: ['', Validators.required],
+      dni: ['', Validators.required,customValidatorDNIRegistroAlta.customValidDNIRegistroAlta(csvServ), 'blur'],
       rol: ['', Validators.required],
       pwd: ['', [Validators.required, Validators.pattern("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$")]],
 

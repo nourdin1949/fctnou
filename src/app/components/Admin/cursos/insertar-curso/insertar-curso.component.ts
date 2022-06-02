@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Curso, Profesor } from 'src/app/Shared/interfaces/Interface';
+import { Curso, Profesor } from 'src/app/utils/interfaces/Interface';
 import { ProfesorService } from '../../profesor/profesor.service';
 import { CursosService } from '../cursos.service';
 

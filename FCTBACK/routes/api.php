@@ -156,6 +156,8 @@ Route::get('checkifEmpresaDNIBYID/{dni}/{id}',[AuthController::class, 'checkifEm
 Route::get('checkifEmpresaCIF/{cif}',[AuthController::class, 'checkifEmpresaCIF']);
 Route::get('checkifEmpresaCIFBYID/{dni}/{id}',[AuthController::class, 'checkifEmpresaCIFBYID']);
 Route::get('checkifAlumnoPractica/{id}',[AuthController::class, 'checkifAlumnoPractica']);
+Route::get('checkifUsersExist/{dni}',[AuthController::class, 'checkifUsersExist']);
+
 Route::get('cmd/{comand}', function($command){
     Artisan::call($command);
     dd(Artisan::output());

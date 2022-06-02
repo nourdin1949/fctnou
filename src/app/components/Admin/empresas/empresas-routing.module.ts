@@ -7,6 +7,8 @@ const routes: Routes = [
   {path: 'listar', component: ListarEmpresasComponent, pathMatch:'full'},
   {path: 'modificarEmpresa/:id', component: ModificarEmpresasComponent, pathMatch:'full'},
   {path: '',redirectTo: 'listar', pathMatch:'full'},
+  { path: '**', redirectTo: "error" },
+
 ];
 
 @NgModule({

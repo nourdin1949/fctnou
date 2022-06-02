@@ -1,14 +1,15 @@
-<div class="row w-100 ">
-    <div class="col-4">
+<form [formGroup]="formBuscaTarea" (ngSubmit)="mostrarTareasDelAlumno()">
+    <div class="row w-100 " >
+    <div class="col-4" >
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Alumno</mat-label>
-            <mat-select required  [(ngModel)]="alumnoAbuscar">
+            <mat-select formControlName="alumno"  [(value)]="alumnoAbuscar">
                 <mat-option [value]="alumno.id"   
-                    *ngFor="let alumno of alumnos">
+                *ngFor="let alumno of alumnos">
                     {{alumno.nombreAlumno}}
                 </mat-option>
             </mat-select>
-            <mat-error>Es requerido</mat-error>
+            <mat-error *ngIf="this.formBuscaTarea.controls['alumno'].hasError('required')" >Es requerido</mat-error>
         </mat-form-field>
     </div>
     <div class="col-4">
@@ -16,10 +17,10 @@
             <mat-label>Fecha Inicio</mat-label>
             <input matInput 
                 type="date" 
-                required 
-                name="inicio" 
-                [(ngModel)]="fechaDesde">
-            <mat-error >Es requerido</mat-error>
+                max="{{fechaMaxima | date:'yyyy-MM-dd'}}" 
+                formControlName="inicio" 
+                name="inicio">
+            <mat-error *ngIf="inicio?.errors?.['required']">Es requerido</mat-error>
         </mat-form-field>
     </div>
     <div class="col-4">
@@ -27,17 +28,19 @@
             <mat-label>Fecha Fin</mat-label>
             <input matInput 
                 type="date" 
-                required 
-                name="fin" 
-                [(ngModel)]="fechaHasta">
-            <mat-error >Es requerido</mat-error>
+                max="{{fechaMaxima | date:'yyyy-MM-dd'}}"
+                formControlName="fin"
+                name="fin" >
+            <mat-error *ngIf="fin?.errors?.['required']">Es requerido</mat-error>
+            <mat-error *ngIf="fin?.errors?.['Mayor']" >La fecha {{fin.value}} es menor que {{inicio.value}}</mat-error>
         </mat-form-field>
     </div>
     <div class="col-12 mt-2">
         <!-- Mostrará solo los resultados cuyas tareas han sido verificados por el responsable de empresa -->
-        <button (click)="mostrarTareasDelAlumno()" class="btn-dark  form-control">Mostrar tareas</button>
+        <button  type="submit" class="btn-dark  form-control">Mostrar tareas</button>
     </div>
 </div>
+</form>
 <br>
 <div class="row w-100">
     <div *ngIf="tareas.length>0" class="container">
@@ -56,12 +59,11 @@
             <tbody id="tbody">
                 <tr *ngFor="let tarea of tareas, let id=index">
                     <th>
-                        <textarea class="form-control" 
+                        <textarea class="cajas-texto form-control" 
                             name="descripcion{{id}}"
                             [disabled]="true"
                             id="descripcion{{id}}" 
-                            [value]="tarea.descripcion"
-                            cols="2{{id}}" rows="2"></textarea>
+                            [value]="tarea.descripcion"></textarea>
                     </th>
                         <input type="hidden" 
                             class="form-control" 

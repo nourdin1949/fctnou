@@ -85,6 +85,7 @@ class AlumnosController extends Controller
     public function update(Request $request, $id)
     {
         $alumno = Alumnos::find($id);
+        $dniAlumno =$alumno->dniAlumno;
         $alumno->nombreAlumno = $request->input('nombreAlumno');
         $alumno->dniAlumno = $request->input('dniAlumno');
         $alumno->curso_id = $request->input('curso_id');
@@ -93,8 +94,11 @@ class AlumnosController extends Controller
         $alumno->calle = $request->input('calle');
         $alumno->cp = $request->input('cp');
         $alumno->email = $request->input('email');
-        $alumno->matriculado = $request->input('matriculado');
-        return $alumno->save();    
+        $alumno->matriculado = $request->input('matriculado'); 
+        $alumno->save();
+        if ($dniAlumno!=$alumno->dniAlumno) {
+            DB::update("UPDATE users set username=? where username=?",[$alumno->dniAlumno,$dniAlumno]);
+        }
     }
 
     /**
@@ -105,18 +109,17 @@ class AlumnosController extends Controller
      */
     public function destroy($id)
     {
-         DB::update("UPDATE alumnos SET matriculado=0 where id=?",[$id]);
-         $dni =  (DB::select("SELECT dniAlumno FROM alumnos where id =?",[$id])[0]->dniAlumno);
-         DB::update("UPDATE users SET activo=0 where username=?",[$dni]);
+        DB::update("UPDATE alumnos SET matriculado=0 where id=?", [$id]);
+        $dni =  (DB::select("SELECT dniAlumno FROM alumnos where id =?", [$id])[0]->dniAlumno);
+        DB::update("UPDATE users SET activo=0 where username=?", [$dni]);
     }
 
-    public function getIdUser(Request $request){
-        return DB::select("select id from alumnos where dniAlumno =?",[$request->dni]);
+    public function getIdUser(Request $request)
+    {
+        return DB::select("select id from alumnos where dniAlumno =?", [$request->dni]);
     }
-    public function getNombre($dni){
-        return DB::select("SELECT nombreAlumno from alumnos where dniAlumno=?",[$dni])[0];
+    public function getNombre($dni)
+    {
+        return DB::select("SELECT nombreAlumno from alumnos where dniAlumno=?", [$dni])[0];
     }
-    
-   
-
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as jsPDF from 'jspdf';
 
 import html2canvas from 'html2canvas';
-import { Empresa, FCTAlumno, FCTAlumnoLista, Responsable } from 'src/app/Shared/interfaces/Interface';
+import { Empresa, FCTAlumno, FCTAlumnoLista, Responsable } from 'src/app/utils/interfaces/Interface';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { AlumnosService } from '../alumnos.service';
 import { ResponsableService } from '../../responsable/responsable.service';

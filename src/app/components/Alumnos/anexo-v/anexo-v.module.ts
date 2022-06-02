@@ -6,12 +6,15 @@ import { InsertarAnexoVComponent } from './insertar-anexo-v/insertar-anexo-v.com
 import { CalendarioAnexoVComponent } from './calendario-anexo-v/calendario-anexo-v.component';
 import { ModificarAnexoVComponent } from './modificar-anexo-v/modificar-anexo-v.component';
 import { BuscarPorFechaComponent } from './buscar-por-fecha/buscar-por-fecha.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FullCalendarModule} from 'primeng/fullcalendar'
 import { MatTabsModule } from '@angular/material/tabs';
 import {  MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    ReactiveFormsModule, 
+    MatPaginatorModule, 
+    MatSelectModule
   ],
   exports: [
     InsertarAnexoVComponent

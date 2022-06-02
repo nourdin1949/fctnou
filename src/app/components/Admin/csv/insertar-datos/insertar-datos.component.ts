@@ -8,7 +8,7 @@ import { AlumnosService } from '../../alumnos/alumnos.service';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { CursosService } from '../../cursos/cursos.service';
 import { CentrosService } from '../../centros/centros.service';
-import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from 'src/app/utils/ValidacionesFicheross';
+import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from 'src/app/utils/Validators/ValidacionesFicheross';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-insertar-datos',
@@ -285,7 +285,8 @@ export class InsertarDatosComponent {
           },
           (res) => {
             this.alumnosFallo++
-            console.log("alumno")
+            console.log(res,"alumno")
+            
           })
     });
     let alumnointerval = setInterval(() => {

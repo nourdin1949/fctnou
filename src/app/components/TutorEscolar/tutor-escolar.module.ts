@@ -8,10 +8,11 @@ import { ListarAlumnosEscoComponent } from './alumno-escolar/listar-alumnos-esco
 import { ValidarTareaComponent } from './alumno-escolar/validar-tarea/validar-tarea.component';
 import {  MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [
     TutorEscolarComponent,
@@ -29,6 +30,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatTabsModule, 
     MatCheckboxModule,
+    ReactiveFormsModule,
+    MatIconModule
   ]
 })
 export class TutorEscolarModule { }

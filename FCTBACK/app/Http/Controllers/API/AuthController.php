@@ -152,7 +152,7 @@ class AuthController extends BaseController
         if ($responsables == [] && $tutores == [] && $alumnos == []) {
             return null;
         }
-        if (count($Todosresponsables) == 1 || count($alumnos) == 1 || count($tutores) == 1) {
+        if (count($Todosresponsables) == 1 || count($Todosalumnos) == 1 || count($Todostutores) == 1) {
             return null;
         }
         return true;
@@ -219,6 +219,15 @@ class AuthController extends BaseController
         $alumno = DB::select("SELECT * from fct_alumnos where alumno_id=? ", [$id]);
 
         if ($alumno == []) {
+            return null;
+        }
+        return true;
+    }
+    public function checkifUsersExist($dni)
+    {
+        $user = DB::select("SELECT * from users where username=? ", [$dni]);
+
+        if ($user == []) {
             return null;
         }
         return true;

@@ -6,14 +6,14 @@ import { ListarTodosComponent } from './alumnos-empresa/listar-todos/listar-todo
 import { ValidarComponent } from './alumnos-empresa/validar/validar.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ChatEmpComponent } from './chat-emp/chat-emp.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatOptionModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -35,6 +35,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTabsModule, 
     MatCheckboxModule,
     MatSnackBarModule,
+    ReactiveFormsModule, 
+    MatIconModule
   ]
 })
 export class TutorEmpresaModule { }

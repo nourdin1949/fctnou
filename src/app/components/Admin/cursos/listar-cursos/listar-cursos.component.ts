@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Alumno, Curso } from 'src/app/Shared/interfaces/Interface';
+import { Alumno, Curso } from 'src/app/utils/interfaces/Interface';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { CursosService } from '../cursos.service';
 

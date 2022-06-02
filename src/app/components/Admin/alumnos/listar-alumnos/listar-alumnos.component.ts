@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AlumnosService } from '../alumnos.service';
-import { Alumno, Empresa } from 'src/app/Shared/interfaces/Interface';
+import { Alumno, Empresa } from 'src/app/utils/interfaces/Interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-listar-alumnos',

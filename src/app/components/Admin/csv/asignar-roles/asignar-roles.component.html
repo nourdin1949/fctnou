@@ -39,6 +39,9 @@
             <mat-error *ngIf="this.formRoles.controls['dni']?.errors?.['required']">
               Campo requerido
             </mat-error>
+            <mat-error *ngIf="this.formRoles.controls['dni']?.errors?.['dniAltaValid']">
+              El user {{formRoles.controls['dni'].value}}  está en uso
+            </mat-error>
         </mat-form-field>
         
         <div class="row">

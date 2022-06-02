@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AlumnosService } from 'src/app/components/Admin/alumnos/alumnos.service';
 import { AnexoVService } from 'src/app/components/Alumnos/anexo-v/anexo-v.service';
-import { Tarea } from 'src/app/Shared/interfaces/Interface';
+import { Tarea } from 'src/app/utils/interfaces/Interface';
+import { customValidatorFecha } from 'src/app/utils/Validators/otrasValidaciones';
 import { TutorEscolarService } from '../../tutor-escolar.service';
 
 @Component({
@@ -10,26 +12,38 @@ import { TutorEscolarService } from '../../tutor-escolar.service';
   templateUrl: './validar-tarea.component.html',
   styleUrls: ['./validar-tarea.component.css']
 })
-export class ValidarTareaComponent implements OnInit {
+export class ValidarTareaComponent implements OnInit, AfterContentChecked {
   public tareas: Tarea[] = []
   public alumnos: any[] = []
   public alumnoAbuscar: number
-  public fechaDesde: Date
-  public fechaHasta: Date
+  public fechaMaxima: Date = new Date()
   public disabled = true
   public ids: any = []
+  public formBuscaTarea: FormGroup
+  get inicio() {
+    return this.formBuscaTarea.controls['inicio']
+  }
+  get fin() {
+    return this.formBuscaTarea.controls['fin']
+  }
   constructor(
     private tutorEscolarService: TutorEscolarService,
     private anexovService: AnexoVService,
-    private matSnackBar: MatSnackBar) {
-
+    private matSnackBar: MatSnackBar,
+    private fb:FormBuilder) {
+      this.formBuscaTarea = this.fb.group({
+        inicio: ["", Validators.required],
+        fin: ["", Validators.required],
+        alumno:["", Validators.required]
+      }, { validator: customValidatorFecha.customValidFecha('inicio', 'fin') })
   }
 
   ngOnInit(): void {
    this.listarAlumnosDelTutor()
   }
+  
   showBasicSnack() {
-    let snackBarColor = this.matSnackBar.open(`No tiene tareas entre ${this.fechaDesde} y ${this.fechaHasta}`, "Close",
+    let snackBarColor = this.matSnackBar.open(`No tiene tareas entre ${this.inicio.value} y ${this.fin.value}`, "Close",
     {
       duration: 4000,
       panelClass: ["snack-style"]
@@ -38,16 +52,26 @@ export class ValidarTareaComponent implements OnInit {
       snackBarColor.dismiss();
     });
   }
+  public ngAfterContentChecked(): void {
+    let area = <NodeListOf<HTMLTextAreaElement>>document.querySelectorAll(".cajas-texto")
+    area.forEach((elemento) => {
+      elemento.style.height = `${elemento.scrollHeight}px`
+      console.log(`${elemento.scrollHeight}px`)
+    })
+  }
   mostrarTareasDelAlumno() {
     const objeto = {
-      "primeraFecha": this.fechaDesde,
-      "segundaFecha": this.fechaHasta,
+      "primeraFecha": this.inicio.value,
+      "segundaFecha": this.fin.value,
     }
-    this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
-      .subscribe((response) => {
-        this.tareas = response.filter(tarea => tarea.validadoResponsable == 1 && tarea.validadoTutor == 0)
-        if(this.tareas.length==0) this.showBasicSnack()
-      })
+    if (this.formBuscaTarea.valid) {
+      this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
+        .subscribe((response) => {
+          this.tareas = response.filter(tarea => tarea.validadoResponsable == 1 && tarea.validadoTutor == 0)
+          if (this.tareas.length == 0) this.showBasicSnack()
+        })
+    }
+
   }
   guardarid(event) {
   

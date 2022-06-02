@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Centro } from 'src/app/Shared/interfaces/Interface';
+import { Centro } from 'src/app/utils/interfaces/Interface';
 import { CentrosService } from '../centros.service';
 
 

@@ -62,16 +62,14 @@
                     </tr> -->
                 </tbody>
             </table>
-                <button (click)="crearfila()" 
-                    class="btn bg-outline-color" 
-                    id="btn">
-                    Añadir Filas
-                </button>
-                <button (click)="insertarTareas()" 
-                    class="btn bg-color text-light ml-4" 
-                    id="btn">
-                    Guardar Tareas
-                </button>
+            <mat-icon (click)="crearfila()" class="fila " >add</mat-icon>
+            <mat-label class="mr-4 fila ">Filas</mat-label>
+            
+            <mat-icon (click)="insertarTareas()" class="text-success fila " >save</mat-icon>
+            <mat-label class="mr-4 fila text-success">Filas</mat-label>
+            
+            <mat-icon (click)="eliminarFila()" class="text-danger fila  fila-delete">delete</mat-icon>
+            <mat-label class="text-danger">Filas</mat-label>
         </div>
         
 

@@ -1,43 +1,46 @@
-<div class="row w-100 ">
-    <div class="col-4">
-        <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Alumno</mat-label>
-            <mat-select required  [(ngModel)]="alumnoAbuscar">
-                <mat-option [value]="alumno.id"   
+<form [formGroup]="formBuscaTarea" (ngSubmit)="mostrarTareasDelAlumno()">
+        <div class="row w-100 " >
+        <div class="col-4" >
+            <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Alumno</mat-label>
+                <mat-select formControlName="alumno"  [(value)]="alumnoAbuscar">
+                    <mat-option [value]="alumno.id"   
                     *ngFor="let alumno of alumnos">
-                    {{alumno.nombreAlumno}}
-                </mat-option>
-            </mat-select>
-            <mat-error>Es requerido</mat-error>
-        </mat-form-field>
+                        {{alumno.nombreAlumno}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="this.formBuscaTarea.controls['alumno'].hasError('required')" >Es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Fecha Inicio</mat-label>
+                <input matInput 
+                    type="date" 
+                    formControlName="inicio" 
+                    name="inicio" 
+                    max="{{fechaMaxima | date:'yyyy-MM-dd'}}">
+                <mat-error *ngIf="inicio?.errors?.['required']">Es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Fecha Fin</mat-label>
+                <input matInput 
+                    type="date" 
+                    formControlName="fin"
+                    name="fin" 
+                    max="{{fechaMaxima | date:'yyyy-MM-dd'}}">
+                <mat-error *ngIf="fin?.errors?.['required']">Es requerido</mat-error>
+                <mat-error *ngIf="fin?.errors?.['Mayor']" >La fecha {{fin.value}} es menor que {{inicio.value}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 mt-2">
+            <!-- Mostrará solo los resultados cuyas tareas han sido verificados por el responsable de empresa -->
+            <button  type="submit" class="btn-dark  form-control">Mostrar tareas</button>
+        </div>
     </div>
-    <div class="col-4">
-        <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Fecha Inicio</mat-label>
-            <input matInput 
-                type="date" 
-                required 
-                name="inicio" 
-                [(ngModel)]="fechaDesde">
-            <mat-error >Es requerido</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="col-4">
-        <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Fecha Fin</mat-label>
-            <input matInput 
-                type="date" 
-                required 
-                name="fin" 
-                [(ngModel)]="fechaHasta">
-            <mat-error >Es requerido</mat-error>
-        </mat-form-field>
-    </div>
-    <div class="col-12 mt-2">
-        <!-- Mostrará solo los resultados cuyas tareas han sido verificados por el responsable de empresa -->
-        <button (click)="mostrarTareasDelAlumno()" class="btn-dark  form-control">Mostrar tareas</button>
-    </div>
-</div>
+</form>
 <br>
 
 <div class="row w-100">
@@ -58,12 +61,12 @@
             <tbody id="tbody">
                 <tr *ngFor="let tarea of tareas, let id=index">
                     <th>
-                        <textarea class="form-control" 
+                        <textarea class=" cajas-texto form-control" 
                             name="descripcion{{id}}"
                             [disabled]="true"
                             id="descripcion{{id}}" 
                             [value]="tarea.descripcion"
-                            cols="2{{id}}" rows="2"></textarea>
+                            ></textarea>
                     </th>
                 
                         <input type="hidden" 
@@ -90,29 +93,9 @@
                             id="tiempo{{id}}"> 
                     </th>
                     <th>
-                        <input type="radio" 
-                            name="dificultad{{id}}" 
-                            value="facil" 
-                            [disabled]="true"
-                            [checked]="tarea.dificultad=='facil'"
-                            id="dificultad{{id}}">
-                        <img class="img-fluid rounded-circle" src="../../../../../assets/img/easy.png" alt="easy.png">
-
-                        <input type="radio" 
-                            name="dificultad{{id}}" 
-                            value="medio" 
-                            [disabled]="true"
-                            [checked]="tarea.dificultad=='medio'"
-                            id="dificultad{{id}}">
-                        <img src="../../../../../assets/img/medium.png" alt="medium.png">
-
-                        <input type="radio" 
-                            name="dificultad{{id}}" 
-                            value="dificil" 
-                            [disabled]="true"
-                            [checked]="tarea.dificultad=='dificil'"
-                            id="dificultad{{id}}">
-                        <img src="../../../../../assets/img/hard.png" alt="hard.png">
+                        <img *ngIf="tarea.dificultad=='facil'" src="../../../../../assets/img/easy.png" alt="easy.png">
+                        <img *ngIf="tarea.dificultad=='medio'"  src="../../../../../assets/img/medium.png" alt="medium.png">
+                        <img *ngIf="tarea.dificultad=='dificil'"  src="../../../../../assets/img/hard.png" alt="hard.png">
                     </th>
                     <th><input type="text" 
                             class="form-control" 

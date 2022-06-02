@@ -77,13 +77,14 @@ class ResponsablesController extends Controller
     public function update(Request $request, $id)
     {
         $responsable = Responsables::find($id);
+        $dniResponsable = $responsable->nombreResponsable;
         $responsable->nombreResponsable = $request->input('nombreResponsable');
         $responsable->dniResponsable = $request->input('dniResponsable');
         $responsable->email = $request->input('email');
         $responsable->empresa_id = $request->input('empresa_id');
-        DB::update('UPDATE fct_alumnos SET empresa_id = ? WHERE responsable_id =?',[$responsable->empresa_id, $id]);
-        
         $responsable->save();
+        DB::update('UPDATE fct_alumnos SET empresa_id = ? WHERE responsable_id =?',[$responsable->empresa_id, $id]);
+        DB::update("UPDATE users set username=? where username=?",[$responsable->dniResponsable,$dniResponsable]);
 
         
     }

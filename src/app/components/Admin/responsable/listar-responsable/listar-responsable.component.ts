@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Responsable } from 'src/app/Shared/interfaces/Interface';
+import { Responsable } from 'src/app/utils/interfaces/Interface';
 import { ResponsableService } from '../responsable.service';
 
 @Component({

@@ -6,7 +6,7 @@ import interactionPlug from '@fullcalendar/interaction'
 import esLocale from '@fullcalendar/core/locales/es'
 import { Router } from '@angular/router';
 import { AnexoVService } from '../anexo-v.service';
-import { Tarea } from 'src/app/Shared/interfaces/Interface';
+import { Tarea } from 'src/app/utils/interfaces/Interface';
 @Component({
   selector: 'app-calendario-anexo-v',
   templateUrl: './calendario-anexo-v.component.html',
@@ -59,7 +59,7 @@ export class CalendarioAnexoVComponent implements OnInit {
       let fecha=e.fecha
       let color = ""
       let estado = e.validadoResponsable+String(e.validadoTutor)
-      let url =`http://fctnou.es/alumno/modificar/${fecha}/${e.id}`
+      let url =`http://localhost:1949/alumno/modificar/${fecha}/${e.id}`
       
       console.log("estado", estado)
       switch(estado){

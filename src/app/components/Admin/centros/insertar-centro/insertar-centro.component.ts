@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { from, of } from 'rxjs';
-import { Centro } from 'src/app/Shared/interfaces/Interface';
-import { customValidatorCIFCentro } from 'src/app/utils/otrasValidaciones';
+import { Centro } from 'src/app/utils/interfaces/Interface';
+import { customValidatorCIFCentro } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../centros.service';
 
 @Component({

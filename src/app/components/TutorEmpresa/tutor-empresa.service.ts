@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Chat, Profesor } from 'src/app/Shared/interfaces/Interface';
+import { Chat, Profesor } from 'src/app/utils/interfaces/Interface';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class TutorEmpresaService {
   public listarAlumnosDelResponsable() {
     let idResponsable = sessionStorage.getItem('id');
     console.log("buscando tareas por id")
-   return this.http.get<any[]>(`${this.url}/alumosResponsable/${8}`, this.getHeaders())
+   return this.http.get<any[]>(`${this.url}/alumosResponsable/${idResponsable}`, this.getHeaders())
   }
   
   public validarTareaResponsable(idTarea){

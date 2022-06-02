@@ -6,6 +6,7 @@ import { InsertarDatosComponent } from './insertar-datos/insertar-datos.componen
 
 const routes: Routes = [
   { path: '', component: CsvComponent, pathMatch:'full' },
+  { path: '**', redirectTo: "error" },
  
 ];
 @NgModule({

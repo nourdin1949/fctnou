@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,  Router } from '@angular/router';
-import { Tarea } from 'src/app/Shared/interfaces/Interface';
+import { Tarea } from 'src/app/utils/interfaces/Interface';
 import { AnexoVService } from '../anexo-v.service';
 
 @Component({

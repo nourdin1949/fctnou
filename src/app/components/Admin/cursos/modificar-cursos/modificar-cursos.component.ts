@@ -1,7 +1,7 @@
 import {  Component ,OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Curso, Profesor } from 'src/app/Shared/interfaces/Interface';
+import { Curso, Profesor } from 'src/app/utils/interfaces/Interface';
 import { ProfesorService } from '../../profesor/profesor.service';
 import { CursosService } from '../cursos.service';
 

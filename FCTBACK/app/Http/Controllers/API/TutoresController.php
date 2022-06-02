@@ -79,11 +79,14 @@ class TutoresController extends Controller
     public function update(Request $request, $id)
     {
         $tutores = Tutores::find($id);
+        $dniTutor = $tutores->dniTuor;
         $tutores->codigoCentro = $request->input('codigoCentro');
         $tutores->nombreTutor = $request->input('nombreTutor');
         $tutores->dniTutor = $request->input('dniTutor');
         $tutores->email = $request->input('email');
-        return $tutores->save();
+        $tutores->save();
+        DB::update('UPDATE fct_alumnos SET codigoCentro = ? WHERE tutor_id =?',[$tutores->codigoCentro, $id]);
+        DB::update("UPDATE users set username=? where username=?",[$tutores->dniTutor,$dniTutor]);
     }
 
     /**

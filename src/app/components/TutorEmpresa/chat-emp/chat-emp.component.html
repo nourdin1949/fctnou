@@ -3,7 +3,7 @@
 <mat-tab-group>
     <mat-tab label="Chat con Tutor">
         <div class="row mt-4 w-100">
-            <div class="offset-md-3 col-6 w-100" >
+            <div class="offset-3 col-6 w-100" >
                 <!-- El select solo contrendrá responsbales sean tutores de los alumnos del profesor registrado -->
                 <mat-form-field  class="w-100" appearance="fill">
                     <mat-label>Selecciona tutor</mat-label>
@@ -15,34 +15,40 @@
                   </mat-form-field>
             </div>
         </div>
-        <div class="card text-center cardContainer" *ngIf="mostrarChat">
-            <div class="card-header">
-                Chat
-                <div class="closeIcon" (click)="mostrarChat=false">X</div>
-            </div>
-            <div class="card-body">
-                <div class="contenedorDeMensajes h-100">
-                    <p *ngFor="let mensaje of auxmensajes" 
-                        class=" p-2" 
-                        [ngClass]="(receptor==mensaje.receptor) ? 'enviado' :'recibido'">
-                        {{mensaje.mensaje}}
-                    </p>
+        <div class="row">
+            <div class="col-12 cornerRight mt-8">
+                <mat-icon class="m-3" *ngIf="!mostrarChat" (click)="receptor!='' ? mostrarChat=true: mostrarChat=false">chat</mat-icon>
+            </div>   
+            
+            <div class="card  text-center cardContainer" *ngIf="mostrarChat && receptor!=''">
+                <div class="card-header " (click)="minimizar()">
+                    Chat
+                    <div class="closeIcon" (click)="ocultarChat()">X</div>
                 </div>
-            </div>
-            <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
-                <mat-form-field  class="chat" appearance="fill">
-                    <mat-label>Escribe mensaje...</mat-label>
-                    <input matInput  [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}"  class="w-100">
-                    <mat-error >Es requerido</mat-error>
-                </mat-form-field>
-                
-                <div class="input-group-append" (click)="enviarMensaje()">
-                    <span class=" faEnviar ">
-                        <i class=" fa fa-paper-plane " aria-hidden="true"></i>
-                    </span>
+                <div class="card-body">
+                    <div id="contenedorDeMensajes" class=" h-100">
+                        <input type="hidden" class="msj">
+                        <p *ngFor="let mensaje of auxmensajes" 
+                            class="msj p-2" 
+                            [ngClass]="(receptor==mensaje.receptor) ? 'enviado' :'recibido'">
+                            {{mensaje.mensaje}}
+                        </p>
+                    </div>
                 </div>
-            </form>
+                <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()" >
+                    <mat-form-field  class="chat" appearance="fill">
+                        <mat-label>Escribe mensaje...</mat-label>
+                        <input matInput  required 
+                            [(ngModel)]="nuevoMensaje" 
+                            (keyup.enter)="enviarMensaje()"
+                            name="men" class="w-100">
+                        <mat-error *ngIf="nuevoMensaje==''">Es requerido</mat-error>
+                    </mat-form-field>
+                        <mat-icon type="submit" class="faEnviar  mt-3" >send</mat-icon>
+                </form>
+            </div>
         </div>
+        
     </mat-tab>
 </mat-tab-group>
 <div class="tab-content">

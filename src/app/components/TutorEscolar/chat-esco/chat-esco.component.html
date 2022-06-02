@@ -18,31 +18,37 @@
                   </mat-form-field>
             </div>
         </div>
-
-        
-        <div class="card text-center cardContainer" *ngIf="mostrarChat">
-            <div class="card-header">
-                Chat
-                <div class="closeIcon" (click)="mostrarChat=false">X</div>
-            </div>
+        <div class="row">
+            <div class="col-12 cornerRight mt-8">
+                <mat-icon class="m-3" *ngIf="!mostrarChat" (click)="receptor!='' ? mostrarChat=true: mostrarChat=false">chat</mat-icon>
+            </div>   
+            
+            <div class="card  text-center cardContainer" *ngIf="mostrarChat && receptor!=''">
+                <div class="card-header " (click)="ocultarChat()">
+                    Chat
+                    <div class="closeIcon" (click)="ocultarChat()">X</div>
+                </div>
             <div class="card-body">
-                <div class="contenedorDeMensajes h-100">
-                    <p *ngFor="let mensaje of auxmensajes" class=" p-2" [ngClass]="(receptor==mensaje.receptor) ? 'enviado' :'recibido'">
+                <div id="contenedorDeMensajes" class="h-100">
+                    <p *ngFor="let mensaje of auxmensajes" class="msj p-2" [ngClass]="(receptor==mensaje.receptor) ? 'enviado' :'recibido'">
                         {{mensaje.mensaje}}
                     </p>
                 </div>
             </div>
             <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
-
-                <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true} ">
-                <div class="input-group-append" (click)="enviarMensaje()">
-                    <span class="input-group-text" id="basic-addon2">
-                        <i class="faEnviar fa fa-paper-plane " aria-hidden="true"></i>
-                    </span>
-                </div>
+               <mat-form-field  class="chat" appearance="fill">
+                <mat-label>Escribe mensaje...</mat-label>
+                <input matInput  required 
+                    [(ngModel)]="nuevoMensaje" 
+                    (keyup.enter)="enviarMensaje()"
+                    name="men" class="w-100">
+                <mat-error *ngIf="nuevoMensaje==''">Es requerido</mat-error>
+            </mat-form-field>
+                <mat-icon (click)="enviarMensaje()" class="faEnviar  mt-3" >send</mat-icon>
             </form>
         </div>
-    </mat-tab>
+    </div>    
+</mat-tab>
 </mat-tab-group>
 <div class="tab-content">
     <div id="chat" class="container tab-pane active"><br>

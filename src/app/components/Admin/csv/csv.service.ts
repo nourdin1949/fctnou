@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {  FCTAlumnoLista, RegisterUser, Responsable } from 'src/app/Shared/interfaces/Interface';
+import {  FCTAlumnoLista, RegisterUser, Responsable } from 'src/app/utils/interfaces/Interface';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -32,6 +32,9 @@ export class CsvService {
   }
   public checkifAlumnoPractica(idAlumno:number){
     return this.http.get(`${this.url}/checkifAlumnoPractica/${idAlumno}`,this.getHeaders())
+  }
+  public checkifUsersExist(dni:string){
+    return this.http.get(`${this.url}/checkifUsersExist/${dni}`,this.getHeaders())
   }
 
   public insetarfctalumno(fctalumno:FCTAlumnoLista){

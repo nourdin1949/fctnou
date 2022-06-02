@@ -14,7 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 PdfMakeWrapper.setFonts(pdfFonts)
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +24,6 @@ PdfMakeWrapper.setFonts(pdfFonts)
     MatTabsModule, 
     MatFormFieldModule,
     MatSnackBarModule
-    
   ],
   providers: [AuthenticationGuard],
   bootstrap: [AppComponent]

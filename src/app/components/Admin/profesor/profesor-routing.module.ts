@@ -5,7 +5,9 @@ import { ModificarProfesorComponent } from './modificar-profesor/modificar-profe
 
 const routes: Routes = [{ path: '', redirectTo: "listar" ,pathMatch:'full'}, 
 { path:'listar', component:ListarProfesorComponent},
-{ path:'modificarProfesor/:id', component:ModificarProfesorComponent}];
+{ path:'modificarProfesor/:id', component:ModificarProfesorComponent},
+{ path: '**', redirectTo: "error" },
+];
 
 
 @NgModule({

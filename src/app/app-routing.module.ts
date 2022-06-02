@@ -43,28 +43,29 @@ const routes: Routes = [
           { path: 'profesores', loadChildren: () => import("./components/Admin/profesor/profesor.module").then(m => m.ProfesorModule) },
           { path: 'listaAlumnos', component: AlumnosComponent, pathMatch: 'full' },
           { path: 'csv', loadChildren: () => import("./components/Admin/csv/csv.module").then(m => m.CsvModule) },
+          { path: '**', redirectTo: "error" },
         ], canActivate:[AuthenticationGuard,AuthenticationAdminGuard]
       },
       {
         path: 'alumno', component: AlumnosComponent, children: [
           { path: '', loadChildren: () => import("./components/Alumnos/anexo-v/anexo-v.module").then(m => m.AnexoVModule) },
-         
+          { path: '**', redirectTo: "error" },
         ], canActivate:[AuthenticationGuard,AuthenticationAlumnoGuard]
       },
       {
         path: 'tutorescolar', component: TutorEscolarComponent, children: [
           { path: 'lista', component: AlumnoEscolarComponent },
           { path: 'chat', component: ChatEscoComponent },
-          { path: "", redirectTo: 'lista', pathMatch: 'full' }
-
+          { path: "", redirectTo: 'lista', pathMatch: 'full' },
+          { path: '**', redirectTo: "error" },
         ], canActivate:[AuthenticationGuard,AuthenticationProfesorGuard]
       },
       {
         path: 'tutorempresa', component: TutorEmpresaComponent, children: [
           { path: 'lista', component: AlumnosEmpresaComponent },
           { path: 'chat', component: ChatEmpComponent },
-          { path: "", redirectTo: 'lista', pathMatch: 'full' }
-
+          { path: "", redirectTo: 'lista', pathMatch: 'full' },
+          { path: '**', redirectTo: "error" },
         ], canActivate:[AuthenticationGuard,AuthenticationResponsableGuard]
       },
     ]

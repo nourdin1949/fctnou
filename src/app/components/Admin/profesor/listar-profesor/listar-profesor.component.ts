@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Profesor } from 'src/app/Shared/interfaces/Interface';
+import { Profesor } from 'src/app/utils/interfaces/Interface';
 import { ProfesorService } from '../profesor.service';
 
 @Component({

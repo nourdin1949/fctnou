@@ -440,7 +440,7 @@ button {
     zoom: .5;
   }
   .message__image{
-    width: 10%;
+    width: 5%;
   }
   .error__content {
     top: 55%;
@@ -456,7 +456,7 @@ button {
 
   }
   .message__image{
-    width: 35px;
+    width: 30px;
   }
   .error__content {
     top: 55%;

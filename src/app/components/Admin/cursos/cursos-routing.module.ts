@@ -8,6 +8,8 @@ const routes: Routes = [
   {path: 'listar', component: ListarCursosComponent, pathMatch:'full'},
   {path: 'modificarCurso/:id', component: ModificarCursosComponent, pathMatch:'full'},
   {path: '',redirectTo: 'listar', pathMatch:'full'},
+  { path: '**', redirectTo: "error" },
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

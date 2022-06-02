@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AnexoVService } from 'src/app/components/Alumnos/anexo-v/anexo-v.service';
 import { TutorEscolarService } from 'src/app/components/TutorEscolar/tutor-escolar.service';
-import { Tarea } from 'src/app/Shared/interfaces/Interface';
+import { Tarea } from 'src/app/utils/interfaces/Interface';
+import { customValidatorFecha } from 'src/app/utils/Validators/otrasValidaciones';
 import { TutorEmpresaService } from '../../tutor-empresa.service';
 
 @Component({
@@ -10,27 +12,45 @@ import { TutorEmpresaService } from '../../tutor-empresa.service';
   templateUrl: './validar.component.html',
   styleUrls: ['./validar.component.css']
 })
-export class ValidarComponent implements OnInit {
+export class ValidarComponent implements OnInit, AfterContentChecked {
   public tareas: Tarea[] = []
   public alumnos: any[] =[]
   public alumnoAbuscar: number
-  public fechaDesde: Date
-  public fechaHasta: Date
+  public fechaMaxima: Date = new Date()
   public disabled = true
   public ids: any = []
+  public formBuscaTarea: FormGroup
+  get inicio() {
+    return this.formBuscaTarea.controls['inicio']
+  }
+  get fin() {
+    return this.formBuscaTarea.controls['fin']
+  }
   constructor(
     private tutorResponsableService: TutorEmpresaService,
     private anexovService: AnexoVService,
-    private matSnackBar: MatSnackBar) {
+    private matSnackBar: MatSnackBar,
+    private  fb:FormBuilder) {
+
+      this.formBuscaTarea = this.fb.group({
+        inicio: ["", Validators.required],
+        fin: ["", Validators.required],
+        alumno:["", Validators.required]
+      }, { validator: customValidatorFecha.customValidFecha('inicio', 'fin') })
   }
 
   public ngOnInit(): void {
-   setTimeout(() => {
     this.listarAlumnosDelResponsable()
-   }, 1000);
   }
-  showBasicSnack() {
-    let snackBarColor = this.matSnackBar.open(`No tiene tareas entre ${this.fechaDesde} y ${this.fechaHasta}`, "Close",
+  public ngAfterContentChecked(): void {
+    let area = <NodeListOf<HTMLTextAreaElement>>document.querySelectorAll(".cajas-texto")
+    area.forEach((elemento) => {
+      elemento.style.height = `${elemento.scrollHeight}px`
+      console.log(`${elemento.scrollHeight}px`)
+    })
+  }
+  private showBasicSnack() {
+    let snackBarColor = this.matSnackBar.open(`No tiene tareas entre ${this.inicio.value} y ${this.fin.value}`, "Close",
     {
       duration: 4000,
       panelClass: ["snack-style"]
@@ -41,10 +61,11 @@ export class ValidarComponent implements OnInit {
   }
   public mostrarTareasDelAlumno() {
     const objeto = {
-      "primeraFecha": this.fechaDesde,
-      "segundaFecha": this.fechaHasta,
+      "primeraFecha": this.inicio.value,
+      "segundaFecha": this.fin.value,
     }
-    this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
+    if(this.formBuscaTarea.valid){
+      this.anexovService.listarTareasEntreFechas(objeto, this.alumnoAbuscar)
       .subscribe((response) => {
         this.tareas = response.filter(tarea => tarea.validadoResponsable == 0)
         if(this.tareas.length==0){
@@ -52,7 +73,8 @@ export class ValidarComponent implements OnInit {
           this.showBasicSnack()
         }
       })
-
+    }
+    
   }
   public guardarid(event) {
     this.ids.push(event.source.value)
@@ -61,13 +83,14 @@ export class ValidarComponent implements OnInit {
     this.ids.forEach(element => {
       this.tutorResponsableService.validarTareaResponsable(element).subscribe(() => {
         if(this.ids[this.ids.length-1]==element){
+          this.mostrarTareasDelAlumno()
           this.snackValidado()
           this.ids=[]
         }
       })
     });
   }
-  snackValidado() {
+  private snackValidado() {
     let snackBarColor = this.matSnackBar.open(`Tareas validadas con éxito`, "Close",
     {
       duration: 4000,

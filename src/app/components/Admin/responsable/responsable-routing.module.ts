@@ -6,7 +6,10 @@ import { ModificarResponsableComponent } from './modificar-responsable/modificar
 const routes: Routes = [
   { path: '', redirectTo: "listar" ,pathMatch:'full'}, 
   { path:'listar', component:ListarResponsableComponent},
-  { path:'modificarResponsable/:id', component:ModificarResponsableComponent}];
+  { path:'modificarResponsable/:id', component:ModificarResponsableComponent},
+  { path: '**', redirectTo: "error" },
+
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
