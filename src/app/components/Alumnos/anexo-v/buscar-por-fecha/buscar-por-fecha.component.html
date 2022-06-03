@@ -3,25 +3,19 @@
     <div class="col-4">
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Fecha Inicio</mat-label>
-            <input matInput type="date" 
-                max="{{fechaMaxima | date:'yyyy-MM-dd'}}" 
-                min="{{fechaMinimo | slice:0:10}}" 
-                formControlName="inicio" 
-                placeholder="Fecha Inicio">
+            <input matInput type="date" max="{{fechaMaxima | date:'yyyy-MM-dd'}}" min="{{fechaMinimo | slice:0:10}}"
+                formControlName="inicio" placeholder="Fecha Inicio">
             <mat-error *ngIf="inicio?.errors?.['required']">Es requerido</mat-error>
         </mat-form-field>
     </div>
-    
+
     <div class="col-4">
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Fecha Fin</mat-label>
-            <input matInput type="date" 
-                max="{{fechaMaxima | date:'yyyy-MM-dd'}}" 
-                min="{{fechaMinimo | slice:0:10}}"
-                formControlName="fin" 
-                placeholder="Fecha Fin">
+            <input matInput type="date" max="{{fechaMaxima | date:'yyyy-MM-dd'}}" min="{{fechaMinimo | slice:0:10}}"
+                formControlName="fin" placeholder="Fecha Fin">
             <mat-error *ngIf="fin?.errors?.['required']">Es requerido</mat-error>
-            <mat-error *ngIf="fin?.errors?.['Mayor']" >La fecha {{fin.value}} es menor que {{inicio.value}}</mat-error>
+            <mat-error *ngIf="fin?.errors?.['Mayor']">La fecha {{fin.value}} es menor que {{inicio.value}}</mat-error>
         </mat-form-field>
     </div>
     <div class="col-4 pt-2">
@@ -50,7 +44,7 @@
 
             <thead class="table bg-color text-light">
                 <tr>
-                   
+
                     <th>Descipcion de la actividad </th>
                     <th>Orientacion para su desarrollo </th>
                     <th>Tiempo </th>
@@ -60,73 +54,49 @@
                     <th>V.T</th>
                 </tr>
             </thead>
-            <tbody id="tbody" >
-                <tr *ngIf="tareas.length==0 && buscar" >
-                    <td  [colSpan]="7">
+            <tbody id="tbody">
+                <tr *ngIf="tareas.length==0 && buscar">
+                    <td [colSpan]="7">
                         <span class="spinner-border "></span>
                     </td>
                 </tr>
                 <tr *ngFor="let tarea of tareasTmp , let id =index">
                     <th>
-                        <textarea class="form-control" 
-                            name="descripcion0" 
-                            id="descripcion0" 
-                            cols="20" rows="2"
-                            disabled
+                        <textarea class="form-control" name="descripcion0" id="descripcion0" cols="20" rows="2" disabled
                             [value]="tarea.descripcion"></textarea>
                     </th>
                     <th>
-                        <input type="text" 
-                            [value]="tarea.orientacion" 
-                            class="form-control" 
-                            name="orientacion0"
-                            disabled
+                        <input type="text" [value]="tarea.orientacion" class="form-control" name="orientacion0" disabled
                             id="orientacion0">
                     </th>
                     <th>
-                        <input type="time" 
-                            [value]="tarea.tiempo |slice:0:5" 
-                            class="form-control" 
-                            name="tiempo0"
-                            id="tiempo0"
-                            disabled> 
+                        <input type="time" [value]="tarea.tiempo |slice:0:5" class="form-control" name="tiempo0"
+                            id="tiempo0" disabled>
                     </th>
                     <th class="text-center">
-                        <img src="../../../../../assets/img/easy.png" 
-                            *ngIf="tarea.dificultad=='facil'" alt="easy.png">
-                        <img src="../../../../../assets/img/medium.png" 
-                            *ngIf="tarea.dificultad=='medio'" alt="medium.png">
-                        <img src="../../../../../assets/img/hard.png" 
-                            *ngIf="tarea.dificultad=='dificil'" alt="hard.png">
+                        <img src="../../../../../assets/img/easy.png" *ngIf="tarea.dificultad=='facil'" alt="easy.png">
+                        <img src="../../../../../assets/img/medium.png" *ngIf="tarea.dificultad=='medio'"
+                            alt="medium.png">
+                        <img src="../../../../../assets/img/hard.png" *ngIf="tarea.dificultad=='dificil'"
+                            alt="hard.png">
                     </th>
                     <th>
-                        <input type="text" 
-                            class="form-control" 
-                            [value]="tarea.observaciones" 
-                            name="observaciones0"
-                            id="observaciones0"
-                            disabled> 
+                        <input type="text" class="form-control" [value]="tarea.observaciones" name="observaciones0"
+                            id="observaciones0" disabled>
                     </th>
                     <th>
                         <div class="custom-control custom-switch">
-                            <input disabled type="checkbox" 
-                                class="custom-control-input"
-                                [checked]="tarea.validadoTutor==1"
-                                name="tutor-ecolar"
-                                id="tutor">
-                                <label class="custom-control-label" 
-                                    for="tutor">
-                                </label>
+                            <input disabled type="checkbox" class="custom-control-input"
+                                [checked]="tarea.validadoTutor==1" name="tutor-ecolar" id="tutor">
+                            <label class="custom-control-label" for="tutor">
+                            </label>
                         </div>
                     </th>
-                    <th> 
+                    <th>
                         <div class="custom-control custom-switch">
-                            <input disabled type="checkbox" 
-                                class="custom-control-input"
-                                [checked]="tarea.validadoResponsable==1"
-                                name="tutor-empresa"
-                                id="responsable">
-                                <label class="custom-control-label" for="responsable"></label>
+                            <input disabled type="checkbox" class="custom-control-input"
+                                [checked]="tarea.validadoResponsable==1" name="tutor-empresa" id="responsable">
+                            <label class="custom-control-label" for="responsable"></label>
                         </div>
                     </th>
                 </tr>
@@ -165,5 +135,7 @@
                     <i class="fa fa-step-forward " aria-hidden="true"></i>
                 </div>
             </div>
-    
+
         </div>
+    </div>
+</div>

@@ -16,7 +16,9 @@ export class ListarAlumnosEscoComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.listarAlumnosDelTutor()
+    setTimeout(() => {
+      this.listarAlumnosDelTutor()
+    }, 1000);
   }
   public listarAlumnosDelTutor(){
     this.tutorEscolarService.listarAlumnosDelTutor().subscribe((res)=>{

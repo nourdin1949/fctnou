@@ -10,12 +10,13 @@
                 <!-- El select solo contrendrá responsbales sean tutores de los alumnos del profesor registrado -->
                 <mat-form-field  class="w-100" appearance="fill">
                     <mat-label>Selecciona Responsable</mat-label>
-                    <mat-select [(ngModel)]="receptor" (closed)="cargarMensajes()">
+                    <mat-select [(ngModel)]="receptor" (closed)="listarMensaje()">
                       <mat-option *ngFor="let responsable of responsables,let id = index" [value]="responsable.dniResponsable">
                        {{responsable.nombreResponsable}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
+                  
             </div>
         </div>
         <div class="row">
@@ -24,27 +25,29 @@
             </div>   
             
             <div class="card  text-center cardContainer" *ngIf="mostrarChat && receptor!=''">
-                <div class="card-header " (click)="ocultarChat()">
+                <div class="card-header " (click)="ocultarChat()" >
                     Chat
-                    <div class="closeIcon" (click)="ocultarChat()">X</div>
+                    <div class="closeIcon" (click)="ocultarChat()" >X</div>
                 </div>
             <div class="card-body">
                 <div id="contenedorDeMensajes" class="h-100">
+                    <input type="hidden" class="msj">
                     <p *ngFor="let mensaje of auxmensajes" class="msj p-2" [ngClass]="(receptor==mensaje.receptor) ? 'enviado' :'recibido'">
-                        {{mensaje.mensaje}}
+                        {{mensaje.mensaje}}<br>
                     </p>
+                    
                 </div>
             </div>
-            <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+            <form class="card-footer text-muted input-group" (ngSubmit)="submit()">
                <mat-form-field  class="chat" appearance="fill">
                 <mat-label>Escribe mensaje...</mat-label>
                 <input matInput  required 
                     [(ngModel)]="nuevoMensaje" 
-                    (keyup.enter)="enviarMensaje()"
+                    
                     name="men" class="w-100">
                 <mat-error *ngIf="nuevoMensaje==''">Es requerido</mat-error>
             </mat-form-field>
-                <mat-icon (click)="enviarMensaje()" class="faEnviar  mt-3" >send</mat-icon>
+                <mat-icon (click)="submit()" class="faEnviar  mt-3" >send</mat-icon>
             </form>
         </div>
     </div>    

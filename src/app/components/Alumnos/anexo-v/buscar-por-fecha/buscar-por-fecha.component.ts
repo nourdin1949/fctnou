@@ -36,9 +36,9 @@ export class BuscarPorFechaComponent implements OnInit {
   public totalPages: number = 0;
   @Input()
   public pageSize: number = 5;
-
-
   public sizes: number[] = [5, 10];
+
+  
   constructor(private anexovService: AnexoVService,
     private fb: FormBuilder) {
     this.formBuscaTarea = this.fb.group({

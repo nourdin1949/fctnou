@@ -8,3 +8,7 @@ i{
     background-color:rgb(72, 236, 39);
     color: rgb(82, 82, 82);
 }
+.cajas-texto{
+    height: 38px;
+    resize: none;
+}

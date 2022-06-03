@@ -112,12 +112,12 @@
                             id="dificultad{{id}}">
                         <img src="../../../../../assets/img/hard.png" alt="hard.png">
                     </th>
-                    <th><input type="text" 
-                            class="form-control" 
+                    <th>
+                            <textarea class="cajas-texto form-control" 
                             name="observaciones{{id}}"
                             [disabled]="true"
                             [value]="tarea.observaciones"
-                            id="observaciones{{id}}"> 
+                            id="observaciones{{id}}"></textarea>
                     </th>
                     <th>
                         <mat-checkbox [disabled]="disabled"
@@ -131,10 +131,41 @@
             </tbody>
 
         </table>
-        <button (click)="validarTarea()" 
-    
-            class="btn bg-outline-color" >
-            <i class="fa fa-save  "></i> 
-        </button>
+        
+    </div>
+    <div *ngIf="tareas.length>0" class="container-fluid table-responsive d-flex justify-content-center">
+        <div class="row">
+            <mat-icon class="col-1  margin-0-auto mt-3" (click)="validarTarea()">
+                save
+            </mat-icon>
+            <div class="col-3 ">
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-select [(ngModel)]="pageSize" (selectionChange)="changeSize()">
+                        <mat-option [value]="sizes" *ngFor="let sizes of sizes">
+                            {{sizes}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row mt-3 margin-0-auto">
+                <div class="col-2" disabled (click)="firstPage()" >
+                    <i class="fa fa-step-backward"  aria-hidden="true"></i>
+                </div>
+                <div class="col-2" [ngClass]="{ 'bbva-th2-pagination-disabled': (currentPage - 1) <= 0 }"
+                    (click)="prevPage()">
+                    <i class="fa fa-backward" aria-hidden="true"></i>
+                </div>
+                <div class="col-4">
+                    <p>{{ currentPage }} de {{ totalPages }}</p>
+                </div>
+                <div class="col-2" (click)="nextPage()">
+                    <i class="fa fa-forward" aria-hidden="true"></i>
+                </div>
+                <div class="col-2" (click)="lastPage()">
+                    <i class="fa fa-step-forward " aria-hidden="true"></i>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

@@ -8,8 +8,8 @@ import { User } from '../utils/interfaces/Interface';
   providedIn: 'root'
 })
 export class SharedService {
-  public perfil = ""
   private url=environment.url;
+  public mensajes:any[]=[]
   constructor(private http: HttpClient) { }
 
   /**

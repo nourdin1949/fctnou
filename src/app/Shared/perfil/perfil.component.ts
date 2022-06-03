@@ -18,7 +18,7 @@ export class PerfilComponent implements OnInit {
     private shareserv: SharedService,
     private _snackBar: MatSnackBar) {
     this.formperfil = this.fb.group({
-      image: ["", , ValidarFileIMGPerfil.filevalidator]
+      image: [""]
     })
   }
 
@@ -31,13 +31,15 @@ export class PerfilComponent implements OnInit {
   public submitform() {
     const formData: any = new FormData()
     formData.append("image", this.fileImg)
+    console.log( this.fileImg)
     console.log(formData)
     if (this.formperfil.valid) {
       this.shareserv.subirImagen(formData)
         .subscribe(
-          () => {
+          (res) => {
             this.openSnackBar()
-            setTimeout(()=>window.location.reload(),2000)
+            console.log(res)
+            //setTimeout(()=>window.location.reload(),2000)
           })
     }
   }

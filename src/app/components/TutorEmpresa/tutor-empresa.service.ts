@@ -33,8 +33,8 @@ export class TutorEmpresaService {
   public validarTareaResponsable(idTarea){
     return this.http.put<any[]>(`${this.url}/validaTareaResponsable/${idTarea}`,"", this.getHeaders())
   }
-  public insertarChat(chat:Chat){
-    return this.http.post<Chat[]>(`${this.url}/insertarChat`,chat, this.getHeaders())
+  public insertarChat(chat){
+    return this.http.post<any[]>(`${this.url}/insertarChat`,chat, this.getHeaders())
   }
   public listarChat(){
     return this.http.get<Chat[]>(`${this.url}/listarChat`,this.getHeaders())
