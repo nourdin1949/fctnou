@@ -72,6 +72,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('insertarCentro', 'store');
         Route::get('listarCentros',  'index');
         Route::get('findCentroByid/{id}', 'show');
+        Route::get('findCentroBycode/{code}', 'findCentroBycode');
         Route::put('updateCentroById/{id}', 'update');
         Route::delete('eliminarCentro/{id}', 'destroy');
     });
@@ -92,6 +93,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('insertarCurso', 'store');
         Route::get('listarCursos', 'index');
         Route::get('findCursoById/{id}', 'show');
+        Route::get('nombreCurso/{code}', 'nombreCurso');
         Route::get('alumnosMatriculados/{id}', 'alumnosMatriculados');
         Route::put('updateCursoById/{id}', 'update');
         Route::delete('eliminarCurso/{id}', 'destroy');
@@ -123,6 +125,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::controller(FctAlumnosController::class)->group(function () {
         Route::post('insertarAlumnoFCT', 'store');
         Route::get('listarAlumnosFCT', 'listarfct');
+        Route::get('listarAlumnosFCTBYEmpresaANDCentro/{empresa}/{centro}', 'listarfctEmpCen');
         Route::put('modificarAlumnoFCT/{id}', 'update');
         Route::delete('eliminarAlumnoFCT/{id}', 'destroy');
     });
@@ -138,13 +141,11 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::delete('eliminarTareaAlumno/{id}', 'destroy');
     });
     // TAREAS
-    Route::controller(ChatController::class)->group(function () {
-        Route::post('insertarChat', 'store');
-        Route::get('listarChat', 'index');
-        
-    });
+   
     Route::post('subirImg/{username}/{id}',[AuthController::class, 'subirImagen']);
 });
+
+//Validaciones asyncValidators
 Route::get('validarEmail/{email}',[AuthController::class, 'validarEmail']);
 Route::get('validarDNI/{dni}',[AuthController::class, 'validarDNI']);
 Route::get('validarEmailByID/{email}/{id}',[AuthController::class, 'validarEmailByID']);
@@ -163,3 +164,9 @@ Route::get('cmd/{comand}', function($command){
     dd(Artisan::output());
 });
 
+
+Route::controller(ChatController::class)->group(function () {
+    Route::post('insertarChat', 'store');
+    Route::get('listarChat', 'index');
+    
+});

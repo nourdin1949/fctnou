@@ -101,4 +101,7 @@ class CursosController extends Controller
     public function alumnosMatriculados($id){
         return DB::select("SELECT * FROM alumnos WHERE curso_id=? AND activo=1",[$id]);
     }
+    public function nombreCurso($codigoCiclo){
+        return DB::select("SELECT * FROM cursos WHERE codigoCiclo=?",[$codigoCiclo])[0];
+    }
 }

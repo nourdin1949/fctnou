@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Chat;
+use App\Events\Message;
 class ChatController extends Controller
 {
     /**
@@ -14,6 +15,7 @@ class ChatController extends Controller
      */
     public function index()
     {
+
         return Chat::all();
     }
 
@@ -35,11 +37,14 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
+        event( new Message($request->input('emisor'),$request->input('mensaje'),$request->input('receptor'),$request->input('fecha')));
+
         $chat = new Chat();
         $chat->emisor = $request->input('emisor');
         $chat->mensaje = $request->input('mensaje');
         $chat->receptor = $request->input('receptor');
-        return $chat->save();
+        $chat->save();
+        
     }
 
     /**

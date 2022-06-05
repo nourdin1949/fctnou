@@ -100,7 +100,17 @@ class AuthController extends BaseController
         }
         $file = $request->file('image');
         $picture = $username . ".png";
+        
         $file->move(public_path('img'), $picture);
+    //     Excel::load($picture, function($reader) {
+    //         foreach ($reader->get() as $book) {
+    //             Book::create([
+    //                 'name' => $book->title,
+    //                 'author' =>$book->author,
+    //                 'year' =>$book->publication_year
+    //             ]);
+    //          }
+    //    });
         DB::update("UPDATE users SET foto=1 where id=? ", [$id]);
         return response()->json(["message" => "Image Uploaded Succesfully"]);
     }

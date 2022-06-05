@@ -114,4 +114,9 @@ class CentrosController extends Controller
     {
         return DB::delete("DELETE FROM centros where codigo=? ",[$id]);
     }
+
+    public function findCentroBycode($code){
+         $codigo = DB::select("select codigoCentro from tutores where id=?", [$code])[0];
+        return DB::select("select * from centros where codigo=?", [$codigo->codigoCentro])[0];
+    }
 }

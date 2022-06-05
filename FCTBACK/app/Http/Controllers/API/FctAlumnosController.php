@@ -92,12 +92,22 @@ class FctAlumnosController extends Controller
         return FctAlumnos::destroy($id);
     }
     public function listarfct(){
-        return DB::select("select  fct.id, al.nombreAlumno, al.id as alumno_id, em.nombreEmpresa, em.id as empresa_id,
+        return DB::select("select fct.tutor_id as tutor_id, fct.id, al.nombreAlumno, al.id as alumno_id, em.nombreEmpresa, em.id as empresa_id,
         resp.nombreResponsable,resp.id as responsable_id ,tutor.nombreTutor, c.codigoCiclo from fct_alumnos as fct inner join alumnos as al on al.id= fct.alumno_id 
         inner join cursos as c on c.id=al.curso_id inner join empresas as em on em.id= fct.empresa_id 
         inner join responsables as resp on resp.id= fct.responsable_id 
         inner join 
             tutores as tutor  on  tutor.id = fct.tutor_id;");
+    }
+
+
+    public function listarfctEmpCen($empresa,$centro)
+    {  $codigo = DB::select("select codigoCentro from tutores where id=?", [$centro])[0];
+        return DB::select("select al.*, c.* from fct_alumnos as fct inner join alumnos as al on al.id= fct.alumno_id 
+        inner join cursos as c on c.id=al.curso_id inner join empresas as em on em.id= fct.empresa_id 
+        inner join responsables as resp on resp.id= fct.responsable_id 
+        inner join 
+            tutores as tutor  on  tutor.id = fct.tutor_id where fct.empresa_id= ? and fct.codigoCentro=?;",[$empresa,$codigo->codigoCentro]);
     }
 
 
