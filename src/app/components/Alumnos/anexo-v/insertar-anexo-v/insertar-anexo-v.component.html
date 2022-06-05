@@ -12,66 +12,23 @@
                         <th>Orientacion para su desarrollo </th>
                         <th>Tiempo </th>
                         <th>Dificultades en la realización </th>
-                        <th>Observaciones </th>     
+                        <th>Observaciones </th>
                     </tr>
                 </thead>
                 <tbody [innerHTML]="html" id="tbody">
-                    <!-- <tr>
-                        <th>
-                            <textarea class="form-control" 
-                                name="descripcion0"
-                                id="descripcion0" 
-                                cols="20" rows="2"></textarea>
-                        </th>
-                        <th>
-                            <input type="text" 
-                                class="form-control" 
-                                name="orientacion0"
-                                id="orientacion0">
-                        </th>
-                        <th>
-                            <input type="time" 
-                                class="form-control" 
-                                name="tiempo0"
-                                id="tiempo0"> 
-                        </th>
-                        <th>
-                            <input type="radio" 
-                                name="dificultad0" 
-                                value="facil" 
-                                id="dificultad0">
-                            <img src="../../../../../assets/img/easy.png" alt="easy.png">
 
-                            <input type="radio" 
-                                name="dificultad0" 
-                                value="medio" 
-                                id="dificultad0">
-                            <img src="../../../../../assets/img/medium.png" alt="medium.png">
-
-                            <input type="radio" 
-                                name="dificultad0" 
-                                value="dificil" 
-                                id="dificultad0">
-                            <img src="../../../../../assets/img/hard.png" alt="hard.png">
-                        </th>
-                        <th><input type="text" 
-                                class="form-control" 
-                                name="observaciones0"
-                                id="observaciones0"> 
-                        </th>
-                    </tr> -->
                 </tbody>
             </table>
-            <mat-icon (click)="crearfila()" class="fila " >add</mat-icon>
+            <mat-icon (click)="crearfila()" class="fila ">add</mat-icon>
             <mat-label class="mr-4 fila ">Filas</mat-label>
-            
-            <mat-icon (click)="insertarTareas()" class="text-success fila " >save</mat-icon>
+
+            <mat-icon (click)="insertarTareas()" class="text-success fila ">save</mat-icon>
             <mat-label class="mr-4 fila text-success">Filas</mat-label>
-            
+
             <mat-icon (click)="eliminarFila()" class="text-danger fila  fila-delete">delete</mat-icon>
             <mat-label class="text-danger">Filas</mat-label>
         </div>
-        
+
 
     </mat-tab>
     <mat-tab label="Buscar por fecha">
@@ -83,20 +40,19 @@
 <button type="button" id="insertado" data-toggle="modal" data-target="#insertarTarea"></button>
 
 <!-- Modal INSERTAR TAREA-->
-<div class="modal fade" id="insertarTarea" tabindex="-1" role="dialog" aria-labelledby="insertarTareaLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="insertarTarea" tabindex="-1" role="dialog" aria-labelledby="insertarTareaLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
-      <div class="modal-body text-center">
-        <b>
+            <div class="modal-body text-center">
+                <b>
           <h2 class="text-center">¡TAREA/S INSERTADO CON ÉXITO!</h2>
         </b>
-        <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
 
-        <i class="fa fa-check text-success" aria-hidden="true"></i>
-        <br>
-      </div>
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

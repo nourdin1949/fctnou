@@ -1,6 +1,6 @@
-import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
-import { dateSelectionJoinTransformer } from "@fullcalendar/core";
-import { map, Observable, of } from "rxjs";
+import { AbstractControl, FormGroup } from "@angular/forms";
+import { map, of } from "rxjs";
+import * as XLSX from 'xlsx'
 import { CentrosService } from "../../components/Admin/centros/centros.service";
 import { CsvService } from "../../components/Admin/csv/csv.service";
 import { EmpresasService } from "../../components/Admin/empresas/empresas.service";
@@ -67,14 +67,14 @@ export class customValidatorEmailBYID {
 }
 // Validar letra del DNI
 export class customValidatorFormatDNI {
-  static customValidDNILETRA(control: AbstractControl){
+  static customValidDNILETRA(control: AbstractControl) {
     const dni = control.value;
     let numero = dni.substr(0, dni.length - 1);
     let letr = dni.substr(dni.length - 1, 1);
     numero = numero % 23;
     let letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
     letra = letra.substring(numero, numero + 1);
-    return letra != letr.toUpperCase() ? of({dniletterValid:true}) : of(null)
+    return letra != letr.toUpperCase() ? of({ dniletterValid: true }) : of(null)
   }
 }
 // Validar CIF centro determinado
@@ -89,7 +89,7 @@ export class customValidatorCIFCentroBYID {
             console.log(response)
             return response ? { cifvalidID: true } : null
           })
-      );
+        );
     }
   }
 }
@@ -103,9 +103,9 @@ export class customValidatorCIFCentro {
         .pipe(
           map(response => {
             console.log(response)
-            return response ? { cifvalid: true }: null
+            return response ? { cifvalid: true } : null
           })
-      );
+        );
     }
   }
 }
@@ -119,15 +119,15 @@ export class customValidatorDNIEmpresa {
         .pipe(
           map(response => {
             console.log(response)
-            return response ? { dniempresaValid: true }: null
+            return response ? { dniempresaValid: true } : null
           })
-      );
+        );
     }
   }
 }
 // Validar DNI Empresa determinada
 export class customValidatorDNIEmpresaBYID {
-  static customValidDNIEmpresaBYID(service: EmpresasService, id:number) {
+  static customValidDNIEmpresaBYID(service: EmpresasService, id: number) {
     return (control: AbstractControl) => {
       const dni = control.value;
       console.log(dni)
@@ -135,9 +135,9 @@ export class customValidatorDNIEmpresaBYID {
         .pipe(
           map(response => {
             console.log(response)
-            return response ? { dniempresaValid: true }: null
+            return response ? { dniempresaValid: true } : null
           })
-      );
+        );
     }
   }
 }
@@ -150,24 +150,24 @@ export class customValidatorCIFEmpresa {
         .pipe(
           map(response => {
             console.log(response)
-            return response ? { cifempresaValid: true }: null
+            return response ? { cifempresaValid: true } : null
           })
-      );
+        );
     }
   }
 }
 // Validar CIF Empresa determinada
 export class customValidatorCIFEmpresaBYID {
-  static customValidCIFEmpresaBYID(service: EmpresasService, id:number) {
+  static customValidCIFEmpresaBYID(service: EmpresasService, id: number) {
     return (control: AbstractControl) => {
       const cif = control.value;
       return service.checkifEmpresaCIFBYID(cif, id)
         .pipe(
           map(response => {
             console.log(response)
-            return response ? { cifempresaValid: true }: null
+            return response ? { cifempresaValid: true } : null
           })
-      );
+        );
     }
   }
 }
@@ -179,9 +179,9 @@ export class customValidatorDNIRegistro {
       return service.checkifAlumnoPractica(id)
         .pipe(
           map(response => {
-            return response ? { dniRegistroValid: true }: null
+            return response ? { dniRegistroValid: true } : null
           })
-      );
+        );
     }
   }
 }
@@ -194,9 +194,9 @@ export class customValidatorDNIRegistroAlta {
         .pipe(
           map(response => {
             console.log(response)
-            return response ? { dniAltaValid: true }: null
+            return response ? { dniAltaValid: true } : null
           })
-      );
+        );
     }
   }
 }
@@ -220,4 +220,126 @@ export class customValidatorFecha {
       }
     }
   };
+}
+// Validar Localidad respecto a Provincia 
+export class customValidatorLocalidad {
+
+  static customValidLocalidad(localidadParam: any, provinciaParam: any) {
+    let arrayBuffer: any = []
+    return (formGroup: FormGroup) => {
+      const localidadC = formGroup.controls[localidadParam];
+
+      const provinciaC = formGroup.controls[provinciaParam];
+      console.log(localidadC, provinciaC)
+      if (provinciaC.errors || (localidadC.errors && !localidadC.errors['validLocalidad'])) {
+        // return si otro validator encuentra error  matchingControl
+        return 
+      }
+      var xhr = new XMLHttpRequest();
+      if (localidadC.value != "" && provinciaC.value != "" && !provinciaC.errors) {
+        xhr.addEventListener("readystatechange", function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            let array: any = xhr.responseText.trim()
+            console.log(xhr.responseText.trim())
+            array = array.split('\n')
+            let aux: any = []
+            let conta = 0
+            //@ts-ignore
+            for (let i = 0; i < array.length; i++) {
+              aux[conta] = JSON.stringify(array[i]).split(';')
+              let provincia: string = aux[conta][0]
+              let localidad: string = aux[conta][1]
+              let provinciaCampo: string = provinciaC.value
+              let localidadCampo: string = localidadC.value
+              provincia = provincia.replace("\"", '')
+              conta++
+              if (provincia.toLowerCase() == provinciaCampo.toLowerCase() && localidad.toLowerCase() == localidadCampo.toLowerCase()) {
+                return localidadC.setErrors(null);
+              }
+
+            };
+          }
+        });
+        xhr.open("GET", "http://localhost:1949/assets/csv/codigospostales.csv", true);
+        xhr.send();
+        return localidadC.setErrors({ validLocalidad: true });
+      }
+      return localidadC.setErrors(null);
+    };
+  }
+}
+// Validar Codigo Postal respecto a Localidad 
+export class customValidatorCodigoPostal {
+
+  static customValidCodigoPôstal(localidadParam: any, cpParam: any) {
+  
+    return (formGroup: FormGroup) => {
+      const localidadC = formGroup.controls[localidadParam];
+
+      const cpC = formGroup.controls[cpParam];
+     
+      var xhr = new XMLHttpRequest();
+      if (localidadC.value != "" && cpC.value != ""  ) {
+        xhr.addEventListener("readystatechange", function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            let array: any = xhr.responseText.trim()
+            array = array.split('\n')
+            let aux: any = []
+            for (let i = 0; i < array.length; i++) {
+              aux[0] = JSON.stringify(array[i]).split(';')
+              let cp: string = aux[0][2]
+              let localidad: string = aux[0][1]
+              let cpCampo: string = cpC.value
+              console.log(cp, cpCampo)
+              let localidadCampo: string = localidadC.value
+              if (cp == cpCampo && localidad == localidadCampo) {
+                return cpC.setErrors(null);
+              }
+            };
+          }
+        });
+        xhr.open("GET", "http://localhost:1949/assets/csv/codigospostales.csv", true);
+        xhr.send();
+        return cpC.setErrors({ validCp: true });
+      }
+      return cpC.setErrors(null);
+    };
+  }
+}
+// Validar Provincia 
+export class customValidatorProvincia {
+
+  static customValidProvincia(provinciaParam: string) {
+    let arrayBuffer: any = []
+    return (formGroup: FormGroup) => {
+      let encontrado: boolean = false
+      const provinciaValor = formGroup.controls[provinciaParam]
+      var xhr = new XMLHttpRequest();
+      if (provinciaValor.value != "" && !provinciaValor.errors) {
+        xhr.addEventListener("readystatechange", function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            let array: any = xhr.responseText.trim()
+            array = array.split('\n')
+            let aux: any = []
+            for (let i = 0; i < array.length; i++) {
+              aux[0] = JSON.stringify(array[i]).split(';')
+              let provincia: string = aux[0][0]
+              let provinciaCampo: string = provinciaValor.value
+              provincia = provincia.replace("\"", '')
+              if (provincia.toLowerCase() == provinciaCampo.toLowerCase() && encontrado == false) {
+
+                encontrado = true
+                return provinciaValor.setErrors(null)
+              }
+            };
+          }
+        });
+        xhr.open("GET", "http://localhost:1949/assets/csv/codigospostales.csv", true);
+        xhr.send();
+        return provinciaValor.setErrors({validProvincia:true});
+      }
+      return provinciaValor.setErrors(null);
+      
+    };
+  }
 }

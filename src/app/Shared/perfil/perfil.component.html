@@ -1,20 +1,18 @@
-
 <div class="row mt-5">
-  <div class="col-3"></div>
-  <form [formGroup]="formperfil"  (ngSubmit)="submitform()" class="w-75 col-6">
-    <div class="form-group">
-      <h3 class="title bg-color text-light p-2">Mi Perfil </h3>
-    </div>
-    <mat-form-field class="w-100">
-      <ngx-mat-file-input formControlName="image" (change)="uploadFile($event)" 
-          placeholder="Cambiar Foto de Perfil" accept="image/png">
-      </ngx-mat-file-input>
-      <mat-error *ngIf="formperfil.controls['image'].hasError('filevalidatorImg')">
-         Admite extensiones .png
-      </mat-error>
-      <mat-icon matSuffix>folder</mat-icon>
-  </mat-form-field>
-    <button type="submit" class="btn mt-2 bg-outline-color">Modificar</button>
-  </form>
+    <div class="col-3"></div>
+    <form [formGroup]="formperfil" (ngSubmit)="submitform()" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Mi Perfil </h3>
+        </div>
+        <mat-form-field class="w-100">
+            <ngx-mat-file-input formControlName="image" (change)="uploadFile($event)" placeholder="Cambiar Foto de Perfil" accept="image/png">
+            </ngx-mat-file-input>
+            <mat-error *ngIf="formperfil.controls['image'].hasError('filevalidatorImg')">
+                Admite extensiones .png
+            </mat-error>
+            <mat-icon matSuffix>insert_photo</mat-icon>
+        </mat-form-field>
+        <button type="submit" class="btn mt-2 bg-outline-color">Modificar</button>
+    </form>
 
 </div>

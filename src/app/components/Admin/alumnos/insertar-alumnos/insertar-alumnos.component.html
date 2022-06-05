@@ -1,149 +1,136 @@
 <div class="row w-100 mb-4">
-  <div class="col-3"></div>
+    <div class="col-3"></div>
 
-  <form [formGroup]="forminsertarAlumno" (ngSubmit)="insertarAlumo(forminsertarAlumno)" class="w-75 col-6">
-    <div class="form-group">
-      <h3 class="title bg-color text-light p-2">Insertar Alumno</h3>
-    </div>
-    <mat-form-field class=" w-100" appearance="fill">
-      <mat-label>Nombre Alumno</mat-label>
-      <input matInput 
-        formControlName="nombre" 
-        placeholder="Nombre Apellidos" 
-        class="w-100">
-      <mat-error *ngIf="this.forminsertarAlumno.controls['nombre'].hasError('required')">
-        Campo requerido
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class=" w-100" appearance="fill">
-      <mat-label>DNI Alumno</mat-label>
-      <input matInput 
-        formControlName="dni" 
-        placeholder="DNI Apellido" 
-        class="w-100">
-      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('required')">
-        Campo requerido
-      </mat-error>
-      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('pattern')">
-        Formato requerido  12345678C
-      </mat-error>
-      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('validDni')">
-        DNI {{forminsertarAlumno.controls['dni'].value}} está en uso
-      </mat-error>
-      <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('dniletterValid')">
-        La letra del DNI no se corresponde
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field class=" w-100" appearance="fill">
-      <mat-label>Correo Electrónico</mat-label>
-      <input matInput 
-        formControlName="email" 
-        placeholder="nombre@dominio" 
-        class="w-100">
-      <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('required')">
-        Campo requerido
-      </mat-error>
-      <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('pattern')">
-        Email no es válido
-      </mat-error>
-      <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('validEmail')">
-        Email {{forminsertarAlumno.controls['email'].value}} está en uso
-      </mat-error>
-    </mat-form-field>
-    <div class="row">
-      <div class="col-lg-6 col-sm-12 col-md-12">
+    <form [formGroup]="forminsertarAlumno" (ngSubmit)="insertarAlumo(forminsertarAlumno)" class="w-75 col-6">
+        <div class="form-group">
+            <h3 class="title bg-color text-light p-2">Insertar Alumno</h3>
+        </div>
         <mat-form-field class=" w-100" appearance="fill">
-          <mat-label>Provincia</mat-label>
-          <input matInput 
-            formControlName="provincia" 
-            placeholder="Provincia" 
-            class="w-100">
-          <mat-error *ngIf="this.forminsertarAlumno.controls['provincia'].hasError('required')">
-            Campo requerido
-          </mat-error>
+            <mat-label>Nombre Alumno</mat-label>
+            <input matInput formControlName="nombre" placeholder="Nombre Apellidos" class="w-100">
+            <mat-error *ngIf="this.forminsertarAlumno.controls['nombre'].hasError('required')">
+                Campo requerido
+            </mat-error>
         </mat-form-field>
-      </div>
-      <div class="col-lg-6   col-sm-12  col-md-12">
 
         <mat-form-field class=" w-100" appearance="fill">
-          <mat-label>Localidad</mat-label>
-          <input matInput 
-            formControlName="localidad" 
-            placeholder="Localidad" 
-            class="w-100">
-          <mat-error *ngIf="this.forminsertarAlumno.controls['localidad'].hasError('required')">
-            Campo requerido
-          </mat-error>
+            <mat-label>DNI Alumno</mat-label>
+            <input matInput formControlName="dni" placeholder="DNI Apellido" class="w-100">
+            <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('pattern')">
+                Formato requerido 12345678C
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('validDni')">
+                DNI {{forminsertarAlumno.controls['dni'].value}} está en uso
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarAlumno.controls['dni'].hasError('dniletterValid')">
+                La letra del DNI no se corresponde
+            </mat-error>
         </mat-form-field>
-      </div>
-    </div>
 
-      <mat-form-field class=" w-100" appearance="fill">
-        <mat-label>Calle</mat-label>
-        <input matInput 
-          formControlName="calle" 
-          placeholder="Calle" 
-          class="w-100">
-        <mat-error *ngIf="this.forminsertarAlumno.controls['calle'].hasError('required')">
-          Campo requerido
-        </mat-error>
-      </mat-form-field>
- 
-    <div class="row">
-      <div class="col-lg-6  col-sm-12  col-md-12">
         <mat-form-field class=" w-100" appearance="fill">
-          <mat-label>Código Postal</mat-label>
-          <input matInput 
-            formControlName="cp" 
-            placeholder="Código Postal" 
-            class="w-100">
-          <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('required')">
-            Campo requerido
-          </mat-error>
-          <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('pattern')">
-            Requiere de 5 digitos
-          </mat-error>
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email" placeholder="nombre@dominio" class="w-100">
+            <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('required')">
+                Campo requerido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('pattern')">
+                Email no es válido
+            </mat-error>
+            <mat-error *ngIf="this.forminsertarAlumno.controls['email'].hasError('validEmail')">
+                Email {{forminsertarAlumno.controls['email'].value}} está en uso
+            </mat-error>
         </mat-form-field>
-      </div>
-      <div class="col-lg-6   col-sm-12  col-md-12">
-        
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Curso</mat-label>
-          <mat-select  formControlName="curso">
-            <mat-option [value]="curso.id"  *ngFor="let curso of cursos">
-              {{curso.codigoCiclo}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="this.forminsertarAlumno.controls['curso']?.errors?.['required']">
-            Campo requerido
-          </mat-error>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-md-12">
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Provincia</mat-label>
+                    <input matInput formControlName="provincia" placeholder="Provincia" class="w-100">
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['provincia'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['provincia'].hasError('validProvincia')">
+                        {{this.forminsertarAlumno.controls['provincia'].value}} no existe
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6   col-sm-12  col-md-12">
+
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Localidad</mat-label>
+                    <input matInput formControlName="localidad" placeholder="Localidad" class="w-100">
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['localidad'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['localidad'].hasError('validLocalidad')">
+                        {{this.forminsertarAlumno.controls['localidad'].value}} no pertenece a {{this.forminsertarAlumno.controls['provincia'].value}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field class=" w-100" appearance="fill">
+            <mat-label>Calle</mat-label>
+            <input matInput formControlName="calle" placeholder="Calle" class="w-100">
+            <mat-error *ngIf="this.forminsertarAlumno.controls['calle'].hasError('required')">
+                Campo requerido
+            </mat-error>
         </mat-form-field>
-      </div>
-    </div>
-    <button type="submit" class="mt-2 w-100 btn bg-outline-color">Insertar</button>
-  </form>
+
+        <div class="row">
+            <div class="col-lg-6  col-sm-12  col-md-12">
+                <mat-form-field class=" w-100" appearance="fill">
+                    <mat-label>Código Postal</mat-label>
+                    <input matInput formControlName="cp" placeholder="Código Postal" class="w-100">
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('required')">
+                        Campo requerido
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('pattern')">
+                        Requiere de 5 digitos
+                    </mat-error>
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['cp'].hasError('validCp')">
+                        {{this.forminsertarAlumno.controls['cp'].value}} no pertenece a {{this.forminsertarAlumno.controls['localidad'].value}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-6   col-sm-12  col-md-12">
+
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Curso</mat-label>
+                    <mat-select formControlName="curso">
+                        <mat-option [value]="curso.id" *ngFor="let curso of cursos">
+                            {{curso.codigoCiclo}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="this.forminsertarAlumno.controls['curso']?.errors?.['required']">
+                        Campo requerido
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <button type="submit" class="mt-2 w-100 btn bg-outline-color">Insertar</button>
+    </form>
 </div>
 
 
 <button type="button" id="insertado" data-toggle="modal" data-target="#insertarAlumno"></button>
 
 <!-- Modal INSERTAR ALUMNO-->
-<div class="modal fade" id="insertarAlumno" tabindex="-1" role="dialog" aria-labelledby="insertarAlumnoLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="insertarAlumno" tabindex="-1" role="dialog" aria-labelledby="insertarAlumnoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
-      <div class="modal-body text-center">
-        
-          <h2 class="text-center">¡ALUMNO INSERTADO CON ÉXITO!</h2>
-        
-        <i class="fa fa-check text-success" aria-hidden="true"></i>
+            <div class="modal-body text-center">
 
-        <i class="fa fa-check text-success" aria-hidden="true"></i>
-        <br>
-      </div>
+                <h2 class="text-center">¡ALUMNO INSERTADO CON ÉXITO!</h2>
+
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+
+                <i class="fa fa-check text-success" aria-hidden="true"></i>
+                <br>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

@@ -40,6 +40,7 @@ export class ChatEscoComponent implements OnInit {
         (element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
         (element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
       )
+      this.listarMensaje()
       setTimeout(() => {
         this.scrollToTheLastElementByClassName()
       }, 100);
@@ -59,6 +60,7 @@ export class ChatEscoComponent implements OnInit {
         .subscribe(
           () => {
             this.nuevoMensaje = ""
+            this.listarMensaje()
             this.scrollToTheLastElementByClassName()
           })
     }
@@ -67,18 +69,18 @@ export class ChatEscoComponent implements OnInit {
   listarMensaje() {
     if (this.receptor != "") { this.mostrarChat = true } else {
       this.mostrarChat = false
-      this.auxmensajes=[]
+      this.auxmensajes = []
     }
     this.tutorempresaService.listarChat().subscribe((res) => {
       this.mensajes = res;
-       this.auxmensajes = this.mensajes.filter(element =>
-      (element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
-      (element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
-    )
-    console.log(this.auxmensajes)
-    setTimeout(() => {
-              this.scrollToTheLastElementByClassName()
-            }, 100);
+      this.auxmensajes = this.mensajes.filter(element =>
+        (element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
+        (element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
+      )
+
+      setTimeout(() => {
+        this.scrollToTheLastElementByClassName()
+      }, 100);
     })
   }
   public listarResponsables() {
@@ -86,30 +88,10 @@ export class ChatEscoComponent implements OnInit {
       this.responsables = response;
     })
   }
-  // enviarMensaje() {
-  //   const chatobject: Chat = {
-  //     "id": 0,
-  //     "emisor": sessionStorage.getItem("username")!,
-  //     "mensaje": this.nuevoMensaje,
-  //     "receptor": this.receptor,
-  //     "fecha": new Date()
-  //   }
-  //   console.log(chatobject)
-  //   this.nuevoMensaje = ""
-  //   if (this.nuevoMensaje != "") {
-  //     this.tutorempresaService.insertarChat(chatobject).subscribe((rees) => {
-  //       setTimeout(() => {
-  //         this.scrollToTheLastElementByClassName()
-  //       }, 100);
-  //     })
-  //   }
-  // }
 
   scrollToTheLastElementByClassName() {
     let element = document.getElementsByClassName("msj");
     let ultimo: any = element[(element.length - 1)]
-    console.log(ultimo.offsetTop)
-    console.log(ultimo)
     let toppos = ultimo.offsetTop;
     //@ts-ignore
     document.getElementById("contenedorDeMensajes")?.scrollTop = toppos;
@@ -124,7 +106,7 @@ export class ChatEscoComponent implements OnInit {
   public mostrarCardChat() {
     if (this.receptor != "") { this.mostrarChat = true } else {
       this.mostrarChat = false
-      this.auxmensajes=[]
+      this.auxmensajes = []
     }
   }
 }

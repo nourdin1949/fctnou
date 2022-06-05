@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import * as jsPDF from 'jspdf';
 
 import html2canvas from 'html2canvas';
-import { Empresa, FCTAlumno, FCTAlumnoLista, Responsable } from 'src/app/utils/interfaces/Interface';
+import { Centro, Empresa, FCTAlumno, Responsable } from 'src/app/utils/interfaces/Interface';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { AlumnosService } from '../alumnos.service';
 import { ResponsableService } from '../../responsable/responsable.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CentrosService } from '../../centros/centros.service';
+import { Subject ,debounceTime} from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-listar-alumnos-practica',
   templateUrl: './listar-alumnos-practica.component.html',
@@ -18,19 +21,61 @@ export class ListarAlumnosPracticaComponent implements OnInit {
   public alumnosfct: FCTAlumno[] = []
   public respdis: boolean = true
   public alumnofct: any = {}
-  public selected = "domain"
+  public nombreCiclo: string = ""
+  public alumnosfiltrados: any[] = []
   public cargaCompleta: boolean = false
+  public fechaHoy: Date = new Date()
+  public debounce: Subject<string> = new Subject<string>()
+  public centro: Centro = {
+    "codigo": 0,
+    "nombreCentro": "",
+    "provincia": "",
+    "localidad": "",
+    "calle": "",
+    "cp": "",
+    "cif": "",
+    "telefono": 0,
+    "email": "",
+    "nombreDirector": ""
+  }
+  public empresa: Empresa = {
+    "id": 0,
+    "nombreEmpresa": "",
+    "provincia": "",
+    "localidad": "",
+    "calle": "",
+    "cp": "",
+    "cif": "",
+    "telefono": "",
+    "email": "",
+    "nombreRepresentante": "",
+    "dniRepresentante": ""
+  }
+
 
   public constructor(
     private alumnoservice: AlumnosService,
     private empresasevice: EmpresasService,
     private responsableservice: ResponsableService,
-    private _snackBar: MatSnackBar) {
+    private centroService: CentrosService,
+    private _snackBar: MatSnackBar, 
+    private router:Router ){
 
+  }
+  public ngOnInit(): void {
+    this.debounce.pipe(
+      debounceTime(2000)
+    ).subscribe(
+      resp => window.location.reload()
+    )
+    this.listarAlumnosFct()
+    this.listarEmpresas();
+    this.listarResponsables();
   }
   public downloadPDF() {
     // Extraemos DATA
-    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("hide"))[0].classList.remove("hide")
+    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("hide"))[0].classList.remove("hide");
+    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("pdf"))[0].style.marginTop="0.8in"
 
     const DATA = <HTMLElement>document.getElementById('listaalumnosFCT');
     // Todo elemento que tenga la clase quitar no se mostrara en el pdf
@@ -44,25 +89,19 @@ export class ListarAlumnosPracticaComponent implements OnInit {
       scale: 3
     };
     html2canvas(DATA, options).then((canvas) => {
-
       const img = canvas.toDataURL('image/PNG');
-
       // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
+      const bufferX = 70;
+      const bufferY = 50;
       const imgProps = (doc as any).getImageProperties(img);
       const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`alumnosPráctica.pdf`);
+      this.debounce.next("siguiente")
+      docResult.save(`AlumnosEnPráctica.pdf`);
     });
-  }
-  public ngOnInit(): void {
-    this.listarAlumnosFct()
-    this.listarEmpresas();
-    this.listarResponsables();
   }
 
   public listarEmpresas() {
@@ -124,4 +163,94 @@ export class ListarAlumnosPracticaComponent implements OnInit {
         duration: 3000
       });
   }
+
+  public datosAnexo01(fctalumno: FCTAlumno) {
+    setTimeout(() => {
+      (<HTMLElement>document.getElementById('modificar')).classList.remove('modal-open');
+      (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+    }, 300);
+    this.alumnofct.codeCiclo = fctalumno.codigoCiclo
+    this.alumnoservice.nombreCurso(fctalumno.codigoCiclo)
+      .subscribe(
+        (res) => {
+          this.nombreCiclo = res.cicloFormativo
+        })
+    this.centroService.findCentroBycode(fctalumno.tutor_id)
+      .subscribe(
+        (res) => {
+          console.log(res)
+          this.centro = res
+        })
+
+    this.empresasevice.findEmpresaByid(fctalumno.empresa_id)
+      .subscribe(
+        (res) => {
+          console.log(res)
+          //@ts-ignore
+          this.empresa = res
+        }
+      )
+    this.alumnoservice.listarAlumnosFCTBYEmpresaANDCentro(fctalumno.empresa_id, fctalumno.tutor_id)
+      .subscribe(
+        (res) => {
+          this.alumnosfiltrados = res
+        }
+      )
+  }
+
+
+  public anexo1pdf() {
+    // Extraemos DATA
+    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("hideAnexo1"))[0].classList.remove("hideAnexo1")
+
+    const DATA = <HTMLElement>document.getElementById('anexo1pdf');
+    (<HTMLElement>document.getElementById('listaalumnosFCT'))?.classList.add("hideAnexo0");
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      this.debounce.next("siguiente")
+      docResult.save(`Anexo0_${this.centro.nombreCentro}_${this.empresa.nombreEmpresa}.pdf`);
+    });
+  }
+  public anexo0pdf() {
+    // Extraemos DATA
+    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("hideAnexo0"))[0].classList.remove("hideAnexo0")
+
+    const DATA = <HTMLElement>document.getElementById('anexo0pdf');
+    (<HTMLElement>document.getElementById('listaalumnosFCT'))?.classList.add("hideAnexo0");
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(DATA, options).then((canvas) => {
+      const img = canvas.toDataURL('image/PNG');
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      this.debounce.next("siguiente")
+      docResult.save(`Anexo0_${this.centro.nombreCentro}_${this.empresa.nombreEmpresa}.pdf`);
+    });
+    
+  }
 }
+

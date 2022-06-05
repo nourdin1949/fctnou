@@ -11,6 +11,7 @@ import { SharedService } from '../shared.service';
 export class ForgotPasswordComponent implements OnInit {
   public formForgotPassword: FormGroup
   public mostrarMensaje: boolean = false
+  public enviado: boolean = false
   constructor(private fb: FormBuilder, private router: Router, private sharedserv: SharedService) {
     this.formForgotPassword = this.fb.group({
 
@@ -22,8 +23,10 @@ export class ForgotPasswordComponent implements OnInit {
   }
   recuperarContrasenia() {
     if (this.formForgotPassword.valid) {
-      this.sharedserv.forgotpassword(this.formForgotPassword.value.email).subscribe((response) => {
-        console.log(response)
+      this.sharedserv.forgotpassword(this.formForgotPassword.value.email)
+        .subscribe(
+          () => {
+        this.enviado=true
         
       })
     }

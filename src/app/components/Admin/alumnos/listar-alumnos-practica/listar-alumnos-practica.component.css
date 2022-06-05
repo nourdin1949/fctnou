@@ -1,3 +1,51 @@
 td ul li a {
     border-radius: 50%;
 }
+
+.hideAnexo0 {
+    display: none;
+}
+
+.hideAnexo1 {
+    display: none;
+}
+
+.imagen {
+    position: relative;
+    top: 0in;
+    left: 9.01in;
+    width: 1.04in;
+    height: 0.83in
+}
+
+.imagenJunta {
+    left: -0.8in;
+    top: 0.1in;
+    position: relative;
+    width: 2.33in;
+    height: 0.65in
+}
+
+.titulo {
+    position: relative;
+    top: 1.02in;
+    left: 1.23in;
+    width: 5.37in;
+    line-height: 0.14in;
+}
+
+p {
+    min-width: 100%;
+}
+
+#anexo0pdf {
+    min-height: 300vh;
+}
+
+#anexo1pdf {
+    min-height: 300vh;
+}
+
+mat-icon {
+    cursor: pointer;
+}

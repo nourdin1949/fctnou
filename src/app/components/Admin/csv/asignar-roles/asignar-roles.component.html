@@ -1,80 +1,67 @@
-
-
 <div class="row w-100">
     <div class="col-3"></div>
 
     <form [formGroup]="formRoles" class="w-75  col-6">
         <div class="form-group">
-            <h3 class="title bg-color text-light p-2">Asignar roles</h3>
+            <h3 class="title bg-color text-center text-light p-2">Asignar roles</h3>
         </div>
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Rol Usuario</mat-label>
-            <mat-select (selectionChange)="recargarselectuser()" 
-                [(ngModel)]="perfil" 
-                formControlName="rol">
-              <mat-option value="responsable" >
-                  Responsable
-              </mat-option>
-              <mat-option value="profesor" >
-                  Tutor
-              </mat-option>
-              <mat-option value="alumno" >
-                  Alumno
-              </mat-option>
+            <mat-select (selectionChange)="recargarselectuser()" [(ngModel)]="perfil" formControlName="rol">
+                <mat-option value="responsable">
+                    Responsable
+                </mat-option>
+                <mat-option value="profesor">
+                    Tutor
+                </mat-option>
+                <mat-option value="alumno">
+                    Alumno
+                </mat-option>
             </mat-select>
             <mat-error *ngIf="this.formRoles.controls['rol']?.errors?.['required']">
-              Campo requerido
+                Campo requerido
             </mat-error>
         </mat-form-field>
 
         <mat-form-field class="w-100" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <mat-select (selectionChange)="guardarEmail($event)" 
-                formControlName="dni">
-              <mat-option value="{{persona.dni}}" 
-                *ngFor="let persona of auxTodosDatos" >
+            <mat-select (selectionChange)="guardarEmail($event)" formControlName="dni">
+                <mat-option value="{{persona.dni}}" *ngFor="let persona of auxTodosDatos">
                     {{persona.nombre}}
-              </mat-option>
+                </mat-option>
             </mat-select>
             <mat-error *ngIf="this.formRoles.controls['dni']?.errors?.['required']">
-              Campo requerido
+                Campo requerido
             </mat-error>
             <mat-error *ngIf="this.formRoles.controls['dni']?.errors?.['dniAltaValid']">
-              El user {{formRoles.controls['dni'].value}}  está en uso
+                El user {{formRoles.controls['dni'].value}} está en uso
             </mat-error>
         </mat-form-field>
-        
+
         <div class="row">
             <div class="col-lg-6  col-sm-12  col-md-12">
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput 
-                      formControlName="pwd" 
-                      placeholder="Contraseña" 
-                      class="w-100">
+                    <input matInput formControlName="pwd" placeholder="Contraseña" class="w-100">
                     <mat-error *ngIf="this.formRoles.controls['pwd'].hasError('required')">
                         Campo requerido
                     </mat-error>
                     <mat-error *ngIf="this.formRoles.controls['pwd'].hasError('pattern')">
-                        Upper/LowerCase, Number and min 8 Chars 
+                        Upper/LowerCase, Number and min 8 Chars
                     </mat-error>
                 </mat-form-field>
             </div>
             <div class="col-lg-6   col-sm-12  col-md-12">
-                <mat-form-field class="w-100"  appearance="fill">
+                <mat-form-field class="w-100" appearance="fill">
                     <mat-label>Email</mat-label>
-                    <input matInput  required
-                      placeholder="Contraseña" 
-                      [value]="email"
-                      [disabled]="true"
-                      class="w-100">
+                    <input matInput required placeholder="Contraseña" [value]="email" [disabled]="true" class="w-100">
                     <mat-error *ngIf="email==''">
                         Campo requerido
                     </mat-error>
                 </mat-form-field>
             </div>
-          </div>
-        <button type="submit" class=" w-100 mt-2 btn bg-outline-color"  (click)="registerUser()">Asignar</button>
+        </div>
+        <button type="submit" class=" w-100 mt-2 btn bg-outline-color" (click)="registerUser()">Asignar</button>
 
     </form>
 </div>
@@ -83,8 +70,7 @@
 <button type="button" id="registrado" data-toggle="modal" data-target="#registaruser"></button>
 
 <!-- Modal REGISTRAR USER-->
-<div class="modal fade" id="registaruser" tabindex="-1" role="dialog" aria-labelledby="registaruserLabel"
-    aria-hidden="true">
+<div class="modal fade" id="registaruser" tabindex="-1" role="dialog" aria-labelledby="registaruserLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">

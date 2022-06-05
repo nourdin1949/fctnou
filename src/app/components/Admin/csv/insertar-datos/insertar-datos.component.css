@@ -1,9 +1,13 @@
-.derecha{
-    display:flex;
-   justify-content: end;
-   
+.derecha {
+    display: flex;
+    justify-content: end;
 }
 
-.derecha:hover{
+.derecha:hover {
     size: 2%;
+}
+
+mat-icon {
+    float: right;
+    cursor: pointer
 }

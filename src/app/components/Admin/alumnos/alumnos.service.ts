@@ -55,15 +55,27 @@ export class AlumnosService {
   public findAlumnoByid(id:number){
     
   return this.http.get<Alumno>(`${this.url}/findAlumnoByid/${id}`,this.getHeaders())
-  }
+}
 
-  public updateAlumnoById(Alumno:Alumno){
+public updateAlumnoById(Alumno:Alumno){
   
-    return this.http.put<Alumno[]>(`${this.url}/updateAlumnoByid/${Alumno.id}`,Alumno,this.getHeaders())
-  }
+  return this.http.put<Alumno[]>(`${this.url}/updateAlumnoByid/${Alumno.id}`,Alumno,this.getHeaders())
+}
 
-  public changeAlumnoDeEmpresa(datosACambiar:object,idAlumnofct:number){
+public changeAlumnoDeEmpresa(datosACambiar:object,idAlumnofct:number){
   
-    return this.http.put<Alumno[]>(`${this.url}/modificarAlumnoFCT/${idAlumnofct}`,datosACambiar,this.getHeaders())
-  }
+  return this.http.put<Alumno[]>(`${this.url}/modificarAlumnoFCT/${idAlumnofct}`,datosACambiar,this.getHeaders())
+}
+
+public nombreCurso(code:string){
+  return this.http.get<any>(`${this.url}/nombreCurso/${code}`,this.getHeaders())
+
+}
+
+public listarAlumnosFCTBYEmpresaANDCentro(empresa:number, tutor:number){
+  return this.http.get<any>(`${this.url}/listarAlumnosFCTBYEmpresaANDCentro/${empresa}/${tutor}`,this.getHeaders())
+
+}
+
+
 }

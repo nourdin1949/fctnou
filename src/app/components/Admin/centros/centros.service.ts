@@ -51,4 +51,9 @@ export class CentrosService {
   checkifexistcifCentro(cif:string){
     return this.http.get<any>(`${this.url}/checkifexistcifCentro/${cif}`, this.getHeaders());
   }
+  
+  findCentroBycode(code:number){
+    return this.http.get<any>(`${this.url}/findCentroBycode/${code}`, this.getHeaders());
+
+  }
 }

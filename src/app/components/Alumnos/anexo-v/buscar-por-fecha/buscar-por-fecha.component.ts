@@ -49,7 +49,6 @@ export class BuscarPorFechaComponent implements OnInit {
   downloadPDF() {
     // Extraemos el
     let dniAlumno = JSON.parse(localStorage.getItem("user")!).username
-    console.log()
     const DATA = <HTMLElement>document.getElementById('pdfdata');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -177,7 +176,6 @@ export class BuscarPorFechaComponent implements OnInit {
   public semanal() {
     this.anexovService.fichasemanal().subscribe((res) => {
       this.datos = res
-      console.log(res)
     })
   }
 }

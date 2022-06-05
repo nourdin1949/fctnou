@@ -52,11 +52,13 @@ export class ChatEmpComponent implements OnInit, OnDestroy {
       "receptor": this.receptor,
       "fecha": new Date()
     }
+
     if (this.nuevoMensaje != "") {
       this.tutorempresaService.insertarChat(chatobject)
         .subscribe(
           () => {
             this.nuevoMensaje = ""
+            this.listarMensaje()
             this.scrollToTheLastElementByClassName()
           })
     }

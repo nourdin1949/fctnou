@@ -68,8 +68,8 @@ export class ValidarFileIMGPerfil{
         console.log(value)
         
         if(value!=""){
-            
-            if(value._fileNames.substring(value._fileNames.length-4 , ).toLowerCase() !=".png"){
+            let extension=value._fileNames.substring(value._fileNames.length-4 , ).toLowerCase() ;
+            if(extension!=".png" && extension!=".jpg"  ){
                 return of({filevalidatorImg: true})
             }
         }

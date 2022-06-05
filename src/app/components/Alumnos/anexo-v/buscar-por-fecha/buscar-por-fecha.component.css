@@ -1,14 +1,19 @@
-img{
+img {
     width: 40px;
 }
 
 .hide {
-   display: none;
- }
- span{
-  width:50px;
-  height:50px;
-  position: relative;
-  top: 50%;
-  left: 50%;
- }
+    display: none;
+}
+
+span {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+mat-icon {
+    cursor: pointer;
+}

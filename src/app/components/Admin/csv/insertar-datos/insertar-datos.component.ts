@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ProfesorService } from '../../profesor/profesor.service';
 import { ResponsableService } from '../../responsable/responsable.service';
@@ -373,5 +373,14 @@ export class InsertarDatosComponent {
     if (this.fileAlumnos != undefined && this.fileAlumnos.name.substring(this.fileAlumnos.name.length - 4,) != ".csv") {
       this.alumnoValid = true
     }
+  }
+
+  public emptyInput(){
+    this.formcsv.controls['empresas'].setValue('')
+    this.formcsv.controls['centros'].setValue('')
+    this.formcsv.controls['tutores'].setValue('')
+    this.formcsv.controls['resp'].setValue('')
+    this.formcsv.controls['cursos'].setValue('')
+    this.formcsv.controls['alumnos'].setValue('')
   }
 }

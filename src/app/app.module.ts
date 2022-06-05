@@ -12,6 +12,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 PdfMakeWrapper.setFonts(pdfFonts)
+import {LOCALE_ID } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,8 @@ PdfMakeWrapper.setFonts(pdfFonts)
     MatFormFieldModule,
     MatSnackBarModule
   ],
-  providers: [AuthenticationGuard],
+  providers: [AuthenticationGuard,
+    {provide: LOCALE_ID, useValue: 'es'} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -32,13 +32,10 @@ export class ModificarAnexoVComponent implements OnInit {
     this.anecovService.listarTareasPorID(this.id).subscribe((res)=>{
       this.tareas=res
       this.cargaCompleta=true
-      console.log(this.tareas)
     })
   }
   modificarTareas(){
-    console.log((<HTMLInputElement>document.getElementById(`dificultad${0}`))?.value)
     for (let i = 0; i < this.tareas.length; i++) {
-      console.log((<HTMLInputElement>document.getElementById(`descripcion${i}`))?.value)
       const tarea:Tarea={
         "id":this.id,
         "alumno_id":"0",
@@ -51,8 +48,10 @@ export class ModificarAnexoVComponent implements OnInit {
         "validadoResponsable":0,
         "validadoTutor":0
       }
-      this.anecovService.modificarTareaAlumno(tarea,this.id).subscribe(()=>{
-        (<HTMLButtonElement>document.getElementById("modificado")).click()
+      this.anecovService.modificarTareaAlumno(tarea,this.id)
+        .subscribe(
+          ()=>{
+            (<HTMLButtonElement>document.getElementById("modificado")).click()
       })
     }
   }
@@ -62,7 +61,7 @@ export class ModificarAnexoVComponent implements OnInit {
         this.tareas=[]
         this.eliminado=true
         this.cargaCompleta=false
-        // this.route.navigateByUrl('alumno/calendario')
+        this.route.navigateByUrl('alumno/calendario')
     })
   }
 }
