@@ -105,7 +105,17 @@ class TareasController extends Controller
     public function listarTareasEntreFechas(Request $request, $id)
     {
         return DB::select("SELECT * FROM tareas 
-                            WHERE alumno_id =? and fecha between ? and ?", 
+                            WHERE alumno_id =? and (fecha between ? and ?) ", 
+                            [
+                                $id, 
+                                $request->primeraFecha, 
+                                $request->segundaFecha
+                            ]);
+    }
+    public function listarTareasEntreFechasAlumno(Request $request, $id)
+    {
+        return DB::select("SELECT * FROM tareas 
+                            WHERE alumno_id =? and (fecha between ? and ?) and validadoTutor =1", 
                             [
                                 $id, 
                                 $request->primeraFecha, 

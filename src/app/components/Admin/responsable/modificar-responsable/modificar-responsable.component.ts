@@ -6,19 +6,39 @@ import { SharedService } from 'src/app/Shared/shared.service';
 import { customValidatordDniBYID, customValidatorEmailBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { ResponsableService } from '../responsable.service';
-
+/**
+ * The modificar responsable component
+ */
 @Component({
   selector: 'app-modificar-responsable',
   templateUrl: './modificar-responsable.component.html',
   styleUrls: ['./modificar-responsable.component.css']
 })
 export class ModificarResponsableComponent implements OnInit {
-
+  /**
+   * Matriz empresas
+   */
   public empresas: Empresa[] = []
+  /**
+   * Id Responsable
+   */
   public idResponsable: number = 0;
+  /**
+   * Objet responsable
+   */
   public responsable: any = {}
+  /**
+   * Formulario
+   */
   public formModificarResponsable: FormGroup
-
+  /**
+   * Constructor
+   * @param activatedRoute 
+   * @param fb 
+   * @param responsableService 
+   * @param empresasService 
+   * @param sharedService 
+   */
   public constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -40,10 +60,16 @@ export class ModificarResponsableComponent implements OnInit {
         [customValidatorEmailBYID.customValidEmail(sharedService, this.idResponsable)], 'blur'],
     })
   }
+  /**
+   * NgOnInit
+   */
   public ngOnInit(): void {
     this.listarEmpresas();
   }
-
+  /**
+   * Modificar Responsable
+   * @param form 
+   */
   public modificarResponsable(form: FormGroup) {
     const responsable: Responsable = {
       "id": 0,
@@ -60,7 +86,9 @@ export class ModificarResponsableComponent implements OnInit {
           })
     }
   }
-
+  /**
+   * metodo buscar responsable by id
+   */
   private findResponsbaleById() {
     this.responsableService.findResponsableByid(this.idResponsable)
       .subscribe(
@@ -77,7 +105,9 @@ export class ModificarResponsableComponent implements OnInit {
           this.formModificarResponsable.setValue(tutor)
         });
   }
-
+  /**
+   * Metodo listar empresas
+   */
   private listarEmpresas() {
     this.empresasService.listarEmpresas()
       .subscribe(

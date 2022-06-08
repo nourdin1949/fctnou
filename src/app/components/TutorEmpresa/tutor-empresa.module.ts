@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCheckboxModule,
     MatSnackBarModule,
     ReactiveFormsModule, 
-    MatIconModule
+    MatIconModule,
+    TextareaAutosizeModule
   ]
 })
 export class TutorEmpresaModule { }

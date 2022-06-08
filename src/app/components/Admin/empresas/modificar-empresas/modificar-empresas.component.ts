@@ -1,25 +1,38 @@
-import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresa } from 'src/app/utils/interfaces/Interface';
 import { customValidatorDNIEmpresaBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../empresas.service';
-import { ListarEmpresasComponent } from '../listar-empresas/listar-empresas.component';
-
+/**
+ * The modificar empresa componente
+ */
 
 @Component({
   selector: 'app-modificar-empresas',
   templateUrl: './modificar-empresas.component.html',
   styleUrls: ['./modificar-empresas.component.css']
 })
-export class ModificarEmpresasComponent implements  OnInit{
-
+export class ModificarEmpresasComponent {
+  /**
+   * ID Empresa
+   */
   public idEmpresa:number=0;
+  /**
+   * Objeto empresa
+   */
   public empresa:any={}
-  public clicked:string=""
+  /**
+   * Formulario
+   */
   public formModificarEmpresa:FormGroup
-
+  /**
+   * Constructor
+   * @param activatedRoute 
+   * @param fb 
+   * @param router 
+   * @param empresaService 
+   */
   public constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder, 
@@ -29,7 +42,6 @@ export class ModificarEmpresasComponent implements  OnInit{
         this.idEmpresa = m['id']
         this.findEmpresaById()
       })
-   
 
     this.formModificarEmpresa = this.fb.group({
       empresa: ['', Validators.required],
@@ -46,12 +58,11 @@ export class ModificarEmpresasComponent implements  OnInit{
     })
 
   }
-  public ngOnInit(): void {
-    
-  }
- 
-
-  modificarEmpresa(form: FormGroup) {
+  /**
+   * Metodo modificar empresa
+   * @param form 
+   */
+  public modificarEmpresa(form: FormGroup) {
     const empresa: Empresa = {
       "id":this.idEmpresa,
       "nombreEmpresa": form.value.empresa,
@@ -69,11 +80,12 @@ export class ModificarEmpresasComponent implements  OnInit{
       this.empresaService.updateEmpresaById(this.idEmpresa,empresa)
       .subscribe((response) => {
         (<HTMLButtonElement>document.getElementById("modificado")).click()
-        this.clicked="clicked"
       })
     }
   }
-
+  /**
+   * Metodo find empresa by id
+   */
   public findEmpresaById() {
     this.empresaService.findEmpresaByid(this.idEmpresa)
       .subscribe((response) => {
@@ -89,9 +101,7 @@ export class ModificarEmpresasComponent implements  OnInit{
           "representante": this.empresa.nombreRepresentante,
           "dnirepresentante": this.empresa.dniRepresentante,
         }
-        console.log(empresa)
         this.formModificarEmpresa.setValue(empresa)
       })
   }
-
 }

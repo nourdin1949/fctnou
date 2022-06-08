@@ -1,29 +1,54 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { timeout } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Chat, Responsable } from 'src/app/utils/interfaces/Interface';
-import { ProfesorService } from '../../Admin/profesor/profesor.service';
 import { ResponsableService } from '../../Admin/responsable/responsable.service';
 import { TutorEmpresaService } from '../../TutorEmpresa/tutor-empresa.service';
 import Pusher from 'pusher-js';
-
+/**
+ * The chat esco component
+ */
 @Component({
   selector: 'app-chat-esco',
   templateUrl: './chat-esco.component.html',
   styleUrls: ['./chat-esco.component.css']
 })
 export class ChatEscoComponent implements OnInit {
+  /**
+   * Matriz de responsables
+   */
   public responsables: Responsable[] = []
-  mensajes: Chat[] = []
+  /**
+   * Matriz de mensajes
+   */
+  public mensajes: Chat[] = []
+  /**
+   * Matriz mensajes temporales
+   */
   public auxmensajes: Chat[] = []
-  nuevoMensaje: string = ""
-  receptor: string = ""
-  mostrarChat: boolean = false
-  public temporizador
+  /**
+   * nuevo mensaje
+   */
+  public nuevoMensaje: string = ""
+  /**
+   * Dni receptor
+   */
+  public receptor: string = ""
+  /**
+   * Habilitar o deshabilitar chat
+   */
+  public mostrarChat: boolean = false
+  /**
+   * Constructor
+   * @param tutorempresaService 
+   * @param responsableService 
+   */
   constructor(
     private tutorempresaService: TutorEmpresaService,
     private responsableService: ResponsableService) { }
 
-  ngOnInit(): void {
+  /**
+   * NgOnInit
+   */
+  public ngOnInit(): void {
     this.listarResponsables()
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -44,10 +69,12 @@ export class ChatEscoComponent implements OnInit {
       setTimeout(() => {
         this.scrollToTheLastElementByClassName()
       }, 100);
-      //alert(JSON.stringify(data));
     });
   }
-  submit() {
+  /**
+   * Metodo de enviar mensaje
+   */
+  public submit() {
     const chatobject: Chat = {
       "id": 0,
       "emisor": sessionStorage.getItem("username")!,
@@ -64,8 +91,10 @@ export class ChatEscoComponent implements OnInit {
             this.scrollToTheLastElementByClassName()
           })
     }
-
   }
+  /**
+   * Metodo que lista los mensajes
+   */
   listarMensaje() {
     if (this.receptor != "") { this.mostrarChat = true } else {
       this.mostrarChat = false
@@ -77,18 +106,22 @@ export class ChatEscoComponent implements OnInit {
         (element.receptor == this.receptor && element.emisor == sessionStorage.getItem("username")) ||
         (element.receptor == sessionStorage.getItem("username") && element.emisor == this.receptor)
       )
-
       setTimeout(() => {
         this.scrollToTheLastElementByClassName()
       }, 100);
     })
   }
+  /**
+   * Metodo que lista los responsables
+   */
   public listarResponsables() {
     this.responsableService.listarResponsables().subscribe((response) => {
       this.responsables = response;
     })
   }
-
+  /**
+   * Mostrar ultimo mensaje enviado
+   */
   scrollToTheLastElementByClassName() {
     let element = document.getElementsByClassName("msj");
     let ultimo: any = element[(element.length - 1)]
@@ -96,17 +129,20 @@ export class ChatEscoComponent implements OnInit {
     //@ts-ignore
     document.getElementById("contenedorDeMensajes")?.scrollTop = toppos;
   }
-  ngOnDestroy(): void {
-    clearInterval(this.temporizador)
-  }
-  public ocultarChat() {
+
+  /**
+   * Ocultar card chat
+   */
+   public ocultarChat() {
     this.mostrarChat = false
-    clearInterval(this.temporizador)
   }
-  public mostrarCardChat() {
-    if (this.receptor != "") { this.mostrarChat = true } else {
-      this.mostrarChat = false
-      this.auxmensajes = []
-    }
+  /**
+   * Cerrar Chat
+   */
+  public cerrarChat(){
+    this.auxmensajes=[]
+    this.mostrarChat=false
+    this.receptor=""
   }
+  
 }

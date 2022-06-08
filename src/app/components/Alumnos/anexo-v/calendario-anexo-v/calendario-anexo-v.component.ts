@@ -7,19 +7,45 @@ import esLocale from '@fullcalendar/core/locales/es'
 import { Router } from '@angular/router';
 import { AnexoVService } from '../anexo-v.service';
 import { Tarea } from 'src/app/utils/interfaces/Interface';
+import { environment } from 'src/environments/environment';
+/**
+ * The calendario anexo v component 
+ */
 @Component({
   selector: 'app-calendario-anexo-v',
   templateUrl: './calendario-anexo-v.component.html',
   styleUrls: ['./calendario-anexo-v.component.css']
 })
 export class CalendarioAnexoVComponent implements OnInit {
+  /**
+   * Matriz tareas
+   */
   public tareas:Tarea[]=[]
+  /**
+   * Matrix eventos
+   */
   public events!: any[]
+  /**
+   *  opciones
+   */
   public options!: any
+  /**
+   * Calendario
+   */
+  public urlEventos = environment.rutaEventos
+  /**
+   * id alumno
+   */
   public idAlumno = sessionStorage.getItem('id')
-  constructor(private router:Router, private anexoVService:AnexoVService) {
-
-  }
+  /**
+   * Constructor
+   * @param router 
+   * @param anexoVService 
+   */
+  constructor(private router:Router, private anexoVService:AnexoVService) {}
+  /**
+   * NgOnint
+   */
   ngOnInit(): void {
     let variable = this.router;
     this.options = {
@@ -39,18 +65,22 @@ export class CalendarioAnexoVComponent implements OnInit {
       },
     }
    setTimeout(() => {
-    this.listarAlumnos()
+    this.listartareasAlumnos()
    }, 600);
     
   }
-  public listarAlumnos(){
-    this.anexoVService.listarAlumnos().subscribe((response)=>{
+  /**
+   * Metodo listar alumnos
+   */
+  public listartareasAlumnos(){
+    this.anexoVService.listartareasAlumnos().subscribe((response)=>{
       this.tareas= response;
-      console.log("dentro", this.tareas)
       this.cargarCalendario()
     })
   }
-
+  /**
+   * Metodo cargar calendario
+   */
   public cargarCalendario(){
     
     this.events=[]
@@ -59,9 +89,8 @@ export class CalendarioAnexoVComponent implements OnInit {
       let fecha=e.fecha
       let color = ""
       let estado = e.validadoResponsable+String(e.validadoTutor)
-      let url =`http://localhost:1949/alumno/modificar/${fecha}/${e.id}`
+      let url =`${this.urlEventos}${fecha}/${e.id}`
       
-      console.log("estado", estado)
       switch(estado){
         case "01":
           color="orange";

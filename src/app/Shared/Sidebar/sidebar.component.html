@@ -1,9 +1,9 @@
-<aside class="h-100">
+<aside class=" sidebar h-100">
     <div class="user text-dark">
 
         <img routerLink="/perfil" *ngIf="user.foto ==0" class="rounded-circle" alt="foto_perfil" src="../../../assets/img/general.png" />
 
-        <img routerLink="/perfil" *ngIf="user.foto==1" class="rounded-circle" alt="foto_perfil" src="https://api.fctnou.es/img/{{user.username}}.png" />
+        <img routerLink="/perfil" *ngIf="user.foto==1" class="rounded-circle" alt="foto_perfil" src="{{imagen}}{{user.username}}.png" />
 
         <h4 class="m-0 mt-2" name="nombre">
             {{nombre| slice:0:15}}
@@ -79,6 +79,12 @@
             <button id="log_out" name="log_out " [routerLinkActiveOptions]="{exact:true}" (click)="logout()" routerLinkActive="bg-color text-activo" routerLink="" class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
         <i class="fas fa-sign-out-alt"></i>
         <span class="ml-3 ">Salir</span>
+      </button>
+      <!-- (click)="logOut()" -->
+      <button id="log_out" name="log_out "(click)="cambiarModo()"class="col-lg-11 col-3 mx-auto btn btn-aside text-dark">
+        <i *ngIf="modoOscuro" class="fas fa-moon"></i>
+        <i *ngIf="modoClaro" class="fas fa-sun"></i>
+        <span class="ml-3 ">Cambiar Modo</span>
       </button>
         </div>
     </div>

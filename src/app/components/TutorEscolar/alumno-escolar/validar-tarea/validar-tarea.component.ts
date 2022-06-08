@@ -1,44 +1,95 @@
-import { AfterContentChecked, AfterViewInit, Component, DoCheck, Input, OnInit } from '@angular/core';
+import {  Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AlumnosService } from 'src/app/components/Admin/alumnos/alumnos.service';
 import { AnexoVService } from 'src/app/components/Alumnos/anexo-v/anexo-v.service';
 import { Tarea } from 'src/app/utils/interfaces/Interface';
 import { customValidatorFecha } from 'src/app/utils/Validators/otrasValidaciones';
 import { TutorEscolarService } from '../../tutor-escolar.service';
-
+/**
+ * The validar tarea component
+ */
 @Component({
   selector: 'app-validar-tarea',
   templateUrl: './validar-tarea.component.html',
   styleUrls: ['./validar-tarea.component.css']
 })
-export class ValidarTareaComponent implements OnInit {
+export class ValidarTareaComponent {
+  /**
+   * Matriz de tareas
+   */
   public tareas: Tarea[] = []
+  /**
+   * Matriz de alumnos
+   */
   public alumnos: any[] = []
+  /**
+   * Alumno a validar sus tareas
+   */
   public alumnoAbuscar: number
+  /**
+   * Fecha Maxima
+   */
   public fechaMaxima: Date = new Date()
+  /**
+   * Deshabilitar
+   */
   public disabled = true
+  /**
+   * Matriz de ids de tareas a validar
+   */
   public ids: any = []
+  /**
+   * Formulario
+   */
   public formBuscaTarea: FormGroup
+  /**
+   * Controls de fecha inicio
+   */
   get inicio() {
     return this.formBuscaTarea.controls['inicio']
   }
+  /**
+   * Controls de fecha fin
+   */
   get fin() {
     return this.formBuscaTarea.controls['fin']
   }
 
   // Paginación campos
+  /**
+   * Tareas temporales en matriz
+   */
   public tareasTmp: Tarea[] = []
+  /**
+   * Total de tareas
+   */
   public totalElements: number;
-  public listElements: object[];
+  /**
+   * Pagina actual
+   */
   @Input()
   public currentPage: number = 0;
+  /**
+   * Total de paginas
+   */
   @Input()
   public totalPages: number = 0;
+  /**
+   * Numero de filas a mostrar en la tabla
+   */
   @Input()
   public pageSize: number = 5;
-  public sizes: number[] = [5, 10];
-
+  /**
+   * Tamaños de página a elegir
+   */
+  public sizes: number[] = [5, 10,15,20];
+  /**
+   * Contructor
+   * @param tutorEscolarService 
+   * @param anexovService 
+   * @param matSnackBar 
+   * @param fb 
+   */
   constructor(
     private tutorEscolarService: TutorEscolarService,
     private anexovService: AnexoVService,
@@ -50,12 +101,17 @@ export class ValidarTareaComponent implements OnInit {
       alumno: ["", Validators.required]
     }, { validator: customValidatorFecha.customValidFecha('inicio', 'fin') })
   }
-
+  /**
+   * NgOnInit
+   */
   ngOnInit(): void {
     setTimeout(() => {
       this.listarAlumnosDelTutor()
     }, 1000);
   }
+  /**
+   * Mostrar un snakckbar 
+   */
   private showBasicSnack() {
     let snackBarColor = this.matSnackBar.open(`No tiene tareas pendientes entre ${this.inicio.value} y ${this.fin.value}`, "Close",
       {
@@ -66,7 +122,9 @@ export class ValidarTareaComponent implements OnInit {
       snackBarColor.dismiss();
     });
   }
-
+  /**
+   * Metodo buscar tareas de alumnos
+   */
   public mostrarTareasDelAlumno() {
     const objeto = {
       "primeraFecha": this.inicio.value,
@@ -102,26 +160,36 @@ export class ValidarTareaComponent implements OnInit {
     }
 
   }
+  /**
+   * Método guardar id de tareas a validar
+   * @param event 
+   */
   public guardarid(event) {
-
-
-    console.log(this.ids, event.source.value)
-    if (!this.ids.find(element => element = event.source.value)) {
+    if (!this.ids.find(element => element == event.source.value)) {
       this.ids.push(event.source.value)
+    }else{
+      if (this.ids.indexOf(event.source.value)!=-1 ) {
+        this.ids.splice(this.ids.indexOf(event.source.value),1);
+      }
     }
-    console.log(this.ids)
   }
+  /**
+   * Metodo para validar la tarea
+   */
   public validarTarea() {
     this.ids.forEach(element => {
       this.tutorEscolarService.validarTareaTutor(element).subscribe(() => {
         if (this.ids[this.ids.length - 1] == element) {
+          this.mostrarTareasDelAlumno()
           this.snackValidado()
           this.ids = []
         }
       })
     });
   }
-
+  /**
+   * Metodo para mostrar un snackbar
+   */
   public snackValidado() {
     let snackBarColor = this.matSnackBar.open(`Tareas validadas con éxito`, "Close",
       {
@@ -132,12 +200,18 @@ export class ValidarTareaComponent implements OnInit {
       snackBarColor.dismiss();
     });
   }
+  /**
+   * Método para listar alumnos del tutor
+   */
   private listarAlumnosDelTutor() {
     this.tutorEscolarService.listarAlumnosDelTutor().subscribe((res) => {
       this.alumnos = res
     })
   }
-
+  /**
+   * Metodo dirige a la primera página
+   * @returns 
+   */
   public firstPage() {
     if (this.currentPage === 1) {
       return false;
@@ -153,7 +227,10 @@ export class ValidarTareaComponent implements OnInit {
 
     return true
   }
-
+  /**
+   * Método dirige a la siguiente pagina
+   * @returns 
+   */
   public nextPage() {
     if (this.currentPage >= this.totalPages) {
       return false;
@@ -170,7 +247,10 @@ export class ValidarTareaComponent implements OnInit {
 
     return true
   }
-
+/**
+   * Método dirige a la anteriro pagina
+   * @returns 
+   */
   public prevPage() {
     if (this.currentPage <= 1) {
       return false;
@@ -187,7 +267,10 @@ export class ValidarTareaComponent implements OnInit {
 
     return true
   }
-
+  /**
+   * Método dirige a la ultima pagina
+   * @returns 
+   */
   public lastPage() {
     if (this.currentPage === this.totalPages) {
       return false;
@@ -203,7 +286,9 @@ export class ValidarTareaComponent implements OnInit {
 
     return true
   }
-
+  /**
+   * Cambiar tamaño de la pagina
+   */
   public changeSize() {
     this.currentPage = 1
     this.mostrarTareasDelAlumno()

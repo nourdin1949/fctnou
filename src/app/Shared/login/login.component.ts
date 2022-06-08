@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { User } from '../../utils/interfaces/Interface';
-
+/**
+ * The login component
+ */
 
 @Component({
   selector: 'app-login',
@@ -11,24 +13,56 @@ import { User } from '../../utils/interfaces/Interface';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  /**
+   * User registrado
+   */
   public user!: User;
+  /**
+   * when left the field password
+   */
   public passkeyup: boolean = false
+  /**
+   * when left the field username
+   */
   public userkeyup: boolean = false
+  /**
+   * Formulario
+   */
   public formlogin: FormGroup
+  /**
+   * Inicio de sesion incorrecto
+   */
   public incorrecto: boolean = false
+  /**
+   * Cuentra desactivada
+   */
   public cuentaDesactivada: boolean = false
+  /**
+   * Email sin verificiar/ o verificado
+   */
   public emailVerificado: boolean = false
+  /**
+   * Constructor
+   * @param fb 
+   * @param router 
+   * @param shareServ 
+   */
   constructor(private fb: FormBuilder, private router: Router, private shareServ: SharedService) {
     this.formlogin = this.fb.group({
       usuario: ['', Validators.required],
       pwd: ['', Validators.required]
     })
   }
-
+  /**
+   * NgOnInit
+   */
   ngOnInit(): void {
     this.shareServ.altaAdmin()
   }
+  /**
+   * Metodo de inicio de sesion
+   * @param form 
+   */
   public iniciarSesion(form: FormGroup) {
     this.restaurarValores()
     const objeto = { "username": form.value.usuario, "password": form.value.pwd }
@@ -50,8 +84,10 @@ export class LoginComponent implements OnInit {
           })
     }
   }
-
-  public getuser() {
+  /**
+   * Método de obtener usuario contectado
+   */
+  private getuser() {
     this.shareServ.getUser().subscribe(
       (response) => {
         this.user = response
@@ -74,7 +110,9 @@ export class LoginComponent implements OnInit {
         }
       })
   }
-
+  /**
+   * Restaurar valores de validaciones
+   */
   public restaurarValores() {
     this.cuentaDesactivada = false;
     this.userkeyup = false;
@@ -82,10 +120,16 @@ export class LoginComponent implements OnInit {
     this.incorrecto = false;
     this.emailVerificado = false
   }
+  /**
+   * Metodo redirige a la ruta admin
+   */
   public metodoAdmin() {
     localStorage.setItem("Perfil", "admin")
     this.router.navigateByUrl("/admin")
   }
+  /**
+   * Metodo redirige a la ruta responsable
+   */
   public metodoResponsable() {
     this.shareServ.getIdUserResposable(this.user.username)
       .subscribe(
@@ -95,6 +139,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("Perfil", "responsable")
     this.router.navigateByUrl("/tutorempresa")
   }
+  /**
+   * Metodo redirige a la ruta alumno
+   */
   public metodoAlumno() {
     this.shareServ.getIdUserAlumno(this.user.username)
       .subscribe(
@@ -104,6 +151,9 @@ export class LoginComponent implements OnInit {
     localStorage.setItem("Perfil", "alumno")
     this.router.navigateByUrl("/alumno")
   }
+  /**
+   * Metodo redirige a la ruta tutor
+   */
   public metodoProfesor() {
     this.shareServ.getIdUserTutor(this.user.username)
       .subscribe(

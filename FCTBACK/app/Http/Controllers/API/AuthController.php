@@ -102,17 +102,11 @@ class AuthController extends BaseController
         $picture = $username . ".png";
         
         $file->move(public_path('img'), $picture);
-    //     Excel::load($picture, function($reader) {
-    //         foreach ($reader->get() as $book) {
-    //             Book::create([
-    //                 'name' => $book->title,
-    //                 'author' =>$book->author,
-    //                 'year' =>$book->publication_year
-    //             ]);
-    //          }
-    //    });
         DB::update("UPDATE users SET foto=1 where id=? ", [$id]);
         return response()->json(["message" => "Image Uploaded Succesfully"]);
+    }
+    public function eliminarFoto($id){
+        DB::update("UPDATE users SET foto=0 where id=? ", [$id]);
     }
 
     public function validarEmail($email)
@@ -141,7 +135,7 @@ class AuthController extends BaseController
         $tutores = DB::select("SELECT * from tutores where email=? && id=?", [$email, $id]);
         $Todosalumnos = DB::select("SELECT * from alumnos where email=? ", [$email]);
         $alumnos = DB::select("SELECT * from alumnos where email=? && id=?", [$email, $id]);
-        $Todosresponsables = DB::select("SELECT * from responsables where email=?", [$email, $email, $id]);
+        $Todosresponsables = DB::select("SELECT * from responsables where email=?", [$email]);
         $responsables = DB::select("SELECT * from responsables where email=? && id=?", [$email, $id]);
         if ($responsables == [] && $tutores == [] && $alumnos == []) {
             return null;
@@ -154,7 +148,7 @@ class AuthController extends BaseController
     public function checkifDNIByID($dni, $id)
     {
         $Todostutores = DB::select("SELECT * from tutores where dniTutor=?", [$dni]);
-        $tutores = DB::select("SELECT * from tutores where dniTutor=? && id=?", [$dni, $dni, $id]);
+        $tutores = DB::select("SELECT * from tutores where dniTutor=? && id=?", [$dni, $id]);
         $Todosalumnos = DB::select("SELECT * from alumnos where dniAlumno=? ", [$dni]);
         $alumnos = DB::select("SELECT * from alumnos where dniAlumno=? && id=?", [$dni, $id]);
         $Todosresponsables = DB::select("SELECT * from responsables where dniResponsable=? ", [$dni]);

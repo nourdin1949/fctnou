@@ -5,7 +5,7 @@ import { ModificarCursosComponent } from './modificar-cursos/modificar-cursos.co
 
 const routes: Routes = [
   
-  {path: 'listar', component: ListarCursosComponent, pathMatch:'full'},
+  {path: 'listar', component: ListarCursosComponent},
   {path: 'modificarCurso/:id', component: ModificarCursosComponent, pathMatch:'full'},
   {path: '',redirectTo: 'listar', pathMatch:'full'},
   { path: '**', redirectTo: "error" },

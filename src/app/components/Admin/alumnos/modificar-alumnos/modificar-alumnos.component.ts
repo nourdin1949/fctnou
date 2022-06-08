@@ -6,19 +6,39 @@ import { SharedService } from 'src/app/Shared/shared.service';
 import { customValidatorEmailBYID, customValidatordDniBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CursosService } from '../../cursos/cursos.service';
 import { AlumnosService } from '../alumnos.service';
-
+/**
+ * The modificar alumnos component
+ */
 @Component({
   selector: 'app-modificar-alumnos',
   templateUrl: './modificar-alumnos.component.html',
   styleUrls: ['./modificar-alumnos.component.css']
 })
-export class ModificarAlumnosComponent implements OnInit {
-
+export class ModificarAlumnosComponent  {
+  /**
+   * Objeto Alumno
+   */
   public alumno: any = {}
+  /**
+   * Matriz curso
+   */
   public cursos: Curso[] = []
+  /**
+   * Formulario
+   */
   public formModificarAlumno: FormGroup;
+  /**
+   * Id alumno
+   */
   public idAlumno: number;
-
+  /**
+   * Constructor
+   * @param fb 
+   * @param cursoServoce 
+   * @param alumnosService 
+   * @param ActivatedRoute 
+   * @param sharedService 
+   */
   public constructor(
     private fb: FormBuilder,
     private cursoServoce: CursosService,
@@ -45,14 +65,12 @@ export class ModificarAlumnosComponent implements OnInit {
       curso: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
       [customValidatorEmailBYID.customValidEmail(sharedService, this.idAlumno)], 'blur' ]
-
     })
   }
-
-  public ngOnInit(): void {
-
-  }
-
+  /**
+   * Metodo modificar Alumno
+   * @param form 
+   */
   public modificarAlumno(form: FormGroup) {
     const alumno: Alumno = {
       "id": form.value.id,
@@ -66,7 +84,6 @@ export class ModificarAlumnosComponent implements OnInit {
       "email": form.value.email,
       "matriculado": 1,
     }
-    console.log(alumno)
     if (this.formModificarAlumno.valid) {
       this.alumnosService.updateAlumnoById(alumno)
         .subscribe((e) => {
@@ -74,10 +91,16 @@ export class ModificarAlumnosComponent implements OnInit {
         })
     }
   }
-  public listarCursos() {
+  /**
+   * Metodo listar cursos
+   */
+  private listarCursos() {
     this.cursoServoce.listarCursos().subscribe((response) => this.cursos = response)
   }
-  public findAlumnoById() {
+  /**
+   * Metodo buscar alumno by id
+   */
+  private findAlumnoById() {
     this.alumnosService.findAlumnoByid(this.idAlumno)
       .subscribe((response) => {
         this.alumno = response
@@ -92,7 +115,6 @@ export class ModificarAlumnosComponent implements OnInit {
           "curso": this.alumno.curso_id,
           "email": this.alumno.email,
         }
-
         this.formModificarAlumno.setValue(alumno)
       })
   }

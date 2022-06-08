@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Empresa } from 'src/app/utils/interfaces/Interface';
 import { customValidatorCIFEmpresa, customValidatorDNIEmpresa, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../empresas.service';
-import { ListarEmpresasComponent } from '../listar-empresas/listar-empresas.component';
+/**
+ * The insertar empresa component
+ */
 @Component({
   selector: 'app-insertar-empresa',
   templateUrl: './insertar-empresa.component.html',
   styleUrls: ['./insertar-empresa.component.css']
 })
-export class InsertarEmpresaComponent implements OnInit {
-
+export class InsertarEmpresaComponent {
+  /**
+   * formulario
+   */
   public forminsertarEmpresa: FormGroup;
-
+  /**
+   * Constructor
+   * @param fb 
+   * @param empresaService 
+   */
   constructor(private fb: FormBuilder,
     private empresaService: EmpresasService) {
     this.forminsertarEmpresa = this.fb.group({
@@ -20,23 +28,22 @@ export class InsertarEmpresaComponent implements OnInit {
       provincia: ['', Validators.required],
       localidad: ['', Validators.required],
       calle: ['', Validators.required],
-      cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")]],
+      cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")]],
       telefono: ['', [Validators.required, Validators.pattern("[A-Z]{0}[0-9]{9}")]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       representante: ['', Validators.required],
-      dnirepresentante: ['',[ Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
-        [customValidatorDNIEmpresa.customValidDNIEmpresa(empresaService), 
-          customValidatorFormatDNI.customValidDNILETRA], 'blur'],
-      cif: ['', [Validators.required,Validators.maxLength(10), Validators.minLength(9)], 
+      dnirepresentante: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
+        [customValidatorDNIEmpresa.customValidDNIEmpresa(empresaService),
+        customValidatorFormatDNI.customValidDNILETRA], 'blur'],
+      cif: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(9)],
         customValidatorCIFEmpresa.customValidCIFEmpresa(empresaService), 'blur']
     })
   }
-
-  ngOnInit(): void {
-
-  }
-
-  insertarEmpresa(form: FormGroup) {
+  /**
+   * Método insertar empresa
+   * @param form 
+   */
+  public insertarEmpresa(form: FormGroup) {
     const empresa: Empresa = {
       "id": 0,
       "nombreEmpresa": form.value.empresa,
@@ -51,15 +58,16 @@ export class InsertarEmpresaComponent implements OnInit {
       "dniRepresentante": form.value.dnirepresentante
     }
     if (this.forminsertarEmpresa.valid) {
-      this.empresaService.insertarEmpresas(empresa).subscribe((response) => {
-        console.log(response);
-        (<HTMLButtonElement>document.getElementById("insertado")).click()
-        setTimeout(() => {
-          (<HTMLElement>document.getElementById('insertarEmpresa')).classList.remove('modal-open');
-          (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
-         }, 300);
-        this.empresaService.listarEmpresas()
-      })
+      this.empresaService.insertarEmpresas(empresa)
+        .subscribe(
+          () => {
+            (<HTMLButtonElement>document.getElementById("insertado")).click()
+            setTimeout(() => {
+              (<HTMLElement>document.getElementById('insertarEmpresa')).classList.remove('modal-open');
+              (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+            }, 300);
+            this.empresaService.listarEmpresas()
+          })
     }
   }
 }

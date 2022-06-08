@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The csv service</p>
+
+            </p>
 
 
 
@@ -140,12 +147,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:16</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -205,14 +214,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:55</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo buscar si alumnos practica existe</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -276,14 +287,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:63</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>metodo comprobar que usuario existe</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -347,14 +360,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="30"
-                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:30</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:47</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo buscar responsable por empresa</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -418,8 +433,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -459,14 +474,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:71</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>metodo insertar alumnos practica</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -530,14 +547,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:39</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo para registrar usuario</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -604,10 +623,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/Admin/csv/csv.service.ts:16</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>la url de la api</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -621,14 +646,22 @@
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import {  FCTAlumnoLista, RegisterUser, Responsable } from &#x27;src/app/utils/interfaces/Interface&#x27;;
-import { environment } from &#x27;src/environments/environment.prod&#x27;;
-
+import { environment } from &#x27;src/environments/environment&#x27;;
+/**
+ * The csv service
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class CsvService {
+  /**
+   * la url de la api
+   */
   private url&#x3D;environment.url;  
-  
+  /**
+   * Constructor
+   * @param http 
+   */
   constructor(private http: HttpClient) { }
   
   /**
@@ -642,20 +675,43 @@ export class CsvService {
     }
     return headers
   }
+  /**
+   * Metodo para registrar usuario
+   * @param user 
+   * @returns 
+   */
   public registerUser(user:RegisterUser){
     return this.http.post(&#x60;${this.url}/register&#x60;, user,this.getHeaders())
   }
-
+  /**
+   * Metodo buscar responsable por empresa
+   * @param idEmpresa 
+   * @returns 
+   */
   public findResponsablesByEmpresaID(idEmpresa:number): Observable&lt;Responsable[]&gt;{
     return this.http.get&lt;Responsable[]&gt;(&#x60;${this.url}/findResponsablesByEmpresaID/${idEmpresa}&#x60;,this.getHeaders())
   }
+  /**
+   * Metodo buscar si alumnos practica existe
+   * @param idAlumno 
+   * @returns 
+   */
   public checkifAlumnoPractica(idAlumno:number){
     return this.http.get(&#x60;${this.url}/checkifAlumnoPractica/${idAlumno}&#x60;,this.getHeaders())
   }
+  /**
+   * metodo comprobar que usuario existe
+   * @param dni 
+   * @returns 
+   */
   public checkifUsersExist(dni:string){
     return this.http.get(&#x60;${this.url}/checkifUsersExist/${dni}&#x60;,this.getHeaders())
   }
-
+  /**
+   * metodo insertar alumnos practica
+   * @param fctalumno 
+   * @returns 
+   */
   public insetarfctalumno(fctalumno:FCTAlumnoLista){
     return  this.http.post(&#x60;${this.url}/insertarAlumnoFCT&#x60;, fctalumno,this.getHeaders())
   }

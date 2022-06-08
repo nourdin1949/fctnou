@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The listar cenro component</p>
+
+    </p>
 
 
     <p class="comment">
@@ -143,7 +150,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#centrosTmp" >centrosTmp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#codigoCentro" >codigoCentro</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sizes" >sizes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#totalElements" >totalElements</a>
                             </li>
                         </ul>
                     </td>
@@ -159,13 +178,31 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#changeSize" >changeSize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#eliminarCentro" >eliminarCentro</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#firstPage" >firstPage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#guardarcodigo" >guardarcodigo</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#lastPage" >lastPage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#listarCentros" >listarCentros</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#nextPage" >nextPage</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
@@ -174,10 +211,34 @@
                                     <span class="modifier">Public</span>
                                 <a href="#openSnackBar" >openSnackBar</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#prevPage" >prevPage</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentPage" >currentPage</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#totalPages" >totalPages</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -197,12 +258,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:54</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -247,7 +310,105 @@
         </table>
 </section>
 
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentPage"></a>
+                        <b>currentPage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:40</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Pagina actual</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageSize"></a>
+                        <b>pageSize</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:50</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Numero de filas a mostrar en la tabla</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalPages"></a>
+                        <b>totalPages</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:45</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Total de paginas</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -256,6 +417,47 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeSize"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>changeSize</b></span>
+                        <a href="#changeSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeSize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="194"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:194</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cambiar tamaño de la pagina</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -278,14 +480,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:95</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo eliminar Centro</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -299,8 +503,55 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="firstPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>firstPage</b></span>
+                        <a href="#firstPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>firstPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Metodo dirige a la primera página</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="guardarcodigo"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>guardarcodigo</b></span>
                         <a href="#guardarcodigo"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -308,21 +559,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>guardarcodigo(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>guardarcodigo(codigo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:89</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo guardar codigo</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -368,8 +622,55 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="lastPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>lastPage</b></span>
+                        <a href="#lastPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>lastPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="176"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:176</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método dirige a la ultima pagina</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="listarCentros"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>listarCentros</b></span>
                         <a href="#listarCentros"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -377,25 +678,74 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>listarCentros()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>listarCentros()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:70</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo Listar Centros</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>nextPage</b></span>
+                        <a href="#nextPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>nextPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:136</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método dirige a la siguiente pagina</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -421,14 +771,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:64</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>NgOnInit</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -460,18 +812,66 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="40"
-                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:40</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:107</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo snckbar al eliminar</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prevPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>prevPage</b></span>
+                        <a href="#prevPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>prevPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="156"
+                            class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:156</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método dirige a la anteriro pagina</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -508,10 +908,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:26</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Carga completa</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -540,10 +946,54 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>matriz centros</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="centrosTmp"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>centrosTmp</b></span>
+                        <a href="#centrosTmp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Centro.html" target="_self" >Centro[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Centros temporales en matriz</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -572,10 +1022,87 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Codigo centro</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sizes"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sizes</b></span>
+                        <a href="#sizes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[5, 10, 15, 20]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tamaños de página a elegir</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalElements"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>totalElements</b></span>
+                        <a href="#totalElements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/Admin/centros/listar-centros/listar-centros.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total de centros</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -585,11 +1112,13 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
-import { Centro } from &#x27;src/app/utils/interfaces/Interface&#x27;;
+import { Centro, Curso } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { CentrosService } from &#x27;../centros.service&#x27;;
-
+/**
+ * The listar cenro component
+ */
 
 @Component({
   selector: &#x27;app-listar-centros&#x27;,
@@ -597,39 +1126,189 @@ import { CentrosService } from &#x27;../centros.service&#x27;;
   styleUrls: [&#x27;./listar-centros.component.css&#x27;]
 })
 export class ListarCentrosComponent implements OnInit {
+  /**
+   * matriz centros
+   */
   public centros: Centro[] &#x3D; []
+  /**
+   * Codigo centro
+   */
   public codigoCentro: number &#x3D; 0
+  /**
+   * Carga completa
+   */
   public cargaCompleta: boolean &#x3D; false
-
+  // Paginación campos
+  /**
+   * Centros temporales en matriz
+   */
+   public centrosTmp: Centro[] &#x3D; []
+   /**
+    * Total de centros
+    */
+   public totalElements: number;
+   /**
+    * Pagina actual
+    */
+   @Input()
+   public currentPage: number &#x3D; 1;
+   /**
+    * Total de paginas
+    */
+   @Input()
+   public totalPages: number &#x3D; 0;
+   /**
+    * Numero de filas a mostrar en la tabla
+    */
+   @Input()
+   public pageSize: number &#x3D; 5;
+   /**
+    * Tamaños de página a elegir
+    */
+   public sizes: number[] &#x3D; [5, 10, 15, 20];
+  /**
+   * Constructor
+   * @param centroService 
+   * @param _snackBar 
+   */
   constructor(private centroService: CentrosService, private _snackBar:MatSnackBar) { }
-
+  /**
+   * NgOnInit
+   */
   ngOnInit(): void {
     this.listarCentros();
   }
-  listarCentros() {
-    this.centroService.listarCentros().subscribe((response) &#x3D;&gt; {
+  /**
+   * Metodo Listar Centros
+   */
+  public  listarCentros() {
+    this.centroService.listarCentros()
+    .subscribe(
+      (response) &#x3D;&gt; {
       this.centros &#x3D; response;
       this.cargaCompleta &#x3D; true
+      this.totalElements &#x3D; this.centros.length
+      this.totalPages &#x3D; Math.ceil(this.totalElements / this.pageSize)
+      this.centrosTmp &#x3D; []
+      this.centros &#x3D; this.centros.sort(function (a, b) { return a.codigo - b.codigo; });
+      for (let i &#x3D; 0; i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
+        this.centrosTmp[i] &#x3D; this.centros[i];
+      }
     })
   }
-  guardarcodigo(codigo: number) {
+  /**
+   * Metodo guardar codigo
+   * @param codigo 
+   */
+  public guardarcodigo(codigo: number) {
     this.codigoCentro &#x3D; codigo;
   }
-
+  /**
+   * Metodo eliminar Centro
+   */
   public eliminarCentro() {
     this.centroService.eliminarCentro(this.codigoCentro)
       .subscribe(
         () &#x3D;&gt; {
           this.openSnackBar()
           this.listarCentros()
+          this.firstPage()
         })
   }
+  /**
+   * Metodo snckbar al eliminar
+   */
   public openSnackBar() {
     this._snackBar.open(&quot;Eliminado con éxito&quot;, &quot;Close&quot;,
       {
         duration: 3000
       });
   }
+   /**
+  * Metodo dirige a la primera página
+  * @returns 
+  */
+    public firstPage() {
+      if (this.currentPage &#x3D;&#x3D;&#x3D; 1) {
+        return false;
+      }
+  
+      this.currentPage &#x3D; 1;
+      let x &#x3D; 0;
+      for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
+        this.centrosTmp[x] &#x3D; this.centros[i]
+        x++;
+      }
+      this.centrosTmp &#x3D; this.centrosTmp.sort(function (a, b) { return a.codigo - b.codigo; });
+  
+      return true
+    }
+    /**
+     * Método dirige a la siguiente pagina
+     * @returns 
+     */
+    public nextPage() {
+      if (this.currentPage &gt;&#x3D; this.totalPages) {
+        return false;
+      }
+      this.currentPage++;
+  
+      this.centrosTmp &#x3D; []
+  
+      let x &#x3D; 0
+      for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
+        this.centrosTmp[x] &#x3D; this.centros[i]
+        x++;
+      }
+  
+      return true
+    }
+    /**
+       * Método dirige a la anteriro pagina
+       * @returns 
+       */
+    public prevPage() {
+      if (this.currentPage &lt;&#x3D; 1) {
+        return false;
+      }
+      this.currentPage--;
+  
+      this.centrosTmp &#x3D; []
+      let x &#x3D; 0
+      for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
+        this.centrosTmp[x] &#x3D; this.centros[i]
+        x++;
+      }
+      this.centrosTmp &#x3D; this.centrosTmp.sort(function (a, b) { return a.codigo - b.codigo; });
+  
+      return true
+    }
+    /**
+     * Método dirige a la ultima pagina
+     * @returns 
+     */
+    public lastPage() {
+      if (this.currentPage &#x3D;&#x3D;&#x3D; this.totalPages) {
+        return false;
+      }
+      this.currentPage &#x3D; this.totalPages;
+  
+      this.centrosTmp &#x3D; []
+      let x &#x3D; 0;
+      for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
+        this.centrosTmp[x] &#x3D; this.centros[i]
+        x++;
+      }
+  
+      return true
+    }
+    /**
+     * Cambiar tamaño de la pagina
+     */
+    public changeSize() {
+      this.currentPage &#x3D; 1
+      this.listarCentros()
+    }
 }
 </code></pre>
     </div>
@@ -664,8 +1343,8 @@ export class ListarCentrosComponent implements OnInit {
                 &lt;/tr&gt;
             &lt;/thead&gt;
             &lt;tbody&gt;
-                &lt;tr *ngFor&#x3D;&quot;let centro of centros;let id&#x3D;index&quot;&gt;
-                    &lt;td&gt;{{id+1}}&lt;/td&gt;
+                &lt;tr *ngFor&#x3D;&quot;let centro of centrosTmp;let id&#x3D;index&quot;&gt;
+                    &lt;td&gt;{{centro.codigo}}&lt;/td&gt;
                     &lt;td&gt;{{centro.nombreCentro}} &lt;/td&gt;
                     &lt;td&gt;{{centro.provincia}}&lt;/td&gt;
                     &lt;td&gt;{{centro.nombreDirector}}&lt;/td&gt;
@@ -688,6 +1367,37 @@ export class ListarCentrosComponent implements OnInit {
                 &lt;/tr&gt;
             &lt;/tbody&gt;
         &lt;/table&gt;
+        &lt;div *ngIf&#x3D;&quot;centros.length&gt;0&quot; class&#x3D;&quot;container-fluid table-responsive d-flex justify-content-center&quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-3 &quot;&gt;
+                    &lt;mat-form-field class&#x3D;&quot; w-100&quot; appearance&#x3D;&quot;fill&quot;&gt;
+                        &lt;mat-select [(ngModel)]&#x3D;&quot;pageSize&quot; (selectionChange)&#x3D;&quot;changeSize()&quot;&gt;
+                            &lt;mat-option [value]&#x3D;&quot;sizes&quot; *ngFor&#x3D;&quot;let sizes of sizes&quot;&gt;
+                                {{sizes}}
+                            &lt;/mat-option&gt;
+                        &lt;/mat-select&gt;
+                    &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row mt-3 margin-0-auto&quot;&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; disabled (click)&#x3D;&quot;firstPage()&quot; &gt;
+                        &lt;i class&#x3D;&quot;fa fa-step-backward&quot;  aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; [ngClass]&#x3D;&quot;{ &#x27;bbva-th2-pagination-disabled&#x27;: (currentPage - 1) &lt;&#x3D; 0 }&quot;
+                        (click)&#x3D;&quot;prevPage()&quot;&gt;
+                        &lt;i class&#x3D;&quot;fa fa-backward&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-4&quot;&gt;
+                        &lt;p&gt;{{ currentPage }} de {{ totalPages }}&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; (click)&#x3D;&quot;nextPage()&quot;&gt;
+                        &lt;i class&#x3D;&quot;fa fa-forward&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; (click)&#x3D;&quot;lastPage()&quot;&gt;
+                        &lt;i class&#x3D;&quot;fa fa-step-forward &quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
     &lt;/mat-tab&gt;
     &lt;mat-tab label&#x3D;&quot;Insertar Centro&quot;&gt;
         &lt;br&gt;
@@ -739,6 +1449,9 @@ export class ListarCentrosComponent implements OnInit {
 }
 mat-icon {
     cursor: pointer;
+}
+i{
+    cursor: pointer;
 }</code></pre>
     </div>
 
@@ -767,7 +1480,7 @@ mat-icon {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h2>Alumnos</h2><mat-tab-group>    <mat-tab label="Listado Centros">        <br>        <div *ngIf="centros.length>0 else alert">            <mat-label class="mr-1">Recargar Tabla</mat-label>            <mat-icon (click)="listarCentros()"  >refresh</mat-icon>         </div>        <ng-template #alert>            <div class="alert alert-warning " *ngIf="centros.length==0 && cargaCompleta" >                <b>                    <h2 class="text-center">¡INSERTE CENTROS!</h2>                </b>            </div>        </ng-template>        <table *ngIf="centros.length>0" class="table text-center table-striped w-100">            <thead class="table bg-color  text-center text-light">                <tr>                    <th>#</th>                    <th>Nombre</th>                    <th>Provincia</th>                    <th>Director/a</th>                    <th>CIF</th>                    <th>Email</th>                    <th>Acciones</th>                </tr>            </thead>            <tbody>                <tr *ngFor="let centro of centros;let id=index">                    <td>{{id+1}}</td>                    <td>{{centro.nombreCentro}} </td>                    <td>{{centro.provincia}}</td>                    <td>{{centro.nombreDirector}}</td>                    <td>{{centro.cif}}</td>                    <td>{{centro.email}}</td>                    <td class="d-flex justify-content-center">                        <ul class="nav nav-item">                            <li routerLink="/admin/centros/modificarCentro/{{centro.codigo}}">                                <a class="nav-link  btn bg-outline-color  "><i class="fa fa-pencil"></i></a>                            </li>                        </ul>                                                <ul class="ml-3 nav nav-item">                            <li>                                <a class="nav-link  btn btn-outline-danger" (click)="guardarcodigo(centro.codigo)"                                data-toggle="modal" data-target="#eliminarCentro"><i class="fa fa-trash"></i></a>                            </li>                        </ul>                    </td>                </tr>            </tbody>        </table>    </mat-tab>    <mat-tab label="Insertar Centro">        <br>        <app-insertar-centro></app-insertar-centro>    </mat-tab></mat-tab-group><!-- Modal Eliminar Centro--><div class="modal fade" id="eliminarCentro" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="text-center m-3">                <h5 class="modal-title " id="confirmarEliminarLabel ">ELIMINANDO CENTRO </h5>                <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                </button>                <hr>            </div>            <div class="modal-body text-center">                <b>                    <h2 class="text-center">¿ESTÁS SEGURO DE ELIMINAR EL CENTRO?</h2>                </b>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>                <small class=" m-2 text-danger">Acción irreversible</small>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>            </div>            <div class="text-center">                <hr>                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"                    (click)="eliminarCentro()">Eliminar</button>            </div>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h2>Alumnos</h2><mat-tab-group>    <mat-tab label="Listado Centros">        <br>        <div *ngIf="centros.length>0 else alert">            <mat-label class="mr-1">Recargar Tabla</mat-label>            <mat-icon (click)="listarCentros()"  >refresh</mat-icon>         </div>        <ng-template #alert>            <div class="alert alert-warning " *ngIf="centros.length==0 && cargaCompleta" >                <b>                    <h2 class="text-center">¡INSERTE CENTROS!</h2>                </b>            </div>        </ng-template>        <table *ngIf="centros.length>0" class="table text-center table-striped w-100">            <thead class="table bg-color  text-center text-light">                <tr>                    <th>#</th>                    <th>Nombre</th>                    <th>Provincia</th>                    <th>Director/a</th>                    <th>CIF</th>                    <th>Email</th>                    <th>Acciones</th>                </tr>            </thead>            <tbody>                <tr *ngFor="let centro of centrosTmp;let id=index">                    <td>{{centro.codigo}}</td>                    <td>{{centro.nombreCentro}} </td>                    <td>{{centro.provincia}}</td>                    <td>{{centro.nombreDirector}}</td>                    <td>{{centro.cif}}</td>                    <td>{{centro.email}}</td>                    <td class="d-flex justify-content-center">                        <ul class="nav nav-item">                            <li routerLink="/admin/centros/modificarCentro/{{centro.codigo}}">                                <a class="nav-link  btn bg-outline-color  "><i class="fa fa-pencil"></i></a>                            </li>                        </ul>                                                <ul class="ml-3 nav nav-item">                            <li>                                <a class="nav-link  btn btn-outline-danger" (click)="guardarcodigo(centro.codigo)"                                data-toggle="modal" data-target="#eliminarCentro"><i class="fa fa-trash"></i></a>                            </li>                        </ul>                    </td>                </tr>            </tbody>        </table>        <div *ngIf="centros.length>0" class="container-fluid table-responsive d-flex justify-content-center">            <div class="row">                <div class="col-3 ">                    <mat-form-field class=" w-100" appearance="fill">                        <mat-select [(ngModel)]="pageSize" (selectionChange)="changeSize()">                            <mat-option [value]="sizes" *ngFor="let sizes of sizes">                                {{sizes}}                            </mat-option>                        </mat-select>                    </mat-form-field>                </div>                <div class="row mt-3 margin-0-auto">                    <div class="col-2" disabled (click)="firstPage()" >                        <i class="fa fa-step-backward"  aria-hidden="true"></i>                    </div>                    <div class="col-2" [ngClass]="{ \'bbva-th2-pagination-disabled\': (currentPage - 1) <= 0 }"                        (click)="prevPage()">                        <i class="fa fa-backward" aria-hidden="true"></i>                    </div>                    <div class="col-4">                        <p>{{ currentPage }} de {{ totalPages }}</p>                    </div>                    <div class="col-2" (click)="nextPage()">                        <i class="fa fa-forward" aria-hidden="true"></i>                    </div>                    <div class="col-2" (click)="lastPage()">                        <i class="fa fa-step-forward " aria-hidden="true"></i>                    </div>                </div>            </div>        </div>    </mat-tab>    <mat-tab label="Insertar Centro">        <br>        <app-insertar-centro></app-insertar-centro>    </mat-tab></mat-tab-group><!-- Modal Eliminar Centro--><div class="modal fade" id="eliminarCentro" tabindex="-1" role="dialog" aria-labelledby="confirmarEliminarLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="text-center m-3">                <h5 class="modal-title " id="confirmarEliminarLabel ">ELIMINANDO CENTRO </h5>                <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                </button>                <hr>            </div>            <div class="modal-body text-center">                <b>                    <h2 class="text-center">¿ESTÁS SEGURO DE ELIMINAR EL CENTRO?</h2>                </b>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>                <small class=" m-2 text-danger">Acción irreversible</small>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>            </div>            <div class="text-center">                <hr>                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"                    (click)="eliminarCentro()">Eliminar</button>            </div>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListarCentrosComponent'};

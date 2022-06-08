@@ -13,8 +13,11 @@
       <mat-error *ngIf="this.forminsertarCurso.controls['code'].hasError('required')">
         Campo requerido
       </mat-error>
-      <mat-error *ngIf="this.forminsertarCurso.controls['code'].hasError('pattern')">
+      <mat-error *ngIf="this.forminsertarCurso.controls['code'].hasError('minlength')">
         Minimo 2  letras
+      </mat-error>
+      <mat-error *ngIf="this.forminsertarCurso.controls['code'].hasError('pattern')">
+        Máximo 6  letras
       </mat-error>
     </mat-form-field>
 
@@ -48,7 +51,7 @@
       <mat-label>Curso Academico</mat-label>
       <input matInput 
         formControlName="curso" 
-        placeholder="Familia" 
+        placeholder="Año Académico" 
         class="w-100">
       <mat-error *ngIf="this.forminsertarCurso.controls['curso'].hasError('required')">
         Campo requerido
@@ -63,7 +66,7 @@
       <mat-label>Número Horas</mat-label>
       <input matInput type="number" 
         formControlName="horas" 
-        placeholder="Familia" 
+        placeholder="Número horas de práctica" 
         class="w-100">
       <mat-error *ngIf="this.forminsertarCurso.controls['horas'].hasError('required')">
         Campo requerido Solo digitos
@@ -83,7 +86,7 @@
       <mat-error *ngIf="this.forminsertarCurso.controls['tutor']?.errors?.['required']">Campo requerido</mat-error>
     </mat-form-field>
 
-    <button type="submit" class="btn w-100 bg-color text-light ">Insertar</button>
+    <button type="submit" class="btn mt-2 w-100 bg-color text-light ">Insertar</button>
   </form>
 
 </div>

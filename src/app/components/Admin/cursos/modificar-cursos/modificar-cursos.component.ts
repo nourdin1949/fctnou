@@ -4,18 +4,38 @@ import { ActivatedRoute } from '@angular/router';
 import { Curso, Profesor } from 'src/app/utils/interfaces/Interface';
 import { ProfesorService } from '../../profesor/profesor.service';
 import { CursosService } from '../cursos.service';
-
+/**
+ * The modificar cursos component
+ */
 @Component({
   selector: 'app-modificar-cursos',
   templateUrl: './modificar-cursos.component.html',
   styleUrls: ['./modificar-cursos.component.css']
 })
 export class ModificarCursosComponent implements OnInit{
+  /**
+   * Id curso
+   */
   public idCurso:number=0;
+  /**
+   * Objeto curso
+   */
   public curso:any={}
+  /**
+   * matriz profesores
+   */
   public profesores:Profesor[]=[]
+  /**
+   * Formulario 
+   */
   public formModificarCurso:FormGroup
-
+  /**
+   * Constructor
+   * @param activatedRoute 
+   * @param fb 
+   * @param cursoService 
+   * @param profesorService 
+   */
   public constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder, 
@@ -27,9 +47,8 @@ export class ModificarCursosComponent implements OnInit{
         this.findCursoById()
       })
    
-
       this.formModificarCurso = this.fb.group({
-        code:['', [Validators.required, Validators.pattern('[A-Z a-z]{2,}')]],
+        code:['', [Validators.required,,Validators.pattern('[A-Za-z]{0,6}'), Validators.minLength(2)]],
         familia:['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
         ciclo:['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
         curso:['',[ Validators.required, Validators.pattern('[0-9]{4}-[0-9]{4}')]],
@@ -38,12 +57,17 @@ export class ModificarCursosComponent implements OnInit{
       })
 
   }
+  /**
+   * ngoninit
+   */
   public ngOnInit(): void {
     this.listarProfesores()
   }
- 
-
-  modificarCurso(form: FormGroup) {
+  /**
+   * Metodo modificar curso
+   * @param form 
+   */
+  public modificarCurso(form: FormGroup) {
     const curso: Curso = {
       "id":this.idCurso,
       "codigoCiclo":form.value.code, 
@@ -60,7 +84,9 @@ export class ModificarCursosComponent implements OnInit{
       })
     }
   }
-
+  /**
+   * Metodo find curso by id
+   */
   public findCursoById() {
     this.cursoService.findCursoById(this.idCurso)
       .subscribe((response) => {
@@ -78,7 +104,9 @@ export class ModificarCursosComponent implements OnInit{
         this.formModificarCurso.setValue(curso)
       })
   }
-
+  /**
+   * Metodo listar profesores
+   */
   public listarProfesores(){
     this.profesorService.listarProfesor().subscribe((response)=>{
       this.profesores = response

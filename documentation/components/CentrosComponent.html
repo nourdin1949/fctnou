@@ -68,14 +68,15 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>The centro component</p>
+
     </p>
+
+
 
 
 <section>
@@ -121,125 +122,33 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
 
 
-        </tbody>
-    </table>
-</section>
-
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/components/Admin/centros/centros.component.ts:8</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
 
 
-
-
-
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/components/Admin/centros/centros.component.ts:12</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+/**
+ * The centro component
+ */
 @Component({
   selector: &#x27;app-centros&#x27;,
   templateUrl: &#x27;./centros.component.html&#x27;,
   styleUrls: [&#x27;./centros.component.css&#x27;]
 })
-export class CentrosComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class CentrosComponent {}
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;p&gt;centros works!&lt;/p&gt;
+        <pre class="line-numbers"><code class="language-html">
 </code></pre>
     </div>
 
@@ -275,7 +184,7 @@ export class CentrosComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>centros works!</p></div>'
+        var COMPONENT_TEMPLATE = '<div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CentrosComponent'};

@@ -2,18 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Profesor } from 'src/app/utils/interfaces/Interface';
-import { environment } from 'src/environments/environment.prod';
-
+import { environment } from 'src/environments/environment';
+/**
+ * The profesor service
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ProfesorService {
-  private url=environment.url;
-
-  constructor(private http: HttpClient) { }
-
   /**
-   * Cabecera 
+   * La url de la api
+   */
+  private url=environment.url;
+  /**
+   * Constructor
+   * @param http 
+   */
+  constructor(private http: HttpClient) { }
+  /**
+   * Cabecera de las peticiones
+   * @returns 
    */
   public getHeaders() {
     const headers = {
@@ -23,23 +31,43 @@ export class ProfesorService {
     }
     return headers
   }
-  /* El método recibe un parametro de tipo Profesor */
+  /**
+   * El método recibe un parametro de tipo Profesor
+   * @param Profesor 
+   * @returns 
+   */
   insertarProfesor(Profesor: Profesor): Observable<Profesor> {
     return this.http.post<Profesor>(`${this.url}/insertarTutor`, Profesor, this.getHeaders())
   }
-  /* Método para listar todas las Profesores */
+  /**
+   * Método para listar todas las Profesores
+   * @returns 
+   */
   listarProfesor(): Observable<Profesor[]> {
     return this.http.get<Profesor[]>(`${this.url}/listarTutores`, this.getHeaders())
   }
-  /* Método para eliminar Profesor por id */
+  /**
+   * Método para eliminar Profesor por id
+   * @param id 
+   * @returns 
+   */
   eliminarProfesor(id: number) {
     return this.http.delete<Profesor[]>(`${this.url}/eliminarTutor/${id}`,this.getHeaders())
   }
-  
+  /**
+   * Buscar tutor por id
+   * @param id 
+   * @returns 
+   */
   findTutorByid(id:number){
     return this.http.get<Profesor[]>(`${this.url}/findTutorByid/${id}`,this.getHeaders())
   }
-
+  /**
+   * Modificar tutor by id
+   * @param id 
+   * @param profesor 
+   * @returns 
+   */
   updateTutorById(id:number, profesor:Profesor){
     return this.http.put(`${this.url}/updateTutorById/${id}`, profesor, this.getHeaders())
     

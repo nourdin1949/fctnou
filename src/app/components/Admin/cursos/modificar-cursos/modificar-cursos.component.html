@@ -11,8 +11,11 @@
             <mat-error *ngIf="this.formModificarCurso.controls['code'].hasError('required')">
                 Campo requerido
             </mat-error>
-            <mat-error *ngIf="this.formModificarCurso.controls['code'].hasError('pattern')">
+            <mat-error *ngIf="this.formModificarCurso.controls['code'].hasError('minlength')">
                 Minimo 2 letras
+            </mat-error>
+            <mat-error *ngIf="this.formModificarCurso.controls['code'].hasError('pattern')">
+                Máximo 6 letras
             </mat-error>
         </mat-form-field>
 

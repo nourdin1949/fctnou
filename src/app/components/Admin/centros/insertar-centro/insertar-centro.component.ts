@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { from, of } from 'rxjs';
 import { Centro } from 'src/app/utils/interfaces/Interface';
 import { customValidatorCIFCentro } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../centros.service';
-
+/**
+ * The insetar centro component
+ */
 @Component({
   selector: 'app-insertar-centro',
   templateUrl: './insertar-centro.component.html',
   styleUrls: ['./insertar-centro.component.css']
 })
-export class InsertarCentroComponent implements OnInit {
-
+export class InsertarCentroComponent   {
+  /**
+   * Formulario
+   */
   public forminsertarCentro: FormGroup;
+  /**
+   * Constructor
+   * @param fb 
+   * @param centroService 
+   */
   constructor(private fb: FormBuilder, private centroService: CentrosService) {
 
     this.forminsertarCentro = this.fb.group({
@@ -29,11 +37,11 @@ export class InsertarCentroComponent implements OnInit {
       code: ['', [Validators.required, Validators.pattern('[0-9]{8}')]]
     })
   }
-
-  ngOnInit(): void {
-  }
-
-  insertarCentro(form: FormGroup) {
+  /**
+   * Metodo de insertar centro
+   * @param form 
+   */
+  public insertarCentro(form: FormGroup) {
     const centro: Centro = {
       "codigo": this.forminsertarCentro.value.code,
       "nombreCentro": form.value.nombre,
@@ -58,5 +66,4 @@ export class InsertarCentroComponent implements OnInit {
       });
     }
   }
-
 }

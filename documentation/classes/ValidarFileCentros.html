@@ -66,6 +66,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Validar fichero centro</p>
+
+            </p>
 
 
 
@@ -128,14 +135,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/app/utils/Validators/ValidacionesFicheross.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/utils/Validators/ValidacionesFicheross.ts:30</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>metodo para validar file centro</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -190,8 +199,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AbstractControl } from &quot;@angular/forms&quot;;
 import { of } from &quot;rxjs&quot;;
 
-// Validar fichero empresa
+/**
+ * Validar fichero empresa
+ */
 export class ValidarFileEmpresa{
+    /**
+     * metodo para validar file empresa
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value;
         if( value!&#x3D;&quot;&quot; &amp;&amp;  value._fileNames!&#x3D;&quot;empresas.csv&quot;){
@@ -200,8 +216,15 @@ export class ValidarFileEmpresa{
         return of(null)
     }
 }
-// Validar fichero centro
+/**
+ * Validar fichero centro
+ */
 export class ValidarFileCentros{
+    /**
+     * metodo para validar file centro
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value;
         if(value!&#x3D;&quot;&quot; &amp;&amp;  value._fileNames!&#x3D;&quot;centros.csv&quot;){
@@ -210,8 +233,15 @@ export class ValidarFileCentros{
         return of(null)
     }
 }
-// Validar fichero curso
+/**
+ * Validar fichero curso
+ */
 export class ValidarFileCursos{
+    /**
+     * metodo para validar file curso
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value;
         if(value!&#x3D;&quot;&quot; &amp;&amp;  value._fileNames!&#x3D;&quot;cursos.csv&quot;){
@@ -220,8 +250,15 @@ export class ValidarFileCursos{
         return of(null)
     }
 }
-// Validar fichero alumno
+/**
+ * Validar fichero alumno
+ */
 export class ValidarFileAlumnos{
+    /**
+     * metodo para validar file alumno
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value;
         if(value!&#x3D;&quot;&quot; &amp;&amp;  value._fileNames!&#x3D;&quot;alumnos.csv&quot;){
@@ -230,8 +267,15 @@ export class ValidarFileAlumnos{
         return of(null)
     }
 }
-// Validar fichero responsable
+/**
+ * Validar fichero responsable
+ */
 export class ValidarFileResponsables{
+    /**
+     * metodo validar file responsable
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value;
         if(value!&#x3D;&quot;&quot; &amp;&amp;  value._fileNames!&#x3D;&quot;responsables.csv&quot;){
@@ -240,8 +284,15 @@ export class ValidarFileResponsables{
         return of(null)
     }
 }
-// Validar fichero tutor
+/**
+ * Validar fichero tutor
+ */
 export class ValidarFileTutores{
+    /**
+     * metodo validar file tutor
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value;
         if(value!&#x3D;&quot;&quot; &amp;&amp; value._fileNames!&#x3D;&quot;tutores.csv&quot;){
@@ -250,12 +301,17 @@ export class ValidarFileTutores{
         return of(null)
     }
 }
-// Validar fichero imagen perfil
+/**
+ * Validar fichero imagen perfil
+ */
 export class ValidarFileIMGPerfil{
+    /**
+     * Validar fichero imagen perfil
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value &#x3D;control.value  ;
-        console.log(value)
-        
         if(value!&#x3D;&quot;&quot;){
             let extension&#x3D;value._fileNames.substring(value._fileNames.length-4 , ).toLowerCase() ;
             if(extension!&#x3D;&quot;.png&quot; &amp;&amp; extension!&#x3D;&quot;.jpg&quot;  ){

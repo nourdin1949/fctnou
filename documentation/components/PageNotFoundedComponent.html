@@ -68,14 +68,15 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>The 404 component</p>
+
     </p>
+
+
 
 
 <section>
@@ -121,166 +122,60 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
 
 
-        </tbody>
-    </table>
-</section>
-
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/Shared/page-not-founded/page-not-founded.component.ts:8</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
 
 
-
-
-
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/Shared/page-not-founded/page-not-founded.component.ts:12</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-
+/**
+ * The 404 component
+ */
 @Component({
   selector: &#x27;app-page-not-founded&#x27;,
   templateUrl: &#x27;./page-not-founded.component.html&#x27;,
   styleUrls: [&#x27;./page-not-founded.component.css&#x27;]
 })
-export class PageNotFoundedComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class PageNotFoundedComponent {
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">
-    &lt;header class&#x3D;&quot;top-header&quot;&gt;
-  &lt;/header&gt;
-  
-  &lt;!--dust particel--&gt;
-  &lt;div&gt;
+
+&lt;!--dust particel--&gt;
+&lt;div&gt;
     &lt;div class&#x3D;&quot;starsec&quot;&gt;&lt;/div&gt;
     &lt;div class&#x3D;&quot;starthird&quot;&gt;&lt;/div&gt;
     &lt;div class&#x3D;&quot;starfourth&quot;&gt;&lt;/div&gt;
     &lt;div class&#x3D;&quot;starfifth&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!--Dust particle end---&gt;
-  
-  
-  &lt;div class&#x3D;&quot;lamp__wrap&quot;&gt;
-    &lt;div class&#x3D;&quot;lamp&quot;&gt;
-      &lt;div class&#x3D;&quot;cable&quot;&gt;&lt;/div&gt;
-      &lt;div class&#x3D;&quot;cover&quot;&gt;&lt;/div&gt;
-      &lt;div class&#x3D;&quot;in-cover&quot;&gt;
-        &lt;div class&#x3D;&quot;bulb&quot;&gt;&lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;light&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;!-- END Lamp --&gt;
-  &lt;section class&#x3D;&quot;error&quot;&gt;
+&lt;/div&gt;
+
+&lt;section class&#x3D;&quot;error&quot;&gt;
     &lt;!-- Content --&gt;
     &lt;div class&#x3D;&quot;error__content&quot;&gt;
-      &lt;div class&#x3D;&quot;error__message message&quot;&gt;
-        &lt;h1 class&#x3D;&quot;message__title&quot;&gt;Page  N &lt;img class&#x3D;&quot;message__image&quot; src&#x3D;&quot;../../../assets/img/icono.ico&quot; alt&#x3D;&quot;&quot;&gt; t Found&lt;/h1&gt;
-        &lt;p class&#x3D;&quot;message__text&quot;&gt;Lo sentimos, la pagina que está buscando no se encuentra disponible. El link puede que no exista o este mal escrito. Intentalo de nuevo o vuelve inicio.
-        &lt;/p&gt;
-      &lt;/div&gt;
-      &lt;div class&#x3D;&quot;error__nav e-nav&quot;&gt;
-        &lt;a href&#x3D;&quot;&quot; target&#x3D;&quot;_blanck&quot; class&#x3D;&quot;e-nav__link&quot;&gt;&lt;mat-icon &gt;home&lt;/mat-icon&gt;&lt;/a&gt;
-      &lt;/div&gt;
+        &lt;div class&#x3D;&quot;error__message message&quot;&gt;
+            &lt;h1 class&#x3D;&quot;message__title&quot;&gt; PAGE N&lt;img class&#x3D;&quot;message__image&quot; src&#x3D;&quot;../../../assets/img/icono.ico&quot; alt&#x3D;&quot;&quot;&gt;t F&lt;img class&#x3D;&quot;message__image&quot; src&#x3D;&quot;../../../assets/img/icono.ico&quot; alt&#x3D;&quot;&quot;&gt;und&lt;/h1&gt;
+            &lt;p class&#x3D;&quot;message__text&quot;&gt;Lo sentimos, página web no disponible. &lt;br&gt;El link puede que no exista o este mal escrito. &lt;br&gt;Intentalo de nuevo o vuelve inicio.
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;error__nav e-nav&quot;&gt;
+            &lt;a href&#x3D;&quot;&quot; class&#x3D;&quot;e-nav__link&quot;&gt;
+                &lt;mat-icon&gt;home&lt;/mat-icon&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
     &lt;!-- END Content --&gt;
-  
-  &lt;/section&gt;
-  
-</code></pre>
+
+&lt;/section&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -345,24 +240,6 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
 .message__title{
   margin-left: 2rem;
 }
-
-.top-header:before {
-    background-image: url(https://1.bp.blogspot.com/-gxsOcYWghHA/Xp_izTh4sFI/AAAAAAAAU8s/y637Fwg99qAuzW9na_NT_uApny8Vce95gCEwYBhgL/s1600/header-footer-gradient-bg.png);
-}
-.top-header:before {
-    content: &#x27;&#x27;;
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-repeat: repeat-x;
-    background-size: contain;
-    position: absolute;
-    top: 0;
-    left: 0;
-  opacity:0.5;
-}
-
-
 .starsec{
   content: &quot; &quot;;
     position: absolute;
@@ -416,8 +293,6 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
 }
 }
 
-
-
 button {
   border: none;
   padding: 0;
@@ -427,24 +302,6 @@ button {
   cursor: pointer;
 }
 
-:focus {
-  outline: 0;
-}
-
-.clearfix:before, .clearfix:after {
-  content: &quot;\0020&quot;;
-  display: block;
-  height: 0;
-  visibility: hidden;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-  zoom: 1;
-}
 
 			/* 1. END BODY */
 /***********************************/
@@ -462,24 +319,6 @@ button {
   height: 100%;
   text-align: center;
   margin-top: 70px;
-}
-
-.error__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.error__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
 }
 
 .error__message {
@@ -626,93 +465,6 @@ button {
 }
 /* 2.2. END Social style */
 
-/* 2.3. Lamp */
-.lamp {
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  margin: 0px auto;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: center top;
-  animation-timing-function: cubic-bezier(0.6, 0, 0.38, 1);
-  animation: move 5.1s infinite;
-}
-
-@keyframes move {
-  0% {
-    transform: rotate(40deg);
-  }
-  50% {
-    transform: rotate(-40deg);
-  }
-  100% {
-    transform: rotate(40deg);
-  }
-}
-
-.cable {
-  width: 8px;
-    height: 248px;
-    background-image: linear-gradient(rgb(32 148 218 / 70%), rgb(193 65 25)), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-}
-
-.cover {
-  width: 200px;
-  height: 80px;
-  background: #0bd5e8;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  position: relative;
-  z-index: 200;
-}
-
-.in-cover {
-  width: 100%;
-  max-width: 200px;
-  height: 20px;
-  border-radius: 100%;
-  background: #08ffff;
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  margin: 0px auto;
-  bottom: -9px;
-  z-index: 100;
-}
-.in-cover .bulb {
-     width: 50px;
-    height: 50px;
-    background-color: #08fffa;
-    border-radius: 50%;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: -20px;
-    margin: 0px auto;
-    -webkit-box-shadow: 0 0 15px 7px rgba(0,255,255,0.8), 0 0 40px 25px rgba(0,255,255,0.5), -75px 0 30px 15px rgba(0,255,255,0.2);
-    box-shadow: 0 0 25px 7px rgb(127 255 255 / 80%), 0 0 64px 47px rgba(0,255,255,0.5), 0px 0 30px 15px rgba(0,255,255,0.2);
-}
-
-
-.light {
-      width: 200px;
-    height: 0px;
-    border-bottom: 900px solid rgb(44 255 255 / 24%);
-    border-left: 50px solid transparent;
-    border-right: 50px solid transparent;
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 270px;
-    margin: 0px auto;
-    z-index: 1;
-    border-radius: 90px 90px 0px 0px;
-}
-/* 2.3. END Lamp */
 /***********************************
 			/* 2. END CONTENT */
 /***********************************/
@@ -724,15 +476,17 @@ button {
   overflow: hidden;
   max-height: 100vh;
 }
+.message__image{
+  width: 8%;
+}
 @media (max-width: 1400px) { 
-  .lamp {
-    zoom: .5;
-  }
   .message__image{
     width: 5%;
   }
+
   .error__content {
     top: 55%;
+    
   }
   .message__title {
     font-size: 3.5rem;
@@ -752,14 +506,7 @@ button {
   }
   }
 @media (max-width: 950px) {
-  .lamp__wrap {
-    max-height: 100vh;
-    overflow: hidden;
-    max-width: 100vw;
-  }
-  .message__image{
-    width: 30px;
-  }
+
   .error__social {
     bottom: 30px;
     top: auto;
@@ -812,9 +559,6 @@ button {
     padding-right: 20px;
     padding-left: 20px;
   }
-  .lamp {
-    zoom: .6;
-  }
   .error__content {
     padding-top: 180px;
   }
@@ -860,7 +604,7 @@ button {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>    <header class="top-header">  </header>    <!--dust particel-->  <div>    <div class="starsec"></div>    <div class="starthird"></div>    <div class="starfourth"></div>    <div class="starfifth"></div>  </div>  <!--Dust particle end--->      <div class="lamp__wrap">    <div class="lamp">      <div class="cable"></div>      <div class="cover"></div>      <div class="in-cover">        <div class="bulb"></div>      </div>      <div class="light"></div>    </div>  </div>  <!-- END Lamp -->  <section class="error">    <!-- Content -->    <div class="error__content">      <div class="error__message message">        <h1 class="message__title">Page  N <img class="message__image" src="../../../assets/img/icono.ico" alt=""> t Found</h1>        <p class="message__text">Lo sentimos, la pagina que está buscando no se encuentra disponible. El link puede que no exista o este mal escrito. Intentalo de nuevo o vuelve inicio.        </p>      </div>      <div class="error__nav e-nav">        <a href="" target="_blanck" class="e-nav__link"><mat-icon >home</mat-icon></a>      </div>    </div>    <!-- END Content -->    </section>  </div>'
+        var COMPONENT_TEMPLATE = '<div><!--dust particel--><div>    <div class="starsec"></div>    <div class="starthird"></div>    <div class="starfourth"></div>    <div class="starfifth"></div></div><section class="error">    <!-- Content -->    <div class="error__content">        <div class="error__message message">            <h1 class="message__title"> PAGE N<img class="message__image" src="../../../assets/img/icono.ico" alt="">t F<img class="message__image" src="../../../assets/img/icono.ico" alt="">und</h1>            <p class="message__text">Lo sentimos, página web no disponible. <br>El link puede que no exista o este mal escrito. <br>Intentalo de nuevo o vuelve inicio.            </p>        </div>        <div class="error__nav e-nav">            <a href="" class="e-nav__link">                <mat-icon>home</mat-icon>            </a>        </div>    </div>    <!-- END Content --></section></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PageNotFoundedComponent'};

@@ -68,14 +68,15 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>The insertar empresa component</p>
+
     </p>
+
+
 
 
 <section>
@@ -150,10 +151,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#insertarEmpresa" >insertarEmpresa</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -178,12 +177,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -243,6 +244,7 @@
                 <td class="col-md-4">
                     <a name="insertarEmpresa"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>insertarEmpresa</b></span>
                         <a href="#insertarEmpresa"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -250,21 +252,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>insertarEmpresa(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>insertarEmpresa(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:46</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Método insertar empresa</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -306,43 +311,6 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:35</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
     <section>
     
@@ -369,10 +337,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/Admin/empresas/insertar-empresa/insertar-empresa.component.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>formulario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -382,21 +356,29 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Empresa } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { customValidatorCIFEmpresa, customValidatorDNIEmpresa, customValidatorFormatDNI } from &#x27;src/app/utils/Validators/otrasValidaciones&#x27;;
 import { EmpresasService } from &#x27;../empresas.service&#x27;;
-import { ListarEmpresasComponent } from &#x27;../listar-empresas/listar-empresas.component&#x27;;
+/**
+ * The insertar empresa component
+ */
 @Component({
   selector: &#x27;app-insertar-empresa&#x27;,
   templateUrl: &#x27;./insertar-empresa.component.html&#x27;,
   styleUrls: [&#x27;./insertar-empresa.component.css&#x27;]
 })
-export class InsertarEmpresaComponent implements OnInit {
-
+export class InsertarEmpresaComponent {
+  /**
+   * formulario
+   */
   public forminsertarEmpresa: FormGroup;
-
+  /**
+   * Constructor
+   * @param fb 
+   * @param empresaService 
+   */
   constructor(private fb: FormBuilder,
     private empresaService: EmpresasService) {
     this.forminsertarEmpresa &#x3D; this.fb.group({
@@ -404,23 +386,22 @@ export class InsertarEmpresaComponent implements OnInit {
       provincia: [&#x27;&#x27;, Validators.required],
       localidad: [&#x27;&#x27;, Validators.required],
       calle: [&#x27;&#x27;, Validators.required],
-      cp: [&#x27;&#x27;, [Validators.required,  Validators.pattern(&quot;[0-9]{5}&quot;)]],
+      cp: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{5}&quot;)]],
       telefono: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[A-Z]{0}[0-9]{9}&quot;)]],
       email: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$&quot;)]],
       representante: [&#x27;&#x27;, Validators.required],
-      dnirepresentante: [&#x27;&#x27;,[ Validators.required, Validators.pattern(&quot;[0-9]{8}[A-Z]{1}&quot;)],
-        [customValidatorDNIEmpresa.customValidDNIEmpresa(empresaService), 
-          customValidatorFormatDNI.customValidDNILETRA], &#x27;blur&#x27;],
-      cif: [&#x27;&#x27;, [Validators.required,Validators.maxLength(10), Validators.minLength(9)], 
+      dnirepresentante: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{8}[A-Z]{1}&quot;)],
+        [customValidatorDNIEmpresa.customValidDNIEmpresa(empresaService),
+        customValidatorFormatDNI.customValidDNILETRA], &#x27;blur&#x27;],
+      cif: [&#x27;&#x27;, [Validators.required, Validators.maxLength(10), Validators.minLength(9)],
         customValidatorCIFEmpresa.customValidCIFEmpresa(empresaService), &#x27;blur&#x27;]
     })
   }
-
-  ngOnInit(): void {
-
-  }
-
-  insertarEmpresa(form: FormGroup) {
+  /**
+   * Método insertar empresa
+   * @param form 
+   */
+  public insertarEmpresa(form: FormGroup) {
     const empresa: Empresa &#x3D; {
       &quot;id&quot;: 0,
       &quot;nombreEmpresa&quot;: form.value.empresa,
@@ -435,15 +416,16 @@ export class InsertarEmpresaComponent implements OnInit {
       &quot;dniRepresentante&quot;: form.value.dnirepresentante
     }
     if (this.forminsertarEmpresa.valid) {
-      this.empresaService.insertarEmpresas(empresa).subscribe((response) &#x3D;&gt; {
-        console.log(response);
-        (&lt;HTMLButtonElement&gt;document.getElementById(&quot;insertado&quot;)).click()
-        setTimeout(() &#x3D;&gt; {
-          (&lt;HTMLElement&gt;document.getElementById(&#x27;insertarEmpresa&#x27;)).classList.remove(&#x27;modal-open&#x27;);
-          (&lt;HTMLCollectionOf&lt;HTMLElement&gt;&gt;document.getElementsByClassName(&#x27;modal-backdrop&#x27;))[0].classList.remove(&#x27;modal-backdrop&#x27;)
-         }, 300);
-        this.empresaService.listarEmpresas()
-      })
+      this.empresaService.insertarEmpresas(empresa)
+        .subscribe(
+          () &#x3D;&gt; {
+            (&lt;HTMLButtonElement&gt;document.getElementById(&quot;insertado&quot;)).click()
+            setTimeout(() &#x3D;&gt; {
+              (&lt;HTMLElement&gt;document.getElementById(&#x27;insertarEmpresa&#x27;)).classList.remove(&#x27;modal-open&#x27;);
+              (&lt;HTMLCollectionOf&lt;HTMLElement&gt;&gt;document.getElementsByClassName(&#x27;modal-backdrop&#x27;))[0].classList.remove(&#x27;modal-backdrop&#x27;)
+            }, 300);
+            this.empresaService.listarEmpresas()
+          })
     }
   }
 }
@@ -601,8 +583,15 @@ export class InsertarEmpresaComponent implements OnInit {
                     &lt;/mat-error&gt;
                 &lt;/mat-form-field&gt;
             &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;w-100 mt-2 btn bg-outline-color&quot;&gt;Insertar&lt;/button&gt;
+        &lt;/div&gt; &lt;label class&#x3D;&quot;dark-mode-switch&quot;&gt;
+            &lt;input type&#x3D;&quot;checkbox&quot;&gt;
+            &lt;span class&#x3D;&quot;slider&quot;&gt;
+                 &lt;svg class&#x3D;&quot;slider-icon&quot; viewBox&#x3D;&quot;0 0 24 24&quot; fill&#x3D;&quot;none&quot; height&#x3D;&quot;20&quot; stroke&#x3D;&quot;#000&quot; stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; stroke-width&#x3D;&quot;2&quot; width&#x3D;&quot;20&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                 &lt;path d&#x3D;&quot;M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z&quot;&gt;&lt;/path&gt;
+                 &lt;/svg&gt;
+            &lt;/span&gt;
+       &lt;/label&gt;
+        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;w-100 mt-2 btn insertar bg-outline-color&quot;&gt;Insertar&lt;/button&gt;
     &lt;/form&gt;
 
 &lt;/div&gt;
@@ -661,7 +650,7 @@ export class InsertarEmpresaComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="w-100 row">    <div class="col-3"></div>    <form [formGroup]="forminsertarEmpresa" (ngSubmit)="insertarEmpresa(forminsertarEmpresa)" class="w-75 col-6">        <div class="form-group">            <h3 class="title bg-color text-light p-2">Insertar Empresa</h3>        </div>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Nombre Empresa</mat-label>            <input matInput                 formControlName="empresa"                 placeholder="Nombre Empresa"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'empresa\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Provincia</mat-label>            <input matInput                 formControlName="provincia"                 placeholder="Provincia"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'provincia\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Localidad</mat-label>            <input matInput                 formControlName="localidad"                 placeholder="Localidad"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'localidad\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Calle</mat-label>            <input matInput                 formControlName="calle"                 placeholder="Calle Nº"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'calle\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <div class="row">            <div class="col-lg-6  col-sm-12  col-md-12">                <mat-form-field class=" w-100" appearance="fill">                    <mat-label>Código Postal</mat-label>                    <input matInput                         formControlName="cp"                         placeholder="12345"                         class="w-100">                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cp\'].hasError(\'required\')">                        Campo <b>requerido</b>                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cp\'].hasError(\'pattern\')">                        Requiere de <b>5 digitos</b>                    </mat-error>                </mat-form-field>            </div>            <div class="col-lg-6  col-sm-12  col-md-12">                <mat-form-field class=" w-100" appearance="fill">                    <mat-label>Teléfono</mat-label>                    <input matInput                         formControlName="telefono"                         placeholder="123456789"                         class="w-100">                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'telefono\'].hasError(\'required\')">                        Campo <b>requerido</b>                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'telefono\'].hasError(\'pattern\')">                       Requiere <b>9 digitos</b>                    </mat-error>                  </mat-form-field>            </div>        </div>            <mat-form-field class=" w-100" appearance="fill">                <mat-label>Correo Electrónico</mat-label>                <input matInput                     formControlName="email"                     placeholder="nombre@dominio"                     class="w-100">                <mat-error *ngIf="this.forminsertarEmpresa.controls[\'email\'].hasError(\'required\')">                    Campo <b>requerido</b>                </mat-error>                <mat-error *ngIf="this.forminsertarEmpresa.controls[\'email\'].hasError(\'pattern\')">                    Email<b> no es válido</b>                </mat-error>              </mat-form-field>            <mat-form-field class=" w-100" appearance="fill">                <mat-label>Nombre Representante</mat-label>                <input matInput                     formControlName="representante"                     placeholder="Nombre Apellido"                     class="w-100">                <mat-error *ngIf="this.forminsertarEmpresa.controls[\'representante\'].hasError(\'required\')">                    Campo <b>requerido</b>                </mat-error>              </mat-form-field>        <div class="row">            <div class="col-lg-6  col-sm-12  col-md-12">                    <mat-form-field class=" w-100" appearance="fill">                        <mat-label>DNI Representante</mat-label>                        <input matInput                             formControlName="dnirepresentante"                             placeholder="12345678C"                             class="w-100">                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'required\')">                            Campo <b>requerido</b>                        </mat-error>                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'pattern\')">                            Formato requerido  <b>12345678C</b>                        </mat-error>                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'dniempresaValid\')">                            DNI {{forminsertarEmpresa.controls[\'dnirepresentante\'].value}} está en uso                        </mat-error>                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'dniletterValid\')">                            La letra del DNI no se corresponde                        </mat-error>                                            </mat-form-field>            </div>            <div class="col-lg-6 col-sm-12  col-md-12">                <mat-form-field class=" w-100" appearance="fill">                    <mat-label>CIF Empresa</mat-label>                    <input matInput                         formControlName="cif"                         placeholder="12345678"                         class="w-100">                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'required\')">                        Campo <b>requerido</b>                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'cifempresaValid\')">                        CIF {{forminsertarEmpresa.controls[\'cif\'].value}} está en uso                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'minlength\')">                        Mínimo 9 dígitos                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'maxlength\')">                        Máximo 10 dígitos                    </mat-error>                </mat-form-field>            </div>        </div>        <button type="submit" class="w-100 mt-2 btn bg-outline-color">Insertar</button>    </form></div><button type="button" id="insertado" data-toggle="modal" data-target="#insertarEmpresa"></button><!-- Modal insertar EMPRESA--><div class="modal fade" id="insertarEmpresa" tabindex="-1" role="dialog" aria-labelledby="insertarEmpresaLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="modal-body text-center">                <b>                    <h2 class="text-center">¡EMPRESA INSERTADO CON ÉXITO!</h2>                </b>                <i class="fa fa-check text-success" aria-hidden="true"></i>                <i class="fa fa-check text-success" aria-hidden="true"></i>                <br>            </div>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="w-100 row">    <div class="col-3"></div>    <form [formGroup]="forminsertarEmpresa" (ngSubmit)="insertarEmpresa(forminsertarEmpresa)" class="w-75 col-6">        <div class="form-group">            <h3 class="title bg-color text-light p-2">Insertar Empresa</h3>        </div>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Nombre Empresa</mat-label>            <input matInput                 formControlName="empresa"                 placeholder="Nombre Empresa"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'empresa\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Provincia</mat-label>            <input matInput                 formControlName="provincia"                 placeholder="Provincia"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'provincia\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Localidad</mat-label>            <input matInput                 formControlName="localidad"                 placeholder="Localidad"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'localidad\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <mat-form-field class=" w-100" appearance="fill">            <mat-label>Calle</mat-label>            <input matInput                 formControlName="calle"                 placeholder="Calle Nº"                 class="w-100">            <mat-error *ngIf="this.forminsertarEmpresa.controls[\'calle\'].hasError(\'required\')">                Campo <b>requerido</b>            </mat-error>          </mat-form-field>        <div class="row">            <div class="col-lg-6  col-sm-12  col-md-12">                <mat-form-field class=" w-100" appearance="fill">                    <mat-label>Código Postal</mat-label>                    <input matInput                         formControlName="cp"                         placeholder="12345"                         class="w-100">                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cp\'].hasError(\'required\')">                        Campo <b>requerido</b>                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cp\'].hasError(\'pattern\')">                        Requiere de <b>5 digitos</b>                    </mat-error>                </mat-form-field>            </div>            <div class="col-lg-6  col-sm-12  col-md-12">                <mat-form-field class=" w-100" appearance="fill">                    <mat-label>Teléfono</mat-label>                    <input matInput                         formControlName="telefono"                         placeholder="123456789"                         class="w-100">                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'telefono\'].hasError(\'required\')">                        Campo <b>requerido</b>                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'telefono\'].hasError(\'pattern\')">                       Requiere <b>9 digitos</b>                    </mat-error>                  </mat-form-field>            </div>        </div>            <mat-form-field class=" w-100" appearance="fill">                <mat-label>Correo Electrónico</mat-label>                <input matInput                     formControlName="email"                     placeholder="nombre@dominio"                     class="w-100">                <mat-error *ngIf="this.forminsertarEmpresa.controls[\'email\'].hasError(\'required\')">                    Campo <b>requerido</b>                </mat-error>                <mat-error *ngIf="this.forminsertarEmpresa.controls[\'email\'].hasError(\'pattern\')">                    Email<b> no es válido</b>                </mat-error>              </mat-form-field>            <mat-form-field class=" w-100" appearance="fill">                <mat-label>Nombre Representante</mat-label>                <input matInput                     formControlName="representante"                     placeholder="Nombre Apellido"                     class="w-100">                <mat-error *ngIf="this.forminsertarEmpresa.controls[\'representante\'].hasError(\'required\')">                    Campo <b>requerido</b>                </mat-error>              </mat-form-field>        <div class="row">            <div class="col-lg-6  col-sm-12  col-md-12">                    <mat-form-field class=" w-100" appearance="fill">                        <mat-label>DNI Representante</mat-label>                        <input matInput                             formControlName="dnirepresentante"                             placeholder="12345678C"                             class="w-100">                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'required\')">                            Campo <b>requerido</b>                        </mat-error>                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'pattern\')">                            Formato requerido  <b>12345678C</b>                        </mat-error>                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'dniempresaValid\')">                            DNI {{forminsertarEmpresa.controls[\'dnirepresentante\'].value}} está en uso                        </mat-error>                        <mat-error *ngIf="this.forminsertarEmpresa.controls[\'dnirepresentante\'].hasError(\'dniletterValid\')">                            La letra del DNI no se corresponde                        </mat-error>                                            </mat-form-field>            </div>            <div class="col-lg-6 col-sm-12  col-md-12">                <mat-form-field class=" w-100" appearance="fill">                    <mat-label>CIF Empresa</mat-label>                    <input matInput                         formControlName="cif"                         placeholder="12345678"                         class="w-100">                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'required\')">                        Campo <b>requerido</b>                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'cifempresaValid\')">                        CIF {{forminsertarEmpresa.controls[\'cif\'].value}} está en uso                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'minlength\')">                        Mínimo 9 dígitos                    </mat-error>                    <mat-error *ngIf="this.forminsertarEmpresa.controls[\'cif\'].hasError(\'maxlength\')">                        Máximo 10 dígitos                    </mat-error>                </mat-form-field>            </div>        </div> <label class="dark-mode-switch">            <input type="checkbox">            <span class="slider">                 <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">                 <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>                 </svg>            </span>       </label>        <button type="submit" class="w-100 mt-2 btn insertar bg-outline-color">Insertar</button>    </form></div><button type="button" id="insertado" data-toggle="modal" data-target="#insertarEmpresa"></button><!-- Modal insertar EMPRESA--><div class="modal fade" id="insertarEmpresa" tabindex="-1" role="dialog" aria-labelledby="insertarEmpresaLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="modal-body text-center">                <b>                    <h2 class="text-center">¡EMPRESA INSERTADO CON ÉXITO!</h2>                </b>                <i class="fa fa-check text-success" aria-hidden="true"></i>                <i class="fa fa-check text-success" aria-hidden="true"></i>                <br>            </div>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'InsertarEmpresaComponent'};

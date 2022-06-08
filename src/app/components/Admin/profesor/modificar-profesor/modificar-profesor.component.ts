@@ -6,18 +6,39 @@ import { SharedService } from 'src/app/Shared/shared.service';
 import { customValidatordDniBYID, customValidatorEmailBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../../centros/centros.service';
 import { ProfesorService } from '../profesor.service';
-
+/**
+ * The modificar profesor component
+ */
 @Component({
   selector: 'app-modificar-profesor',
   templateUrl: './modificar-profesor.component.html',
   styleUrls: ['./modificar-profesor.component.css']
 })
 export class ModificarProfesorComponent implements OnInit {
+  /**
+   * Matriz Centros
+   */
   public centros: Centro[] = []
+  /**
+   * Id tutor
+   */
   public idTutor: number = 0;
+  /**
+   * Objeto tutor
+   */
   public tutor: any = {}
+  /**
+   * Formulario
+   */
   public formModificarTutor: FormGroup
-
+  /**
+   * Constructor
+   * @param activatedRoute 
+   * @param fb 
+   * @param tutorService 
+   * @param centroService 
+   * @param sharedService 
+   */
   public constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
@@ -28,7 +49,6 @@ export class ModificarProfesorComponent implements OnInit {
       this.idTutor = m['id']
       this.findTutorById()
     })
-
 
     this.formModificarTutor = this.fb.group({
       nombre: ['', [Validators.required,Validators.pattern("[A-Z a-z]{3,}")]],
@@ -41,11 +61,16 @@ export class ModificarProfesorComponent implements OnInit {
     })
 
   }
+  /**
+   * NgOInInit
+   */
   public ngOnInit(): void {
     this.listarCentros();
   }
-
-
+  /**
+   * metodo modificar profesor
+   * @param form 
+   */
   public modificarProfesor(form: FormGroup) {
     const profesor: Profesor = {
       "id": this.idTutor,
@@ -61,7 +86,9 @@ export class ModificarProfesorComponent implements OnInit {
         })
     }
   }
-
+  /**
+   * buscar tutor por id
+   */
   private findTutorById() {
     this.tutorService.findTutorByid(this.idTutor)
       .subscribe((response) => {
@@ -77,11 +104,12 @@ export class ModificarProfesorComponent implements OnInit {
         this.formModificarTutor.setValue(tutor)
       })
   }
-
+  /**
+   * Metodo listar centro
+   */
   private listarCentros() {
     this.centroService.listarCentros().subscribe((response) => {
       this.centros = response
     })
   }
-
 }

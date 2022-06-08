@@ -52,6 +52,7 @@ Route::post('forgot-password', [NewPasswordController::class, 'forgotPassword'])
 //Ruta para cambiar la contraseña 
 Route::post('reset-password', [NewPasswordController::class, 'reset']);
 Route::get('users', [AuthController::class, 'getUsers']);
+Route::put('eliminarFoto/{id}', [AuthController::class, 'eliminarFoto']);
 
 ################################### ADMIN  ###################################
 
@@ -134,6 +135,7 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::post('insertarTareas', 'store');
         Route::get('listarTareasPorIDAlumno/{id}', 'show');
         Route::post('listarTareasEntreFechas/{id}', 'listarTareasEntreFechas');
+        Route::post('listarTareasEntreFechasAlumno/{id}', 'listarTareasEntreFechasAlumno');
         Route::get('listarTareasPorFecha/{fecha}', 'listarTareasPorFecha');
         Route::get('listarTareasPorID/{id}', 'listarTareasPorID');
         Route::get('fichasemanal/{id}', 'fichasemanal');

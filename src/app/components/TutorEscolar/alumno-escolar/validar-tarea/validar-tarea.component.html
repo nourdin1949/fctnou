@@ -43,7 +43,7 @@
 </form>
 <br>
 <div class="row w-100">
-    <div *ngIf="tareas.length>0" class="container">
+    <div *ngIf="tareas.length>0" class="container-fluid">
         <b>Habilitar CheckBox Pulsa </b><i (click)="disabled=false" class="fa fa-pencil" aria-hidden="true"></i>
         <table *ngIf="tareas.length>0" class="table text-center table-striped">
             <thead class="table bg-color text-light">
@@ -57,12 +57,13 @@
                 </tr>
             </thead>
             <tbody id="tbody">
-                <tr *ngFor="let tarea of tareas, let id=index">
+                <tr *ngFor="let tarea of tareasTmp, let id=index">
                     <th>
                         <textarea class="cajas-texto form-control" 
                             name="descripcion{{id}}"
                             [disabled]="true"
-                            id="descripcion{{id}}" 
+                            id="descripcion{{id}}"
+                            autosize
                             [value]="tarea.descripcion"></textarea>
                     </th>
                         <input type="hidden" 
@@ -117,6 +118,7 @@
                             name="observaciones{{id}}"
                             [disabled]="true"
                             [value]="tarea.observaciones"
+                            autosize
                             id="observaciones{{id}}"></textarea>
                     </th>
                     <th>

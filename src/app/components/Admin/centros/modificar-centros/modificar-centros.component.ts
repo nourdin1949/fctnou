@@ -1,21 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Centro } from 'src/app/utils/interfaces/Interface';
-import { SharedService } from 'src/app/Shared/shared.service';
-import { customValidatorCIFCentro, customValidatorCIFCentroBYID } from 'src/app/utils/Validators/otrasValidaciones';
+import {  customValidatorCIFCentroBYID } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../centros.service';
+/**
+ * Modificar Centros component
+ */
 
 @Component({
   selector: 'app-modificar-centros',
   templateUrl: './modificar-centros.component.html',
   styleUrls: ['./modificar-centros.component.css']
 })
-export class ModificarCentrosComponent implements OnInit {
+export class ModificarCentrosComponent  {
+  /**
+   * Codigo centro
+   */
   public codigoCentro:number=0;
+  /**
+   * Centro objeto
+   */
   public centro:any={}
+  /**
+   * Formulario
+   */
   public formModificarCentro:FormGroup
-
+  /**
+   * Constructor
+   * @param activatedRoute 
+   * @param fb 
+   * @param router 
+   * @param centroService 
+   */
   public constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder, 
@@ -40,11 +57,11 @@ export class ModificarCentrosComponent implements OnInit {
       })
 
   }
-  public ngOnInit(): void {
-    
-  }
-
-  modificarCentro(form: FormGroup) {
+  /**
+   * Metodo modificar centro
+   * @param form 
+   */
+  public modificarCentro(form: FormGroup) {
     const centro: Centro = {
       "codigo": this.codigoCentro,
       "nombreCentro": form.value.nombre,
@@ -66,7 +83,9 @@ export class ModificarCentrosComponent implements OnInit {
       })
     }
   }
-
+  /**
+   * Metodo buscar centro by id
+   */  
   public findCentroById() {
     this.centroService.findCentroByid(this.codigoCentro)
       .subscribe((response) => {
@@ -85,5 +104,4 @@ export class ModificarCentrosComponent implements OnInit {
         this.formModificarCentro.setValue(centro)
       })
   }
-
 }

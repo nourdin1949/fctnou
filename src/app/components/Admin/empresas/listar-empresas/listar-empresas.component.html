@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let empresa of empresas">
+                <tr *ngFor="let empresa of empresasTmp">
                     <td>{{empresa.id}}</td>
                     <td>{{empresa.nombreEmpresa}}</td>
                     <td>{{empresa.nombreRepresentante}} Rodriguez</td>
@@ -53,6 +53,38 @@
 
             </tbody>
         </table>
+        <div *ngIf="empresas.length>0" class="container-fluid table-responsive d-flex justify-content-center">
+            <div class="row">
+                <div class="col-3 ">
+                    <mat-form-field class=" w-100" appearance="fill">
+                        <mat-select [(ngModel)]="pageSize" (selectionChange)="changeSize()">
+                            <mat-option [value]="sizes" *ngFor="let sizes of sizes">
+                                {{sizes}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="row mt-3 margin-0-auto">
+                    <div class="col-2" disabled (click)="firstPage()" >
+                        <i class="fa fa-step-backward"  aria-hidden="true"></i>
+                    </div>
+                    <div class="col-2" [ngClass]="{ 'bbva-th2-pagination-disabled': (currentPage - 1) <= 0 }"
+                        (click)="prevPage()">
+                        <i class="fa fa-backward" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ currentPage }} de {{ totalPages }}</p>
+                    </div>
+                    <div class="col-2" (click)="nextPage()">
+                        <i class="fa fa-forward" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-2" (click)="lastPage()">
+                        <i class="fa fa-step-forward " aria-hidden="true"></i>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
     </mat-tab>
     <mat-tab label="Insertar Empresa">
         <br>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ProfesorService } from '../../profesor/profesor.service';
@@ -10,41 +10,142 @@ import { CursosService } from '../../cursos/cursos.service';
 import { CentrosService } from '../../centros/centros.service';
 import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from 'src/app/utils/Validators/ValidacionesFicheross';
 import { MatSnackBar } from '@angular/material/snack-bar';
+/**
+ * The insertar datos component
+ */
 @Component({
   selector: 'app-insertar-datos',
   templateUrl: './insertar-datos.component.html',
   styleUrls: ['./insertar-datos.component.css']
 })
 export class InsertarDatosComponent {
-
+  /**
+   * Formulario
+   */
   public formcsv: FormGroup
+  /**
+   * Array buffer bob
+   */
   public arrayBuffer: any = []
-  public fileResponsable: File
-  public fileTutores: File
-  public fileCentros: File
-  public fileEmpresas: File
-  public fileAlumnos: File
-  public fileCursos: File
+  /**
+   * file responsable
+   */
+  public fileResponsable: any
+  /**
+   * file tutores
+   */
+  public fileTutores: any
+  /**
+   * file centros
+   */
+  public fileCentros: any
+  /**
+   * file empresas
+   */
+  public fileEmpresas: any
+  /**
+   * file alumnos
+   */
+  public fileAlumnos: any
+  /**
+   * file cursos
+   */
+  public fileCursos: any
+  /**
+   *  contador de inserciciones correctas empresa
+   */
   public empresaCorrecto: number = 0
+  /**
+   *  contador de inserciciones correctas responsable
+   */
   public responsableCorrecto: number = 0
+  /**
+   *  contador de inserciciones correctas tutores
+   */
   public tutoresCorrecto: number = 0
+  /**
+   *  contador de inserciciones correctas alumnos
+   */
   public alumnosCorrecto: number = 0
+  /**
+   *  contador de inserciciones correctas centros
+   */
   public centrosCorrecto: number = 0
+  /**
+   *  contador de inserciciones correctas cursos
+   */
   public cursosCorrecto: number = 0
+  /**
+   *  contador de inserciciones fallos empresa
+   */
   public empresaFallo: number = 0
+  /**
+  *  contador de inserciciones fallos responsables
+  */
   public responsableFallo: number = 0
+  /**
+  *  contador de inserciciones fallos tutores
+  */
   public tutoresFallo: number = 0
+  /**
+  *  contador de inserciciones fallos alumnos
+  */
   public alumnosFallo: number = 0
+  /**
+  *  contador de inserciciones fallos centros
+  */
   public centrosFallo: number = 0
+  /**
+  *  contador de inserciciones fallos cursos
+  */
   public cursosFallo: number = 0
+  /**
+  * input files con valor
+  */
   public inputsWithValue: number = 0
+  /**
+   * contador ficheros leidos
+   */
   public ficherosleidos: number = 0
+  /**
+   * Validad file centro
+   */
   public centroValid: boolean = false
+  /**
+   * Validad file empresa
+   */
   public empresaValid: boolean = false
+  /**
+   * Validad file curso
+   */
   public cursoValid: boolean = false
+  /**
+   * Validad file tutor
+   */
   public tutorValid: boolean = false
+  /**
+   * Validad file responsable
+   */
   public responsableValid: boolean = false
+  /**
+   * Validad file alumno
+   */
   public alumnoValid: boolean = false
+  /**
+   * val
+   */
+  @ViewChild("form") form :ElementRef
+  /**
+   * Constructor
+   * @param fb 
+   * @param responsableService 
+   * @param profesorService 
+   * @param alumnoService 
+   * @param empresaService 
+   * @param cursoService 
+   * @param centroService 
+   * @param _snackBar 
+   */
   public constructor(
     private fb: FormBuilder,
     private responsableService: ResponsableService,
@@ -59,14 +160,30 @@ export class InsertarDatosComponent {
       centros: ['', , ValidarFileCentros.filevalidator],
       cursos: ['', , ValidarFileCursos.filevalidator],
       alumnos: ['', , ValidarFileAlumnos.filevalidator],
-      resp: ['', ,ValidarFileResponsables.filevalidator],
-      tutores: ['', ,ValidarFileTutores.filevalidator],
+      resp: ['', , ValidarFileResponsables.filevalidator],
+      tutores: ['', , ValidarFileTutores.filevalidator],
 
     })
   }
+  /**
+   * metodo snack bar
+   */
   public openSnackBar() {
     this._snackBar.open("Insertando datos...", "close");
   }
+  /**
+   * Metodo open snack bar inserccion incorrecta
+   */
+  public opensnachbarInserccion() {
+    this._snackBar.open("Inserte mínimo 1 fichero","",{
+      duration: 4000,
+      panelClass: ["insertarminimo"]
+    });
+  }
+  /**
+   * Metodo insertar  files
+   * @param event 
+   */
   public insertarDatos(event) {
     this.restablecerContadores()
 
@@ -74,63 +191,85 @@ export class InsertarDatosComponent {
     for (let i = 0; i < event.target.length - 1; i++) {
       if (event.target[i].value != "") this.inputsWithValue++
     }
-    this.validarExtensiones()
-    console.log(this.formcsv.value.empresas._fileNames)
-    console.log(this.formcsv.value.empresas)
     // Comprobamos si el formulario es válido
-    if (!this.cursoValid && !this.empresaValid && !this.tutorValid &&
-      !this.centroValid && !this.alumnoValid && !this.responsableValid) {
-      if (this.fileEmpresas != undefined) {
-
-        this.uploadDocument(this.fileEmpresas)
+    if (this.inputsWithValue>0) {
+     
+      if (this.fileEmpresas != undefined && this.formcsv.value.empresas._fileNames== "empresas.csv") {
+        this.uploadDocument(this.formcsv.value.empresas._files[0])
       }
-      if (this.fileCentros != undefined) {
-        this.uploadDocument(this.fileCentros)
+      if (this.fileCentros != undefined && this.formcsv.value.centros._fileNames =="centros.csv" ) {
+        this.uploadDocument(this.formcsv.value.centros._files[0])
       }
-      if (this.fileTutores != undefined) {
-        this.uploadDocument(this.fileTutores)
+      if (this.fileCursos != undefined && this.formcsv.value.cursos._fileNames=="cursos.csv") {
+        this.uploadDocument(this.formcsv.value.cursos._files[0])
       }
-      if (this.fileCursos != undefined) {
-        this.uploadDocument(this.fileCursos)
+      if (this.fileTutores != undefined && this.formcsv.value.tutores._fileNames=="tutores.csv"  ) {
+        this.uploadDocument(this.formcsv.value.tutores._files[0])
       }
-      if (this.fileResponsable != undefined) {
-        this.uploadDocument(this.fileResponsable)
+      if (this.fileResponsable != undefined && this.formcsv.value.resp._fileNames=="responsables.csv") {
+        this.uploadDocument(this.formcsv.value.resp._files[0])
       }
-      if (this.fileAlumnos != undefined) {
-        this.uploadDocument(this.fileAlumnos)
+      if (this.fileAlumnos != undefined && this.formcsv.value.alumnos._fileNames =="alumnos.csv" ) {
+        this.uploadDocument(this.formcsv.value.alumnos._files[0])
       }
+      
+    }else{
+      this.opensnachbarInserccion()
     }
   }
+  /**
+   * Metodo guardar file responsables
+   * @param event 
+   */
   public filechangedResponsables(event: any) {
     this.fileResponsable = event.target.files[0]
   }
-
+  /**
+   * Metodo guardar file tutores
+   * @param event 
+   */
   public filechangedTutores(event: any) {
     this.fileTutores = event.target.files[0]
   }
-
+  /**
+   * Metodo guardar file alumnos
+   * @param event 
+   */
   public filechangedAlumnos(event: any) {
     this.fileAlumnos = event.target.files[0]
   }
-
+  /**
+   * Metodo guardar file centros
+   * @param event 
+   */
   public filechangedCentros(event: any) {
     this.fileCentros = event.target.files[0]
+    console.log()
+console.log(this.fileCentros)
   }
-
+  /**
+   * Metodo guardar file empresas
+   * @param event 
+   */
   public filechangedEmpresas(event: any) {
     this.fileEmpresas = event.target.files[0]
   }
-
+  /**
+   * Metodo guardar file cursos
+   * @param event 
+   */
   public filechangedCursos(event: any) {
     this.fileCursos = event.target.files[0]
   }
-
+  /**
+   * Metodo para leer file
+   * @param file 
+   */
   public uploadDocument(file) {
-    
+
     let filename = file.name.substring(0, file.name.length - 4);
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file);
-    console.log(fileReader)
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result
       const data = new Uint8Array(this.arrayBuffer);
@@ -142,7 +281,6 @@ export class InsertarDatosComponent {
       var workbook = XLSX.read(bstr, { type: "binary" });
       var first_sheet_name = workbook.SheetNames[0];
       var worksheet = workbook.Sheets[first_sheet_name];
-      console.log(XLSX.utils.sheet_to_json(worksheet, { raw: true }));
       var arraylist = XLSX.utils.sheet_to_json(worksheet, { raw: true });
 
       switch (filename) {
@@ -168,7 +306,10 @@ export class InsertarDatosComponent {
       this.openSnackBar()
     }
   }
-
+  /**
+   * Metodo insertar responsable csv
+   * @param responsable 
+   */
   public insertarResponsablesCSV(responsable) {
 
     responsable.forEach(element => {
@@ -177,25 +318,22 @@ export class InsertarDatosComponent {
         .subscribe(
           () => {
             this.responsableCorrecto++
-            console.log("correcto res")
           },
           (res) => {
             this.responsableFallo++
-            console.log("fallo res", res)
           })
     });
-
     let respint = setInterval(() => {
-      console.log("resp:" + responsable.length, "c" + this.responsableCorrecto, "f" + this.responsableFallo)
-
       if (responsable.length == (this.responsableCorrecto + this.responsableFallo) || responsable.length == 0) {
         this.ficherosleidos++
-
         this.mostrarModal()
         clearInterval(respint)
       }
     }, 3000);
   }
+  /**
+   * metodo insertar tutoress csv
+   */
   public insertarTutoresCSV(tutores) {
 
     tutores.forEach(element => {
@@ -222,7 +360,10 @@ export class InsertarDatosComponent {
       }
     }, 1000);
   }
-
+  /**
+   * Metodo insertar centros csv
+   * @param centros 
+   */
   public insertarCentrosCSV(centros) {
     centros.forEach(element => {
       this.centroService.insertarCentro(element)
@@ -249,7 +390,10 @@ export class InsertarDatosComponent {
       }
     }, 1000);
   }
-
+  /**
+   * Metodo de insertar emoresa csv
+   * @param empresa 
+   */
   public insertarEmpresasCSV(empresa) {
 
     empresa.forEach(element => {
@@ -275,7 +419,10 @@ export class InsertarDatosComponent {
       }
     }, 1000);
   }
-
+  /**
+   * Metodo para insertar alumnos
+   * @param alumnos 
+   */
   public insertarAlumnosCSV(alumnos) {
     alumnos.forEach(element => {
       this.alumnoService.insertarAlumnos(element)
@@ -285,12 +432,9 @@ export class InsertarDatosComponent {
           },
           (res) => {
             this.alumnosFallo++
-            console.log(res,"alumno")
-            
           })
     });
     let alumnointerval = setInterval(() => {
-      console.log("alumn:" + alumnos.length, "c" + this.alumnosCorrecto, "f" + this.alumnosFallo)
 
       if (alumnos.length == (this.alumnosCorrecto + this.alumnosFallo) || alumnos.length == 0) {
         this.ficherosleidos++
@@ -300,6 +444,10 @@ export class InsertarDatosComponent {
       }
     }, 1000);
   }
+  /**
+   * Metodo insertar curso csv
+   * @param cursos 
+   */
   public insertarCursosCSV(cursos) {
     cursos.forEach((element) => {
       this.cursoService.insertarCurso(element)
@@ -312,7 +460,6 @@ export class InsertarDatosComponent {
           })
     });
     let cursointe = setInterval(() => {
-      console.log("curs:" + cursos.length, "c" + this.cursosCorrecto, "f" + this.cursosFallo)
       let total = this.cursosCorrecto + this.cursosFallo
       if (cursos.length == (total) || cursos.length == 0) {
         this.ficherosleidos++
@@ -322,7 +469,9 @@ export class InsertarDatosComponent {
       }
     }, 1000);
   }
-
+  /**
+   * Mostrar mmodal metodo
+   */
   public mostrarModal() {
     if (this.ficherosleidos == this.inputsWithValue) {
       this._snackBar.dismiss();
@@ -331,7 +480,9 @@ export class InsertarDatosComponent {
       (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
     }
   }
-
+  /**
+   * Metodo reseteo de valores
+   */
   public restablecerContadores() {
     this.empresaCorrecto = 0
     this.responsableCorrecto = 0
@@ -347,35 +498,14 @@ export class InsertarDatosComponent {
     this.cursosFallo = 0
     this.inputsWithValue = 0
     this.ficherosleidos = 0
-    this.empresaValid = false
-    this.centroValid = false
-    this.cursoValid = false
-    this.responsableValid = false
-    this.tutorValid = false
-    this.alumnoValid = false
   }
-  public validarExtensiones() {
-    if (this.fileEmpresas != undefined && this.fileEmpresas.name != "empresas.csv") {
-      this.empresaValid = true
+  /**
+   * Metodo vaciar inputs file
+   */
+  public emptyInput() {
+    for (let i = 0; i < this.form.nativeElement.length - 1; i++) {
+      this.form.nativeElement[i].value=""
     }
-    if (this.fileCentros != undefined && this.fileCentros.name.substring(this.fileCentros.name.length - 4,) != ".csv") {
-      this.centroValid = true
-    }
-    if (this.fileCursos != undefined && this.fileCursos.name.substring(this.fileCursos.name.length - 4,) != ".csv") {
-      this.cursoValid = true
-    }
-    if (this.fileTutores != undefined && this.fileTutores.name.substring(this.fileTutores.name.length - 4,) != ".csv") {
-      this.tutorValid = true
-    }
-    if (this.fileResponsable != undefined && this.fileResponsable.name.substring(this.fileResponsable.name.length - 4,) != ".csv") {
-      this.responsableValid = true
-    }
-    if (this.fileAlumnos != undefined && this.fileAlumnos.name.substring(this.fileAlumnos.name.length - 4,) != ".csv") {
-      this.alumnoValid = true
-    }
-  }
-
-  public emptyInput(){
     this.formcsv.controls['empresas'].setValue('')
     this.formcsv.controls['centros'].setValue('')
     this.formcsv.controls['tutores'].setValue('')

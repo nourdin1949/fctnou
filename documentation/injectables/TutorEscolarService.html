@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The tutor escolar service</p>
+
+            </p>
 
 
 
@@ -128,12 +135,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -193,20 +202,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:25</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>name</p>
+                    <div class="io-description"><p>Cabecera de las peticiones</p>
 </div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>{ headers: { Authorization: string; }; }</code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -234,18 +248,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo listar alumnos del tutor</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -273,14 +294,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:48</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo validar tareas alumno</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -347,10 +370,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/TutorEscolar/tutor-escolar.service.ts:15</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Url de la api</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -363,21 +392,27 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { environment } from &#x27;src/environments/environment.prod&#x27;;
-
+import { environment } from &#x27;src/environments/environment&#x27;;
+/**
+ * The tutor escolar service
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class TutorEscolarService {
-  
-  private url&#x3D;environment.url;
-
-  constructor(private http: HttpClient) {
-    
-  }
   /**
-     * name
-     */
+   * Url de la api
+   */
+  private url&#x3D;environment.url;
+  /**
+   * Constructor
+   * @param http 
+   */
+  constructor(private http: HttpClient) {}
+  /**
+   * Cabecera de las peticiones
+   * @returns 
+   */
   public getHeaders() {
     const headers &#x3D; {
       headers: {
@@ -386,13 +421,21 @@ export class TutorEscolarService {
     }
     return headers
   }
-
+  /**
+   * Metodo listar alumnos del tutor
+   * @returns 
+   */
   public listarAlumnosDelTutor():Observable&lt;any[]&gt; {
     let idTutor &#x3D; sessionStorage.getItem(&#x27;id&#x27;);
     
    return this.http.get&lt;any[]&gt;(&#x60;${this.url}/alumosTutor/${idTutor}&#x60;, this.getHeaders())
     
   }
+  /**
+   * Metodo validar tareas alumno
+   * @param idTarea 
+   * @returns 
+   */
   public validarTareaTutor(idTarea:number){
     return this.http.put&lt;any[]&gt;(&#x60;${this.url}/validaTareaTutor/${idTarea}&#x60;,&quot;&quot;, this.getHeaders())
   }

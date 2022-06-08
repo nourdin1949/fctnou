@@ -4,6 +4,7 @@ td ul li a {
 
 .hideAnexo0 {
     display: none;
+ 
 }
 
 .hideAnexo1 {
@@ -40,12 +41,20 @@ p {
 
 #anexo0pdf {
     min-height: 300vh;
+    position: relative;
 }
 
 #anexo1pdf {
     min-height: 300vh;
+    position: relative;
 }
-
+@media screen and (max-width:500px) {
+    #anexo1pdf {
+        initial-value: 0.2;
+        position: relative;
+      
+        }
+}
 mat-icon {
     cursor: pointer;
 }

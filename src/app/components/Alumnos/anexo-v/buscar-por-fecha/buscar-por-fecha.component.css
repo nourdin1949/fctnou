@@ -17,3 +17,18 @@ span {
 mat-icon {
     cursor: pointer;
 }
+.imagen {
+    position: relative;
+    top: 0in;
+    left: 14.01in;
+    width: 1.04in;
+    height: 0.83in
+}
+
+.imagenJunta {
+    left: -0.8in;
+    top: 0.1in;
+    position: relative;
+    width: 2.33in;
+    height: 0.65in
+}

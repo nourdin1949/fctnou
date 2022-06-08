@@ -30,6 +30,10 @@
             class="form-text alert pl-3  alert-danger ">
             Usuario y contraseña incorrectos
         </small>
+        <small  *ngIf="cuentaDesactivada"
+            class="form-text alert pl-3  alert-danger ">
+            Cuenta desactivada
+        </small>
 
         <small *ngIf=" emailVerificado"
             class="form-text alert pl-3 alert-danger ">

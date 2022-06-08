@@ -1,134 +1,435 @@
+/**
+ * User
+ */
 export interface User {
-    id:                number;
-    username:          string;
-    email:             string;
-    perfil:            string;
-    activo:            number;
+    /**
+    * id
+    */
+    id: number;
+    /**
+     * username
+     */
+    username: string;
+    /**
+     * email
+     */
+    email: string;
+    /**
+     * perfil
+     */
+    perfil: string;
+    /**
+     * activo
+     */
+    activo: number;
+    /**
+     * email verificado fecha
+     */
     email_verified_at: string;
-    foto:              number;
+    /**
+ 
+     * campo boolen 
+     */
+    foto: number;
 }
+/**
+ * RegisterUser
+ */
 export interface RegisterUser {
-    username:         string;
-    password:         string;
-    email:            string;
+    /**
+     * username
+     */
+    username: string;
+    /**
+     * password
+     */
+    password: string;
+    /**
+     * email
+     */
+    email: string;
+    /**
+     * confirmacion de password
+     */
     confirm_password: string;
-    activo:           string;
-    perfil:           string;
+    /**
+     * activo
+     */
+    activo: string;
+    /**
+     * rol/perfil
+     */
+    perfil: string;
 }
-
+/**
+ * Empresa
+ */
 export interface Empresa {
-    id:                  number;
-    nombreEmpresa:       string;
-    provincia:           string;
-    localidad:           string;
-    calle:               string;
-    cp:                  string;
-    cif:                 string;
-    telefono:            string;
-    email:               string;
-    dniRepresentante:    string;
+    /**
+     * id empresa
+     */
+    id: number;
+    /**
+     * nombre empresa
+     */
+    nombreEmpresa: string;
+    /**
+     * provincia de la empresa
+     */
+    provincia: string;
+    /**
+     * localidad de la empresa
+     */
+    localidad: string;
+    /**
+     * calle de la empresa
+     */
+    calle: string;
+    /**
+     * codigo postal de la empresa
+     */
+    cp: string;
+    /**
+     * cif de la empresa
+     */
+    cif: string;
+    /**
+     * telefono de la empresa
+     */
+    telefono: string;
+    /**
+     * email de la empresa
+     */
+    email: string;
+    /**
+     * dni representante de la empresa
+     */
+    dniRepresentante: string;
+    /**
+     * nombre representante de la empresa
+     */
     nombreRepresentante: string;
 }
-
+/**
+ * Centro
+ */
 export interface Centro {
-    codigo:         number;
-    nombreCentro:   string;
-    provincia:      string;
-    localidad:      string;
-    calle:          string;
-    cp:             string;
-    cif:            string;
-    telefono:       number;
-    email:          string;
+    /**
+     * codido centro
+     */
+    codigo: number;
+    /**
+     * nombre centro
+     */
+    nombreCentro: string;
+    /**
+     * provincia
+     */
+    provincia: string;
+    /**
+     * localidad
+     */
+    localidad: string;
+    /**
+     * calle del centro
+     */
+    calle: string;
+    /**
+     * codigo psotal del centro
+     */
+    cp: string;
+    /**
+     * cif del centro
+     */
+    cif: string;
+    /**
+     * telefono del centro
+     */
+    telefono: number;
+    /**
+     * email del centro
+     */
+    email: string;
+    /**
+     * nombre director
+     */
     nombreDirector: string;
-    
 }
-
+/**
+ * Profesor
+ */
 export interface Profesor {
-    id:           number;
-    nombreTutor:  string;
-    dniTutor:     string;
-    email:        string;
+    /**
+     * id profesor
+     */
+    id: number;
+    /**
+     * nombre del tutor
+     */
+    nombreTutor: string;
+    /**
+     * dni tutor
+     */
+    dniTutor: string;
+    /**
+     * email tutor
+     */
+    email: string;
+    /***
+     * codigo centro
+     */
     codigoCentro: number;
 
 }
-
+/**
+ * Curso
+ */
 export interface Curso {
-    id:                 number;
-    codigoCiclo:        string;
+    /**
+     * id 
+     */
+    id: number;
+    /**
+     * codigo ciclo
+     */
+    codigoCiclo: string;
+    /**
+     * familia profesional
+     */
     familiaProfesional: string;
-    cicloFormativo:     string;
-    cursoAcademico:     string;
-    nHoras:             number;
-    tutor_id:           number;
+    /**
+     * ciclo formativo del curso
+     */
+    cicloFormativo: string;
+    /**
+     * Año academico
+     */
+    cursoAcademico: string;
+    /**
+     * Numero horas practicas del curso
+     */
+    nHoras: number;
+    /**
+     * id del tutor
+     */
+    tutor_id: number;
 
 }
-
+/**
+ * Responsable
+ */
 export interface Responsable {
-    id:                number;
+    /**
+     * id 
+     */
+    id: number;
+    /**
+     * nombre responsable
+     */
     nombreResponsable: string;
-    dniResponsable:    string;
-    email:             string;
-    empresa_id:        number;
-
+    /**
+     * dni responsable
+     */
+    dniResponsable: string;
+    /**
+     * email centro
+     */
+    email: string;
+    /**
+     * Id empresa
+     */
+    empresa_id: number;
 }
-
+/**
+ * Alumno
+ */
 export interface Alumno {
-    id:             number;
-    nombreAlumno:   string;
-    dniAlumno:      string;
-    curso_id:       number;
-    provincia:      string;
-    localidad:      string;
-    calle:          string;
-    cp:             number;
-    email:          string;
-    matriculado:    number;
-
+    /**
+     * id
+     */
+    id: number;
+    /**
+     * Nombre alumno
+     */
+    nombreAlumno: string;
+    /**
+     * dni alumno
+     */
+    dniAlumno: string;
+    /**
+     * id del curso
+     */
+    curso_id: number;
+    /**
+     * provincia 
+     */
+    provincia: string;
+    /**
+     * localidad
+     */
+    localidad: string;
+    /**
+     * calle
+     */
+    calle: string;
+    /**
+     * cp
+     */
+    cp: number;
+    /**
+     * email
+     */
+    email: string;
+    /**
+     * matriculado
+     */
+    matriculado: number;
 }
-
-export class FCTAlumno {
-    id:                number;
-    alumno_id:         number;
-    empresa_id:        number;
-    responsable_id:    number;
-    tutor_id:          number;
-    codigoCentro:      number;
-    nombreAlumno:      string;
-    nombreEmpresa:     string;
-    nombreResponsable: string;
-    nombreTutor:       string;
-    codigoCiclo:       string;
-
-}
-
-export interface FCTAlumnoLista {
-    id:             number;
-    alumno_id:      number;
-    empresa_id:     number;
+/**
+ * FCTAlumno
+ */
+export interface FCTAlumno {
+    /**
+     * id
+     */
+    id: number;
+    /**
+     * id alumno
+     */
+    alumno_id: number;
+    /**
+     * id empresa
+     */
+    empresa_id: number;
+    /**
+     * id responsable
+     */
     responsable_id: number;
+    /**
+     * id tutor
+     */
+    tutor_id: number;
+    /**
+     * codigo centro
+     */
+    codigoCentro: number;
+    /**
+     * nombre alumno
+     */
+    nombreAlumno: string;
+    /**
+     * nombre empresa
+     */
+    nombreEmpresa: string;
+    /**
+     * nombre responsable
+     */
+    nombreResponsable: string;
+    /**
+     * nombre tutor
+     */
+    nombreTutor: string;
+    /**
+     * codigo ciclo
+     */
+    codigoCiclo: string;
+}
+/**
+ * FCTAlumnoLista
+ */
+export interface FCTAlumnoLista {
+    /**
+     * id
+     */
+    id:             number;
+    /**
+     * id alumno
+     */
+    alumno_id:      number;
+    /**
+     * id empresa
+     */
+    empresa_id:     number;
+    /**
+     * id responsable
+     */
+    responsable_id: number;
+    /**
+     * id tutor
+     */
     tutor_id:       number;
+    /**
+     * codigo centro
+     */
     codigoCentro:   number;
 }
-
+/**
+ * Tarea
+ */
 export interface Tarea {
-    id:                  number;
-    alumno_id:           string;
-    descripcion:         string;
-    orientacion:         string;
-    tiempo:              string;
-    fecha:               Date;
-    dificultad:          string;
-    observaciones:       string;
+    /**
+     * id
+     */
+    id: number;
+    /**
+     * id alumno
+     */
+    alumno_id: string;
+    /**
+     * descripcion
+     */
+    descripcion: string;
+    /**
+     * orientacion
+     */
+    orientacion: string;
+    /**
+     * tiempo
+     */
+    tiempo: string;
+    /**
+     * fecha
+     */
+    fecha: Date;
+    /**
+     * dificultad
+     */
+    dificultad: string;
+    /**
+     * Observaciones
+     */
+    observaciones: string;
+    /**
+     * validacion responsable
+     */
     validadoResponsable: number;
-    validadoTutor:       number;
+    /**
+     * validacion tutor
+     */
+    validadoTutor: number;
 }
-
-
+/**
+ * Chat
+ */
 export interface Chat {
-    id:         number;
-    emisor:     string;
-    mensaje:    string;
-    receptor:   string;
-    fecha:      Date;
+    /**
+     * id
+     */
+    id: number;
+    /**
+     * emisor
+     */
+    emisor: string;
+    /**
+     * mensaje
+     */
+    mensaje: string;
+    /**
+     * receptor
+     */
+    receptor: string;
+    /**
+     * fecha
+     */
+    fecha: Date;
 }

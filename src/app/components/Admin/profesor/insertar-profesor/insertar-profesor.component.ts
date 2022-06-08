@@ -5,15 +5,30 @@ import { SharedService } from 'src/app/Shared/shared.service';
 import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../../centros/centros.service';
 import { ProfesorService } from '../profesor.service';
-
+/**
+ * The insetar profesor component
+ */
 @Component({
   selector: 'app-insertar-profesor',
   templateUrl: './insertar-profesor.component.html',
   styleUrls: ['./insertar-profesor.component.css']
 })
 export class InsertarProfesorComponent implements OnInit {
+  /**
+   * Matriz de centros
+   */
   public centros: Centro[]=[]
+  /**
+   * Formulario
+   */
   public forminsertarProfesor: FormGroup;
+  /**
+   * Constructor
+   * @param fb 
+   * @param profesorService 
+   * @param centroService 
+   * @param sharedService 
+   */
   constructor(
     private fb: FormBuilder, 
     private profesorService: ProfesorService, 
@@ -29,10 +44,16 @@ export class InsertarProfesorComponent implements OnInit {
       [customValidatorEmail.customValidEmail(sharedService)], 'blur' ]
     })
   }
-  ngOnInit(): void {
+  /**
+   * NgOnInit
+   */
+  public ngOnInit(): void {
     this.listarCentros()
   }
-  insertarProfesor(form: FormGroup) {
+  /**
+   * metodo insertar profesor
+   */
+  public insertarProfesor(form: FormGroup) {
     const profesor: Profesor = {
       "id":0,
       "nombreTutor": this.forminsertarProfesor.value.nombre, 
@@ -53,7 +74,10 @@ export class InsertarProfesorComponent implements OnInit {
       );
     }
   }
-  listarCentros(){
+  /**
+   * Metodo listar centros
+   */
+  public listarCentros(){
     this.centroService.listarCentros().subscribe((response)=>{
       this.centros= response
     })

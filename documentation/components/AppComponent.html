@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component App</p>
+
+    </p>
 
 
 
@@ -115,33 +122,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#title" >title</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
 
     <section>
     <h3 id="constructor">Constructor</h3>
@@ -154,10 +134,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/app.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/app.component.ts:10</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -167,60 +153,30 @@
 
 
 
-    <section>
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="title"></a>
-                    <span class="name">
-                        <span ><b>title</b></span>
-                        <a href="#title"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;FCTFRONT&#x27;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/app.component.ts:9</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-
+/**
+ * Component App
+ */
 @Component({
   selector: &#x27;app-root&#x27;,
   templateUrl: &#x27;./app.component.html&#x27;,
   styleUrls: [&#x27;./app.component.css&#x27;]
 })
 export class AppComponent {
-  title &#x3D; &#x27;FCTFRONT&#x27;;
-
-  constructor(){
-    
+  /**
+   * Constructor
+   */
+  constructor() {
+      if (localStorage.getItem(&quot;modo&quot;) &#x3D;&#x3D; &quot;oscuro&quot;) {
+        document.getElementsByTagName(&quot;body&quot;)[0].style.backgroundColor &#x3D; &quot;gray&quot;;
+      } else {
+        document.getElementsByTagName(&quot;body&quot;)[0].style.backgroundColor &#x3D; &quot;&quot;;
+      }
   }
 }
 </code></pre>

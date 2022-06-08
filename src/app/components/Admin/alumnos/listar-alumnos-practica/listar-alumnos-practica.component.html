@@ -10,7 +10,7 @@
         <h2 class="text-center">¡ASIGNA PRÁCTICA A ALUMNOS!</h2>
       </b>
         </div>
-        <table *ngIf="alumnosfct.length>0" class="pdf  text-center table table-striped">
+        <table *ngIf="alumnosfct.length>0" class="pdf  border text-center table table-striped">
             <thead class="table bg-color text-center text-light">
                 <tr>
                     <th>Alumno</th>
@@ -109,7 +109,7 @@
                             <mat-label>Empresa</mat-label>
                             <mat-select value="{{alumnofct.empresa_id}}" id="empresa" (selectionChange)="updateSelectResponsable($event)">
                                 <mat-option value="{{empresa.id}}" *ngFor="let empresa of empresas">
-                                    {{empresa.nombreEmpresa}}{{alumnofct.empresa_id}}{{empresa.id}}
+                                    {{empresa.nombreEmpresa}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>

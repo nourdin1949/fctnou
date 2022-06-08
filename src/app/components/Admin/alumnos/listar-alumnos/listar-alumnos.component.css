@@ -17,3 +17,6 @@ mat-icon {
     min-height: 100%;
     height: auto;
 }
+i{
+    cursor: pointer;
+}

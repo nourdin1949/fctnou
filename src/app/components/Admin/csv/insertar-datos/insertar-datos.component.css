@@ -1,6 +1,6 @@
 .derecha {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .derecha:hover {
@@ -10,4 +10,9 @@
 mat-icon {
     float: right;
     cursor: pointer
+}
+
+::ng-deep .insertarminimo{
+    background-color:rgb(175, 38, 38);
+    color: rgb(0, 0, 0);
 }

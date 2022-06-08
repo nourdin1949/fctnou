@@ -22,7 +22,7 @@ class CreateAlumnosTable extends Migration
             $table->string('provincia', 50);
             $table->string('localidad', 50);
             $table->string('calle', 100);
-            $table->smallInteger('cp');
+            $table->integer('cp');
             $table->string('email', 250)->unique();
             $table->boolean('matriculado')->default(1);
             $table->timestamps();

@@ -64,6 +64,13 @@
             </p>
 
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Guard profesor</p>
+
+                </p>
 
 
 
@@ -107,12 +114,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/auth/authentication-profesor.guard.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/auth/authentication-profesor.guard.ts:11</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -170,14 +179,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="13"
-                            class="link-to-prism">src/app/auth/authentication-profesor.guard.ts:13</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/app/auth/authentication-profesor.guard.ts:23</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>CanActivate</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -240,14 +251,24 @@
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from &#x27;@angular/router&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { SharedService } from &#x27;../Shared/shared.service&#x27;;
-
+/**
+ * Guard profesor
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AuthenticationProfesorGuard implements CanActivate {
-  constructor (private servShared: SharedService){
-
-  }
+  /**
+   * Constructor
+   * @param servShared 
+   */
+  constructor (private servShared: SharedService){}
+  /**
+   * CanActivate
+   * @param route 
+   * @param state 
+   * @returns 
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable&lt;boolean | UrlTree&gt; | Promise&lt;boolean | UrlTree&gt; | boolean | UrlTree {

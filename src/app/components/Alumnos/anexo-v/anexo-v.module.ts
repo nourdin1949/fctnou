@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
-
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 @NgModule({
   declarations: [
     InsertarAnexoVComponent,
@@ -35,7 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     ReactiveFormsModule, 
     MatPaginatorModule, 
-    MatSelectModule
+    MatSelectModule,
+    TextareaAutosizeModule 
   ],
   exports: [
     InsertarAnexoVComponent

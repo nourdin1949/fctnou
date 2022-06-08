@@ -24,6 +24,8 @@
 <div class="row w-100">
     <div class="col-12  table-responsive" id="pdfdata">
         <div class="hide">
+            <img class="" src="../../../../../assets/img/fctnou.png" class="imagen" alt="fctnou.png">
+            <img class="" src="../../../../../assets/pdf/ri_2.png" class="imagenJunta" alt="JuntaExtremadura.png">
             <div class="text-center"><strong>FORMACIÓN EN CENTROS DE TRABAJO</strong><br>
                 <small>“HOJA DEL/DE LA ALUMNO/A”</small>
             </div>
@@ -38,7 +40,7 @@
             </p>
 
         </div><br>
-        <table class="table table-striped">
+        <table class="table border text-center table-striped">
 
             <thead class="table bg-color text-light">
                 <tr>
@@ -60,7 +62,7 @@
                 </tr>
                 <tr *ngFor="let tarea of tareasTmp , let id =index">
                     <th>
-                        <textarea class="form-control" name="descripcion0" id="descripcion0" cols="20" rows="2" disabled [value]="tarea.descripcion"></textarea>
+                        <textarea class="form-control" autosize name="descripcion0" id="descripcion0" cols="20" disabled [value]="tarea.descripcion"></textarea>
                     </th>
                     <th>
                         <input type="text" [value]="tarea.orientacion" class="form-control" name="orientacion0" disabled id="orientacion0">
@@ -78,14 +80,14 @@
                     </th>
                     <th>
                         <div class="custom-control custom-switch">
-                            <input disabled type="checkbox" class="custom-control-input" [checked]="tarea.validadoTutor==1" name="tutor-ecolar" id="tutor">
+                            <input disabled type="checkbox" class="custom-control-input" [checked]="tarea.validadoResponsable==1" name="tutor-ecolar" id="tutor">
                             <label class="custom-control-label" for="tutor">
                             </label>
                         </div>
                     </th>
                     <th>
                         <div class="custom-control custom-switch">
-                            <input disabled type="checkbox" class="custom-control-input" [checked]="tarea.validadoResponsable==1" name="tutor-empresa" id="responsable">
+                            <input disabled type="checkbox" class="custom-control-input" [checked]="tarea.validadoTutor==1" name="tutor-empresa" id="responsable">
                             <label class="custom-control-label" for="responsable"></label>
                         </div>
                     </th>

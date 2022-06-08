@@ -19,7 +19,7 @@ class CreateCentrosTable extends Migration
             $table->string('provincia',50);
             $table->string('localidad',50);
             $table->string('calle',100);
-            $table->smallInteger('cp');
+            $table->integer('cp');
             $table->string('cif',10)->unique();
             $table->string('telefono'); 
             $table->string('email',250);

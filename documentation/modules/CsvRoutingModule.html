@@ -79,8 +79,9 @@ import { CsvComponent } from &#x27;./csv.component&#x27;;
 import { InsertarDatosComponent } from &#x27;./insertar-datos/insertar-datos.component&#x27;;
 
 const routes: Routes &#x3D; [
-  { path: &#x27;&#x27;, component: CsvComponent, pathMatch:&#x27;full&#x27; },
+  { path: &#x27;csv&#x27;, component: CsvComponent, pathMatch:&#x27;full&#x27; },
   { path: &#x27;**&#x27;, redirectTo: &quot;error&quot; },
+  { path: &#x27;&#x27;, redirectTo: &quot;csv&quot; },
  
 ];
 @NgModule({

@@ -1,8 +1,15 @@
 import { AbstractControl } from "@angular/forms";
 import { of } from "rxjs";
 
-// Validar fichero empresa
+/**
+ * Validar fichero empresa
+ */
 export class ValidarFileEmpresa{
+    /**
+     * metodo para validar file empresa
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value;
         if( value!="" &&  value._fileNames!="empresas.csv"){
@@ -11,8 +18,15 @@ export class ValidarFileEmpresa{
         return of(null)
     }
 }
-// Validar fichero centro
+/**
+ * Validar fichero centro
+ */
 export class ValidarFileCentros{
+    /**
+     * metodo para validar file centro
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value;
         if(value!="" &&  value._fileNames!="centros.csv"){
@@ -21,8 +35,15 @@ export class ValidarFileCentros{
         return of(null)
     }
 }
-// Validar fichero curso
+/**
+ * Validar fichero curso
+ */
 export class ValidarFileCursos{
+    /**
+     * metodo para validar file curso
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value;
         if(value!="" &&  value._fileNames!="cursos.csv"){
@@ -31,8 +52,15 @@ export class ValidarFileCursos{
         return of(null)
     }
 }
-// Validar fichero alumno
+/**
+ * Validar fichero alumno
+ */
 export class ValidarFileAlumnos{
+    /**
+     * metodo para validar file alumno
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value;
         if(value!="" &&  value._fileNames!="alumnos.csv"){
@@ -41,8 +69,15 @@ export class ValidarFileAlumnos{
         return of(null)
     }
 }
-// Validar fichero responsable
+/**
+ * Validar fichero responsable
+ */
 export class ValidarFileResponsables{
+    /**
+     * metodo validar file responsable
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value;
         if(value!="" &&  value._fileNames!="responsables.csv"){
@@ -51,8 +86,15 @@ export class ValidarFileResponsables{
         return of(null)
     }
 }
-// Validar fichero tutor
+/**
+ * Validar fichero tutor
+ */
 export class ValidarFileTutores{
+    /**
+     * metodo validar file tutor
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value;
         if(value!="" && value._fileNames!="tutores.csv"){
@@ -61,12 +103,17 @@ export class ValidarFileTutores{
         return of(null)
     }
 }
-// Validar fichero imagen perfil
+/**
+ * Validar fichero imagen perfil
+ */
 export class ValidarFileIMGPerfil{
+    /**
+     * Validar fichero imagen perfil
+     * @param control 
+     * @returns 
+     */
     static  filevalidator(control:AbstractControl){
         const value =control.value  ;
-        console.log(value)
-        
         if(value!=""){
             let extension=value._fileNames.substring(value._fileNames.length-4 , ).toLowerCase() ;
             if(extension!=".png" && extension!=".jpg"  ){

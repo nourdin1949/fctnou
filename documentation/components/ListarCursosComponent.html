@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The listar cursos component</p>
+
+    </p>
 
 
     <p class="comment">
@@ -147,7 +154,19 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#cursosTmp" >cursosTmp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#idCurso" >idCurso</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sizes" >sizes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#totalElements" >totalElements</a>
                             </li>
                         </ul>
                     </td>
@@ -167,7 +186,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#changeSize" >changeSize</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#eliminarCurso" >eliminarCurso</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#firstPage" >firstPage</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -175,7 +202,15 @@
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#lastPage" >lastPage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#listarCursos" >listarCursos</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#nextPage" >nextPage</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -185,10 +220,34 @@
                                     <span class="modifier">Public</span>
                                 <a href="#openSnackBar" >openSnackBar</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#prevPage" >prevPage</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentPage" >currentPage</a>
+                            </li>
+                            <li>
+                                <a href="#pageSize" >pageSize</a>
+                            </li>
+                            <li>
+                                <a href="#totalPages" >totalPages</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -209,12 +268,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:59</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -271,7 +332,105 @@
         </table>
 </section>
 
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentPage"></a>
+                        <b>currentPage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:45</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Pagina actual</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pageSize"></a>
+                        <b>pageSize</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>5</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:55</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Numero de filas a mostrar en la tabla</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="totalPages"></a>
+                        <b>totalPages</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:50</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Total de paginas</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -302,14 +461,57 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:119</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo listar alumnos Matriculados</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeSize"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>changeSize</b></span>
+                        <a href="#changeSize"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeSize()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="217"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:217</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cambiar tamaño de la pagina</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -341,18 +543,66 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:107</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo eliminar curso</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="firstPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>firstPage</b></span>
+                        <a href="#firstPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>firstPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Metodo dirige a la primera página</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -380,14 +630,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:101</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo guardar id</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -433,6 +685,52 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="lastPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>lastPage</b></span>
+                        <a href="#lastPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>lastPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:199</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método dirige a la ultima pagina</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="listarCursos"></a>
                     <span class="name">
                         <span class="modifier">Public</span>
@@ -451,18 +749,66 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:82</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo listar cursos</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>nextPage</b></span>
+                        <a href="#nextPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>nextPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="159"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:159</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método dirige a la siguiente pagina</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -490,14 +836,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:75</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>ngoninit</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -529,18 +877,66 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="130"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:130</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo openSnackBar</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prevPage"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>prevPage</b></span>
+                        <a href="#prevPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>prevPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:179</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Método dirige a la anteriro pagina</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -577,10 +973,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:27</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Matriz Alumnos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -609,10 +1011,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Carga completa</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -641,10 +1049,54 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Matriz cursos</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cursosTmp"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>cursosTmp</b></span>
+                        <a href="#cursosTmp"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Curso.html" target="_self" >Curso[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cursos temporales en matriz</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -673,10 +1125,87 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Id curso</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sizes"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>sizes</b></span>
+                        <a href="#sizes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[5, 10, 15, 20]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tamaños de página a elegir</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalElements"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>totalElements</b></span>
+                        <a href="#totalElements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/Admin/cursos/listar-cursos/listar-cursos.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total de cursos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -686,65 +1215,225 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, Input, OnInit } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { windowWhen } from &#x27;rxjs&#x27;;
 import { Alumno, Curso } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { AlumnosService } from &#x27;../../alumnos/alumnos.service&#x27;;
 import { CursosService } from &#x27;../cursos.service&#x27;;
-
+/**
+ * The listar cursos component
+ */
 @Component({
   selector: &#x27;app-listar-cursos&#x27;,
   templateUrl: &#x27;./listar-cursos.component.html&#x27;,
   styleUrls: [&#x27;./listar-cursos.component.css&#x27;]
 })
 export class ListarCursosComponent implements OnInit {
+  /**
+   * Matriz cursos
+   */
   public cursos: Curso[] &#x3D; []
+  /**
+   * Id curso
+   */
   public idCurso: number &#x3D; 0
-  public alumnos:Alumno[]&#x3D;[]
+  /**
+   * Matriz Alumnos
+   */
+  public alumnos: Alumno[] &#x3D; []
+  /**
+   * Carga completa
+   */
   public cargaCompleta: boolean &#x3D; false
+  // Paginación campos
+  /**
+   * Cursos temporales en matriz
+   */
+  public cursosTmp: Curso[] &#x3D; []
+  /**
+   * Total de cursos
+   */
+  public totalElements: number;
+  /**
+   * Pagina actual
+   */
+  @Input()
+  public currentPage: number &#x3D; 1;
+  /**
+   * Total de paginas
+   */
+  @Input()
+  public totalPages: number &#x3D; 0;
+  /**
+   * Numero de filas a mostrar en la tabla
+   */
+  @Input()
+  public pageSize: number &#x3D; 5;
+  /**
+   * Tamaños de página a elegir
+   */
+  public sizes: number[] &#x3D; [5, 10, 15, 20];
+  /**
+   * Constructor
+   * @param cursoServie 
+   * @param _snackBar 
+   * @param alumnosService 
+   */
   public constructor(
     private cursoServie: CursosService,
-    private _snackBar: MatSnackBar, 
-    private alumnosService:AlumnosService) {
+    private _snackBar: MatSnackBar,
+    private alumnosService: AlumnosService) {
     this.listarCursos()
   }
-
+  /**
+   * ngoninit
+   */
   public ngOnInit(): void {
     this.alumnosMatriculados()
   }
-
+  
+  /**
+   * Metodo listar cursos
+   */
   public listarCursos() {
     this.cursoServie.listarCursos()
       .subscribe(
         (response) &#x3D;&gt; {
+          this.pageSize&#x3D;5
           this.cursos &#x3D; response;
           this.cargaCompleta &#x3D; true
+          this.totalElements &#x3D; this.cursos.length
+          this.totalPages &#x3D; Math.ceil(this.totalElements / this.pageSize)
+          this.cursosTmp &#x3D; []
+          for (let i &#x3D; 0; i &lt; this.pageSize * this.currentPage &amp;&amp; this.cursos.length &gt; i; i++) {
+            this.cursosTmp[i] &#x3D; this.cursos[i];
+          }
         })
   }
+  /**
+   * Metodo guardar id
+   * @param idCurso 
+   */
   public guardarid(idCurso: number) {
     this.idCurso &#x3D; idCurso
   }
+  /**
+   * Metodo eliminar curso
+   */
   public eliminarCurso() {
     this.cursoServie.eliminarCurso(this.idCurso)
       .subscribe(
         () &#x3D;&gt; {
           this.openSnackBar()
           this.listarCursos()
+          this.firstPage()
         })
   }
-  public alumnosMatriculados(){
+  /**
+   * Metodo listar alumnos Matriculados
+   */
+  public alumnosMatriculados() {
     this.alumnosService.listarAlumnos()
       .subscribe(
-        (response)&#x3D;&gt;{
-          this.alumnos&#x3D; response
+        (response) &#x3D;&gt; {
+          this.alumnos &#x3D; response
         }
       )
   }
+  /**
+   * Metodo openSnackBar
+   */
   public openSnackBar() {
     this._snackBar.open(&quot;Eliminado con éxito&quot;, &quot;Close&quot;,
       {
         duration: 3000
       });
+  }
+  /**
+  * Metodo dirige a la primera página
+  * @returns 
+  */
+  public firstPage() {
+    if (this.currentPage &#x3D;&#x3D;&#x3D; 1) {
+      return false;
+    }
+
+    this.currentPage &#x3D; 1;
+    let x &#x3D; 0;
+    for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
+      this.cursosTmp[x] &#x3D; this.cursos[i]
+      x++;
+    }
+    this.cursosTmp &#x3D; this.cursosTmp.sort(function (a, b) { return a.id - b.id; });
+
+    return true
+  }
+  /**
+   * Método dirige a la siguiente pagina
+   * @returns 
+   */
+  public nextPage() {
+    if (this.currentPage &gt;&#x3D; this.totalPages) {
+      return false;
+    }
+    this.currentPage++;
+
+    this.cursosTmp &#x3D; []
+
+    let x &#x3D; 0
+    for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.cursos.length &gt; i; i++) {
+      this.cursosTmp[x] &#x3D; this.cursos[i]
+      x++;
+    }
+
+    return true
+  }
+  /**
+     * Método dirige a la anteriro pagina
+     * @returns 
+     */
+  public prevPage() {
+    if (this.currentPage &lt;&#x3D; 1) {
+      return false;
+    }
+    this.currentPage--;
+
+    this.cursosTmp &#x3D; []
+    let x &#x3D; 0
+    for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
+      this.cursosTmp[x] &#x3D; this.cursos[i]
+      x++;
+    }
+    this.cursosTmp &#x3D; this.cursosTmp.sort(function (a, b) { return a.id - b.id; });
+
+    return true
+  }
+  /**
+   * Método dirige a la ultima pagina
+   * @returns 
+   */
+  public lastPage() {
+    if (this.currentPage &#x3D;&#x3D;&#x3D; this.totalPages) {
+      return false;
+    }
+    this.currentPage &#x3D; this.totalPages;
+
+    this.cursosTmp &#x3D; []
+    let x &#x3D; 0;
+    for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.cursos.length &gt; i; i++) {
+      this.cursosTmp[x] &#x3D; this.cursos[i]
+      x++;
+    }
+
+    return true
+  }
+  /**
+   * Cambiar tamaño de la pagina
+   */
+  public changeSize() {
+    this.currentPage &#x3D; 1
+    this.listarCursos()
   }
 }
 </code></pre>
@@ -781,7 +1470,7 @@ export class ListarCursosComponent implements OnInit {
                 &lt;/tr&gt;
             &lt;/thead&gt;
             &lt;tbody&gt;
-                &lt;tr *ngFor&#x3D;&quot;let curso of cursos&quot;&gt;
+                &lt;tr *ngFor&#x3D;&quot;let curso of cursosTmp&quot;&gt;
                     &lt;td&gt;{{curso.codigoCiclo}}&lt;/td&gt;
                     &lt;td&gt;{{curso.familiaProfesional}}&lt;/td&gt;
                     &lt;td&gt;{{curso.cicloFormativo | slice:0:30}}&lt;/td&gt;
@@ -804,9 +1493,39 @@ export class ListarCursosComponent implements OnInit {
                         &lt;/ul&gt;
                     &lt;/td&gt;
                 &lt;/tr&gt;
-              
             &lt;/tbody&gt;
         &lt;/table&gt;
+        &lt;div *ngIf&#x3D;&quot;cursos.length&gt;0&quot; class&#x3D;&quot;container-fluid table-responsive d-flex justify-content-center&quot;&gt;
+            &lt;div class&#x3D;&quot;row&quot;&gt;
+                &lt;div class&#x3D;&quot;col-3 &quot;&gt;
+                    &lt;mat-form-field class&#x3D;&quot; w-100&quot; appearance&#x3D;&quot;fill&quot;&gt;
+                        &lt;mat-select [(ngModel)]&#x3D;&quot;pageSize&quot; (selectionChange)&#x3D;&quot;changeSize()&quot;&gt;
+                            &lt;mat-option [value]&#x3D;&quot;sizes&quot; *ngFor&#x3D;&quot;let sizes of sizes&quot;&gt;
+                                {{sizes}}
+                            &lt;/mat-option&gt;
+                        &lt;/mat-select&gt;
+                    &lt;/mat-form-field&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;row mt-3 margin-0-auto&quot;&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; disabled (click)&#x3D;&quot;firstPage()&quot; &gt;
+                        &lt;i class&#x3D;&quot;fa fa-step-backward&quot;  aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; [ngClass]&#x3D;&quot;{ &#x27;bbva-th2-pagination-disabled&#x27;: (currentPage - 1) &lt;&#x3D; 0 }&quot;
+                        (click)&#x3D;&quot;prevPage()&quot;&gt;
+                        &lt;i class&#x3D;&quot;fa fa-backward&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-4&quot;&gt;
+                        &lt;p style&#x3D;&quot;font-size: 0.8rem;&quot;&gt;{{ currentPage }} de {{ totalPages }}&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; (click)&#x3D;&quot;nextPage()&quot;&gt;
+                        &lt;i class&#x3D;&quot;fa fa-forward&quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;col-2&quot; (click)&#x3D;&quot;lastPage()&quot;&gt;
+                        &lt;i class&#x3D;&quot;fa fa-step-forward &quot; aria-hidden&#x3D;&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
     &lt;/mat-tab&gt;
 
     &lt;mat-tab label&#x3D;&quot;Insertar Curso&quot;&gt;
@@ -887,12 +1606,8 @@ export class ListarCursosComponent implements OnInit {
 mat-icon{
     cursor: pointer;
 }
-p:last-child {
-    display: flex;
-    justify-content: end;
-    margin-right: 2rem;
+i{
     cursor: pointer;
-    size: 25rem;
 }</code></pre>
     </div>
 
@@ -921,7 +1636,7 @@ p:last-child {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h2>Cursos</h2><mat-tab-group>    <mat-tab label="Listado de Cursos">        <br>        <div *ngIf="cursos.length>0  else alert">            <mat-label class="mr-1">Recargar Tabla</mat-label>            <mat-icon (click)="listarCursos()"  >refresh</mat-icon>        </div>        <ng-template #alert>            <div class="alert alert-warning " *ngIf="cursos.length==0 && cargaCompleta " >                <b>                    <h2 class="text-center">¡INSERTE CURSOS!</h2>                </b>            </div>        </ng-template>        <table *ngIf="cursos.length>0" class="table text-center table-striped">            <thead class="table bg-color  text-light">                <tr>                    <th>Code Ciclo</th>                    <th>Familia Profesional</th>                    <th>Ciclo Formativo</th>                    <th>Curso Académico</th>                    <th>Nª horas</th>                    <th>Tutor ID</th>                    <th [colSpan]="2">Acciones</th>                </tr>            </thead>            <tbody>                <tr *ngFor="let curso of cursos">                    <td>{{curso.codigoCiclo}}</td>                    <td>{{curso.familiaProfesional}}</td>                    <td>{{curso.cicloFormativo | slice:0:30}}</td>                    <td>{{curso.cursoAcademico}}</td>                    <td>{{curso.nHoras}}</td>                    <td>{{curso.tutor_id}}</td>                    <td class="d-flex justify-content-center">                        <ul class=" nav nav-item">                            <li routerLink="/admin/cursos/modificarCurso/{{curso.id}}">                                <a class="nav-link  btn bg-outline-color"> <i class="fa fa-pencil"></i></a>                            </li>                        </ul>                        <ul class="mr-3 nav nav-item">                            <li>                                <a class="nav-link ml-3 btn btn-outline-danger " data-toggle="modal"                                    data-target="#eliminarCurso" (click)="guardarid(curso.id)"> <i                                        class="fa fa-trash"></i></a>                            </li>                        </ul>                    </td>                </tr>                          </tbody>        </table>    </mat-tab>    <mat-tab label="Insertar Curso">        <br>        <app-insertar-curso></app-insertar-curso>        <br>    </mat-tab>    <mat-tab label="{{curso.codigoCiclo}}" *ngFor="let curso of cursos">        <br>        <h3>Alumnos matriculados en {{curso.codigoCiclo}}</h3>                <table class="table text-center table-striped">            <thead class="table bg-color text-center  text-light">                <tr>                    <th>Alumno</th>                    <th>DNI </th>                    <th>Tutor Curso</th>                    <th>Curso</th>                    <th>Nº Horas</th>                </tr>            </thead>            <tbody>                <tr *ngFor="let alumno of alumnos">                    <td *ngIf="alumno.curso_id==curso.id">{{alumno.nombreAlumno}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{alumno.dniAlumno}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{curso.tutor_id}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{curso.codigoCiclo}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{curso.nHoras}}</td>                </tr>            </tbody>        </table>    </mat-tab></mat-tab-group><!-- Modal Eliminar --><div class="modal fade" id="eliminarCurso" tabindex="-1" role="dialog" aria-labelledby="eliminarCursoLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="text-center m-3">                <h5 class="modal-title " id="eliminarCursoLabel ">ELIMINANDO CURSO </h5>                <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                </button>                <hr>            </div>            <div class="modal-body text-center">                <b>                    <h2 class="text-center">¿ESTÁS SEGURO DE ELIMINAR EL CURSO?</h2>                </b>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>                <small class=" m-2 text-danger">Acción irreversible</small>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>            </div>            <div class="text-center">                <hr>                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"                    (click)="eliminarCurso()">Aceptar</button>            </div>        </div>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h2>Cursos</h2><mat-tab-group>    <mat-tab label="Listado de Cursos">        <br>        <div *ngIf="cursos.length>0  else alert">            <mat-label class="mr-1">Recargar Tabla</mat-label>            <mat-icon (click)="listarCursos()"  >refresh</mat-icon>        </div>        <ng-template #alert>            <div class="alert alert-warning " *ngIf="cursos.length==0 && cargaCompleta " >                <b>                    <h2 class="text-center">¡INSERTE CURSOS!</h2>                </b>            </div>        </ng-template>        <table *ngIf="cursos.length>0" class="table text-center table-striped">            <thead class="table bg-color  text-light">                <tr>                    <th>Code Ciclo</th>                    <th>Familia Profesional</th>                    <th>Ciclo Formativo</th>                    <th>Curso Académico</th>                    <th>Nª horas</th>                    <th>Tutor ID</th>                    <th [colSpan]="2">Acciones</th>                </tr>            </thead>            <tbody>                <tr *ngFor="let curso of cursosTmp">                    <td>{{curso.codigoCiclo}}</td>                    <td>{{curso.familiaProfesional}}</td>                    <td>{{curso.cicloFormativo | slice:0:30}}</td>                    <td>{{curso.cursoAcademico}}</td>                    <td>{{curso.nHoras}}</td>                    <td>{{curso.tutor_id}}</td>                    <td class="d-flex justify-content-center">                        <ul class=" nav nav-item">                            <li routerLink="/admin/cursos/modificarCurso/{{curso.id}}">                                <a class="nav-link  btn bg-outline-color"> <i class="fa fa-pencil"></i></a>                            </li>                        </ul>                        <ul class="mr-3 nav nav-item">                            <li>                                <a class="nav-link ml-3 btn btn-outline-danger " data-toggle="modal"                                    data-target="#eliminarCurso" (click)="guardarid(curso.id)"> <i                                        class="fa fa-trash"></i></a>                            </li>                        </ul>                    </td>                </tr>            </tbody>        </table>        <div *ngIf="cursos.length>0" class="container-fluid table-responsive d-flex justify-content-center">            <div class="row">                <div class="col-3 ">                    <mat-form-field class=" w-100" appearance="fill">                        <mat-select [(ngModel)]="pageSize" (selectionChange)="changeSize()">                            <mat-option [value]="sizes" *ngFor="let sizes of sizes">                                {{sizes}}                            </mat-option>                        </mat-select>                    </mat-form-field>                </div>                <div class="row mt-3 margin-0-auto">                    <div class="col-2" disabled (click)="firstPage()" >                        <i class="fa fa-step-backward"  aria-hidden="true"></i>                    </div>                    <div class="col-2" [ngClass]="{ \'bbva-th2-pagination-disabled\': (currentPage - 1) <= 0 }"                        (click)="prevPage()">                        <i class="fa fa-backward" aria-hidden="true"></i>                    </div>                    <div class="col-4">                        <p style="font-size: 0.8rem;">{{ currentPage }} de {{ totalPages }}</p>                    </div>                    <div class="col-2" (click)="nextPage()">                        <i class="fa fa-forward" aria-hidden="true"></i>                    </div>                    <div class="col-2" (click)="lastPage()">                        <i class="fa fa-step-forward " aria-hidden="true"></i>                    </div>                </div>            </div>        </div>    </mat-tab>    <mat-tab label="Insertar Curso">        <br>        <app-insertar-curso></app-insertar-curso>        <br>    </mat-tab>    <mat-tab label="{{curso.codigoCiclo}}" *ngFor="let curso of cursos">        <br>        <h3>Alumnos matriculados en {{curso.codigoCiclo}}</h3>                <table class="table text-center table-striped">            <thead class="table bg-color text-center  text-light">                <tr>                    <th>Alumno</th>                    <th>DNI </th>                    <th>Tutor Curso</th>                    <th>Curso</th>                    <th>Nº Horas</th>                </tr>            </thead>            <tbody>                <tr *ngFor="let alumno of alumnos">                    <td *ngIf="alumno.curso_id==curso.id">{{alumno.nombreAlumno}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{alumno.dniAlumno}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{curso.tutor_id}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{curso.codigoCiclo}}</td>                    <td *ngIf="alumno.curso_id==curso.id">{{curso.nHoras}}</td>                </tr>            </tbody>        </table>    </mat-tab></mat-tab-group><!-- Modal Eliminar --><div class="modal fade" id="eliminarCurso" tabindex="-1" role="dialog" aria-labelledby="eliminarCursoLabel"    aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="text-center m-3">                <h5 class="modal-title " id="eliminarCursoLabel ">ELIMINANDO CURSO </h5>                <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                </button>                <hr>            </div>            <div class="modal-body text-center">                <b>                    <h2 class="text-center">¿ESTÁS SEGURO DE ELIMINAR EL CURSO?</h2>                </b>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>                <small class=" m-2 text-danger">Acción irreversible</small>                <i class="fa-solid fa-exclamation-triangle text-warning fa-beat"                    style="--fa-animation-duration: 0.5s;"></i>            </div>            <div class="text-center">                <hr>                <button type="button" class=" m-3 mr-5 btn bg-outline-color" data-dismiss="modal">Cancelar</button>                <button type="button" class="m-3 ml-5 btn btn-danger" data-dismiss="modal"                    (click)="eliminarCurso()">Aceptar</button>            </div>        </div>    </div></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListarCursosComponent'};

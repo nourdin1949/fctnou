@@ -12,3 +12,6 @@ i{
     height: 38px;
     resize: none;
 }
+mat-icon{
+    cursor: pointer;
+}

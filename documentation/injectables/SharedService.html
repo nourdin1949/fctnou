@@ -62,6 +62,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Se trata de un servicio compartido</p>
+
+            </p>
 
 
 
@@ -77,10 +84,6 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#mensajes" >mensajes</a>
-                            </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#url" >url</a>
@@ -98,21 +101,31 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#altaAdmin" >altaAdmin</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#authAdmin" >authAdmin</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#authAlumno" >authAlumno</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#authProfesor" >authProfesor</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#authResponsable" >authResponsable</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#eliminarFoto" >eliminarFoto</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#forgotpassword" >forgotpassword</a>
                             </li>
                             <li>
@@ -120,60 +133,77 @@
                                 <a href="#getHeaders" >getHeaders</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getIdUserAlumno" >getIdUserAlumno</a>
                             </li>
                             <li>
                                 <a href="#getIdUserResposable" >getIdUserResposable</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getIdUserTutor" >getIdUserTutor</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getNombreAlumno" >getNombreAlumno</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getNombreProfesor" >getNombreProfesor</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getNombreResponsable" >getNombreResponsable</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getUser" >getUser</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#islogged" >islogged</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#listarUsers" >listarUsers</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#logout" >logout</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#resetpassword" >resetpassword</a>
                             </li>
                             <li>
                                 <a href="#sendEmailVerification" >sendEmailVerification</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#signedIn" >signedIn</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#subirImagen" >subirImagen</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#validarDNI" >validarDNI</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#validarDNIByID" >validarDNIByID</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#validarEmail" >validarEmail</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#validarEmailByID" >validarEmailByID</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#verificarEmail" >verificarEmail</a>
                             </li>
                         </ul>
@@ -194,17 +224,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/Shared/shared.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/Shared/shared.service.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -221,6 +253,18 @@
                                                   
                                                         <td>
                                                                         <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -248,6 +292,7 @@
                 <td class="col-md-4">
                     <a name="altaAdmin"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>altaAdmin</b></span>
                         <a href="#altaAdmin"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -255,24 +300,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>altaAdmin()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>altaAdmin()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="95"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:95</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="188"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:188</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo que da de alta al usuario admin</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>null o true</p>
 
                     </div>
                 </td>
@@ -285,6 +339,7 @@
                 <td class="col-md-4">
                     <a name="authAdmin"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>authAdmin</b></span>
                         <a href="#authAdmin"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -292,25 +347,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>authAdmin()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>authAdmin()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:63</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo comprobar perfil admin</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -322,6 +385,7 @@
                 <td class="col-md-4">
                     <a name="authAlumno"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>authAlumno</b></span>
                         <a href="#authAlumno"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -329,25 +393,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>authAlumno()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>authAlumno()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo Comprobar Alumno</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -359,6 +431,7 @@
                 <td class="col-md-4">
                     <a name="authProfesor"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>authProfesor</b></span>
                         <a href="#authProfesor"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -366,25 +439,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>authProfesor()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>authProfesor()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:73</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo comprobar perfil profesor</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -396,6 +477,7 @@
                 <td class="col-md-4">
                     <a name="authResponsable"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>authResponsable</b></span>
                         <a href="#authResponsable"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -403,25 +485,79 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>authResponsable()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>authResponsable()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:53</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo comprobar perfil responsable</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarFoto"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>eliminarFoto</b></span>
+                        <a href="#eliminarFoto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>eliminarFoto()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="230"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:230</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Eliminar foto de perfil</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -433,6 +569,7 @@
                 <td class="col-md-4">
                     <a name="forgotpassword"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>forgotpassword</b></span>
                         <a href="#forgotpassword"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -440,21 +577,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>forgotpassword(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>forgotpassword(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:114</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Recuperar contraseña por email</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -465,6 +605,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -479,6 +620,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>para recuperar contraseña</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -518,19 +663,25 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="18"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:18</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:31</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>name</p>
+                    <div class="io-description"><p>La cabecera de las peticiones</p>
 </div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>    <code>{ headers: { Authorization: string; }; }</code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>cabecera httprequest</p>
 
                     </div>
                 </td>
@@ -543,6 +694,7 @@
                 <td class="col-md-4">
                     <a name="getIdUserAlumno"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>getIdUserAlumno</b></span>
                         <a href="#getIdUserAlumno"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -550,21 +702,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getIdUserAlumno(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getIdUserAlumno(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:144</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>ID del usuario alumno</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -575,6 +730,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -589,6 +745,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>del usuario alumno</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -600,7 +760,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>id del alumno</p>
+
                     </div>
                 </td>
             </tr>
@@ -626,14 +787,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="162"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:162</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Id del usuario responsable</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -644,6 +807,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -658,6 +822,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>del usuario responsable</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -669,7 +837,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -681,6 +850,7 @@
                 <td class="col-md-4">
                     <a name="getIdUserTutor"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>getIdUserTutor</b></span>
                         <a href="#getIdUserTutor"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -688,21 +858,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getIdUserTutor(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getIdUserTutor(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:78</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:153</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Id del usurio tutor</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -713,6 +886,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -727,6 +901,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>del usuario tutor</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -738,7 +916,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -750,6 +929,7 @@
                 <td class="col-md-4">
                     <a name="getNombreAlumno"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>getNombreAlumno</b></span>
                         <a href="#getNombreAlumno"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -757,21 +937,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getNombreAlumno(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNombreAlumno(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="104"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:104</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:212</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Obtener nombre Alumno registrado</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -782,6 +965,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -796,6 +980,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>usuario registrado</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -807,7 +995,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -819,6 +1008,7 @@
                 <td class="col-md-4">
                     <a name="getNombreProfesor"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>getNombreProfesor</b></span>
                         <a href="#getNombreProfesor"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -826,21 +1016,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getNombreProfesor(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNombreProfesor(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:204</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Obtener nombre responsable</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -851,6 +1044,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -865,6 +1059,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>usuario registrado</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -876,7 +1074,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -888,6 +1087,7 @@
                 <td class="col-md-4">
                     <a name="getNombreResponsable"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>getNombreResponsable</b></span>
                         <a href="#getNombreResponsable"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -895,21 +1095,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getNombreResponsable(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getNombreResponsable(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:196</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Obtener nombre responsable</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -920,6 +1123,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -934,6 +1138,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>usuario registrado</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -945,7 +1153,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -957,6 +1166,7 @@
                 <td class="col-md-4">
                     <a name="getUser"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>getUser</b></span>
                         <a href="#getUser"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -964,24 +1174,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getUser()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUser()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="102"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:102</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> Obtener usuario registrado</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>devuelve datos de usuario conectado</p>
 
                     </div>
                 </td>
@@ -994,6 +1213,7 @@
                 <td class="col-md-4">
                     <a name="islogged"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>islogged</b></span>
                         <a href="#islogged"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1001,25 +1221,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>islogged()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>islogged()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:44</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:83</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Comprobar si usuario está logeado</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -1031,6 +1259,7 @@
                 <td class="col-md-4">
                     <a name="listarUsers"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>listarUsers</b></span>
                         <a href="#listarUsers"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1038,24 +1267,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>listarUsers()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>listarUsers()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:136</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Listar usuarios</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/User.html" target="_self" >Observable&lt;User[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>observable</p>
 
                     </div>
                 </td>
@@ -1068,6 +1306,7 @@
                 <td class="col-md-4">
                     <a name="logout"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>logout</b></span>
                         <a href="#logout"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1075,24 +1314,33 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>logout()</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>logout()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:129</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo de cerrar sesión</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>observable</p>
 
                     </div>
                 </td>
@@ -1105,6 +1353,7 @@
                 <td class="col-md-4">
                     <a name="resetpassword"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>resetpassword</b></span>
                         <a href="#resetpassword"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1112,21 +1361,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>resetpassword(objeto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>resetpassword(objeto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="65"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:65</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:122</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>La nueva contraseña</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1137,6 +1389,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1151,6 +1404,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>json con datos de recuperacion de contraseña</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1188,14 +1445,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="87"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:87</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:171</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Enviar correo de verificacion</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1205,6 +1464,7 @@
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1216,6 +1476,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>que deseamos verificar</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1227,7 +1491,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1239,6 +1504,7 @@
                 <td class="col-md-4">
                     <a name="signedIn"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>signedIn</b></span>
                         <a href="#signedIn"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1246,21 +1512,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>signedIn(objeto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>signedIn(objeto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="50"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:50</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:95</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo de inicio de sesion</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1271,6 +1540,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1285,6 +1555,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>Datos de inicio de sesion</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1308,6 +1582,7 @@
                 <td class="col-md-4">
                     <a name="subirImagen"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>subirImagen</b></span>
                         <a href="#subirImagen"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1315,21 +1590,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>subirImagen(data)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>subirImagen(data)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:220</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>La nueva foto de perfil</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1339,6 +1617,7 @@
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1350,6 +1629,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>la imagen a subir</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1361,7 +1644,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1373,6 +1657,7 @@
                 <td class="col-md-4">
                     <a name="validarDNI"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>validarDNI</b></span>
                         <a href="#validarDNI"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1380,21 +1665,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validarDNI(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validarDNI(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="117"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:117</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="248"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:248</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Comprobar no que existe el dni</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1405,6 +1693,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1419,6 +1708,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>a validar</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1430,7 +1723,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1442,6 +1736,7 @@
                 <td class="col-md-4">
                     <a name="validarDNIByID"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>validarDNIByID</b></span>
                         <a href="#validarDNIByID"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1449,21 +1744,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validarDNIByID(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validarDNIByID(dni: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="123"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:123</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="266"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:266</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p> Comprobar que existe el dni con ese id</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1474,6 +1772,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1488,6 +1787,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>a validar</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>id</td>
@@ -1500,6 +1803,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>del usuario</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1511,7 +1818,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1523,6 +1831,7 @@
                 <td class="col-md-4">
                     <a name="validarEmail"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>validarEmail</b></span>
                         <a href="#validarEmail"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1530,21 +1839,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validarEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validarEmail(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:240</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Comprobar no que existe el email</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1555,6 +1867,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1569,6 +1882,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>a validar</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1580,7 +1897,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1592,6 +1910,7 @@
                 <td class="col-md-4">
                     <a name="validarEmailByID"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>validarEmailByID</b></span>
                         <a href="#validarEmailByID"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1599,21 +1918,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>validarEmailByID(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validarEmailByID(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="257"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:257</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Comprobar que existe el email con ese id</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1624,6 +1946,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1638,6 +1961,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>a validar</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>id</td>
@@ -1650,6 +1977,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>del usuario</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1661,7 +1992,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1673,6 +2005,7 @@
                 <td class="col-md-4">
                     <a name="verificarEmail"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>verificarEmail</b></span>
                         <a href="#verificarEmail"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -1680,21 +2013,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>verificarEmail(objeto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>verificarEmail(objeto: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">src/app/Shared/shared.service.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="180"
+                            class="link-to-prism">src/app/Shared/shared.service.ts:180</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Verificar correo</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1705,6 +2041,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1719,6 +2056,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>json con los cmapos password, username y  email</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1730,7 +2071,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>observable</p>
+
                     </div>
                 </td>
             </tr>
@@ -1742,38 +2084,6 @@
     <h3 id="inputs">
         Properties
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="mensajes"></a>
-                    <span class="name">
-                            <span class="modifier">Public</span>
-                        <span ><b>mensajes</b></span>
-                        <a href="#mensajes"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>any[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[]</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/Shared/shared.service.ts:12</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -1793,10 +2103,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/Shared/shared.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/Shared/shared.service.ts:17</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL de la api</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1808,130 +2124,272 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { environment } from &#x27;src/environments/environment.prod&#x27;;
+import { environment } from &#x27;src/environments/environment&#x27;;
 import { User } from &#x27;../utils/interfaces/Interface&#x27;;
-
+/**
+ * Se trata de un servicio compartido
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class SharedService {
-  private url&#x3D;environment.url;
-  public mensajes:any[]&#x3D;[]
-  constructor(private http: HttpClient) { }
+  /**
+   * URL de la api
+   */
+  private url &#x3D; environment.url;
+  /**
+   * Constructor
+   * @param http 
+   * @param router 
+   */
+  constructor(
+    private http: HttpClient,
+    private router: Router) { }
 
   /**
-   * name
+   * La cabecera de las peticiones
+   * @returns cabecera httprequest
    */
-  public getHeaders(){
-    const headers&#x3D; {headers: {
-      &quot;Authorization&quot;: &quot;Bearer &quot; +localStorage.getItem(&quot;token&quot;)
-    }}
+  public getHeaders() {
+    const headers &#x3D; {
+      headers: {
+        &quot;Authorization&quot;: &quot;Bearer &quot; + localStorage.getItem(&quot;token&quot;)
+      }
+    }
     return headers
   }
-  authAlumno() {
+  /**
+   * Metodo Comprobar Alumno
+   * @returns 
+   */
+  public authAlumno() {
     if (localStorage.getItem(&quot;Perfil&quot;) &#x3D;&#x3D; &quot;alumno&quot; &amp;&amp; localStorage.getItem(&#x27;token&#x27;))
       return true
+    this.router.navigateByUrl(&quot;&quot;)
     return false
   }
-  authResponsable() {
+  /**
+   * Metodo comprobar perfil responsable
+   * @returns 
+   */
+  public authResponsable() {
     if (localStorage.getItem(&quot;Perfil&quot;) &#x3D;&#x3D; &quot;responsable&quot; &amp;&amp; localStorage.getItem(&#x27;token&#x27;))
       return true
+    this.router.navigateByUrl(&quot;&quot;)
     return false
   }
-  authAdmin() {
+  /**
+   * Metodo comprobar perfil admin
+   * @returns 
+   */
+  public authAdmin() {
     if (localStorage.getItem(&quot;Perfil&quot;) &#x3D;&#x3D; &quot;admin&quot; &amp;&amp; localStorage.getItem(&#x27;token&#x27;))
       return true
+    this.router.navigateByUrl(&quot;&quot;)
     return false
   }
-  authProfesor() {
+  /**
+   * Metodo comprobar perfil profesor
+   * @returns 
+   */
+  public authProfesor() {
     if (localStorage.getItem(&quot;Perfil&quot;) &#x3D;&#x3D; &quot;profesor&quot; &amp;&amp; localStorage.getItem(&#x27;token&#x27;))
       return true
+    this.router.navigateByUrl(&quot;&quot;)
     return false
   }
-  islogged() {
+  /**
+   * Comprobar si usuario está logeado
+   * @returns 
+   */
+  public islogged() {
     console.log(localStorage.getItem(&quot;Perfil&quot;))
     if (localStorage.getItem(&quot;Perfil&quot;) &amp;&amp; localStorage.getItem(&#x27;token&#x27;))
       return true
+    this.router.navigateByUrl(&quot;&quot;)
     return false
   }
-  signedIn(objeto: object) {
+  /**
+   * Metodo de inicio de sesion
+   * @param objeto Datos de inicio de sesion
+   * @returns 
+   */
+  public signedIn(objeto: object) {
     return this.http.post&lt;any&gt;(&#x60;${this.url}/login&#x60;, objeto)
   }
-  getUser() {
+  /**
+   *  Obtener usuario registrado
+   * @returns  devuelve datos de usuario conectado
+   */
+  public getUser() {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/user&#x60;, {
       headers: {
-        &quot;Authorization&quot;: &quot;Bearer &quot; +localStorage.getItem(&quot;token&quot;)
+        &quot;Authorization&quot;: &quot;Bearer &quot; + localStorage.getItem(&quot;token&quot;)
       }
     })
   }
-
-  forgotpassword(email:string){
-    return this.http.post(&#x60;${this.url}/forgot-password&#x60;,{&quot;email&quot;:email});
+  /**
+   * Recuperar contraseña por email
+   * @param email para recuperar contraseña
+   * @returns 
+   */
+  public forgotpassword(email: string) {
+    return this.http.post(&#x60;${this.url}/forgot-password&#x60;, { &quot;email&quot;: email });
   }
-  
-  resetpassword(objeto:object){
-    return this.http.post(&#x60;${this.url}/reset-password&#x60;,objeto);
+  /**
+   * La nueva contraseña
+   * @param objeto json con datos de recuperacion de contraseña
+   * @returns 
+   */
+  public resetpassword(objeto: object) {
+    return this.http.post(&#x60;${this.url}/reset-password&#x60;, objeto);
   }
-  logout(){
+  /**
+   * Metodo de cerrar sesión
+   * @returns observable
+   */
+  public logout() {
     return this.http.get(&#x60;${this.url}/logout&#x60;);
   }
-  listarUsers():Observable&lt;User[]&gt;{
+  /**
+   * Listar usuarios 
+   * @returns observable
+   */
+  public listarUsers(): Observable&lt;User[]&gt; {
     return this.http.get&lt;User[]&gt;(&#x60;${this.url}/users&#x60;);
   }
-  
-  getIdUserAlumno(username:string){
-    return this.http.post&lt;any&gt;(&#x60;${this.url}/getIdByDniUser&#x60;,{&#x27;dni&#x27;:username}, this.getHeaders());
+  /**
+   * ID del usuario alumno
+   * @param username del usuario alumno
+   * @returns id del alumno
+   */
+  public getIdUserAlumno(username: string) {
+
+    return this.http.post&lt;any&gt;(&#x60;${this.url}/getIdByDniUser&#x60;, { &#x27;dni&#x27;: username }, this.getHeaders());
   }
-  getIdUserTutor(username:string){
-    
-    return this.http.post&lt;any&gt;(&#x60;${this.url}/getIdByDniUserTutor&#x60;,{&#x27;dni&#x27;:username}, this.getHeaders());
+  /**
+   * Id del usurio tutor
+   * @param username del usuario tutor
+   * @returns observable
+   */
+  public getIdUserTutor(username: string) {
+
+    return this.http.post&lt;any&gt;(&#x60;${this.url}/getIdByDniUserTutor&#x60;, { &#x27;dni&#x27;: username }, this.getHeaders());
   }
-  getIdUserResposable(username:string){
-    
-    return this.http.post&lt;any&gt;(&#x60;${this.url}/getIdByDniUserResposable&#x60;,{&#x27;dni&#x27;:username}, this.getHeaders());
+  /**
+   * Id del usuario responsable
+   * @param username del usuario responsable
+   * @returns observable
+   */
+  getIdUserResposable(username: string) {
+
+    return this.http.post&lt;any&gt;(&#x60;${this.url}/getIdByDniUserResposable&#x60;, { &#x27;dni&#x27;: username }, this.getHeaders());
   }
-  
-  sendEmailVerification(email){
-    
-    return this.http.post&lt;any&gt;(&#x60;${this.url}/email/verification-notification&#x60;,{&#x27;email&#x27;:email, &#x27;token&#x27;:localStorage.getItem(&quot;token&quot;), &#x27;user&#x27;:localStorage.getItem(&#x27;user&#x27;)}, this.getHeaders());
+  /**
+   * Enviar correo de verificacion
+   * @param email que deseamos verificar
+   * @returns observable
+   */
+  sendEmailVerification(email) {
+
+    return this.http.post&lt;any&gt;(&#x60;${this.url}/email/verification-notification&#x60;, { &#x27;email&#x27;: email, &#x27;token&#x27;: localStorage.getItem(&quot;token&quot;), &#x27;user&#x27;: localStorage.getItem(&#x27;user&#x27;) }, this.getHeaders());
   }
-  verificarEmail(objeto:object){
-    
-    return this.http.post&lt;any&gt;(&#x60;${this.url}/verificar&#x60;,objeto, this.getHeaders());
+  /**
+   * Verificar correo
+   * @param objeto json con los cmapos password, username y  email
+   * @returns observable
+   */
+  public verificarEmail(objeto: object) {
+
+    return this.http.post&lt;any&gt;(&#x60;${this.url}/verificar&#x60;, objeto, this.getHeaders());
   }
-  altaAdmin(){
+  /**
+   * Metodo que da de alta al usuario admin
+   * @returns null o true
+   */
+  public altaAdmin() {
     return this.http.get(&#x60;${this.url}&#x60;).subscribe();
   }
-  getNombreResponsable(dni:string){
+  /**
+   * Obtener nombre responsable
+   * @param dni usuario registrado
+   * @returns observable
+   */
+  public getNombreResponsable(dni: string) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/nombreResponsable/${dni}&#x60;, this.getHeaders());
   }
-  getNombreProfesor(dni:string){
+  /**
+   * Obtener nombre responsable
+   * @param dni usuario registrado
+   * @returns observable
+   */
+  public getNombreProfesor(dni: string) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/nombreTutor/${dni}&#x60;, this.getHeaders());
   }
-  getNombreAlumno(dni:string){
+  /**
+  * Obtener nombre Alumno registrado
+  * @param dni usuario registrado
+  * @returns observable
+  */
+  public getNombreAlumno(dni: string) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/nombreAlumno/${dni}&#x60;, this.getHeaders());
   }
-  subirImagen(data){
+  /**
+   * La nueva foto de perfil
+   * @param data la imagen a subir
+   * @returns observable
+   */
+  public subirImagen(data) {
     let username &#x3D; sessionStorage.getItem(&quot;username&quot;)
-    let user:any &#x3D; sessionStorage.getItem(&quot;user&quot;)
-    let id &#x3D;JSON.parse(user).id
+    let user: any &#x3D; sessionStorage.getItem(&quot;user&quot;)
+    let id &#x3D; JSON.parse(user).id
     return this.http.post&lt;any&gt;(&#x60;${this.url}/subirImg/${username}/${id}&#x60;, data, this.getHeaders());
   }
- 
-  validarEmail(email:string){
+  /**
+   * Eliminar foto de perfil
+   * @returns 
+   */
+  public eliminarFoto(){
+    let user: any &#x3D; sessionStorage.getItem(&quot;user&quot;)
+    let id &#x3D; JSON.parse(user).id
+    return this.http.put&lt;any&gt;(&#x60;${this.url}/eliminarFoto/${id}&#x60;, this.getHeaders());
+  }
+  /**
+   * Comprobar no que existe el email
+   * @param email a validar
+   * @returns observable
+   */
+  public validarEmail(email: string) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/validarEmail/${email}&#x60;, this.getHeaders());
   }
-  validarDNI(dni:string){
+  /**
+   * Comprobar no que existe el dni
+   * @param dni a validar
+   * @returns observable
+   */
+  public validarDNI(dni: string) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/validarDNI/${dni}&#x60;, this.getHeaders());
   }
-  validarEmailByID(email:string, id:number){
+  /**
+   * Comprobar que existe el email con ese id
+   * @param email a validar
+   * @param id del usuario
+   * @returns observable
+   */
+  public validarEmailByID(email: string, id: number) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/validarEmailByID/${email}/${id}&#x60;, this.getHeaders());
   }
-  validarDNIByID(dni:string, id:number){
+  /**
+   *  Comprobar que existe el dni con ese id
+   * @param dni a validar
+   * @param id del usuario
+   * @returns  observable
+   */
+  public validarDNIByID(dni: string, id: number) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/validarDNIByID/${dni}/${id}&#x60;, this.getHeaders());
   }
-
 }
 </code></pre>
     </div>

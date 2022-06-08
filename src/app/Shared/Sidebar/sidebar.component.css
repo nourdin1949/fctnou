@@ -33,7 +33,7 @@ p {
 }
 
 .enlaces button {
-    margin: 0.4rem;
+    margin: 0.5rem;
     text-align: left;
     font-family: Jost_500;
     padding: .45em 1em;
@@ -102,3 +102,39 @@ p {
         display: none;
     }
 }
+/* 
+#toggle{display: none;}
+
+.button{
+    display: inline-block;
+    width: 75%;
+    height: 35px;
+    background-color: #fff;
+    border-radius: 30px;
+    position: relative;
+
+    cursor: pointer;
+}
+
+.button::after{
+    content: url("http://www.w3.org/2000/svg");
+    width: 40px;
+    height: 40px;
+    background-color: #e03c3c;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0 ,.25);
+    position: absolute;
+    top: -5px;
+    left:0;
+    display: grid;
+    place-content: center;
+    line-height: 0;
+    transition: background-color 1s, transform 1s ease-in;
+}
+
+#toggle:checked + .button::after{
+    content:url('http://www.w3.org/2000/svg');
+    background-color: #1f257f;
+    transform: translateX(150px) rotate(360deg);
+} */

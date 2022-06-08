@@ -4,10 +4,6 @@ td ul li a {
 mat-icon{
     cursor: pointer;
 }
-p:last-child {
-    display: flex;
-    justify-content: end;
-    margin-right: 2rem;
+i{
     cursor: pointer;
-    size: 25rem;
 }

@@ -68,14 +68,15 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>The insetar centro component</p>
+
     </p>
+
+
 
 
 <section>
@@ -150,10 +151,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#insertarCentro" >insertarCentro</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -178,12 +177,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:18</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -243,6 +244,7 @@
                 <td class="col-md-4">
                     <a name="insertarCentro"></a>
                     <span class="name">
+                        <span class="modifier">Public</span>
                         <span ><b>insertarCentro</b></span>
                         <a href="#insertarCentro"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -250,21 +252,24 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>insertarCentro(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>insertarCentro(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:44</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo de insertar centro</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -306,43 +311,6 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:33</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </section>
     <section>
     
@@ -369,10 +337,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/Admin/centros/insertar-centro/insertar-centro.component.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulario</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -382,21 +356,29 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-import { from, of } from &#x27;rxjs&#x27;;
 import { Centro } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { customValidatorCIFCentro } from &#x27;src/app/utils/Validators/otrasValidaciones&#x27;;
 import { CentrosService } from &#x27;../centros.service&#x27;;
-
+/**
+ * The insetar centro component
+ */
 @Component({
   selector: &#x27;app-insertar-centro&#x27;,
   templateUrl: &#x27;./insertar-centro.component.html&#x27;,
   styleUrls: [&#x27;./insertar-centro.component.css&#x27;]
 })
-export class InsertarCentroComponent implements OnInit {
-
+export class InsertarCentroComponent   {
+  /**
+   * Formulario
+   */
   public forminsertarCentro: FormGroup;
+  /**
+   * Constructor
+   * @param fb 
+   * @param centroService 
+   */
   constructor(private fb: FormBuilder, private centroService: CentrosService) {
 
     this.forminsertarCentro &#x3D; this.fb.group({
@@ -413,11 +395,11 @@ export class InsertarCentroComponent implements OnInit {
       code: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9]{8}&#x27;)]]
     })
   }
-
-  ngOnInit(): void {
-  }
-
-  insertarCentro(form: FormGroup) {
+  /**
+   * Metodo de insertar centro
+   * @param form 
+   */
+  public insertarCentro(form: FormGroup) {
     const centro: Centro &#x3D; {
       &quot;codigo&quot;: this.forminsertarCentro.value.code,
       &quot;nombreCentro&quot;: form.value.nombre,
@@ -442,7 +424,6 @@ export class InsertarCentroComponent implements OnInit {
       });
     }
   }
-
 }
 </code></pre>
     </div>

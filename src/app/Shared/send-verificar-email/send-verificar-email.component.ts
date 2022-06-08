@@ -1,22 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../utils/interfaces/Interface';
 import { SharedService } from '../shared.service';
-
+/**
+ * The send-verifcacion Component
+ */
 @Component({
   selector: 'app-send-verificar-email',
   templateUrl: './send-verificar-email.component.html',
   styleUrls: ['./send-verificar-email.component.css']
 })
-export class SendVerificarEmailComponent implements OnInit {
-
+export class SendVerificarEmailComponent {
+  /**
+   * Lista de usuarios
+   */
   public users: User[]
+  /**
+   * Comprobar existencia de email
+   */
   public noexiste: boolean = false
+  /**
+   * Verificar envio de email de verificacion
+   */
   public enviadoEmail: boolean = false
+  /**
+   * Comprobar si ya está verificado
+   */
   public verificado: boolean = false
+  /**
+   * Constructor
+   * @param sharedservice 
+   */
   public constructor(private sharedservice: SharedService) { }
-
-  public ngOnInit(): void {
-  }
+  /**
+   * Enviar correo de verificación
+   */
   public sendverificarEmail() {
     let email = (<HTMLInputElement>document.getElementById("email")).value
     this.sharedservice.listarUsers().subscribe((response) => {

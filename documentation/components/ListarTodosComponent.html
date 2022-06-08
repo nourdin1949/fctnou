@@ -68,6 +68,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The listar todos component</p>
+
+    </p>
 
 
     <p class="comment">
@@ -183,12 +190,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:19</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -252,14 +261,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:37</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Metodo listar alumnos del responsable</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -289,14 +300,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="29"
+                            class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:29</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>NgOnInit</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -337,10 +350,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:15</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Matriz de alumnos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -369,10 +388,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/TutorEmpresa/alumnos-empresa/listar-todos/listar-todos.component.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Responsable sin alumos</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -384,27 +409,40 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { TutorEmpresaService } from &#x27;../../tutor-empresa.service&#x27;;
-
+/**
+ * The listar todos component
+ */
 @Component({
   selector: &#x27;app-listar-todos&#x27;,
   templateUrl: &#x27;./listar-todos.component.html&#x27;,
   styleUrls: [&#x27;./listar-todos.component.css&#x27;]
 })
 export class ListarTodosComponent implements OnInit {
+  /**
+   * Matriz de alumnos
+   */
   public alumnos: any[]&#x3D;[]
+  /**
+   * Responsable sin alumos
+   */
   public sinAlumnos:boolean&#x3D;false
-
+  /**
+   * Constructor
+   * @param tutorEmpresaService 
+   */
   constructor(
     private tutorEmpresaService:TutorEmpresaService) { }
-
+  /**
+   * NgOnInit
+   */
   ngOnInit(): void {
-  setTimeout(() &#x3D;&gt; {
-    this.listarAlumnosDelResponsable()
-  }, 1000);
+    setTimeout(() &#x3D;&gt; {
+      this.listarAlumnosDelResponsable()
+    }, 1000);
   }
-
-
-
+  /**
+   * Metodo listar alumnos del responsable
+   */
   public listarAlumnosDelResponsable(){
     this.tutorEmpresaService.listarAlumnosDelResponsable().subscribe((res)&#x3D;&gt;{
       this.alumnos&#x3D; res
@@ -422,7 +460,7 @@ export class ListarTodosComponent implements OnInit {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">
 &lt;h3&gt;Listado de Alumnos&lt;/h3&gt;
-&lt;div class&#x3D;&quot;container &quot;&gt;
+&lt;div class&#x3D;&quot;container-fluid &quot;&gt;
     &lt;div class&#x3D;&quot; table-responsive&quot;&gt;
         &lt;div class&#x3D;&quot;alert alert-warning &quot; *ngIf&#x3D;&quot;alumnos.length&#x3D;&#x3D;0 &amp;&amp; sinAlumnos &quot; &gt;
             &lt;b&gt;
@@ -494,7 +532,7 @@ export class ListarTodosComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h3>Listado de Alumnos</h3><div class="container ">    <div class=" table-responsive">        <div class="alert alert-warning " *ngIf="alumnos.length==0 && sinAlumnos " >            <b>                <h2 class="text-center">¡TUTOR SIN ALUMNOS!</h2>            </b>        </div>        <table *ngIf="!sinAlumnos" class="table text-center table-striped">            <thead class="thead bg-color text-light">                <tr>                    <th>#</th>                    <th>Nombre Alumno</th>                    <th>Ciclo Formativo</th>                    <th>Horas de Práctica</th>                    <th>Horas Realizadas</th>                    <th>Nº Tareas</th>                </tr>            </thead>            <tbody>                <tr  *ngIf="alumnos.length==0  " >                    <td class="justify-content-center float-end" colspan="6">                        <span class="spinner-border"></span>                    </td>                </tr>                <tr *ngFor="let alumno of alumnos;let index =index">                    <td>{{index+1}}</td>                    <td>{{alumno.nombreAlumno}}</td>                    <td>{{alumno.cicloFormativo}}</td>                    <td >{{alumno.nHoras }}</td>                    <td *ngIf="alumno.horasRealizadas==null">00:00:00</td>                    <td *ngIf="alumno.horasRealizadas!=null">{{alumno.horasRealizadas}}</td>                    <td>{{alumno.ntareas}}</td>                </tr>                           </tbody>        </table></div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h3>Listado de Alumnos</h3><div class="container-fluid ">    <div class=" table-responsive">        <div class="alert alert-warning " *ngIf="alumnos.length==0 && sinAlumnos " >            <b>                <h2 class="text-center">¡TUTOR SIN ALUMNOS!</h2>            </b>        </div>        <table *ngIf="!sinAlumnos" class="table text-center table-striped">            <thead class="thead bg-color text-light">                <tr>                    <th>#</th>                    <th>Nombre Alumno</th>                    <th>Ciclo Formativo</th>                    <th>Horas de Práctica</th>                    <th>Horas Realizadas</th>                    <th>Nº Tareas</th>                </tr>            </thead>            <tbody>                <tr  *ngIf="alumnos.length==0  " >                    <td class="justify-content-center float-end" colspan="6">                        <span class="spinner-border"></span>                    </td>                </tr>                <tr *ngFor="let alumno of alumnos;let index =index">                    <td>{{index+1}}</td>                    <td>{{alumno.nombreAlumno}}</td>                    <td>{{alumno.cicloFormativo}}</td>                    <td >{{alumno.nHoras }}</td>                    <td *ngIf="alumno.horasRealizadas==null">00:00:00</td>                    <td *ngIf="alumno.horasRealizadas!=null">{{alumno.horasRealizadas}}</td>                    <td>{{alumno.ntareas}}</td>                </tr>                           </tbody>        </table></div></div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListarTodosComponent'};

@@ -78,9 +78,9 @@ import { ListarAlumnosComponent } from &#x27;./listar-alumnos/listar-alumnos.com
 import { ModificarAlumnosComponent } from &#x27;./modificar-alumnos/modificar-alumnos.component&#x27;;
 
 const routes: Routes &#x3D; [
-  {path:&#x27;alumnos/listar&#x27;, component:ListarAlumnosComponent,pathMatch:&#x27;full&#x27;},
+  {path:&#x27;listar&#x27;, component:ListarAlumnosComponent,pathMatch:&#x27;full&#x27;},
   {path:&#x27;modificarAlumno/:id&#x27;, component:ModificarAlumnosComponent},
-  {path:&#x27;&#x27;,redirectTo:&#x27;alumnos/listar&#x27; },
+  {path:&#x27;&#x27;,redirectTo:&#x27;listar&#x27; },
   { path: &#x27;**&#x27;, redirectTo: &quot;error&quot; },
 
 ];

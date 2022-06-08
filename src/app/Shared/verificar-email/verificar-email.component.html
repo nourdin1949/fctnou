@@ -7,12 +7,24 @@
         <div class="form-field d-flex align-items-center">
             <input type="text" formControlName="usuario" name="usuario" id="usuario" placeholder="Usuario">
         </div>
+        <small *ngIf="this.formVerificacion.controls['usuario'].hasError('required')"
+            class="form-text alert pl-3  alert-danger ">
+            Campo requerido
+        </small>
         <div class="form-field d-flex align-items-center">
             <input type="password" formControlName="pwd" name="password" id="password" placeholder="Password ">
         </div>
+        <small *ngIf="this.formVerificacion.controls['pwd'].hasError('required')"
+            class="form-text alert pl-3  alert-danger ">
+            Campo requerido
+        </small>
         <div class="form-field d-flex align-items-center">
             <input type="email" formControlName="email" name="email" id="email" placeholder="Email ">
         </div>
+        <small *ngIf="this.formVerificacion.controls['email'].hasError('required')"
+            class="form-text alert pl-3  alert-danger ">
+            Campo requerido
+        </small>
         <small *ngIf="verificado" class="form-text alert alert-success ">
             !Email verificado
         </small>

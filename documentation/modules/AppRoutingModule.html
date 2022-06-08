@@ -80,8 +80,6 @@ import { AuthenticationProfesorGuard } from &#x27;./auth/authentication-profesor
 import { AuthenticationResponsableGuard } from &#x27;./auth/authentication-responsable.guard&#x27;;
 import { AuthenticationGuard } from &#x27;./auth/authentication.guard&#x27;
 import { AdminComponent } from &#x27;./components/Admin/admin.component&#x27;;
-import { ProfesorComponent } from &#x27;./components/Admin/profesor/profesor.component&#x27;;
-import { ResponsableComponent } from &#x27;./components/Admin/responsable/responsable.component&#x27;;
 import { AlumnosComponent } from &#x27;./components/Alumnos/alumnos.component&#x27;;
 import { ComponentsComponent } from &#x27;./components/components.component&#x27;;
 import { AlumnosEmpresaComponent } from &#x27;./components/TutorEmpresa/alumnos-empresa/alumnos-empresa.component&#x27;;
@@ -108,7 +106,7 @@ const routes: Routes &#x3D; [
       { path: &#x27;perfil&#x27;, component: PerfilComponent, pathMatch: &#x27;full&#x27; , canActivate:[AuthenticationGuard]},
       {
         path: &#x27;admin&#x27;, component: AdminComponent, children: [
-          { path: &#x27;&#x27;, loadChildren: () &#x3D;&gt; &quot;import(\&quot;./components/Admin/alumnos/alumnos.module\&quot;).then(m &#x3D;&gt; m.AlumnosModule)&quot; },
+          { path: &#x27;&#x27;, loadChildren: () &#x3D;&gt; &quot;import(\&quot;./components/Admin/csv/csv.module\&quot;).then(m &#x3D;&gt; m.CsvModule)&quot;  },
           { path: &#x27;alumnos&#x27;, loadChildren: () &#x3D;&gt; &quot;import(\&quot;./components/Admin/alumnos/alumnos.module\&quot;).then(m &#x3D;&gt; m.AlumnosModule)&quot; },
           { path: &#x27;cursos&#x27;, loadChildren: () &#x3D;&gt; &quot;import(\&quot;./components/Admin/cursos/cursos.module\&quot;).then(m &#x3D;&gt; m.CursosModule)&quot; },
           { path: &#x27;empresas&#x27;, loadChildren: () &#x3D;&gt; &quot;import(\&quot;./components/Admin/empresas/empresas.module\&quot;).then(m &#x3D;&gt; m.EmpresasModule)&quot; },

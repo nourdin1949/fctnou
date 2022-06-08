@@ -5,15 +5,30 @@ import { SharedService } from 'src/app/Shared/shared.service';
 import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { EmpresasService } from '../../empresas/empresas.service';
 import { ResponsableService } from '../responsable.service';
-
+/**
+ * The insertar responsable component
+ */
 @Component({
   selector: 'app-insertar-responsable',
   templateUrl: './insertar-responsable.component.html',
   styleUrls: ['./insertar-responsable.component.css']
 })
 export class InsertarResponsableComponent implements OnInit {
+  /**
+   * matriz de empresas
+   */
   public empresas: Empresa[] = []
+  /**
+   * Formulario
+   */
   public forminsertarResponsable: FormGroup;
+  /**
+   * Constructor
+   * @param fb 
+   * @param responsableService 
+   * @param empresaService 
+   * @param sharedService 
+   */
   constructor(
     private fb: FormBuilder,
     private responsableService: ResponsableService,
@@ -30,10 +45,17 @@ export class InsertarResponsableComponent implements OnInit {
         [customValidatorEmail.customValidEmail(sharedService)], 'blur'],
     })
   }
-  ngOnInit(): void {
+  /**
+   * NgOnInit
+   */
+  public ngOnInit(): void {
     this.listarEmpresas()
   }
-  insertarResponsable(form: FormGroup) {
+  /**
+   * Metodo insertar responsable
+   * @param form 
+   */
+  public insertarResponsable(form: FormGroup) {
     const responsable: Responsable = {
       "id": 0,
       "nombreResponsable": form.value.nombre,
@@ -52,8 +74,10 @@ export class InsertarResponsableComponent implements OnInit {
         })
     }
   }
-
-  listarEmpresas() {
+  /**
+   * Metodo listar empresa
+   */
+  public listarEmpresas() {
     this.empresaService.listarEmpresas().subscribe((response) => {
       this.empresas = response;
     })

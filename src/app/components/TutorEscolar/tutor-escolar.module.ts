@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 @NgModule({
   declarations: [
     TutorEscolarComponent,
@@ -31,7 +32,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatTabsModule, 
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule, 
+    TextareaAutosizeModule
   ]
 })
 export class TutorEscolarModule { }

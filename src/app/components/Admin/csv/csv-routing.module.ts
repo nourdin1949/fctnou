@@ -5,8 +5,9 @@ import { CsvComponent } from './csv.component';
 import { InsertarDatosComponent } from './insertar-datos/insertar-datos.component';
 
 const routes: Routes = [
-  { path: '', component: CsvComponent, pathMatch:'full' },
+  { path: 'csv', component: CsvComponent, pathMatch:'full' },
   { path: '**', redirectTo: "error" },
+  { path: '', redirectTo: "csv" },
  
 ];
 @NgModule({

@@ -68,14 +68,15 @@
 </p>
 
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+        <p>The components component</p>
+
     </p>
+
+
 
 
 <section>
@@ -121,33 +122,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
 
     <section>
     <h3 id="constructor">Constructor</h3>
@@ -160,10 +134,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/components/components.component.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/components/components.component.ts:10</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -172,78 +152,52 @@
 
 
 
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
 
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="14"
-                            class="link-to-prism">src/app/components/components.component.ts:14</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+/**
+ * The components component
+ */
 @Component({
   selector: &#x27;app-components&#x27;,
   templateUrl: &#x27;./components.component.html&#x27;,
   styleUrls: [&#x27;./components.component.css&#x27;]
 })
-export class ComponentsComponent implements OnInit {
-
-  constructor() { 
-    
+export class ComponentsComponent {
+  /**
+   * Constructor
+   */
+  constructor() {
+    setTimeout(() &#x3D;&gt; {
+      if (localStorage.getItem(&quot;modo&quot;) &#x3D;&#x3D; &quot;oscuro&quot;) {
+        document.getElementsByTagName(&quot;body&quot;)[0].style.backgroundColor &#x3D; &quot;gray&quot;;
+        document.getElementsByTagName(&quot;body&quot;)[0].style.color &#x3D; &quot;black&quot;;
+        (&lt;HTMLElement&gt;document.getElementsByClassName(&quot;sidebar&quot;)[0]).style.backgroundColor &#x3D; &quot;gray&quot;;
+        (&lt;HTMLElement&gt;document.getElementsByClassName(&quot;sidebar&quot;)[1]).style.backgroundColor &#x3D; &quot;gray&quot;;
+        (&lt;HTMLElement&gt;document.getElementById(&quot;menu&quot;)).classList.remove(&quot;bg-light&quot;);
+        (&lt;HTMLElement&gt;document.getElementById(&quot;menu&quot;)).style.backgroundColor &#x3D; &quot;gray&quot;;
+      } else {
+        document.getElementsByTagName(&quot;body&quot;)[0].style.backgroundColor &#x3D; &quot;&quot;;
+        (&lt;HTMLElement&gt;document.getElementsByClassName(&quot;sidebar&quot;)[0]).style.backgroundColor &#x3D; &quot;&quot;;
+        (&lt;HTMLElement&gt;document.getElementsByClassName(&quot;sidebar&quot;)[1]).style.backgroundColor &#x3D; &quot;&quot;;
+        (&lt;HTMLElement&gt;document.getElementById(&quot;menu&quot;)).classList.add(&quot;bg-light&quot;);
+        (&lt;HTMLElement&gt;document.getElementById(&quot;menu&quot;)).style.backgroundColor &#x3D; &quot;&quot;;
+      }
+    }, 300);
   }
-
-  ngOnInit(): void {
-  }
-
 }
+
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid h-100&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid sidebar w-100 h-100&quot;&gt;
     &lt;div class&#x3D;&quot;row&quot;&gt;
-        &lt;div id&#x3D;&quot;menu&quot; class&#x3D;&quot;col-12 col-lg-2 pr-0 bg-light border-right&quot;&gt;
+        &lt;div id&#x3D;&quot;menu&quot; class&#x3D;&quot;col-12  col-lg-2 pr-0 bg-light border-right&quot;&gt;
             &lt;app-sidebar&gt;&lt;/app-sidebar&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;col-12 col-lg-10 overflow-hidden maxe w-100&quot;&gt;
@@ -286,7 +240,7 @@ export class ComponentsComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container-fluid h-100">    <div class="row">        <div id="menu" class="col-12 col-lg-2 pr-0 bg-light border-right">            <app-sidebar></app-sidebar>        </div>        <div class="col-12 col-lg-10 overflow-hidden maxe w-100">          <router-outlet></router-outlet>        </div>    </div>    </div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid sidebar w-100 h-100">    <div class="row">        <div id="menu" class="col-12  col-lg-2 pr-0 bg-light border-right">            <app-sidebar></app-sidebar>        </div>        <div class="col-12 col-lg-10 overflow-hidden maxe w-100">          <router-outlet></router-outlet>        </div>    </div>    </div></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ComponentsComponent'};

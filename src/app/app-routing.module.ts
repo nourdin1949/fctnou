@@ -6,8 +6,6 @@ import { AuthenticationProfesorGuard } from './auth/authentication-profesor.guar
 import { AuthenticationResponsableGuard } from './auth/authentication-responsable.guard';
 import { AuthenticationGuard } from './auth/authentication.guard'
 import { AdminComponent } from './components/Admin/admin.component';
-import { ProfesorComponent } from './components/Admin/profesor/profesor.component';
-import { ResponsableComponent } from './components/Admin/responsable/responsable.component';
 import { AlumnosComponent } from './components/Alumnos/alumnos.component';
 import { ComponentsComponent } from './components/components.component';
 import { AlumnosEmpresaComponent } from './components/TutorEmpresa/alumnos-empresa/alumnos-empresa.component';
@@ -34,7 +32,7 @@ const routes: Routes = [
       { path: 'perfil', component: PerfilComponent, pathMatch: 'full' , canActivate:[AuthenticationGuard]},
       {
         path: 'admin', component: AdminComponent, children: [
-          { path: '', loadChildren: () => import("./components/Admin/alumnos/alumnos.module").then(m => m.AlumnosModule) },
+          { path: '', loadChildren: () => import("./components/Admin/csv/csv.module").then(m => m.CsvModule)  },
           { path: 'alumnos', loadChildren: () => import("./components/Admin/alumnos/alumnos.module").then(m => m.AlumnosModule) },
           { path: 'cursos', loadChildren: () => import("./components/Admin/cursos/cursos.module").then(m => m.CursosModule) },
           { path: 'empresas', loadChildren: () => import("./components/Admin/empresas/empresas.module").then(m => m.EmpresasModule) },

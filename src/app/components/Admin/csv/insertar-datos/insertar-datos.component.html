@@ -8,7 +8,7 @@
     </div>
     <div class="col-3"></div>
 
-    <form [formGroup]="formcsv" (ngSubmit)="insertarDatos($event)" class="w-75  col-6">
+    <form [formGroup]="formcsv" #form (ngSubmit)="insertarDatos($event)" class="w-75  col-6">
         <div class="form-group">
             <h3 class="title bg-color text-light p-2">Insertar Campos desde CSV
                 <mat-icon (click)="emptyInput()">refresh</mat-icon>

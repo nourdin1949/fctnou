@@ -1,26 +1,53 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chat, Profesor } from 'src/app/utils/interfaces/Interface';
 import { ProfesorService } from '../../Admin/profesor/profesor.service';
 import { TutorEmpresaService } from '../tutor-empresa.service';
 import Pusher from "pusher-js"
+/**
+ * The chat emp component
+ */
 @Component({
   selector: 'app-chat-emp',
   templateUrl: './chat-emp.component.html',
   styleUrls: ['./chat-emp.component.css']
 })
-export class ChatEmpComponent implements OnInit, OnDestroy {
+export class ChatEmpComponent implements OnInit {
+  /**
+   * Matriz de tutores
+   */
   public tutores: Profesor[] = []
-  mensajes: Chat[] = []
+  /**
+   * Matriz de mensajes
+   */
+  public mensajes: Chat[] = []
+  /**
+   * Matriz de mensajes temporales
+   */
   public auxmensajes: Chat[] = []
+  /**
+   * Mensaje nuevo
+   */
   public nuevoMensaje: string = ""
-  receptor: string = ""
-  mostrarChat: boolean = false
-  public temporizador
+  /**
+   * dni del tutor
+   */
+  public receptor: string = ""
+  /**
+   * Mostrar card chat
+   */
+  public mostrarChat: boolean = false
+  /**
+   * Constructor
+   * @param tutorempresaService 
+   * @param profesorsService 
+   */
   constructor(
     private tutorempresaService: TutorEmpresaService,
     private profesorsService: ProfesorService) { }
-
-  ngOnInit(): void {
+  /**
+   * NgOnInit
+   */
+  public ngOnInit(): void {
     this.listarTutores()
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -44,7 +71,10 @@ export class ChatEmpComponent implements OnInit, OnDestroy {
       //alert(JSON.stringify(data));
     });
   }
-  submit() {
+  /**
+   * Metodo enviar mensaje al servidor
+   */
+  public submit() {
     const chatobject: Chat = {
       "id": 0,
       "emisor": sessionStorage.getItem("username")!,
@@ -52,7 +82,6 @@ export class ChatEmpComponent implements OnInit, OnDestroy {
       "receptor": this.receptor,
       "fecha": new Date()
     }
-
     if (this.nuevoMensaje != "") {
       this.tutorempresaService.insertarChat(chatobject)
         .subscribe(
@@ -62,9 +91,11 @@ export class ChatEmpComponent implements OnInit, OnDestroy {
             this.scrollToTheLastElementByClassName()
           })
     }
-
   }
-  listarMensaje() {
+  /**
+   * Metodo que lista los mensajes
+   */
+  public listarMensaje() {
     if (this.receptor != "") { this.mostrarChat = true } else {
       this.mostrarChat = false
       this.auxmensajes = []
@@ -81,30 +112,17 @@ export class ChatEmpComponent implements OnInit, OnDestroy {
       }, 100);
     })
   }
+  /**
+   * Metodo para listar tutores
+   */
   private listarTutores() {
     this.profesorsService.listarProfesor().subscribe((response) => {
       this.tutores = response;
     })
   }
-  public enviarMensaje() {
-    const chatobject: Chat = {
-      "id": 0,
-      "emisor": sessionStorage.getItem("username")!,
-      "mensaje": this.nuevoMensaje,
-      "receptor": this.receptor,
-      "fecha": new Date()
-    }
-    if (this.nuevoMensaje != "") {
-      this.tutorempresaService.insertarChat(chatobject).subscribe((rees) => {
-
-        this.listarMensaje()
-        this.scrollToTheLastElementByClassName()
-
-      })
-      this.nuevoMensaje = ""
-    }
-  }
-
+  /**
+   * Mostrar ultimo mensaje enviado
+   */
   private scrollToTheLastElementByClassName() {
     let element = document.getElementsByClassName("msj");
     let ultimo: any = element[(element.length - 1)]
@@ -113,15 +131,19 @@ export class ChatEmpComponent implements OnInit, OnDestroy {
     //@ts-ignore
     document.getElementById("contenedorDeMensajes")?.scrollTop = toppos;
   }
-  ngOnDestroy(): void {
-    clearInterval(this.temporizador)
-  }
+  /**
+   * Ocultar card chat
+   */
   public ocultarChat() {
     this.mostrarChat = false
-    clearInterval(this.temporizador)
   }
-  public minimizar() {
-    this.mostrarChat = false
-    clearInterval(this.temporizador)
+  /**
+   * Cerrar Chat
+   */
+  public cerrarChat(){
+    this.auxmensajes=[]
+    this.mostrarChat=false
+    this.receptor=""
   }
+
 }
