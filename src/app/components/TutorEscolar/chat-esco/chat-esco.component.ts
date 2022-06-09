@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import Pusher from 'pusher-js';
 import { Chat, Responsable } from 'src/app/utils/interfaces/Interface';
 import { ResponsableService } from '../../Admin/responsable/responsable.service';
 import { TutorEmpresaService } from '../../TutorEmpresa/tutor-empresa.service';
-import Pusher from 'pusher-js';
 /**
  * The chat esco component
  */

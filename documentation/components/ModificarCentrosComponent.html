@@ -511,10 +511,10 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { FormGroup, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { Centro } from &#x27;src/app/utils/interfaces/Interface&#x27;;
-import {  customValidatorCIFCentroBYID } from &#x27;src/app/utils/Validators/otrasValidaciones&#x27;;
+import { customValidatorCIFCentroBYID } from &#x27;src/app/utils/Validators/otrasValidaciones&#x27;;
 import { CentrosService } from &#x27;../centros.service&#x27;;
 /**
  * Modificar Centros component
@@ -525,19 +525,19 @@ import { CentrosService } from &#x27;../centros.service&#x27;;
   templateUrl: &#x27;./modificar-centros.component.html&#x27;,
   styleUrls: [&#x27;./modificar-centros.component.css&#x27;]
 })
-export class ModificarCentrosComponent  {
+export class ModificarCentrosComponent {
   /**
    * Codigo centro
    */
-  public codigoCentro:number&#x3D;0;
+  public codigoCentro: number &#x3D; 0;
   /**
    * Centro objeto
    */
-  public centro:any&#x3D;{}
+  public centro: any &#x3D; {}
   /**
    * Formulario
    */
-  public formModificarCentro:FormGroup
+  public formModificarCentro: FormGroup
   /**
    * Constructor
    * @param activatedRoute 
@@ -547,26 +547,26 @@ export class ModificarCentrosComponent  {
    */
   public constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder, 
-    private router: Router, 
+    private fb: FormBuilder,
+    private router: Router,
     private centroService: CentrosService) {
-      this.activatedRoute.params.subscribe(m &#x3D;&gt; {
-        this.codigoCentro &#x3D; m[&#x27;id&#x27;]
-        this.findCentroById()
-      })
-   
-      this.formModificarCentro &#x3D; this.fb.group({
-        nombre: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-        provincia: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-        localidad: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-        calle: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-        cp: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{5}&quot;)]],
-        telefono: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{9}&quot;)]],
-        email: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$&quot;)]],
-        cif: [&#x27;&#x27;, [Validators.required, Validators.maxLength(10), Validators.minLength(9)], 
-          customValidatorCIFCentroBYID.customValidCIFCentroBYID(this.centroService, this.codigoCentro), &#x27;blur&#x27;],
-        director: [&#x27;&#x27;, [Validators.required,Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-      })
+    this.activatedRoute.params.subscribe(m &#x3D;&gt; {
+      this.codigoCentro &#x3D; m[&#x27;id&#x27;]
+      this.findCentroById()
+    })
+
+    this.formModificarCentro &#x3D; this.fb.group({
+      nombre: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      provincia: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      localidad: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      calle: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      cp: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{5}&quot;)]],
+      telefono: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{9}&quot;)]],
+      email: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$&quot;)]],
+      cif: [&#x27;&#x27;, [Validators.required, Validators.maxLength(10), Validators.minLength(9)],
+        customValidatorCIFCentroBYID.customValidCIFCentroBYID(this.centroService, this.codigoCentro), &#x27;blur&#x27;],
+      director: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+    })
 
   }
   /**
@@ -587,17 +587,17 @@ export class ModificarCentrosComponent  {
       &quot;nombreDirector&quot;: form.value.director
     }
     console.log(centro)
-    if(this.formModificarCentro.valid ){
+    if (this.formModificarCentro.valid) {
       console.log(centro)
-      this.centroService.updateCentroById(this.codigoCentro,centro)
-      .subscribe((response) &#x3D;&gt; {
-        (&lt;HTMLButtonElement&gt;document.getElementById(&quot;modificado&quot;)).click()
-      })
+      this.centroService.updateCentroById(this.codigoCentro, centro)
+        .subscribe((response) &#x3D;&gt; {
+          (&lt;HTMLButtonElement&gt;document.getElementById(&quot;modificado&quot;)).click()
+        })
     }
   }
   /**
    * Metodo buscar centro by id
-   */  
+   */
   public findCentroById() {
     this.centroService.findCentroByid(this.codigoCentro)
       .subscribe((response) &#x3D;&gt; {

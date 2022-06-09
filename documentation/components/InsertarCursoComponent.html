@@ -523,7 +523,7 @@ export class InsertarCursoComponent implements OnInit {
   /**
    * Matriz profesores
    */
-  public profesores:Profesor[]&#x3D;[]
+  public profesores: Profesor[] &#x3D; []
   /**
    * Formulario
    */
@@ -534,52 +534,52 @@ export class InsertarCursoComponent implements OnInit {
    * @param cursoService 
    * @param profesorService 
    */
-  constructor(private fb: FormBuilder, private cursoService:CursosService, private profesorService:ProfesorService) {
+  constructor(private fb: FormBuilder, private cursoService: CursosService, private profesorService: ProfesorService) {
     this.forminsertarCurso &#x3D; this.fb.group({
-      code:[&#x27;&#x27;, [Validators.required,Validators.pattern(&#x27;[A-Za-z]{0,6}&#x27;), Validators.minLength(2)]],
-      familia:[&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-      ciclo:[&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-      curso:[&#x27;&#x27;,[ Validators.required, Validators.pattern(&#x27;[0-9]{4}-[0-9]{4}&#x27;)]],
-      horas:[&#x27;&#x27;, [Validators.required,Validators.pattern(&#x27;[0-9]{1,8}&#x27;)]],
-      tutor:[&#x27;&#x27;, Validators.required]
+      code: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Za-z]{0,6}&#x27;), Validators.minLength(2)]],
+      familia: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      ciclo: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      curso: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9]{4}-[0-9]{4}&#x27;)]],
+      horas: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9]{1,8}&#x27;)]],
+      tutor: [&#x27;&#x27;, Validators.required]
     })
   }
   /**
    * NgOnInit
    */
   public ngOnInit(): void {
-  this.listarProfesor()
+    this.listarProfesor()
   }
   /**
    * Metodo insertar curso
    * @param form 
    */
-  public insertarCurso(form:FormGroup){
-      const curso: Curso &#x3D; {
-        &quot;id&quot;:0,
-        &quot;codigoCiclo&quot;:form.value.code, 
-        &quot;familiaProfesional&quot;:form.value.familia, 
-        &quot;cicloFormativo&quot;:form.value.ciclo, 
-        &quot;cursoAcademico&quot;:form.value.curso,
-        &quot;nHoras&quot;:form.value.horas,
-        &quot;tutor_id&quot;:form.value.tutor
-      }
-      if(this.forminsertarCurso.valid){
-          this.cursoService.insertarCurso(curso).subscribe(()&#x3D;&gt;{
-            (&lt;HTMLButtonElement&gt;document.getElementById(&quot;insertado&quot;)).click()
-            setTimeout(() &#x3D;&gt; {
-              (&lt;HTMLElement&gt;document.getElementById(&#x27;insertarCurso&#x27;)).classList.remove(&#x27;modal-open&#x27;);
-              (&lt;HTMLCollectionOf&lt;HTMLElement&gt;&gt;document.getElementsByClassName(&#x27;modal-backdrop&#x27;))[0].classList.remove(&#x27;modal-backdrop&#x27;)
-            }, 300);
-          })
-      }
+  public insertarCurso(form: FormGroup) {
+    const curso: Curso &#x3D; {
+      &quot;id&quot;: 0,
+      &quot;codigoCiclo&quot;: form.value.code,
+      &quot;familiaProfesional&quot;: form.value.familia,
+      &quot;cicloFormativo&quot;: form.value.ciclo,
+      &quot;cursoAcademico&quot;: form.value.curso,
+      &quot;nHoras&quot;: form.value.horas,
+      &quot;tutor_id&quot;: form.value.tutor
+    }
+    if (this.forminsertarCurso.valid) {
+      this.cursoService.insertarCurso(curso).subscribe(() &#x3D;&gt; {
+        (&lt;HTMLButtonElement&gt;document.getElementById(&quot;insertado&quot;)).click()
+        setTimeout(() &#x3D;&gt; {
+          (&lt;HTMLElement&gt;document.getElementById(&#x27;insertarCurso&#x27;)).classList.remove(&#x27;modal-open&#x27;);
+          (&lt;HTMLCollectionOf&lt;HTMLElement&gt;&gt;document.getElementsByClassName(&#x27;modal-backdrop&#x27;))[0].classList.remove(&#x27;modal-backdrop&#x27;)
+        }, 300);
+      })
+    }
   }
   /**
    * Metodo listar profesore
    */
-  public listarProfesor(){
-    this.profesorService.listarProfesor().subscribe((response)&#x3D;&gt;{
-      this.profesores&#x3D; response;
+  public listarProfesor() {
+    this.profesorService.listarProfesor().subscribe((response) &#x3D;&gt; {
+      this.profesores &#x3D; response;
     })
   }
 }

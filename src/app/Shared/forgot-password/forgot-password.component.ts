@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../shared.service';
 /**
  * The forgot password component
@@ -19,13 +18,14 @@ export class ForgotPasswordComponent {
    * Email enviado
    */
   public enviado: boolean = false
+  
   /**
-   * Constructor
-   * @param fb 
-   * @param router 
-   * @param sharedserv 
+   * Creates an instance of ForgotPasswordComponent.
+   * @param {FormBuilder} fb
+   * @param {SharedService} shared_service
+   * @memberof ForgotPasswordComponent
    */
-  constructor(private fb: FormBuilder, private router: Router, private sharedserv: SharedService) {
+  constructor(private fb: FormBuilder, private shared_service: SharedService) {
     this.formForgotPassword = this.fb.group({
       email: ['', Validators.required],
     })
@@ -35,7 +35,7 @@ export class ForgotPasswordComponent {
    */
   recuperarContrasenia() {
     if (this.formForgotPassword.valid) {
-      this.sharedserv.forgotpassword(this.formForgotPassword.value.email)
+      this.shared_service.forgotpassword(this.formForgotPassword.value.email)
         .subscribe(
           () => {
             this.enviado = true

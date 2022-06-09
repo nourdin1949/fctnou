@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Alumno, Curso } from 'src/app/utils/interfaces/Interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/Shared/shared.service';
+import { Alumno, Curso } from 'src/app/utils/interfaces/Interface';
 import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CursosService } from '../../cursos/cursos.service';
 import { AlumnosService } from '../alumnos.service';
@@ -29,7 +29,7 @@ export class InsertarAlumnosComponent implements OnInit {
   /**
    * Formulario controls
    */
-  get formulario (){
+  get formulario() {
     return this.forminsertarAlumno.controls;
   }
   /**
@@ -39,22 +39,22 @@ export class InsertarAlumnosComponent implements OnInit {
    * @param alumnosService 
    * @param sharedService 
    */
-  constructor(private fb: FormBuilder, 
-    private cursoServoce: CursosService, 
+  constructor(private fb: FormBuilder,
+    private cursoServoce: CursosService,
     private alumnosService: AlumnosService,
-    private sharedService:SharedService) {
-      this.forminsertarAlumno = this.fb.group({
-        nombre: ['', Validators.required],
-        dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
-        [customValidatordDni.customValidDni(this.sharedService),customValidatorFormatDNI.customValidDNILETRA], 'blur' ],
-        provincia: ['', Validators.required,[], 'blur'],
-        localidad: ['', Validators.required,,'blur'],
-        calle: ['', Validators.required],
-        cp: ['', [Validators.required,  Validators.pattern("[0-9]{5}")],,'blur'  ],
-        curso: ['', Validators.required],
-        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
-        [customValidatorEmail.customValidEmail(sharedService)], 'blur' ]
-      })
+    private sharedService: SharedService) {
+    this.forminsertarAlumno = this.fb.group({
+      nombre: ['', Validators.required],
+      dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
+        [customValidatordDni.customValidDni(this.sharedService), customValidatorFormatDNI.customValidDNILETRA], 'blur'],
+      provincia: ['', Validators.required, [], 'blur'],
+      localidad: ['', Validators.required, , 'blur'],
+      calle: ['', Validators.required],
+      cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")], , 'blur'],
+      curso: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
+        [customValidatorEmail.customValidEmail(sharedService)], 'blur']
+    })
   }
   /**
    * NgOnInit
@@ -81,13 +81,14 @@ export class InsertarAlumnosComponent implements OnInit {
     }
     if (this.forminsertarAlumno.valid) {
       this.alumnosService.insertarAlumnos(alumno)
-        .subscribe((res) => {
-          (<HTMLButtonElement>document.getElementById("insertado")).click()
-          setTimeout(() => {
-            (<HTMLElement>document.getElementById('insertarAlumno')).classList.remove('modal-open');
-            (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
-          }, 300);
-        })
+        .subscribe(
+          () => {
+            (<HTMLButtonElement>document.getElementById("insertado")).click()
+            setTimeout(() => {
+              (<HTMLElement>document.getElementById('insertarAlumno')).classList.remove('modal-open');
+              (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName('modal-backdrop'))[0].classList.remove('modal-backdrop')
+            }, 300);
+          })
     }
   }
   /**

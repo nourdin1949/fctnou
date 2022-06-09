@@ -602,7 +602,7 @@ export class VerificarEmailComponent implements OnInit {
     this.debounce.pipe(
       debounceTime(3000)
     ).subscribe(
-      resp &#x3D;&gt; this.router.navigateByUrl(&#x27;&#x27;)
+     () &#x3D;&gt; this.router.navigateByUrl(&#x27;&#x27;)
     )
   }
   /**
@@ -749,7 +749,7 @@ body {
     height: 40px;
     color: #fff;
     border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
+    box-shadow: 3px 3px 3px #b1b1b1;
     letter-spacing: 1.3px
 }
 

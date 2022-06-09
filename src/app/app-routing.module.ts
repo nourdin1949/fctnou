@@ -4,7 +4,7 @@ import { AuthenticationAdminGuard } from './auth/authentication-admin.guard';
 import { AuthenticationAlumnoGuard } from './auth/authentication-alumno.guard';
 import { AuthenticationProfesorGuard } from './auth/authentication-profesor.guard';
 import { AuthenticationResponsableGuard } from './auth/authentication-responsable.guard';
-import { AuthenticationGuard } from './auth/authentication.guard'
+import { AuthenticationGuard } from './auth/authentication.guard';
 import { AdminComponent } from './components/Admin/admin.component';
 import { AlumnosComponent } from './components/Alumnos/alumnos.component';
 import { ComponentsComponent } from './components/components.component';

@@ -78,9 +78,9 @@ import { ListarEmpresasComponent } from &#x27;./listar-empresas/listar-empresas.
 import { ModificarEmpresasComponent } from &#x27;./modificar-empresas/modificar-empresas.component&#x27;;
 
 const routes: Routes &#x3D; [
-  {path: &#x27;listar&#x27;, component: ListarEmpresasComponent, pathMatch:&#x27;full&#x27;},
-  {path: &#x27;modificarEmpresa/:id&#x27;, component: ModificarEmpresasComponent, pathMatch:&#x27;full&#x27;},
-  {path: &#x27;&#x27;,redirectTo: &#x27;listar&#x27;, pathMatch:&#x27;full&#x27;},
+  { path: &#x27;listar&#x27;, component: ListarEmpresasComponent, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;modificarEmpresa/:id&#x27;, component: ModificarEmpresasComponent, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;&#x27;, redirectTo: &#x27;listar&#x27;, pathMatch: &#x27;full&#x27; },
   { path: &#x27;**&#x27;, redirectTo: &quot;error&quot; },
 
 ];

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { AlumnosService } from '../alumnos.service';
-import { Alumno, Empresa } from 'src/app/utils/interfaces/Interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Alumno, Empresa } from 'src/app/utils/interfaces/Interface';
+import { AlumnosService } from '../alumnos.service';
+
 /**
  * The listar alumnos component
  */

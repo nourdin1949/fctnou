@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SharedService } from '../shared.service';
 import * as moment from "moment"
 import { User } from '../../utils/interfaces/Interface';

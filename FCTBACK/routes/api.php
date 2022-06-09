@@ -28,7 +28,7 @@ use App\Http\Controllers\API\TareasController;
 |
 */
 
-Route::middleware('auth:sanctum','verified')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum', 'verified')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -54,10 +54,10 @@ Route::post('reset-password', [NewPasswordController::class, 'reset']);
 Route::get('users', [AuthController::class, 'getUsers']);
 Route::put('eliminarFoto/{id}', [AuthController::class, 'eliminarFoto']);
 
-################################### ADMIN  ###################################
 
 
-Route::middleware('auth:sanctum')->group(function(){
+
+Route::middleware('auth:sanctum')->group(function () {
     // EMPRESA
     Route::controller(EmpresasController::class)->group(function () {
         Route::post('insertarEmpresa', 'store');
@@ -143,25 +143,25 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::delete('eliminarTareaAlumno/{id}', 'destroy');
     });
     // TAREAS
-   
-    Route::post('subirImg/{username}/{id}',[AuthController::class, 'subirImagen']);
+
+    Route::post('subirImg/{username}/{id}', [AuthController::class, 'subirImagen']);
 });
 
 //Validaciones asyncValidators
-Route::get('validarEmail/{email}',[AuthController::class, 'validarEmail']);
-Route::get('validarDNI/{dni}',[AuthController::class, 'validarDNI']);
-Route::get('validarEmailByID/{email}/{id}',[AuthController::class, 'validarEmailByID']);
-Route::get('validarDNIByID/{dni}/{id}',[AuthController::class, 'checkifDNIByID']);
-Route::get('checkifexistcifCentro/{cif}',[AuthController::class, 'checkifexistcifCentro']);
-Route::get('checkifexistcifCentroByID/{cif}/{id}',[AuthController::class, 'checkifexistcifCentroBYID']);
-Route::get('checkifEmpresaDNI/{dni}',[AuthController::class, 'checkifEmpresaDNI']);
-Route::get('checkifEmpresaDNIBYID/{dni}/{id}',[AuthController::class, 'checkifEmpresaDNIBYID']);
-Route::get('checkifEmpresaCIF/{cif}',[AuthController::class, 'checkifEmpresaCIF']);
-Route::get('checkifEmpresaCIFBYID/{dni}/{id}',[AuthController::class, 'checkifEmpresaCIFBYID']);
-Route::get('checkifAlumnoPractica/{id}',[AuthController::class, 'checkifAlumnoPractica']);
-Route::get('checkifUsersExist/{dni}',[AuthController::class, 'checkifUsersExist']);
+Route::get('validarEmail/{email}', [AuthController::class, 'validarEmail']);
+Route::get('validarDNI/{dni}', [AuthController::class, 'validarDNI']);
+Route::get('validarEmailByID/{email}/{id}', [AuthController::class, 'validarEmailByID']);
+Route::get('validarDNIByID/{dni}/{id}', [AuthController::class, 'checkifDNIByID']);
+Route::get('checkifexistcifCentro/{cif}', [AuthController::class, 'checkifexistcifCentro']);
+Route::get('checkifexistcifCentroByID/{cif}/{id}', [AuthController::class, 'checkifexistcifCentroBYID']);
+Route::get('checkifEmpresaDNI/{dni}', [AuthController::class, 'checkifEmpresaDNI']);
+Route::get('checkifEmpresaDNIBYID/{dni}/{id}', [AuthController::class, 'checkifEmpresaDNIBYID']);
+Route::get('checkifEmpresaCIF/{cif}', [AuthController::class, 'checkifEmpresaCIF']);
+Route::get('checkifEmpresaCIFBYID/{dni}/{id}', [AuthController::class, 'checkifEmpresaCIFBYID']);
+Route::get('checkifAlumnoPractica/{id}', [AuthController::class, 'checkifAlumnoPractica']);
+Route::get('checkifUsersExist/{dni}', [AuthController::class, 'checkifUsersExist']);
 
-Route::get('cmd/{comand}', function($command){
+Route::get('cmd/{comand}', function ($command) {
     Artisan::call($command);
     dd(Artisan::output());
 });
@@ -170,5 +170,4 @@ Route::get('cmd/{comand}', function($command){
 Route::controller(ChatController::class)->group(function () {
     Route::post('insertarChat', 'store');
     Route::get('listarChat', 'index');
-    
 });

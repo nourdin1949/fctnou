@@ -329,8 +329,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/Shared/login/login.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">src/app/Shared/login/login.component.ts:91</a></div>
                 </td>
             </tr>
 
@@ -443,8 +443,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="126"
-                            class="link-to-prism">src/app/Shared/login/login.component.ts:126</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/app/Shared/login/login.component.ts:127</a></div>
                 </td>
             </tr>
 
@@ -484,8 +484,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="145"
-                            class="link-to-prism">src/app/Shared/login/login.component.ts:145</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">src/app/Shared/login/login.component.ts:146</a></div>
                 </td>
             </tr>
 
@@ -525,8 +525,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">src/app/Shared/login/login.component.ts:157</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">src/app/Shared/login/login.component.ts:158</a></div>
                 </td>
             </tr>
 
@@ -566,8 +566,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="133"
-                            class="link-to-prism">src/app/Shared/login/login.component.ts:133</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">src/app/Shared/login/login.component.ts:134</a></div>
                 </td>
             </tr>
 
@@ -646,8 +646,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">src/app/Shared/login/login.component.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/app/Shared/login/login.component.ts:117</a></div>
                 </td>
             </tr>
 
@@ -1011,6 +1011,7 @@ export class LoginComponent implements OnInit {
             this.getuser();
           },
           (error) &#x3D;&gt; {
+            console.log(error)
             if (error.error.message &#x3D;&#x3D; &quot;Unauthorised.&quot;) {
               this.incorrecto &#x3D; true
             } else if (error.error.message &#x3D;&#x3D; &quot;Cuenta desactivada&quot;) {
@@ -1157,105 +1158,106 @@ export class LoginComponent implements OnInit {
                 <p class="comment">
                     <code>./login.component.css</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">@import url(&#x27;https://fonts.googleapis.com/css2?family&#x3D;Poppins:wght@300;400;500;600;700;800;900&amp;display&#x3D;swap&#x27;);
+                <pre class="line-numbers"><code class="language-scss">@import url(&quot;https://fonts.googleapis.com/css2?family&#x3D;Poppins:wght@300;400;500;600;700;800;900&amp;display&#x3D;swap&quot;);
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: &#x27;Poppins&#x27;, sans-serif
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: &quot;Poppins&quot;, sans-serif;
 }
 
 body {
-    background: #ecf0f3
+  background: #ecf0f3;
 }
-
 
 .wrapper {
-    max-width: 350px;
-    min-height: 500px;
-    margin: 80px auto;
-    padding: 40px 30px 30px 30px;
-    background-color: #ecf0f3;
-    border-radius: 15px;
-    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+  max-width: 350px;
+  min-height: 500px;
+  margin: 80px auto;
+  padding: 40px 30px 30px 30px;
+  background-color: #ecf0f3;
+  border-radius: 15px;
+  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
 }
-.wrapper::-webkit-scrollbar{
-    overflow: hidden
+.wrapper::-webkit-scrollbar {
+  overflow: hidden;
 }
 .logo {
-    width: 80px;
-    margin: auto
+  width: 80px;
+  margin: auto;
 }
 
 .logo img {
-    width: 100%;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7,
+    -8px -8px 15px #fff;
 }
 
 .wrapper .name {
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: 1.3px;
-    padding-left: 10px;
-    color: #555
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 1.3px;
+  padding-left: 10px;
+  color: #555;
 }
 
 .wrapper .form-field input {
-    width: 100%;
-    display: block;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.2rem;
-    color: #666;
-    padding: 10px 15px 10px 10px
+  width: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 10px 15px 10px 10px;
 }
 
 .wrapper .form-field {
-    padding-left: 10px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff
+  padding-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
 
 .wrapper .form-field .fas {
-    color: #555
+  color: #555;
 }
 
 .wrapper .btn {
-    box-shadow: none;
-    width: 100%;
-    height: 40px;
-    color: #fff;
-    border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
-    letter-spacing: 1.3px
+  box-shadow: none;
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px #b1b1b1;
+  letter-spacing: 1.3px;
 }
 
 .wrapper .btn:hover {
-    background-color: #2a3c41
+  background-color: #2a3c41;
 }
 
 .wrapper a {
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: #03A9F4
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #03a9f4;
 }
 
 .wrapper a:hover {
-    color: #039BE5
+  color: #039be5;
 }
 
-@media(max-width: 380px) {
-    .wrapper {
-        margin: 30px 20px;
-        padding: 40px 15px 15px 15px
-    }
-}</code></pre>
+@media (max-width: 380px) {
+  .wrapper {
+    margin: 30px 20px;
+    padding: 40px 15px 15px 15px;
+  }
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">

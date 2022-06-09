@@ -369,7 +369,7 @@ import { CentrosService } from &#x27;../centros.service&#x27;;
   templateUrl: &#x27;./insertar-centro.component.html&#x27;,
   styleUrls: [&#x27;./insertar-centro.component.css&#x27;]
 })
-export class InsertarCentroComponent   {
+export class InsertarCentroComponent {
   /**
    * Formulario
    */
@@ -390,8 +390,8 @@ export class InsertarCentroComponent   {
       telefono: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{9}&quot;)]],
       email: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$&quot;)]],
       cif: [&#x27;&#x27;, [Validators.required, Validators.maxLength(10), Validators.minLength(9)],
-        [customValidatorCIFCentro.customValidCIFCentro(centroService)],&#x27;blur&#x27;],
-      director: [&#x27;&#x27;, [Validators.required,Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+        [customValidatorCIFCentro.customValidCIFCentro(centroService)], &#x27;blur&#x27;],
+      director: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
       code: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9]{8}&#x27;)]]
     })
   }

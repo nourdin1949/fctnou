@@ -1,9 +1,6 @@
 
 @charset "UTF-8";
 
-/***********************************
-			/* 1. BODY */
-/***********************************/
 
 * {
   margin: 0;
@@ -53,8 +50,17 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
   vertical-align: baseline;
   background: transparent;
 }
-.message__title{
+.message__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+   font-size: 5.6rem;
+  padding-bottom: 40px;
+  max-width: 960px;
+  margin: 0 auto;
   margin-left: 2rem;
+
 }
 .starsec{
   content: " ";
@@ -117,15 +123,6 @@ button {
   background: none;
   cursor: pointer;
 }
-
-
-			/* 1. END BODY */
-/***********************************/
-
-/***********************************
-			/* 2. CONTENT */
-/***********************************/
-/* 2.1. Section error */
 .error {
   min-height: 100vh;
   position: relative;
@@ -135,6 +132,8 @@ button {
   height: 100%;
   text-align: center;
   margin-top: 70px;
+  overflow: hidden;
+  max-height: 100vh;
 }
 
 .error__message {
@@ -142,16 +141,7 @@ button {
   color: #181828;
 }
 
-.message__title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-   font-size: 5.6rem;
-  padding-bottom: 40px;
-  max-width: 960px;
-  margin: 0 auto;
-}
+
 
 .message__text {
   font-family: 'Montserrat', sans-serif;
@@ -243,9 +233,7 @@ button {
 .e-nav__link:nth-child(2):hover:after {
   color: #fff;
 }
-/* 2.1. END Section Error */
 
-/* 2.2. Social style */
 .error__social {
   position: absolute;
   top: 50%;
@@ -279,19 +267,8 @@ button {
 .e-social__link:hover {
   opacity: .7;
 }
-/* 2.2. END Social style */
 
-/***********************************
-			/* 2. END CONTENT */
-/***********************************/
 
-/***********************************
-			/* 3. RESPONSIVE */
-/***********************************/
-.error {
-  overflow: hidden;
-  max-height: 100vh;
-}
 .message__image{
   width: 8%;
 }
@@ -334,13 +311,12 @@ button {
   .e-social__icon {
     display: inline-block;
     padding-right: 30px;
+    padding-bottom: 0;
   }
   .e-social__icon:last-child {
     padding-right: 0;
   }
-  .e-social__icon {
-    padding-bottom: 0;
-  }
+
 }
 @media (max-width: 750px) {
   body, html{

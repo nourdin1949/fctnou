@@ -13,7 +13,7 @@ export class ProfesorService {
   /**
    * La url de la api
    */
-  private url=environment.url;
+  private url = environment.url;
   /**
    * Constructor
    * @param http 
@@ -52,15 +52,15 @@ export class ProfesorService {
    * @returns 
    */
   eliminarProfesor(id: number) {
-    return this.http.delete<Profesor[]>(`${this.url}/eliminarTutor/${id}`,this.getHeaders())
+    return this.http.delete<Profesor[]>(`${this.url}/eliminarTutor/${id}`, this.getHeaders())
   }
   /**
    * Buscar tutor por id
    * @param id 
    * @returns 
    */
-  findTutorByid(id:number){
-    return this.http.get<Profesor[]>(`${this.url}/findTutorByid/${id}`,this.getHeaders())
+  findTutorByid(id: number) {
+    return this.http.get<Profesor[]>(`${this.url}/findTutorByid/${id}`, this.getHeaders())
   }
   /**
    * Modificar tutor by id
@@ -68,8 +68,8 @@ export class ProfesorService {
    * @param profesor 
    * @returns 
    */
-  updateTutorById(id:number, profesor:Profesor){
+  updateTutorById(id: number, profesor: Profesor) {
     return this.http.put(`${this.url}/updateTutorById/${id}`, profesor, this.getHeaders())
-    
+
   }
 }

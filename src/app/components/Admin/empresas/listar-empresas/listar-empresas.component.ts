@@ -110,15 +110,15 @@ export class ListarEmpresasComponent implements OnInit {
           this.firstPage()
         })
   }
-   /**
-   * metodo open snack bar al eliminar
-   */
-    public openSnackBar() {
-      this._snackBar.open("Eliminado con éxito", "Close",
+  /**
+  * metodo open snack bar al eliminar
+  */
+  public openSnackBar() {
+    this._snackBar.open("Eliminado con éxito", "Close",
       {
         duration: 3000
       });
-    }
+  }
   /**
    * Metodo listar alumnos fct
    */

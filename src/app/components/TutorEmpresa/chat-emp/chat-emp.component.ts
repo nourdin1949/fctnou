@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import Pusher from "pusher-js";
 import { Chat, Profesor } from 'src/app/utils/interfaces/Interface';
 import { ProfesorService } from '../../Admin/profesor/profesor.service';
 import { TutorEmpresaService } from '../tutor-empresa.service';
-import Pusher from "pusher-js"
 /**
  * The chat emp component
  */

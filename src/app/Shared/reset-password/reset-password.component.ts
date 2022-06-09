@@ -1,5 +1,4 @@
-import { ContentObserver } from '@angular/cdk/observers';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from '../shared.service';
@@ -51,7 +50,7 @@ export class ResetPasswordComponent {
    */
   recuperarContrasenia() {
     if (this.formResetpassword.value.pwd1 != this.formResetpassword.value.pwd) this.pwdDiferentes = true
-    if (this.formResetpassword.valid && this.pwdDiferentes == false) {
+    if (this.formResetpassword.valid && this.pwdDiferentes) {
       const objetoDatos: object = {
         "token": this.token,
         "email": this.formResetpassword.value.email,

@@ -73,7 +73,7 @@ body {
     height: 40px;
     color: #fff;
     border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
+    box-shadow: 3px 3px 3px #b1b1b1;
     letter-spacing: 1.3px
 }
 

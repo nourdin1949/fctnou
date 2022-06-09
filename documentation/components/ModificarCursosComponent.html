@@ -648,8 +648,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {  Component ,OnInit} from &#x27;@angular/core&#x27;;
-import { FormGroup, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { Curso, Profesor } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { ProfesorService } from &#x27;../../profesor/profesor.service&#x27;;
@@ -662,23 +662,23 @@ import { CursosService } from &#x27;../cursos.service&#x27;;
   templateUrl: &#x27;./modificar-cursos.component.html&#x27;,
   styleUrls: [&#x27;./modificar-cursos.component.css&#x27;]
 })
-export class ModificarCursosComponent implements OnInit{
+export class ModificarCursosComponent implements OnInit {
   /**
    * Id curso
    */
-  public idCurso:number&#x3D;0;
+  public idCurso: number &#x3D; 0;
   /**
    * Objeto curso
    */
-  public curso:any&#x3D;{}
+  public curso: any &#x3D; {}
   /**
    * matriz profesores
    */
-  public profesores:Profesor[]&#x3D;[]
+  public profesores: Profesor[] &#x3D; []
   /**
    * Formulario 
    */
-  public formModificarCurso:FormGroup
+  public formModificarCurso: FormGroup
   /**
    * Constructor
    * @param activatedRoute 
@@ -688,23 +688,23 @@ export class ModificarCursosComponent implements OnInit{
    */
   public constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private cursoService: CursosService,
     private profesorService: ProfesorService) {
-      this.activatedRoute.params.subscribe(m &#x3D;&gt; {
-        this.idCurso &#x3D; m[&#x27;id&#x27;]
-        console.log(this.idCurso)
-        this.findCursoById()
-      })
-   
-      this.formModificarCurso &#x3D; this.fb.group({
-        code:[&#x27;&#x27;, [Validators.required,,Validators.pattern(&#x27;[A-Za-z]{0,6}&#x27;), Validators.minLength(2)]],
-        familia:[&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-        ciclo:[&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
-        curso:[&#x27;&#x27;,[ Validators.required, Validators.pattern(&#x27;[0-9]{4}-[0-9]{4}&#x27;)]],
-        horas:[&#x27;&#x27;, [Validators.required,Validators.pattern(&#x27;[0-9]{1,8}&#x27;)]],
-        tutor:[&#x27;&#x27;, Validators.required]
-      })
+    this.activatedRoute.params.subscribe(m &#x3D;&gt; {
+      this.idCurso &#x3D; m[&#x27;id&#x27;]
+      console.log(this.idCurso)
+      this.findCursoById()
+    })
+
+    this.formModificarCurso &#x3D; this.fb.group({
+      code: [&#x27;&#x27;, [Validators.required, , Validators.pattern(&#x27;[A-Za-z]{0,6}&#x27;), Validators.minLength(2)]],
+      familia: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      ciclo: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[A-Z a-z]{3,}&#x27;)]],
+      curso: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9]{4}-[0-9]{4}&#x27;)]],
+      horas: [&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;[0-9]{1,8}&#x27;)]],
+      tutor: [&#x27;&#x27;, Validators.required]
+    })
 
   }
   /**
@@ -719,19 +719,19 @@ export class ModificarCursosComponent implements OnInit{
    */
   public modificarCurso(form: FormGroup) {
     const curso: Curso &#x3D; {
-      &quot;id&quot;:this.idCurso,
-      &quot;codigoCiclo&quot;:form.value.code, 
-      &quot;familiaProfesional&quot;:form.value.familia, 
-      &quot;cicloFormativo&quot;:form.value.ciclo, 
-      &quot;cursoAcademico&quot;:form.value.curso,
-      &quot;nHoras&quot;:form.value.horas,
-      &quot;tutor_id&quot;:form.value.tutor
+      &quot;id&quot;: this.idCurso,
+      &quot;codigoCiclo&quot;: form.value.code,
+      &quot;familiaProfesional&quot;: form.value.familia,
+      &quot;cicloFormativo&quot;: form.value.ciclo,
+      &quot;cursoAcademico&quot;: form.value.curso,
+      &quot;nHoras&quot;: form.value.horas,
+      &quot;tutor_id&quot;: form.value.tutor
     }
-    if(this.formModificarCurso.valid ){
-      this.cursoService.updateCursoById(this.idCurso,curso)
-      .subscribe((response) &#x3D;&gt; {
-        (&lt;HTMLButtonElement&gt;document.getElementById(&quot;modificado&quot;)).click()
-      })
+    if (this.formModificarCurso.valid) {
+      this.cursoService.updateCursoById(this.idCurso, curso)
+        .subscribe(() &#x3D;&gt; {
+          (&lt;HTMLButtonElement&gt;document.getElementById(&quot;modificado&quot;)).click()
+        })
     }
   }
   /**
@@ -743,12 +743,12 @@ export class ModificarCursosComponent implements OnInit{
         this.curso &#x3D; response
         console.log(this.curso)
         let curso &#x3D; {
-          &quot;code&quot;:this.curso.codigoCiclo,
-          &quot;familia&quot;:this.curso.familiaProfesional,
-          &quot;ciclo&quot;:this.curso.cicloFormativo,
-          &quot;curso&quot;:this.curso.cursoAcademico,
-          &quot;horas&quot;:this.curso.nHoras,
-          &quot;tutor&quot;:this.curso.tutor_id,
+          &quot;code&quot;: this.curso.codigoCiclo,
+          &quot;familia&quot;: this.curso.familiaProfesional,
+          &quot;ciclo&quot;: this.curso.cicloFormativo,
+          &quot;curso&quot;: this.curso.cursoAcademico,
+          &quot;horas&quot;: this.curso.nHoras,
+          &quot;tutor&quot;: this.curso.tutor_id,
         }
         console.log(curso)
         this.formModificarCurso.setValue(curso)
@@ -757,8 +757,8 @@ export class ModificarCursosComponent implements OnInit{
   /**
    * Metodo listar profesores
    */
-  public listarProfesores(){
-    this.profesorService.listarProfesor().subscribe((response)&#x3D;&gt;{
+  public listarProfesores() {
+    this.profesorService.listarProfesor().subscribe((response) &#x3D;&gt; {
       this.profesores &#x3D; response
     })
   }

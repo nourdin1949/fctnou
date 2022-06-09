@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Centro } from 'src/app/utils/interfaces/Interface';
-import {  customValidatorCIFCentroBYID } from 'src/app/utils/Validators/otrasValidaciones';
+import { customValidatorCIFCentroBYID } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../centros.service';
 /**
  * Modificar Centros component
@@ -13,19 +13,19 @@ import { CentrosService } from '../centros.service';
   templateUrl: './modificar-centros.component.html',
   styleUrls: ['./modificar-centros.component.css']
 })
-export class ModificarCentrosComponent  {
+export class ModificarCentrosComponent {
   /**
    * Codigo centro
    */
-  public codigoCentro:number=0;
+  public codigoCentro: number = 0;
   /**
    * Centro objeto
    */
-  public centro:any={}
+  public centro: any = {}
   /**
    * Formulario
    */
-  public formModificarCentro:FormGroup
+  public formModificarCentro: FormGroup
   /**
    * Constructor
    * @param activatedRoute 
@@ -35,26 +35,26 @@ export class ModificarCentrosComponent  {
    */
   public constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder, 
-    private router: Router, 
+    private fb: FormBuilder,
+    private router: Router,
     private centroService: CentrosService) {
-      this.activatedRoute.params.subscribe(m => {
-        this.codigoCentro = m['id']
-        this.findCentroById()
-      })
-   
-      this.formModificarCentro = this.fb.group({
-        nombre: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
-        provincia: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
-        localidad: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
-        calle: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
-        cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")]],
-        telefono: ['', [Validators.required, Validators.pattern("[0-9]{9}")]],
-        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-        cif: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(9)], 
-          customValidatorCIFCentroBYID.customValidCIFCentroBYID(this.centroService, this.codigoCentro), 'blur'],
-        director: ['', [Validators.required,Validators.pattern('[A-Z a-z]{3,}')]],
-      })
+    this.activatedRoute.params.subscribe(m => {
+      this.codigoCentro = m['id']
+      this.findCentroById()
+    })
+
+    this.formModificarCentro = this.fb.group({
+      nombre: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      provincia: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      localidad: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      calle: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+      cp: ['', [Validators.required, Validators.pattern("[0-9]{5}")]],
+      telefono: ['', [Validators.required, Validators.pattern("[0-9]{9}")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      cif: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(9)],
+        customValidatorCIFCentroBYID.customValidCIFCentroBYID(this.centroService, this.codigoCentro), 'blur'],
+      director: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
+    })
 
   }
   /**
@@ -75,17 +75,17 @@ export class ModificarCentrosComponent  {
       "nombreDirector": form.value.director
     }
     console.log(centro)
-    if(this.formModificarCentro.valid ){
+    if (this.formModificarCentro.valid) {
       console.log(centro)
-      this.centroService.updateCentroById(this.codigoCentro,centro)
-      .subscribe((response) => {
-        (<HTMLButtonElement>document.getElementById("modificado")).click()
-      })
+      this.centroService.updateCentroById(this.codigoCentro, centro)
+        .subscribe((response) => {
+          (<HTMLButtonElement>document.getElementById("modificado")).click()
+        })
     }
   }
   /**
    * Metodo buscar centro by id
-   */  
+   */
   public findCentroById() {
     this.centroService.findCentroByid(this.codigoCentro)
       .subscribe((response) => {

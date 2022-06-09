@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import { AnexoVService } from '../anexo-v.service';
-import { Tarea } from 'src/app/utils/interfaces/Interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import html2canvas from 'html2canvas';
+import * as jsPDF from 'jspdf';
+import { Tarea } from 'src/app/utils/interfaces/Interface';
 import { customValidatorFecha } from 'src/app/utils/Validators/otrasValidaciones';
+import { AnexoVService } from '../anexo-v.service';
 /**
  * The buscar por fecha component
  */

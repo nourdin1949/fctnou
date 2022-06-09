@@ -77,10 +77,11 @@ import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
 import { ListarProfesorComponent } from &#x27;./listar-profesor/listar-profesor.component&#x27;;
 import { ModificarProfesorComponent } from &#x27;./modificar-profesor/modificar-profesor.component&#x27;;
 
-const routes: Routes &#x3D; [{ path: &#x27;&#x27;, redirectTo: &quot;listar&quot; ,pathMatch:&#x27;full&#x27;}, 
-{ path:&#x27;listar&#x27;, component:ListarProfesorComponent},
-{ path:&#x27;modificarProfesor/:id&#x27;, component:ModificarProfesorComponent},
-{ path: &#x27;**&#x27;, redirectTo: &quot;error&quot; },
+const routes: Routes &#x3D; [
+  { path: &#x27;&#x27;, redirectTo: &quot;listar&quot;, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;listar&#x27;, component: ListarProfesorComponent },
+  { path: &#x27;modificarProfesor/:id&#x27;, component: ModificarProfesorComponent },
+  { path: &#x27;**&#x27;, redirectTo: &quot;error&quot; },
 ];
 
 

@@ -632,7 +632,7 @@ export class ProfesorService {
   /**
    * La url de la api
    */
-  private url&#x3D;environment.url;
+  private url &#x3D; environment.url;
   /**
    * Constructor
    * @param http 
@@ -671,15 +671,15 @@ export class ProfesorService {
    * @returns 
    */
   eliminarProfesor(id: number) {
-    return this.http.delete&lt;Profesor[]&gt;(&#x60;${this.url}/eliminarTutor/${id}&#x60;,this.getHeaders())
+    return this.http.delete&lt;Profesor[]&gt;(&#x60;${this.url}/eliminarTutor/${id}&#x60;, this.getHeaders())
   }
   /**
    * Buscar tutor por id
    * @param id 
    * @returns 
    */
-  findTutorByid(id:number){
-    return this.http.get&lt;Profesor[]&gt;(&#x60;${this.url}/findTutorByid/${id}&#x60;,this.getHeaders())
+  findTutorByid(id: number) {
+    return this.http.get&lt;Profesor[]&gt;(&#x60;${this.url}/findTutorByid/${id}&#x60;, this.getHeaders())
   }
   /**
    * Modificar tutor by id
@@ -687,9 +687,9 @@ export class ProfesorService {
    * @param profesor 
    * @returns 
    */
-  updateTutorById(id:number, profesor:Profesor){
+  updateTutorById(id: number, profesor: Profesor) {
     return this.http.put(&#x60;${this.url}/updateTutorById/${id}&#x60;, profesor, this.getHeaders())
-    
+
   }
 }
 </code></pre>

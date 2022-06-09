@@ -1,20 +1,17 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CursosRoutingModule } from './cursos-routing.module';
-import { ListarCursosComponent } from './listar-cursos/listar-cursos.component';
-import { CursosComponent } from './cursos.component';
-import { ModificarCursosComponent } from './modificar-cursos/modificar-cursos.component';
-import { InsertarCursoComponent } from './insertar-curso/insertar-curso.component';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { CursosRoutingModule } from './cursos-routing.module';
+import { CursosComponent } from './cursos.component';
+import { InsertarCursoComponent } from './insertar-curso/insertar-curso.component';
+import { ListarCursosComponent } from './listar-cursos/listar-cursos.component';
+import { ModificarCursosComponent } from './modificar-cursos/modificar-cursos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +32,7 @@ import { MatTableModule } from '@angular/material/table';
     MatPaginatorModule,
     MatIconModule
   ],
-  exports:[
+  exports: [
     CursosComponent,
     ModificarCursosComponent
   ]

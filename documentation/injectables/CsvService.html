@@ -645,7 +645,7 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import {  FCTAlumnoLista, RegisterUser, Responsable } from &#x27;src/app/utils/interfaces/Interface&#x27;;
+import { FCTAlumnoLista, RegisterUser, Responsable } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { environment } from &#x27;src/environments/environment&#x27;;
 /**
  * The csv service
@@ -657,17 +657,17 @@ export class CsvService {
   /**
    * la url de la api
    */
-  private url&#x3D;environment.url;  
+  private url &#x3D; environment.url;
   /**
    * Constructor
    * @param http 
    */
   constructor(private http: HttpClient) { }
-  
+
   /**
    * Cabecera 
    */
-   public getHeaders() {
+  public getHeaders() {
     const headers &#x3D; {
       headers: {
         &quot;Authorization&quot;: &quot;Bearer &quot; + localStorage.getItem(&quot;token&quot;)
@@ -680,40 +680,40 @@ export class CsvService {
    * @param user 
    * @returns 
    */
-  public registerUser(user:RegisterUser){
-    return this.http.post(&#x60;${this.url}/register&#x60;, user,this.getHeaders())
+  public registerUser(user: RegisterUser) {
+    return this.http.post(&#x60;${this.url}/register&#x60;, user, this.getHeaders())
   }
   /**
    * Metodo buscar responsable por empresa
    * @param idEmpresa 
    * @returns 
    */
-  public findResponsablesByEmpresaID(idEmpresa:number): Observable&lt;Responsable[]&gt;{
-    return this.http.get&lt;Responsable[]&gt;(&#x60;${this.url}/findResponsablesByEmpresaID/${idEmpresa}&#x60;,this.getHeaders())
+  public findResponsablesByEmpresaID(idEmpresa: number): Observable&lt;Responsable[]&gt; {
+    return this.http.get&lt;Responsable[]&gt;(&#x60;${this.url}/findResponsablesByEmpresaID/${idEmpresa}&#x60;, this.getHeaders())
   }
   /**
    * Metodo buscar si alumnos practica existe
    * @param idAlumno 
    * @returns 
    */
-  public checkifAlumnoPractica(idAlumno:number){
-    return this.http.get(&#x60;${this.url}/checkifAlumnoPractica/${idAlumno}&#x60;,this.getHeaders())
+  public checkifAlumnoPractica(idAlumno: number) {
+    return this.http.get(&#x60;${this.url}/checkifAlumnoPractica/${idAlumno}&#x60;, this.getHeaders())
   }
   /**
    * metodo comprobar que usuario existe
    * @param dni 
    * @returns 
    */
-  public checkifUsersExist(dni:string){
-    return this.http.get(&#x60;${this.url}/checkifUsersExist/${dni}&#x60;,this.getHeaders())
+  public checkifUsersExist(dni: string) {
+    return this.http.get(&#x60;${this.url}/checkifUsersExist/${dni}&#x60;, this.getHeaders())
   }
   /**
    * metodo insertar alumnos practica
    * @param fctalumno 
    * @returns 
    */
-  public insetarfctalumno(fctalumno:FCTAlumnoLista){
-    return  this.http.post(&#x60;${this.url}/insertarAlumnoFCT&#x60;, fctalumno,this.getHeaders())
+  public insetarfctalumno(fctalumno: FCTAlumnoLista) {
+    return this.http.post(&#x60;${this.url}/insertarAlumnoFCT&#x60;, fctalumno, this.getHeaders())
   }
 }
 </code></pre>

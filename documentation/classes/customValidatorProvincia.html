@@ -135,8 +135,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="416"
-                            class="link-to-prism">src/app/utils/Validators/otrasValidaciones.ts:416</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="415"
+                            class="link-to-prism">src/app/utils/Validators/otrasValidaciones.ts:415</a></div>
                 </td>
             </tr>
 
@@ -518,7 +518,6 @@ export class customValidatorLocalidad {
    * @returns 
    */
   static customValidLocalidad(localidadParam: any, provinciaParam: any) {
-    let arrayBuffer: any &#x3D; []
     return (formGroup: FormGroup) &#x3D;&gt; {
       const localidadC &#x3D; formGroup.controls[localidadParam];
 
@@ -612,7 +611,6 @@ export class customValidatorProvincia {
      * @returns 
      */
   static customValidProvincia(provinciaParam: string) {
-    let arrayBuffer: any &#x3D; []
     return (formGroup: FormGroup) &#x3D;&gt; {
       let encontrado: boolean &#x3D; false
       const provinciaValor &#x3D; formGroup.controls[provinciaParam]

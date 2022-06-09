@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
             this.getuser();
           },
           (error) => {
+            console.log(error)
             if (error.error.message == "Unauthorised.") {
               this.incorrecto = true
             } else if (error.error.message == "Cuenta desactivada") {

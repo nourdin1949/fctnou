@@ -2773,16 +2773,16 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
-
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from &#x27;src/app/utils/Validators/ValidacionesFicheross&#x27;;
+import * as XLSX from &#x27;xlsx&#x27;;
+import { AlumnosService } from &#x27;../../alumnos/alumnos.service&#x27;;
+import { CentrosService } from &#x27;../../centros/centros.service&#x27;;
+import { CursosService } from &#x27;../../cursos/cursos.service&#x27;;
+import { EmpresasService } from &#x27;../../empresas/empresas.service&#x27;;
 import { ProfesorService } from &#x27;../../profesor/profesor.service&#x27;;
 import { ResponsableService } from &#x27;../../responsable/responsable.service&#x27;;
-import * as XLSX from &#x27;xlsx&#x27;
-import { AlumnosService } from &#x27;../../alumnos/alumnos.service&#x27;;
-import { EmpresasService } from &#x27;../../empresas/empresas.service&#x27;;
-import { CursosService } from &#x27;../../cursos/cursos.service&#x27;;
-import { CentrosService } from &#x27;../../centros/centros.service&#x27;;
-import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from &#x27;src/app/utils/Validators/ValidacionesFicheross&#x27;;
-import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+
 /**
  * The insertar datos component
  */
@@ -3043,7 +3043,7 @@ console.log(this.fileCentros)
     let filename &#x3D; file.name.substring(0, file.name.length - 4);
     const fileReader &#x3D; new FileReader()
     fileReader.readAsArrayBuffer(file);
-    fileReader.onload &#x3D; (e) &#x3D;&gt; {
+    fileReader.onload &#x3D; () &#x3D;&gt; {
       this.arrayBuffer &#x3D; fileReader.result
       const data &#x3D; new Uint8Array(this.arrayBuffer);
       const arr &#x3D; new Array();
@@ -3092,7 +3092,7 @@ console.log(this.fileCentros)
           () &#x3D;&gt; {
             this.responsableCorrecto++
           },
-          (res) &#x3D;&gt; {
+          () &#x3D;&gt; {
             this.responsableFallo++
           })
     });
@@ -3203,7 +3203,7 @@ console.log(this.fileCentros)
           () &#x3D;&gt; {
             this.alumnosCorrecto++
           },
-          (res) &#x3D;&gt; {
+          () &#x3D;&gt; {
             this.alumnosFallo++
           })
     });

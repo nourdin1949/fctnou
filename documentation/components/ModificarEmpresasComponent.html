@@ -185,7 +185,7 @@
                 <tr>
                     <td class="col-md-4">
                                 <span class="modifier">Public</span>
-                        <code>constructor(activatedRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, empresaService: <a href="../injectables/EmpresasService.html" target="_self">EmpresasService</a>)</code>
+                        <code>constructor(activatedRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, empresaService: <a href="../injectables/EmpresasService.html" target="_self">EmpresasService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -226,18 +226,6 @@
                                                   
                                                         <td>
                                                                         <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -297,8 +285,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">src/app/components/Admin/empresas/modificar-empresas/modificar-empresas.component.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/app/components/Admin/empresas/modificar-empresas/modificar-empresas.component.ts:88</a></div>
                 </td>
             </tr>
 
@@ -338,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="65"
-                            class="link-to-prism">src/app/components/Admin/empresas/modificar-empresas/modificar-empresas.component.ts:65</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/components/Admin/empresas/modificar-empresas/modificar-empresas.component.ts:64</a></div>
                 </td>
             </tr>
 
@@ -510,9 +498,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { Empresa } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { customValidatorDNIEmpresaBYID, customValidatorFormatDNI } from &#x27;src/app/utils/Validators/otrasValidaciones&#x27;;
 import { EmpresasService } from &#x27;../empresas.service&#x27;;
@@ -529,15 +517,15 @@ export class ModificarEmpresasComponent {
   /**
    * ID Empresa
    */
-  public idEmpresa:number&#x3D;0;
+  public idEmpresa: number &#x3D; 0;
   /**
    * Objeto empresa
    */
-  public empresa:any&#x3D;{}
+  public empresa: any &#x3D; {}
   /**
    * Formulario
    */
-  public formModificarEmpresa:FormGroup
+  public formModificarEmpresa: FormGroup
   /**
    * Constructor
    * @param activatedRoute 
@@ -547,25 +535,24 @@ export class ModificarEmpresasComponent {
    */
   public constructor(
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder, 
-    private router: Router, 
+    private fb: FormBuilder,
     private empresaService: EmpresasService) {
-      this.activatedRoute.params.subscribe(m &#x3D;&gt; {
-        this.idEmpresa &#x3D; m[&#x27;id&#x27;]
-        this.findEmpresaById()
-      })
+    this.activatedRoute.params.subscribe(m &#x3D;&gt; {
+      this.idEmpresa &#x3D; m[&#x27;id&#x27;]
+      this.findEmpresaById()
+    })
 
     this.formModificarEmpresa &#x3D; this.fb.group({
       empresa: [&#x27;&#x27;, Validators.required],
       provincia: [&#x27;&#x27;, Validators.required],
       localidad: [&#x27;&#x27;, Validators.required],
       calle: [&#x27;&#x27;, Validators.required],
-      cp: [&#x27;&#x27;, [Validators.required,  Validators.pattern(&quot;[0-9]{5}&quot;)]],
+      cp: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{5}&quot;)]],
       telefono: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[A-Z]{0}[0-9]{9}&quot;)]],
       email: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$&quot;)]],
       representante: [&#x27;&#x27;, Validators.required],
-      dnirepresentante: [&#x27;&#x27;,[ Validators.required, Validators.pattern(&quot;[0-9]{8}[A-Z]{1}&quot;)],
-      [customValidatorDNIEmpresaBYID.customValidDNIEmpresaBYID(empresaService, this.idEmpresa), 
+      dnirepresentante: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{8}[A-Z]{1}&quot;)],
+        [customValidatorDNIEmpresaBYID.customValidDNIEmpresaBYID(empresaService, this.idEmpresa),
         customValidatorFormatDNI.customValidDNILETRA], &#x27;blur&#x27;],
     })
 
@@ -576,23 +563,23 @@ export class ModificarEmpresasComponent {
    */
   public modificarEmpresa(form: FormGroup) {
     const empresa: Empresa &#x3D; {
-      &quot;id&quot;:this.idEmpresa,
+      &quot;id&quot;: this.idEmpresa,
       &quot;nombreEmpresa&quot;: form.value.empresa,
       &quot;provincia&quot;: form.value.provincia,
       &quot;localidad&quot;: form.value.localidad,
-      &quot;calle&quot;:  form.value.calle,
-      &quot;cp&quot;:  form.value.cp,
+      &quot;calle&quot;: form.value.calle,
+      &quot;cp&quot;: form.value.cp,
       &quot;cif&quot;: &quot;&quot;,
-      &quot;telefono&quot;:  form.value.telefono,
-      &quot;email&quot;:  form.value.email,
-      &quot;nombreRepresentante&quot;:  form.value.representante,
-      &quot;dniRepresentante&quot;:  form.value.dnirepresentante
+      &quot;telefono&quot;: form.value.telefono,
+      &quot;email&quot;: form.value.email,
+      &quot;nombreRepresentante&quot;: form.value.representante,
+      &quot;dniRepresentante&quot;: form.value.dnirepresentante
     }
-    if(this.formModificarEmpresa.valid ){
-      this.empresaService.updateEmpresaById(this.idEmpresa,empresa)
-      .subscribe((response) &#x3D;&gt; {
-        (&lt;HTMLButtonElement&gt;document.getElementById(&quot;modificado&quot;)).click()
-      })
+    if (this.formModificarEmpresa.valid) {
+      this.empresaService.updateEmpresaById(this.idEmpresa, empresa)
+        .subscribe(() &#x3D;&gt; {
+          (&lt;HTMLButtonElement&gt;document.getElementById(&quot;modificado&quot;)).click()
+        })
     }
   }
   /**

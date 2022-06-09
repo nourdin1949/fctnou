@@ -1,6 +1,5 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { windowWhen } from 'rxjs';
 import { Alumno, Curso } from 'src/app/utils/interfaces/Interface';
 import { AlumnosService } from '../../alumnos/alumnos.service';
 import { CursosService } from '../cursos.service';
@@ -75,7 +74,7 @@ export class ListarCursosComponent implements OnInit {
   public ngOnInit(): void {
     this.alumnosMatriculados()
   }
-  
+
   /**
    * Metodo listar cursos
    */
@@ -83,7 +82,7 @@ export class ListarCursosComponent implements OnInit {
     this.cursoServie.listarCursos()
       .subscribe(
         (response) => {
-          this.pageSize=5
+          this.pageSize = 5
           this.cursos = response;
           this.cargaCompleta = true
           this.totalElements = this.cursos.length

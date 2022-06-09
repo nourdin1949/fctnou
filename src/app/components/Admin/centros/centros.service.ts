@@ -13,7 +13,7 @@ export class CentrosService {
   /**
    * url de la api
    */
-  private url=environment.url;
+  private url = environment.url;
   /**
    * Constructor
    * @param http 
@@ -44,23 +44,23 @@ export class CentrosService {
    * @returns 
    */
   listarCentros(): Observable<Centro[]> {
-    return this.http.get<Centro[]>(`${this.url}/listarCentros`,this.getHeaders())
+    return this.http.get<Centro[]>(`${this.url}/listarCentros`, this.getHeaders())
   }
   /**
    * Método para eliminar todas los centros
    * @param codigo 
    * @returns 
    */
-  eliminarCentro(codigo:number){
-    return this.http.delete(`${this.url}/eliminarCentro/${codigo}`,this.getHeaders())
+  eliminarCentro(codigo: number) {
+    return this.http.delete(`${this.url}/eliminarCentro/${codigo}`, this.getHeaders())
   }
   /**
    * Método para buscar todos los centros
    * @param id 
    * @returns 
    */
-  findCentroByid(id:number):Observable<Centro>{
-    return this.http.get<Centro>(`${this.url}/findCentroByid/${id}`,this.getHeaders()) 
+  findCentroByid(id: number): Observable<Centro> {
+    return this.http.get<Centro>(`${this.url}/findCentroByid/${id}`, this.getHeaders())
   }
   /**
    * Metodo update centro by id
@@ -68,8 +68,8 @@ export class CentrosService {
    * @param centro 
    * @returns 
    */
-  updateCentroById(id:number, centro:Centro){
-    return this.http.put<Centro>(`${this.url}/updateCentroById/${id}`,centro,this.getHeaders()) 
+  updateCentroById(id: number, centro: Centro) {
+    return this.http.put<Centro>(`${this.url}/updateCentroById/${id}`, centro, this.getHeaders())
   }
   /**
    * Metodo check cif centro by id
@@ -77,7 +77,7 @@ export class CentrosService {
    * @param id 
    * @returns 
    */
-  checkifexistcifCentroByID(cif:string, id:number){
+  checkifexistcifCentroByID(cif: string, id: number) {
     return this.http.get<any>(`${this.url}/checkifexistcifCentroByID/${cif}/${id}`, this.getHeaders());
   }
   /**
@@ -85,7 +85,7 @@ export class CentrosService {
    * @param cif 
    * @returns 
    */
-  checkifexistcifCentro(cif:string){
+  checkifexistcifCentro(cif: string) {
     return this.http.get<any>(`${this.url}/checkifexistcifCentro/${cif}`, this.getHeaders());
   }
   /**
@@ -93,7 +93,7 @@ export class CentrosService {
    * @param code 
    * @returns 
    */
-  findCentroBycode(code:number){
+  findCentroBycode(code: number) {
     return this.http.get<any>(`${this.url}/findCentroBycode/${code}`, this.getHeaders());
   }
 }

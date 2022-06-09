@@ -20,9 +20,7 @@ export class AuthenticationProfesorGuard implements CanActivate {
    * @param state 
    * @returns 
    */
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
       return this.servShared.authProfesor();
   }

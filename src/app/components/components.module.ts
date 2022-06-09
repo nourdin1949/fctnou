@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ComponentsComponent } from './components.component';
-import { AdminModule } from './Admin/admin.module';
-import { AlumnosModule } from './Alumnos/alumnos.module';
-import { SharedModule } from '../Shared/shared.module';
-import { TutorEmpresaModule } from './TutorEmpresa/tutor-empresa.module';
-import { TutorEscolarModule } from './TutorEscolar/tutor-escolar.module';
-import { AppRoutingModule } from '../app-routing.module';
-import { MatTabsModule } from '@angular/material/tabs';
+import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../Shared/shared.module';
+import { AdminModule } from './Admin/admin.module';
+import { AlumnosModule } from './Alumnos/alumnos.module';
+import { ComponentsComponent } from './components.component';
+import { TutorEmpresaModule } from './TutorEmpresa/tutor-empresa.module';
+import { TutorEscolarModule } from './TutorEscolar/tutor-escolar.module';
+
 
 
 @NgModule({

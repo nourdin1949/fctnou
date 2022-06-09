@@ -295,7 +295,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>insertarProfesor(form: <a href="https://angular.io/api/forms/FormGroup" target="_blank">FormGroup</a>)</code>
+                    <code>insertarProfesor()</code>
                 </td>
             </tr>
 
@@ -314,40 +314,8 @@
 </div>
 
                     <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>form</td>
-                                    <td>
-                                                <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
                     </div>
                 </td>
             </tr>
@@ -519,9 +487,9 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { FormGroup, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
-import { Centro, Profesor } from &#x27;src/app/utils/interfaces/Interface&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { SharedService } from &#x27;src/app/Shared/shared.service&#x27;;
+import { Centro, Profesor } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { customValidatordDni, customValidatorEmail, customValidatorFormatDNI } from &#x27;src/app/utils/Validators/otrasValidaciones&#x27;;
 import { CentrosService } from &#x27;../../centros/centros.service&#x27;;
 import { ProfesorService } from &#x27;../profesor.service&#x27;;
@@ -537,7 +505,7 @@ export class InsertarProfesorComponent implements OnInit {
   /**
    * Matriz de centros
    */
-  public centros: Centro[]&#x3D;[]
+  public centros: Centro[] &#x3D; []
   /**
    * Formulario
    */
@@ -550,18 +518,18 @@ export class InsertarProfesorComponent implements OnInit {
    * @param sharedService 
    */
   constructor(
-    private fb: FormBuilder, 
-    private profesorService: ProfesorService, 
-    private centroService:CentrosService,
-    private sharedService:SharedService) {
+    private fb: FormBuilder,
+    private profesorService: ProfesorService,
+    private centroService: CentrosService,
+    sharedService: SharedService) {
 
     this.forminsertarProfesor &#x3D; this.fb.group({
-      nombre: [&#x27;&#x27;, [Validators.required,Validators.pattern(&quot;[A-Z a-z]{3,}&quot;)]],
+      nombre: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[A-Z a-z]{3,}&quot;)]],
       dni: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;[0-9]{8}[A-Z]{1}&quot;)],
-      [customValidatordDni.customValidDni(sharedService),customValidatorFormatDNI.customValidDNILETRA], &#x27;blur&#x27; ],
+        [customValidatordDni.customValidDni(sharedService), customValidatorFormatDNI.customValidDNILETRA], &#x27;blur&#x27;],
       centro: [&#x27;&#x27;, Validators.required],
       email: [&#x27;&#x27;, [Validators.required, Validators.pattern(&quot;^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$&quot;)],
-      [customValidatorEmail.customValidEmail(sharedService)], &#x27;blur&#x27; ]
+        [customValidatorEmail.customValidEmail(sharedService)], &#x27;blur&#x27;]
     })
   }
   /**
@@ -573,33 +541,33 @@ export class InsertarProfesorComponent implements OnInit {
   /**
    * metodo insertar profesor
    */
-  public insertarProfesor(form: FormGroup) {
+  public insertarProfesor() {
     const profesor: Profesor &#x3D; {
-      &quot;id&quot;:0,
-      &quot;nombreTutor&quot;: this.forminsertarProfesor.value.nombre, 
-      &quot;dniTutor&quot;: this.forminsertarProfesor.value.dni, 
-      &quot;email&quot;:this.forminsertarProfesor.value.email, 
+      &quot;id&quot;: 0,
+      &quot;nombreTutor&quot;: this.forminsertarProfesor.value.nombre,
+      &quot;dniTutor&quot;: this.forminsertarProfesor.value.dni,
+      &quot;email&quot;: this.forminsertarProfesor.value.email,
       &quot;codigoCentro&quot;: this.forminsertarProfesor.value.centro
     }
     if (this.forminsertarProfesor.valid) {
       this.profesorService.insertarProfesor(profesor).subscribe(
-       (response)&#x3D;&gt;{
-        (&lt;HTMLButtonElement&gt;document.getElementById(&quot;insertado&quot;)).click()
-        setTimeout(() &#x3D;&gt; {
-          (&lt;HTMLElement&gt;document.getElementById(&#x27;insertarTutor&#x27;)).classList.remove(&#x27;modal-open&#x27;);
-          (&lt;HTMLCollectionOf&lt;HTMLElement&gt;&gt;document.getElementsByClassName(&#x27;modal-backdrop&#x27;))[0].classList.remove(&#x27;modal-backdrop&#x27;)
-         }, 300);
-        this.profesorService.listarProfesor();
-       }
+        () &#x3D;&gt; {
+          (&lt;HTMLButtonElement&gt;document.getElementById(&quot;insertado&quot;)).click()
+          setTimeout(() &#x3D;&gt; {
+            (&lt;HTMLElement&gt;document.getElementById(&#x27;insertarTutor&#x27;)).classList.remove(&#x27;modal-open&#x27;);
+            (&lt;HTMLCollectionOf&lt;HTMLElement&gt;&gt;document.getElementsByClassName(&#x27;modal-backdrop&#x27;))[0].classList.remove(&#x27;modal-backdrop&#x27;)
+          }, 300);
+          this.profesorService.listarProfesor();
+        }
       );
     }
   }
   /**
    * Metodo listar centros
    */
-  public listarCentros(){
-    this.centroService.listarCentros().subscribe((response)&#x3D;&gt;{
-      this.centros&#x3D; response
+  public listarCentros() {
+    this.centroService.listarCentros().subscribe((response) &#x3D;&gt; {
+      this.centros &#x3D; response
     })
   }
 } 

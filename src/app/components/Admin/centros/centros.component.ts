@@ -7,4 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './centros.component.html',
   styleUrls: ['./centros.component.css']
 })
-export class CentrosComponent {}
+export class CentrosComponent { }

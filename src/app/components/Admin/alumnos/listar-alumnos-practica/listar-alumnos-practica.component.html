@@ -6,11 +6,12 @@
             <strong class="titulo">LISTA DE ALUMNOS EN PRACTICA</strong><br>
         </div><br>
         <div class="alert w-100 alert-warning " *ngIf="alumnosfct.length==0 && cargaCompleta ">
-            <b>
+            <strong>
         <h2 class="text-center">¡ASIGNA PRÁCTICA A ALUMNOS!</h2>
-      </b>
+      </strong>
         </div>
-        <table *ngIf="alumnosfct.length>0" class="pdf  border text-center table table-striped">
+        <p *ngIf="alumnosfct.length>0" id="mydesc">Lista de Alumnos en práctica</p>
+        <table aria-describedby="mydesc" *ngIf="alumnosfct.length>0" class="pdf  border text-center table table-striped">
             <thead class="table bg-color text-center text-light">
                 <tr>
                     <th>Alumno</th>
@@ -76,9 +77,9 @@
                     <hr>
                 </div>
                 <div class="modal-body text-center">
-                    <b>
+                    <strong>
             <h2 class="text-center">¿ESTÁS SEGURO DE ANULAR LA PRÁCTICA?</h2>
-          </b>
+          </strong>
                     <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
                     <small class=" m-2 text-danger">Acción irreversible</small>
                     <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
@@ -147,9 +148,9 @@
                     <hr>
                 </div>
                 <div class="modal-body text-center">
-                    <b>
+                    <strong>
             <h2 class="text-center">ELIGE EL ANEXO QUE QUIERES DESCARGAR</h2>
-          </b>
+          </strong>
                 </div>
                 <div class="text-center">
                     <hr>
@@ -402,8 +403,8 @@
         el Seguimiento y Evaluación de los mismos.</span><span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">
       </span><br /></div>
         <div style="position:absolute;top:10.06in;left:3.23in;width:4.29in;line-height:0.13in;"><span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">En
-        ________<b>{{centro.localidad|uppercase}}</b>____ a _<b>{{fechaHoy| date:"dd"}}</b>_ de
-        ____<b>{{fechaHoy | date:"MMMM" | uppercase}}</b>______ de 20<b>{{fechaHoy |date:"yy"}}</b></span>
+        ________<strong>{{centro.localidad|uppercase}}</strong>____ a _<strong>{{fechaHoy| date:"dd"}}</strong>_ de
+        ____<strong>{{fechaHoy | date:"MMMM" | uppercase}}</strong>______ de 20<strong>{{fechaHoy |date:"yy"}}</strong></span>
             <span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">
       </span><br />
         </div>
@@ -447,75 +448,75 @@
         parte:</span><span style="font-style:normal;font-weight:bold;font-size:9pt;font-family:Arial-BoldMT;color:#000000">
       </span><br /></div>
         <img style="position:absolute;top:2.84in;left:0.74in;width:7.99in;height:0.28in" src="../../../../../assets/pdf/ci_1.png" />
-        <div style="position:absolute;top:3.14in;left:0.83in;width:7.53in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">D./Dña.______________________________________<b>{{centro.nombreDirector|uppercase}}</b>_____________________________________________</span>
+        <div style="position:absolute;top:3.14in;left:0.83in;width:7.53in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">D./Dña.______________________________________<strong>{{centro.nombreDirector|uppercase}}</strong>_____________________________________________</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:3.42in;left:0.83in;width:7.56in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">con
         D.N.I. ________________ como Director/a del Centro
-        educativo__________________________<b>{{centro.nombreCentro|uppercase}}</b>______________________</span>
+        educativo__________________________<strong>{{centro.nombreCentro|uppercase}}</strong>______________________</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:3.70in;left:0.83in;width:7.54in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">Código
-        de Centro ____<b>{{centro.codigo}}</b>____ localizado en
-        ______________<b>{{centro.localidad|uppercase}}</b>__________________</span>
+        de Centro ____<strong>{{centro.codigo}}</strong>____ localizado en
+        ______________<strong>{{centro.localidad|uppercase}}</strong>__________________</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:3.98in;left:0.83in;width:7.52in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">provincia
-        de ____<b>{{centro.provincia |uppercase}}</b>______,
-        calle/plaza___________________________<b>{{centro.calle
-                    |uppercase}}</b>________________________________</span>
+        de ____<strong>{{centro.provincia |uppercase}}</strong>______,
+        calle/plaza___________________________<strong>{{centro.calle
+                    |uppercase}}</strong>________________________________</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:4.26in;left:0.83in;width:7.44in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">D.P._______________,
-        con C.I.F. ______<b>{{centro.cif|uppercase}}</b>______, Teléfono ___<b>{{centro.telefono }}</b>___, Fax_
+        con C.I.F. ______<strong>{{centro.cif|uppercase}}</strong>______, Teléfono ___<strong>{{centro.telefono }}</strong>___, Fax_
         ______________________________,</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:4.54in;left:0.83in;width:6.27in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">correo
-        electrónico ______________________<b>{{centro.email |uppercase}}</b>___________________.</span><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
+        electrónico ______________________<strong>{{centro.email |uppercase}}</strong>___________________.</span><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br /></div>
         <div style="position:absolute;top:4.80in;left:0.83in;width:0.65in;line-height:0.11in;"><span style="font-style:normal;font-weight:bold;font-size:9pt;font-family:Arial-BoldMT;color:#000000">y de
         otra:</span><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br /></div>
         <img style="position:absolute;top:4.80in;left:0.74in;width:7.84in;height:0.25in" src="../../../../../assets/pdf/ci_2.png" />
-        <div style="position:absolute;top:5.07in;left:0.83in;width:7.65in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">D./Dña._________________<b>{{empresa.nombreRepresentante
-                    |uppercase}}</b>_______________________________________ con D.N.I.
-        ___<b>{{empresa.dniRepresentante|uppercase}}</b>_____</span>
+        <div style="position:absolute;top:5.07in;left:0.83in;width:7.65in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">D./Dña._________________<strong>{{empresa.nombreRepresentante
+                    |uppercase}}</strong>_______________________________________ con D.N.I.
+        ___<strong>{{empresa.dniRepresentante|uppercase}}</strong>_____</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:5.35in;left:0.83in;width:7.34in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">como
         representante legal de la Empresa/Agrupación de empresas, o Entidad colaboradora
-        _______<b>{{empresa.nombreEmpresa.length<14 ? "" :empresa.nombreEmpresa|uppercase}}</b>______</span>
+        _______<strong>{{empresa.nombreEmpresa.length<14 ? "" :empresa.nombreEmpresa|uppercase}}</strong>______</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
-        <div style="position:absolute;top:5.63in;left:0.83in;width:7.59in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">________<b>{{empresa.nombreEmpresa.length>14
-                    ? "":empresa.nombreEmpresa|uppercase}}</b>_________________ localizada en
-        _____<b>{{empresa.localidad|uppercase}}</b>_________ provincia de___<b>{{empresa.provincia.length<10
-                        ? "" :empresa.provincia |uppercase}}</b>__</span>
+        <div style="position:absolute;top:5.63in;left:0.83in;width:7.59in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">________<strong>{{empresa.nombreEmpresa.length>14
+                    ? "":empresa.nombreEmpresa|uppercase}}</strong>_________________ localizada en
+        _____<strong>{{empresa.localidad|uppercase}}</strong>_________ provincia de___<strong>{{empresa.provincia.length<10
+                        ? "" :empresa.provincia |uppercase}}</strong>__</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
-        <div style="position:absolute;top:5.91in;left:0.83in;width:7.46in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">____<b>{{empresa.provincia.length>10
-                    ? "":empresa.provincia|uppercase}}</b>_______calle/plaza
+        <div style="position:absolute;top:5.91in;left:0.83in;width:7.46in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">____<strong>{{empresa.provincia.length>10
+                    ? "":empresa.provincia|uppercase}}</strong>_______calle/plaza
         ______________{{empresa.calle|uppercase}}__________ DP. _________________________________________</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">_,</span><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:6.19in;left:0.83in;width:6.22in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">con
-        C.I.F. ___<b>{{empresa.cif|uppercase}}</b>_____, Teléfono
-        ____<b>{{empresa.telefono|uppercase}}</b>_______, Fax ____________________________.</span>
+        C.I.F. ___<strong>{{empresa.cif|uppercase}}</strong>_____, Teléfono
+        ____<strong>{{empresa.telefono|uppercase}}</strong>_______, Fax ____________________________.</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:6.47in;left:0.83in;width:3.39in;line-height:0.14in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">Correo
-        electrónico ______<b>{{empresa.email|uppercase}}</b>______.</span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">
+        electrónico ______<strong>{{empresa.email|uppercase}}</strong>______.</span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">
       </span><br /></div>
         <div style="position:absolute;top:1.55in;left:3.48in;width:2.49in;line-height:0.14in;"><span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Arial Narrow;color:#000000">FORMACIÓN
         EN CENTROS DE TRABAJO</span><span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Arial Narrow;color:#000000">
@@ -536,8 +537,8 @@
       </span><br /></div>
         <div style="position:absolute;top:3.78in;left:1.03in;width:7.35in;line-height:0.13in;"><span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:ArialMT;color:#000000">CICLO
         FORMATIVO</span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">
-        _________<b>{{nombreCiclo |uppercase}}</b>____________ </span>
-            <span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:ArialMT;color:#000000">Clave</span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">___<b>{{alumnofct.codeCiclo}}</b>___</span>
+        _________<strong>{{nombreCiclo |uppercase}}</strong>____________ </span>
+            <span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:ArialMT;color:#000000">Clave</span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">___<strong>{{alumnofct.codeCiclo}}</strong>___</span>
             <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">
       </span><br />
         </div>
@@ -557,8 +558,8 @@
         ENSEÑANZAS</span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">
         _____________________________________ </span>
             <span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:ArialMT;color:#000000">Curso
-        académico </span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000" *ngIf="alumnosfiltrados.length>0"> <b> {{alumnosfiltrados[0].cursoAcademico
-                |slice:0:4}}/{{alumnosfiltrados[0].cursoAcademico |slice:5:9}}</b></span>
+        académico </span><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000" *ngIf="alumnosfiltrados.length>0"> <strong> {{alumnosfiltrados[0].cursoAcademico
+                |slice:0:4}}/{{alumnosfiltrados[0].cursoAcademico |slice:5:9}}</strong></span>
             <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:ArialMT;color:#000000">
       </span><br />
         </div>
@@ -574,13 +575,13 @@
         </div>
         <div style="position:absolute;top:8.55in;left:0.82in;width:7.81in;line-height:0.13in;"><span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">Centro
         educativo, que será
-        D./Dña._______________________<b>{{centro.nombreDirector |uppercase}}</b>_____________________________y al
+        D./Dña._______________________<strong>{{centro.nombreDirector |uppercase}}</strong>_____________________________y al
         responsable de la Empresa, que</span>
             <span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">
       </span><br />
         </div>
         <div style="position:absolute;top:8.73in;left:0.82in;width:7.56in;line-height:0.13in;"><span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">será
-        D/Dña.___________<b>{{empresa.nombreRepresentante | uppercase }}</b>___________________________________________________________________</span>
+        D/Dña.___________<strong>{{empresa.nombreRepresentante | uppercase }}</strong>___________________________________________________________________</span>
             <span style="font-style:normal;font-weight:normal;font-size:9pt;font-family:Segoe UI Semilight;color:#000000">
       </span><br />
         </div>
@@ -706,13 +707,13 @@
         </div>
         <div style="position:absolute;top:2.99in;left:0.95in;width:7.52in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">el
         Centro educativo
-        _________________________<b>{{centro.nombreCentro|uppercase}}</b>__________________________________________________y
+        _________________________<strong>{{centro.nombreCentro|uppercase}}</strong>__________________________________________________y
         la </span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>
-        <div style="position:absolute;top:3.27in;left:0.95in;width:7.30in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">Empresa_____________<b>{{empresa.nombreEmpresa | uppercase}}</b>_______________
-        Localidad ____________<b>{{empresa.localidad |uppercase}}</b>_____</span>
+        <div style="position:absolute;top:3.27in;left:0.95in;width:7.30in;line-height:0.12in;"><span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">Empresa_____________<strong>{{empresa.nombreEmpresa | uppercase}}</strong>_______________
+        Localidad ____________<strong>{{empresa.localidad |uppercase}}</strong>_____</span>
             <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Lucida Sans Unicode;color:#000000">
       </span><br />
         </div>

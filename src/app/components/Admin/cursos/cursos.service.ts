@@ -13,7 +13,7 @@ export class CursosService {
   /**
    * La url de la api
    */
-  private url=environment.url;
+  private url = environment.url;
   /**
    * Constructor
    * @param http 
@@ -59,7 +59,7 @@ export class CursosService {
    * @param id 
    * @returns 
    */
-  findCursoById(id:number){
+  findCursoById(id: number) {
     return this.http.get<Curso[]>(`${this.url}/findCursoById/${id}`, this.getHeaders())
   }
   /**
@@ -67,7 +67,7 @@ export class CursosService {
    * @param id 
    * @returns 
    */
-  alumnosMatriculados(id:number){
+  alumnosMatriculados(id: number) {
     return this.http.get<Alumno[]>(`${this.url}/alumnosMatriculados/${id}`, this.getHeaders())
   }
   /**

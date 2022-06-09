@@ -172,6 +172,7 @@ export class AppComponent {
    * Constructor
    */
   constructor() {
+    if(!localStorage.getItem(&#x27;modo&#x27;)) localStorage.setItem(&quot;modo&quot;,&quot;claro&quot;)
       if (localStorage.getItem(&quot;modo&quot;) &#x3D;&#x3D; &quot;oscuro&quot;) {
         document.getElementsByTagName(&quot;body&quot;)[0].style.backgroundColor &#x3D; &quot;gray&quot;;
       } else {

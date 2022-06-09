@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AdminComponent } from './admin.component';
 import { CentrosComponent } from './centros/centros.component';
-
 import { CursosModule } from './cursos/cursos.module';
 import { EmpresasModule } from './empresas/empresas.module';
-import { AppRoutingModule } from 'src/app/app-routing.module';
-import { ResponsableModule } from './responsable/responsable.module';
 import { ProfesorModule } from './profesor/profesor.module';
+import { ResponsableModule } from './responsable/responsable.module';
+
+
 
 
 @NgModule({

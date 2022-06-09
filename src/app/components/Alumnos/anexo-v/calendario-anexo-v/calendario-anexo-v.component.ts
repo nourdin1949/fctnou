@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlug from '@fullcalendar/interaction'
-import esLocale from '@fullcalendar/core/locales/es'
 import { Router } from '@angular/router';
-import { AnexoVService } from '../anexo-v.service';
+import esLocale from '@fullcalendar/core/locales/es';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlug from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import * as moment from 'moment';
 import { Tarea } from 'src/app/utils/interfaces/Interface';
 import { environment } from 'src/environments/environment';
+import { AnexoVService } from '../anexo-v.service';
 /**
  * The calendario anexo v component 
  */

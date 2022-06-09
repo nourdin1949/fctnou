@@ -11,7 +11,7 @@ import { CentrosService } from '../centros.service';
   templateUrl: './insertar-centro.component.html',
   styleUrls: ['./insertar-centro.component.css']
 })
-export class InsertarCentroComponent   {
+export class InsertarCentroComponent {
   /**
    * Formulario
    */
@@ -32,8 +32,8 @@ export class InsertarCentroComponent   {
       telefono: ['', [Validators.required, Validators.pattern("[0-9]{9}")]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       cif: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(9)],
-        [customValidatorCIFCentro.customValidCIFCentro(centroService)],'blur'],
-      director: ['', [Validators.required,Validators.pattern('[A-Z a-z]{3,}')]],
+        [customValidatorCIFCentro.customValidCIFCentro(centroService)], 'blur'],
+      director: ['', [Validators.required, Validators.pattern('[A-Z a-z]{3,}')]],
       code: ['', [Validators.required, Validators.pattern('[0-9]{8}')]]
     })
   }

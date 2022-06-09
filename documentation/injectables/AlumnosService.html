@@ -577,7 +577,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>insertarAlumnos(Alumno: <a href="../interfaces/Alumno.html" target="_self">Alumno</a>)</code>
+                    <code>insertarAlumnos(alumno: <a href="../interfaces/Alumno.html" target="_self">Alumno</a>)</code>
                 </td>
             </tr>
 
@@ -608,7 +608,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Alumno</td>
+                                    <td>alumno</td>
                                     <td>
                                                 <code><a href="../interfaces/Alumno.html" target="_self" >Alumno</a></code>
                                     </td>
@@ -900,7 +900,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateAlumnoById(Alumno: <a href="../interfaces/Alumno.html" target="_self">Alumno</a>)</code>
+                    <code>updateAlumnoById(alumno: <a href="../interfaces/Alumno.html" target="_self">Alumno</a>)</code>
                 </td>
             </tr>
 
@@ -931,7 +931,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Alumno</td>
+                                    <td>alumno</td>
                                     <td>
                                                 <code><a href="../interfaces/Alumno.html" target="_self" >Alumno</a></code>
                                     </td>
@@ -1037,12 +1037,12 @@ export class AlumnosService {
   }
   /**
    * Método para insertar Alumnos
-   * @param Alumno 
+   * @param alumno 
    * @returns 
    */
-  public insertarAlumnos(Alumno: Alumno): Observable&lt;Alumno&gt; {
+  public insertarAlumnos(alumno: Alumno): Observable&lt;Alumno&gt; {
 
-    return this.http.post&lt;Alumno&gt;(&#x60;${this.url}/insertarAlumno&#x60;, Alumno, this.getHeaders())
+    return this.http.post&lt;Alumno&gt;(&#x60;${this.url}/insertarAlumno&#x60;, alumno, this.getHeaders())
   }
   /**
    *  Método para listar todas las Alumnos 
@@ -1089,12 +1089,12 @@ export class AlumnosService {
   }
   /**
    * Método para modificar Alumno por id 
-   * @param Alumno 
+   * @param alumno 
    * @returns 
    */
-  public updateAlumnoById(Alumno: Alumno) {
+  public updateAlumnoById(alumno: Alumno) {
 
-    return this.http.put&lt;Alumno[]&gt;(&#x60;${this.url}/updateAlumnoByid/${Alumno.id}&#x60;, Alumno, this.getHeaders())
+    return this.http.put&lt;Alumno[]&gt;(&#x60;${this.url}/updateAlumnoByid/${alumno.id}&#x60;, alumno, this.getHeaders())
   }
   /**
    * Método para cambiar Alumno de empresa de practica 

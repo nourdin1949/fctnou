@@ -33,12 +33,12 @@ export class AlumnosService {
   }
   /**
    * Método para insertar Alumnos
-   * @param Alumno 
+   * @param alumno 
    * @returns 
    */
-  public insertarAlumnos(Alumno: Alumno): Observable<Alumno> {
+  public insertarAlumnos(alumno: Alumno): Observable<Alumno> {
 
-    return this.http.post<Alumno>(`${this.url}/insertarAlumno`, Alumno, this.getHeaders())
+    return this.http.post<Alumno>(`${this.url}/insertarAlumno`, alumno, this.getHeaders())
   }
   /**
    *  Método para listar todas las Alumnos 
@@ -85,12 +85,12 @@ export class AlumnosService {
   }
   /**
    * Método para modificar Alumno por id 
-   * @param Alumno 
+   * @param alumno 
    * @returns 
    */
-  public updateAlumnoById(Alumno: Alumno) {
+  public updateAlumnoById(alumno: Alumno) {
 
-    return this.http.put<Alumno[]>(`${this.url}/updateAlumnoByid/${Alumno.id}`, Alumno, this.getHeaders())
+    return this.http.put<Alumno[]>(`${this.url}/updateAlumnoByid/${alumno.id}`, alumno, this.getHeaders())
   }
   /**
    * Método para cambiar Alumno de empresa de practica 

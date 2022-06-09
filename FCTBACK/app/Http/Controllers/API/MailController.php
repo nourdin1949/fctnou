@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestMail;
-use Illuminate\Support\Facades\Auth;
 class MailController extends Controller
 {
     

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { customValidatorDNIRegistroAlta } from 'src/app/utils/Validators/otrasValidaciones';
 import { AlumnosService } from '../../alumnos/alumnos.service';
@@ -84,7 +84,7 @@ export class AsignarRolesComponent implements OnInit {
               this._snackBar.dismiss()
             }, 300);
           },
-          (res)=> {
+          (res) => {
             console.log(res)
           })
     }

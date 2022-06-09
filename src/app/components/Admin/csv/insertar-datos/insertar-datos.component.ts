@@ -1,15 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from 'src/app/utils/Validators/ValidacionesFicheross';
+import * as XLSX from 'xlsx';
+import { AlumnosService } from '../../alumnos/alumnos.service';
+import { CentrosService } from '../../centros/centros.service';
+import { CursosService } from '../../cursos/cursos.service';
+import { EmpresasService } from '../../empresas/empresas.service';
 import { ProfesorService } from '../../profesor/profesor.service';
 import { ResponsableService } from '../../responsable/responsable.service';
-import * as XLSX from 'xlsx'
-import { AlumnosService } from '../../alumnos/alumnos.service';
-import { EmpresasService } from '../../empresas/empresas.service';
-import { CursosService } from '../../cursos/cursos.service';
-import { CentrosService } from '../../centros/centros.service';
-import { ValidarFileAlumnos, ValidarFileCentros, ValidarFileCursos, ValidarFileEmpresa, ValidarFileResponsables, ValidarFileTutores } from 'src/app/utils/Validators/ValidacionesFicheross';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 /**
  * The insertar datos component
  */
@@ -270,7 +270,7 @@ console.log(this.fileCentros)
     let filename = file.name.substring(0, file.name.length - 4);
     const fileReader = new FileReader()
     fileReader.readAsArrayBuffer(file);
-    fileReader.onload = (e) => {
+    fileReader.onload = () => {
       this.arrayBuffer = fileReader.result
       const data = new Uint8Array(this.arrayBuffer);
       const arr = new Array();
@@ -319,7 +319,7 @@ console.log(this.fileCentros)
           () => {
             this.responsableCorrecto++
           },
-          (res) => {
+          () => {
             this.responsableFallo++
           })
     });
@@ -430,7 +430,7 @@ console.log(this.fileCentros)
           () => {
             this.alumnosCorrecto++
           },
-          (res) => {
+          () => {
             this.alumnosFallo++
           })
     });

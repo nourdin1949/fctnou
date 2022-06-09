@@ -4,9 +4,9 @@ import { ListarCentrosComponent } from './listar-centros/listar-centros.componen
 import { ModificarCentrosComponent } from './modificar-centros/modificar-centros.component';
 
 const routes: Routes = [
-  {path:"listar",component:ListarCentrosComponent},
-  {path:"modificarCentro/:id",component:ModificarCentrosComponent},
-  {path:"",redirectTo:"listar"}
+  { path: "listar", component: ListarCentrosComponent },
+  { path: "modificarCentro/:id", component: ModificarCentrosComponent },
+  { path: "", redirectTo: "listar" }
 ];
 
 @NgModule({

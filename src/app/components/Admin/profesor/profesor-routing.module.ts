@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListarProfesorComponent } from './listar-profesor/listar-profesor.component';
 import { ModificarProfesorComponent } from './modificar-profesor/modificar-profesor.component';
 
-const routes: Routes = [{ path: '', redirectTo: "listar" ,pathMatch:'full'}, 
-{ path:'listar', component:ListarProfesorComponent},
-{ path:'modificarProfesor/:id', component:ModificarProfesorComponent},
-{ path: '**', redirectTo: "error" },
+const routes: Routes = [
+  { path: '', redirectTo: "listar", pathMatch: 'full' },
+  { path: 'listar', component: ListarProfesorComponent },
+  { path: 'modificarProfesor/:id', component: ModificarProfesorComponent },
+  { path: '**', redirectTo: "error" },
 ];
 
 

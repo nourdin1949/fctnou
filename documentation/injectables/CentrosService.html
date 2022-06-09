@@ -866,7 +866,7 @@ export class CentrosService {
   /**
    * url de la api
    */
-  private url&#x3D;environment.url;
+  private url &#x3D; environment.url;
   /**
    * Constructor
    * @param http 
@@ -897,23 +897,23 @@ export class CentrosService {
    * @returns 
    */
   listarCentros(): Observable&lt;Centro[]&gt; {
-    return this.http.get&lt;Centro[]&gt;(&#x60;${this.url}/listarCentros&#x60;,this.getHeaders())
+    return this.http.get&lt;Centro[]&gt;(&#x60;${this.url}/listarCentros&#x60;, this.getHeaders())
   }
   /**
    * Método para eliminar todas los centros
    * @param codigo 
    * @returns 
    */
-  eliminarCentro(codigo:number){
-    return this.http.delete(&#x60;${this.url}/eliminarCentro/${codigo}&#x60;,this.getHeaders())
+  eliminarCentro(codigo: number) {
+    return this.http.delete(&#x60;${this.url}/eliminarCentro/${codigo}&#x60;, this.getHeaders())
   }
   /**
    * Método para buscar todos los centros
    * @param id 
    * @returns 
    */
-  findCentroByid(id:number):Observable&lt;Centro&gt;{
-    return this.http.get&lt;Centro&gt;(&#x60;${this.url}/findCentroByid/${id}&#x60;,this.getHeaders()) 
+  findCentroByid(id: number): Observable&lt;Centro&gt; {
+    return this.http.get&lt;Centro&gt;(&#x60;${this.url}/findCentroByid/${id}&#x60;, this.getHeaders())
   }
   /**
    * Metodo update centro by id
@@ -921,8 +921,8 @@ export class CentrosService {
    * @param centro 
    * @returns 
    */
-  updateCentroById(id:number, centro:Centro){
-    return this.http.put&lt;Centro&gt;(&#x60;${this.url}/updateCentroById/${id}&#x60;,centro,this.getHeaders()) 
+  updateCentroById(id: number, centro: Centro) {
+    return this.http.put&lt;Centro&gt;(&#x60;${this.url}/updateCentroById/${id}&#x60;, centro, this.getHeaders())
   }
   /**
    * Metodo check cif centro by id
@@ -930,7 +930,7 @@ export class CentrosService {
    * @param id 
    * @returns 
    */
-  checkifexistcifCentroByID(cif:string, id:number){
+  checkifexistcifCentroByID(cif: string, id: number) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/checkifexistcifCentroByID/${cif}/${id}&#x60;, this.getHeaders());
   }
   /**
@@ -938,7 +938,7 @@ export class CentrosService {
    * @param cif 
    * @returns 
    */
-  checkifexistcifCentro(cif:string){
+  checkifexistcifCentro(cif: string) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/checkifexistcifCentro/${cif}&#x60;, this.getHeaders());
   }
   /**
@@ -946,7 +946,7 @@ export class CentrosService {
    * @param code 
    * @returns 
    */
-  findCentroBycode(code:number){
+  findCentroBycode(code: number) {
     return this.http.get&lt;any&gt;(&#x60;${this.url}/findCentroBycode/${code}&#x60;, this.getHeaders());
   }
 }

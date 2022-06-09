@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import * as jsPDF from 'jspdf';
-
-import html2canvas from 'html2canvas';
-import { Centro, Empresa, FCTAlumno, Responsable } from 'src/app/utils/interfaces/Interface';
-import { EmpresasService } from '../../empresas/empresas.service';
-import { AlumnosService } from '../alumnos.service';
-import { ResponsableService } from '../../responsable/responsable.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CentrosService } from '../../centros/centros.service';
-import { Subject ,debounceTime} from 'rxjs';
 import { Router } from '@angular/router';
+import html2canvas from 'html2canvas';
+import * as jsPDF from 'jspdf';
+import { debounceTime, Subject } from 'rxjs';
+import { Centro, Empresa, FCTAlumno, Responsable } from 'src/app/utils/interfaces/Interface';
+import { CentrosService } from '../../centros/centros.service';
+import { EmpresasService } from '../../empresas/empresas.service';
+import { ResponsableService } from '../../responsable/responsable.service';
+import { AlumnosService } from '../alumnos.service';
+
 /**
  * The listar alumnos practica compnent
  */
@@ -104,8 +104,7 @@ export class ListarAlumnosPracticaComponent implements OnInit {
     private empresasevice: EmpresasService,
     private responsableservice: ResponsableService,
     private centroService: CentrosService,
-    private _snackBar: MatSnackBar, 
-    private router:Router ){
+    private _snackBar: MatSnackBar) {
 
   }
   /**
@@ -115,7 +114,7 @@ export class ListarAlumnosPracticaComponent implements OnInit {
     this.debounce.pipe(
       debounceTime(2000)
     ).subscribe(
-      resp => window.location.reload()
+      () => window.location.reload()
     )
     this.listarAlumnosFct()
     this.listarEmpresas();
@@ -127,7 +126,7 @@ export class ListarAlumnosPracticaComponent implements OnInit {
   public downloadPDF() {
     // Extraemos DATA
     (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("hide"))[0].classList.remove("hide");
-    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("pdf"))[0].style.marginTop="0.8in"
+    (<HTMLCollectionOf<HTMLElement>>document.getElementsByClassName("pdf"))[0].style.marginTop = "0.8in"
 
     const DATA = <HTMLElement>document.getElementById('listaalumnosFCT');
     // Todo elemento que tenga la clase quitar no se mostrara en el pdf
@@ -230,10 +229,10 @@ export class ListarAlumnosPracticaComponent implements OnInit {
    * @param idAlumnoFCT 
    */
   public changeEmpresa(idAlumnoFCT: number) {
-    
-    const alumnofctobject = { 
-      "responsable_id": this.alumnofct.responsable_id, 
-      "empresa_id": this.alumnofct.empresa_id 
+
+    const alumnofctobject = {
+      "responsable_id": this.alumnofct.responsable_id,
+      "empresa_id": this.alumnofct.empresa_id
     }
     this.alumnoservice.changeAlumnoDeEmpresa(alumnofctobject, idAlumnoFCT)
       .subscribe(

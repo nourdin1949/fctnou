@@ -13,7 +13,7 @@ export class EmpresasService {
   /**
    * Url de la api
    */
-  private url=environment.url;
+  private url = environment.url;
   /**
    * Constructor
    * @param http 
@@ -23,10 +23,12 @@ export class EmpresasService {
    * Cabecera de las peticiones
    * @returns 
    */
-  public getHeaders(){
-    const headers= {headers: {
-      "Authorization": "Bearer " +localStorage.getItem("token")
-    }}
+  public getHeaders() {
+    const headers = {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
+      }
+    }
     return headers
   }
   /**
@@ -34,7 +36,7 @@ export class EmpresasService {
    * @param empresa 
    * @returns 
    */
-  public insertarEmpresas(empresa:Empresa): Observable<Empresa>{
+  public insertarEmpresas(empresa: Empresa): Observable<Empresa> {
     return this.http.post<Empresa>(`${this.url}/insertarEmpresa`, empresa, this.getHeaders())
   }
   /**
@@ -42,14 +44,14 @@ export class EmpresasService {
    * @param empresa 
    * @returns 
    */
-  public insertarEmpresasCSV(empresa:Empresa): Observable<Empresa>{
+  public insertarEmpresasCSV(empresa: Empresa): Observable<Empresa> {
     return this.http.post<Empresa>(`${this.url}/insertarEmpresaCSV`, empresa, this.getHeaders())
   }
   /**
    *  Método para listar todas las empresas
    * @returns 
    */
-  public listarEmpresas(): Observable<Empresa[]>{
+  public listarEmpresas(): Observable<Empresa[]> {
 
     return this.http.get<Empresa[]>(`${this.url}/listarEmpresas`, this.getHeaders())
   }
@@ -58,7 +60,7 @@ export class EmpresasService {
    * @param id 
    * @returns 
    */
-  public eliminarEmpresa(id:number){
+  public eliminarEmpresa(id: number) {
 
     return this.http.delete<Empresa[]>(`${this.url}/eliminarEmpresa/${id}`, this.getHeaders())
   }
@@ -67,8 +69,8 @@ export class EmpresasService {
    * @param id 
    * @returns 
    */
-  public listarAlumnosEmpresa(id){
-    
+  public listarAlumnosEmpresa(id) {
+
     return this.http.get<any[]>(`${this.url}/listarAlumnosEmpresa/${id}`, this.getHeaders())
   }
   /**
@@ -76,8 +78,8 @@ export class EmpresasService {
    * @param id 
    * @returns 
    */
-  public findEmpresaByid(id:number){
-  
+  public findEmpresaByid(id: number) {
+
     return this.http.get<Empresa[]>(`${this.url}/findEmpresaByid/${id}`, this.getHeaders())
   }
   /**
@@ -86,9 +88,9 @@ export class EmpresasService {
    * @param empresa 
    * @returns 
    */
-  public updateEmpresaById(id:number,empresa:Empresa ){
-    
-    return this.http.put<Empresa[]>(`${this.url}/updateEmpresaById/${id}`,empresa, this.getHeaders())
+  public updateEmpresaById(id: number, empresa: Empresa) {
+
+    return this.http.put<Empresa[]>(`${this.url}/updateEmpresaById/${id}`, empresa, this.getHeaders())
   }
   /**
    * Metodo para comprobar que no existe el dni en esa empresa
@@ -96,8 +98,8 @@ export class EmpresasService {
    * @param id 
    * @returns 
    */
-  public checkifEmpresaDNIBYID(dni:string, id:number){
-  
+  public checkifEmpresaDNIBYID(dni: string, id: number) {
+
     return this.http.get(`${this.url}/checkifEmpresaDNIBYID/${dni}/${id}`, this.getHeaders())
   }
   /**
@@ -105,8 +107,8 @@ export class EmpresasService {
    * @param dni 
    * @returns 
    */
-  public checkifEmpresaDNI(dni:string){
-  
+  public checkifEmpresaDNI(dni: string) {
+
     return this.http.get(`${this.url}/checkifEmpresaDNI/${dni}`, this.getHeaders())
   }
   /**
@@ -115,8 +117,8 @@ export class EmpresasService {
    * @param id 
    * @returns 
    */
-  public checkifEmpresaCIFBYID(cif:string, id:number){
-  
+  public checkifEmpresaCIFBYID(cif: string, id: number) {
+
     return this.http.get(`${this.url}/checkifEmpresaCIFBYID/${cif}/${id}`, this.getHeaders())
   }
   /**
@@ -124,8 +126,8 @@ export class EmpresasService {
    * @param cif 
    * @returns 
    */
-  public checkifEmpresaCIF(cif:string){
-  
+  public checkifEmpresaCIF(cif: string) {
+
     return this.http.get(`${this.url}/checkifEmpresaCIF/${cif}`, this.getHeaders())
   }
 }

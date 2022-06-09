@@ -29,12 +29,12 @@ export class SharedService {
    * @returns cabecera httprequest
    */
   public getHeaders() {
-    const headers = {
+    const headersr = {
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
       }
     }
-    return headers
+    return headersr
   }
   /**
    * Metodo Comprobar Alumno

@@ -134,7 +134,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 /**
  * The 404 component
  */
@@ -151,7 +151,6 @@ export class PageNotFoundedComponent {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">
 
-&lt;!--dust particel--&gt;
 &lt;div&gt;
     &lt;div class&#x3D;&quot;starsec&quot;&gt;&lt;/div&gt;
     &lt;div class&#x3D;&quot;starthird&quot;&gt;&lt;/div&gt;
@@ -160,7 +159,6 @@ export class PageNotFoundedComponent {
 &lt;/div&gt;
 
 &lt;section class&#x3D;&quot;error&quot;&gt;
-    &lt;!-- Content --&gt;
     &lt;div class&#x3D;&quot;error__content&quot;&gt;
         &lt;div class&#x3D;&quot;error__message message&quot;&gt;
             &lt;h1 class&#x3D;&quot;message__title&quot;&gt; PAGE N&lt;img class&#x3D;&quot;message__image&quot; src&#x3D;&quot;../../../assets/img/icono.ico&quot; alt&#x3D;&quot;&quot;&gt;t F&lt;img class&#x3D;&quot;message__image&quot; src&#x3D;&quot;../../../assets/img/icono.ico&quot; alt&#x3D;&quot;&quot;&gt;und&lt;/h1&gt;
@@ -173,7 +171,6 @@ export class PageNotFoundedComponent {
             &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;!-- END Content --&gt;
 
 &lt;/section&gt;</code></pre>
     </div>
@@ -185,9 +182,6 @@ export class PageNotFoundedComponent {
                 <pre class="line-numbers"><code class="language-scss">
 @charset &quot;UTF-8&quot;;
 
-/***********************************
-			/* 1. BODY */
-/***********************************/
 
 * {
   margin: 0;
@@ -237,8 +231,17 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
   vertical-align: baseline;
   background: transparent;
 }
-.message__title{
+.message__title {
+  font-family: &#x27;Montserrat&#x27;, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+   font-size: 5.6rem;
+  padding-bottom: 40px;
+  max-width: 960px;
+  margin: 0 auto;
   margin-left: 2rem;
+
 }
 .starsec{
   content: &quot; &quot;;
@@ -301,15 +304,6 @@ button {
   background: none;
   cursor: pointer;
 }
-
-
-			/* 1. END BODY */
-/***********************************/
-
-/***********************************
-			/* 2. CONTENT */
-/***********************************/
-/* 2.1. Section error */
 .error {
   min-height: 100vh;
   position: relative;
@@ -319,6 +313,8 @@ button {
   height: 100%;
   text-align: center;
   margin-top: 70px;
+  overflow: hidden;
+  max-height: 100vh;
 }
 
 .error__message {
@@ -326,16 +322,7 @@ button {
   color: #181828;
 }
 
-.message__title {
-  font-family: &#x27;Montserrat&#x27;, sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-   font-size: 5.6rem;
-  padding-bottom: 40px;
-  max-width: 960px;
-  margin: 0 auto;
-}
+
 
 .message__text {
   font-family: &#x27;Montserrat&#x27;, sans-serif;
@@ -427,9 +414,7 @@ button {
 .e-nav__link:nth-child(2):hover:after {
   color: #fff;
 }
-/* 2.1. END Section Error */
 
-/* 2.2. Social style */
 .error__social {
   position: absolute;
   top: 50%;
@@ -463,19 +448,8 @@ button {
 .e-social__link:hover {
   opacity: .7;
 }
-/* 2.2. END Social style */
 
-/***********************************
-			/* 2. END CONTENT */
-/***********************************/
 
-/***********************************
-			/* 3. RESPONSIVE */
-/***********************************/
-.error {
-  overflow: hidden;
-  max-height: 100vh;
-}
 .message__image{
   width: 8%;
 }
@@ -518,13 +492,12 @@ button {
   .e-social__icon {
     display: inline-block;
     padding-right: 30px;
+    padding-bottom: 0;
   }
   .e-social__icon:last-child {
     padding-right: 0;
   }
-  .e-social__icon {
-    padding-bottom: 0;
-  }
+
 }
 @media (max-width: 750px) {
   body, html{
@@ -604,7 +577,7 @@ button {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--dust particel--><div>    <div class="starsec"></div>    <div class="starthird"></div>    <div class="starfourth"></div>    <div class="starfifth"></div></div><section class="error">    <!-- Content -->    <div class="error__content">        <div class="error__message message">            <h1 class="message__title"> PAGE N<img class="message__image" src="../../../assets/img/icono.ico" alt="">t F<img class="message__image" src="../../../assets/img/icono.ico" alt="">und</h1>            <p class="message__text">Lo sentimos, página web no disponible. <br>El link puede que no exista o este mal escrito. <br>Intentalo de nuevo o vuelve inicio.            </p>        </div>        <div class="error__nav e-nav">            <a href="" class="e-nav__link">                <mat-icon>home</mat-icon>            </a>        </div>    </div>    <!-- END Content --></section></div>'
+        var COMPONENT_TEMPLATE = '<div><div>    <div class="starsec"></div>    <div class="starthird"></div>    <div class="starfourth"></div>    <div class="starfifth"></div></div><section class="error">    <div class="error__content">        <div class="error__message message">            <h1 class="message__title"> PAGE N<img class="message__image" src="../../../assets/img/icono.ico" alt="">t F<img class="message__image" src="../../../assets/img/icono.ico" alt="">und</h1>            <p class="message__text">Lo sentimos, página web no disponible. <br>El link puede que no exista o este mal escrito. <br>Intentalo de nuevo o vuelve inicio.            </p>        </div>        <div class="error__nav e-nav">            <a href="" class="e-nav__link">                <mat-icon>home</mat-icon>            </a>        </div>    </div></section></div>'
     var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AlumnoEscolarComponent', 'selector': 'app-alumno-escolar'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosComponent', 'selector': 'app-alumnos'},{'name': 'AlumnosEmpresaComponent', 'selector': 'app-alumnos-empresa'},{'name': 'AnexoVComponent', 'selector': 'app-anexo-v'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AsignarComponent', 'selector': 'app-asignar'},{'name': 'AsignarRolesComponent', 'selector': 'app-asignar-roles'},{'name': 'BuscarPorFechaComponent', 'selector': 'app-buscar-por-fecha'},{'name': 'CalendarioAnexoVComponent', 'selector': 'app-calendario-anexo-v'},{'name': 'CentrosComponent', 'selector': 'app-centros'},{'name': 'ChatEmpComponent', 'selector': 'app-chat-emp'},{'name': 'ChatEscoComponent', 'selector': 'app-chat-esco'},{'name': 'ComponentsComponent', 'selector': 'app-components'},{'name': 'CsvComponent', 'selector': 'app-csv'},{'name': 'CursosComponent', 'selector': 'app-cursos'},{'name': 'EmpresasComponent', 'selector': 'app-empresas'},{'name': 'ForgotPasswordComponent', 'selector': 'app-forgot-password'},{'name': 'InsertarAlumnosComponent', 'selector': 'app-insertar-alumnos'},{'name': 'InsertarAnexoVComponent', 'selector': 'app-insertar-anexo-v'},{'name': 'InsertarCentroComponent', 'selector': 'app-insertar-centro'},{'name': 'InsertarCursoComponent', 'selector': 'app-insertar-curso'},{'name': 'InsertarDatosComponent', 'selector': 'app-insertar-datos'},{'name': 'InsertarEmpresaComponent', 'selector': 'app-insertar-empresa'},{'name': 'InsertarProfesorComponent', 'selector': 'app-insertar-profesor'},{'name': 'InsertarResponsableComponent', 'selector': 'app-insertar-responsable'},{'name': 'ListarAlumnosComponent', 'selector': 'app-listar-alumnos'},{'name': 'ListarAlumnosEscoComponent', 'selector': 'app-listar-alumnos-esco'},{'name': 'ListarAlumnosPracticaComponent', 'selector': 'app-listar-alumnos-practica'},{'name': 'ListarCentrosComponent', 'selector': 'app-listar-centros'},{'name': 'ListarCursosComponent', 'selector': 'app-listar-cursos'},{'name': 'ListarEmpresasComponent', 'selector': 'app-listar-empresas'},{'name': 'ListarProfesorComponent', 'selector': 'app-listar-profesor'},{'name': 'ListarResponsableComponent', 'selector': 'app-listar-responsable'},{'name': 'ListarTodosComponent', 'selector': 'app-listar-todos'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'ModificarAlumnosComponent', 'selector': 'app-modificar-alumnos'},{'name': 'ModificarAnexoVComponent', 'selector': 'app-modificar-anexo-v'},{'name': 'ModificarCentrosComponent', 'selector': 'app-modificar-centros'},{'name': 'ModificarCursosComponent', 'selector': 'app-modificar-cursos'},{'name': 'ModificarEmpresasComponent', 'selector': 'app-modificar-empresas'},{'name': 'ModificarProfesorComponent', 'selector': 'app-modificar-profesor'},{'name': 'ModificarResponsableComponent', 'selector': 'app-modificar-responsable'},{'name': 'PageNotFoundedComponent', 'selector': 'app-page-not-founded'},{'name': 'PerfilComponent', 'selector': 'app-perfil'},{'name': 'ProfesorComponent', 'selector': 'app-profesor'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'ResponsableComponent', 'selector': 'app-responsable'},{'name': 'SendVerificarEmailComponent', 'selector': 'app-send-verificar-email'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'TutorEmpresaComponent', 'selector': 'app-tutor-empresa'},{'name': 'TutorEscolarComponent', 'selector': 'app-tutor-escolar'},{'name': 'ValidarComponent', 'selector': 'app-validar'},{'name': 'ValidarTareaComponent', 'selector': 'app-validar-tarea'},{'name': 'VerificarEmailComponent', 'selector': 'app-verificar-email'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PageNotFoundedComponent'};

@@ -1114,7 +1114,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
-import { Centro, Curso } from &#x27;src/app/utils/interfaces/Interface&#x27;;
+import { Centro } from &#x27;src/app/utils/interfaces/Interface&#x27;;
 import { CentrosService } from &#x27;../centros.service&#x27;;
 /**
  * The listar cenro component
@@ -1142,36 +1142,36 @@ export class ListarCentrosComponent implements OnInit {
   /**
    * Centros temporales en matriz
    */
-   public centrosTmp: Centro[] &#x3D; []
-   /**
-    * Total de centros
-    */
-   public totalElements: number;
-   /**
-    * Pagina actual
-    */
-   @Input()
-   public currentPage: number &#x3D; 1;
-   /**
-    * Total de paginas
-    */
-   @Input()
-   public totalPages: number &#x3D; 0;
-   /**
-    * Numero de filas a mostrar en la tabla
-    */
-   @Input()
-   public pageSize: number &#x3D; 5;
-   /**
-    * Tamaños de página a elegir
-    */
-   public sizes: number[] &#x3D; [5, 10, 15, 20];
+  public centrosTmp: Centro[] &#x3D; []
+  /**
+   * Total de centros
+   */
+  public totalElements: number;
+  /**
+   * Pagina actual
+   */
+  @Input()
+  public currentPage: number &#x3D; 1;
+  /**
+   * Total de paginas
+   */
+  @Input()
+  public totalPages: number &#x3D; 0;
+  /**
+   * Numero de filas a mostrar en la tabla
+   */
+  @Input()
+  public pageSize: number &#x3D; 5;
+  /**
+   * Tamaños de página a elegir
+   */
+  public sizes: number[] &#x3D; [5, 10, 15, 20];
   /**
    * Constructor
    * @param centroService 
    * @param _snackBar 
    */
-  constructor(private centroService: CentrosService, private _snackBar:MatSnackBar) { }
+  constructor(private centroService: CentrosService, private _snackBar: MatSnackBar) { }
   /**
    * NgOnInit
    */
@@ -1181,20 +1181,20 @@ export class ListarCentrosComponent implements OnInit {
   /**
    * Metodo Listar Centros
    */
-  public  listarCentros() {
+  public listarCentros() {
     this.centroService.listarCentros()
-    .subscribe(
-      (response) &#x3D;&gt; {
-      this.centros &#x3D; response;
-      this.cargaCompleta &#x3D; true
-      this.totalElements &#x3D; this.centros.length
-      this.totalPages &#x3D; Math.ceil(this.totalElements / this.pageSize)
-      this.centrosTmp &#x3D; []
-      this.centros &#x3D; this.centros.sort(function (a, b) { return a.codigo - b.codigo; });
-      for (let i &#x3D; 0; i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
-        this.centrosTmp[i] &#x3D; this.centros[i];
-      }
-    })
+      .subscribe(
+        (response) &#x3D;&gt; {
+          this.centros &#x3D; response;
+          this.cargaCompleta &#x3D; true
+          this.totalElements &#x3D; this.centros.length
+          this.totalPages &#x3D; Math.ceil(this.totalElements / this.pageSize)
+          this.centrosTmp &#x3D; []
+          this.centros &#x3D; this.centros.sort(function (a, b) { return a.codigo - b.codigo; });
+          for (let i &#x3D; 0; i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
+            this.centrosTmp[i] &#x3D; this.centros[i];
+          }
+        })
   }
   /**
    * Metodo guardar codigo
@@ -1224,91 +1224,91 @@ export class ListarCentrosComponent implements OnInit {
         duration: 3000
       });
   }
-   /**
-  * Metodo dirige a la primera página
-  * @returns 
-  */
-    public firstPage() {
-      if (this.currentPage &#x3D;&#x3D;&#x3D; 1) {
-        return false;
-      }
-  
-      this.currentPage &#x3D; 1;
-      let x &#x3D; 0;
-      for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
-        this.centrosTmp[x] &#x3D; this.centros[i]
-        x++;
-      }
-      this.centrosTmp &#x3D; this.centrosTmp.sort(function (a, b) { return a.codigo - b.codigo; });
-  
-      return true
+  /**
+ * Metodo dirige a la primera página
+ * @returns 
+ */
+  public firstPage() {
+    if (this.currentPage &#x3D;&#x3D;&#x3D; 1) {
+      return false;
     }
-    /**
-     * Método dirige a la siguiente pagina
+
+    this.currentPage &#x3D; 1;
+    let x &#x3D; 0;
+    for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
+      this.centrosTmp[x] &#x3D; this.centros[i]
+      x++;
+    }
+    this.centrosTmp &#x3D; this.centrosTmp.sort(function (a, b) { return a.codigo - b.codigo; });
+
+    return true
+  }
+  /**
+   * Método dirige a la siguiente pagina
+   * @returns 
+   */
+  public nextPage() {
+    if (this.currentPage &gt;&#x3D; this.totalPages) {
+      return false;
+    }
+    this.currentPage++;
+
+    this.centrosTmp &#x3D; []
+
+    let x &#x3D; 0
+    for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
+      this.centrosTmp[x] &#x3D; this.centros[i]
+      x++;
+    }
+
+    return true
+  }
+  /**
+     * Método dirige a la anteriro pagina
      * @returns 
      */
-    public nextPage() {
-      if (this.currentPage &gt;&#x3D; this.totalPages) {
-        return false;
-      }
-      this.currentPage++;
-  
-      this.centrosTmp &#x3D; []
-  
-      let x &#x3D; 0
-      for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
-        this.centrosTmp[x] &#x3D; this.centros[i]
-        x++;
-      }
-  
-      return true
+  public prevPage() {
+    if (this.currentPage &lt;&#x3D; 1) {
+      return false;
     }
-    /**
-       * Método dirige a la anteriro pagina
-       * @returns 
-       */
-    public prevPage() {
-      if (this.currentPage &lt;&#x3D; 1) {
-        return false;
-      }
-      this.currentPage--;
-  
-      this.centrosTmp &#x3D; []
-      let x &#x3D; 0
-      for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
-        this.centrosTmp[x] &#x3D; this.centros[i]
-        x++;
-      }
-      this.centrosTmp &#x3D; this.centrosTmp.sort(function (a, b) { return a.codigo - b.codigo; });
-  
-      return true
+    this.currentPage--;
+
+    this.centrosTmp &#x3D; []
+    let x &#x3D; 0
+    for (let i &#x3D; this.pageSize * this.currentPage - 1; i &gt; this.pageSize * (this.currentPage - 1) - 1; i--) {
+      this.centrosTmp[x] &#x3D; this.centros[i]
+      x++;
     }
-    /**
-     * Método dirige a la ultima pagina
-     * @returns 
-     */
-    public lastPage() {
-      if (this.currentPage &#x3D;&#x3D;&#x3D; this.totalPages) {
-        return false;
-      }
-      this.currentPage &#x3D; this.totalPages;
-  
-      this.centrosTmp &#x3D; []
-      let x &#x3D; 0;
-      for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
-        this.centrosTmp[x] &#x3D; this.centros[i]
-        x++;
-      }
-  
-      return true
+    this.centrosTmp &#x3D; this.centrosTmp.sort(function (a, b) { return a.codigo - b.codigo; });
+
+    return true
+  }
+  /**
+   * Método dirige a la ultima pagina
+   * @returns 
+   */
+  public lastPage() {
+    if (this.currentPage &#x3D;&#x3D;&#x3D; this.totalPages) {
+      return false;
     }
-    /**
-     * Cambiar tamaño de la pagina
-     */
-    public changeSize() {
-      this.currentPage &#x3D; 1
-      this.listarCentros()
+    this.currentPage &#x3D; this.totalPages;
+
+    this.centrosTmp &#x3D; []
+    let x &#x3D; 0;
+    for (let i &#x3D; this.pageSize * (this.currentPage - 1); i &lt; this.pageSize * this.currentPage &amp;&amp; this.centros.length &gt; i; i++) {
+      this.centrosTmp[x] &#x3D; this.centros[i]
+      x++;
     }
+
+    return true
+  }
+  /**
+   * Cambiar tamaño de la pagina
+   */
+  public changeSize() {
+    this.currentPage &#x3D; 1
+    this.listarCentros()
+  }
 }
 </code></pre>
     </div>

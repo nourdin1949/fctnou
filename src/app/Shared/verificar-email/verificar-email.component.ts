@@ -53,7 +53,7 @@ export class VerificarEmailComponent implements OnInit {
     this.debounce.pipe(
       debounceTime(3000)
     ).subscribe(
-      resp => this.router.navigateByUrl('')
+     () => this.router.navigateByUrl('')
     )
   }
   /**

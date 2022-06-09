@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Centro, Profesor } from 'src/app/utils/interfaces/Interface';
 import { SharedService } from 'src/app/Shared/shared.service';
+import { Centro, Profesor } from 'src/app/utils/interfaces/Interface';
 import { customValidatordDniBYID, customValidatorEmailBYID, customValidatorFormatDNI } from 'src/app/utils/Validators/otrasValidaciones';
 import { CentrosService } from '../../centros/centros.service';
 import { ProfesorService } from '../profesor.service';
@@ -44,20 +44,20 @@ export class ModificarProfesorComponent implements OnInit {
     private fb: FormBuilder,
     private tutorService: ProfesorService,
     private centroService: CentrosService,
-    private sharedService:SharedService) {
+    private sharedService: SharedService) {
     this.activatedRoute.params.subscribe(m => {
       this.idTutor = m['id']
       this.findTutorById()
     })
 
     this.formModificarTutor = this.fb.group({
-      nombre: ['', [Validators.required,Validators.pattern("[A-Z a-z]{3,}")]],
+      nombre: ['', [Validators.required, Validators.pattern("[A-Z a-z]{3,}")]],
       dni: ['', [Validators.required, Validators.pattern("[0-9]{8}[A-Z]{1}")],
-      [customValidatordDniBYID.customValidDni(sharedService, this.idTutor),
-        customValidatorFormatDNI.customValidDNILETRA], 'blur' ],
+        [customValidatordDniBYID.customValidDni(sharedService, this.idTutor),
+        customValidatorFormatDNI.customValidDNILETRA], 'blur'],
       centro: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
-      [customValidatorEmailBYID.customValidEmail(sharedService, this.idTutor)], 'blur' ]
+        [customValidatorEmailBYID.customValidEmail(sharedService, this.idTutor)], 'blur']
     })
 
   }

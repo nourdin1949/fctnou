@@ -219,22 +219,22 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
-import { CommonModule } from &#x27;@angular/common&#x27;;
-import { TutorEscolarComponent } from &#x27;./tutor-escolar.component&#x27;;
-import { ChatEscoComponent } from &#x27;./chat-esco/chat-esco.component&#x27;;
-import { AlumnoEscolarComponent } from &#x27;./alumno-escolar/alumno-escolar.component&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { MatCheckboxModule } from &#x27;@angular/material/checkbox&#x27;;
+import { MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;;
+import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
+import { MatInputModule } from &#x27;@angular/material/input&#x27;;
+import { MatSelectModule } from &#x27;@angular/material/select&#x27;;
+import { MatTabsModule } from &#x27;@angular/material/tabs&#x27;;
+import { TextareaAutosizeModule } from &#x27;ngx-textarea-autosize&#x27;;
 import { AppRoutingModule } from &#x27;src/app/app-routing.module&#x27;;
+import { AlumnoEscolarComponent } from &#x27;./alumno-escolar/alumno-escolar.component&#x27;;
 import { ListarAlumnosEscoComponent } from &#x27;./alumno-escolar/listar-alumnos-esco/listar-alumnos-esco.component&#x27;;
 import { ValidarTareaComponent } from &#x27;./alumno-escolar/validar-tarea/validar-tarea.component&#x27;;
-import {  MatFormFieldModule } from &#x27;@angular/material/form-field&#x27;
-import { MatSelectModule } from &#x27;@angular/material/select&#x27;
-import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
-import { MatInputModule } from &#x27;@angular/material/input&#x27;;
-import { MatTabsModule } from &#x27;@angular/material/tabs&#x27;;
-import {MatCheckboxModule} from &#x27;@angular/material/checkbox&#x27;;
-import { MatIconModule } from &#x27;@angular/material/icon&#x27;;
-import { TextareaAutosizeModule } from &#x27;ngx-textarea-autosize&#x27;;
+import { ChatEscoComponent } from &#x27;./chat-esco/chat-esco.component&#x27;;
+import { TutorEscolarComponent } from &#x27;./tutor-escolar.component&#x27;;
 @NgModule({
   declarations: [
     TutorEscolarComponent,

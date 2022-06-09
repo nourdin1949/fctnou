@@ -320,7 +320,6 @@ export class customValidatorLocalidad {
    * @returns 
    */
   static customValidLocalidad(localidadParam: any, provinciaParam: any) {
-    let arrayBuffer: any = []
     return (formGroup: FormGroup) => {
       const localidadC = formGroup.controls[localidadParam];
 
@@ -414,7 +413,6 @@ export class customValidatorProvincia {
      * @returns 
      */
   static customValidProvincia(provinciaParam: string) {
-    let arrayBuffer: any = []
     return (formGroup: FormGroup) => {
       let encontrado: boolean = false
       const provinciaValor = formGroup.controls[provinciaParam]
